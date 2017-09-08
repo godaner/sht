@@ -1,4 +1,7 @@
 # Compiled class file
+/bin/
+/tartget/
+/build/
 *.class
 
 # Log file
