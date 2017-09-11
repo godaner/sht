@@ -7,4 +7,4 @@
  * @date 2017年9月11日 下午2:57:18
  * @version 1.0
  */
-package com.sht.front.users.po;
+package com.sht.users.po;

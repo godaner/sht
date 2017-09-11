@@ -16,12 +16,51 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 
 
 	<!-- web.xml中的shiro的filter对应的bean start -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- loginUrl认证提交地址,如果没有认证将会请求此地址进行认证,请求此地址将有formAuthenticationFilter进行表单验证 -->
+		<property name="loginUrl" value="/users/usersAction!login.action"></property>
+		<!-- 通过了,但是没有权限 -->
+		<property name="unauthorizedUrl" value="/users/view/refuse.jsp"></property>
+		
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 请求该地址推出shiro的session,建议你logout放在上面 -->
+				/pc/front/users/logout.action = logout
+				<!-- 对静态资源匿名访问 -->
+				/**/js/** = anon
+				/**/css/** = anon
+				/**/img/** = anon
+				/**/plugin/** = anon
+				<!-- 拦截未登录,取出其参数usernmae和passowrd封装为token传递给token处理 -->
+				/users/view/index.jsp = authc
+				<!-- 匿名,任何人都可访问 -->
+				/users/view/login.jsp = anon
+			</value>
+		</property>
+		
+	</bean>
 	<!-- web.xml中的shiro的filter对应的bean end -->
 	
+	
+	
+	
+	
 	<!-- securityManager start -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="usersRealm"></property>
+	</bean>
 	<!-- securityManager end -->
 
+
+
+
+
+
+
+
 	<!-- realm start -->
+	<bean id="usersRealm" class="com.sht.users.realm.UsersRealm"></bean>
 	<!-- realm end -->
 
 
