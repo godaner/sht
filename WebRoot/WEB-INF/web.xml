@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>pm</display-name>
+
+	<!-- 配置shiro的filter start -->
+	<!-- 目地是将真正的filter加入到spring的bean容器 -->
+	<!-- <filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		设置spring控制filter的生命周期
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		设置spring容器中filter的bean的id,如果不设置则找与<filter-name>一只的bean
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>shiroFilter</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+	<!-- 配置shiro的filter end -->
+
+
+
+
+
+
+	<!-- ****** 配置spring start ****** -->
+	<context-param>
+		<!-- 指定spring的配置文件位置 -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/spring-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- ****** 配置spring end ****** -->
+
+
+
+
+
+
+	<!-- ****** 配置struts start ****** -->
+	<filter>
+		<filter-name>struts</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>struts-default.xml,struts-plugin.xml,struts/struts-base.xml</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<!-- ****** 配置struts end ****** -->
+
+
+
+	<!-- ****** 配置编码过滤器 start ****** -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- ****** 配置编码过滤器 end ****** -->
+
+
+
+
+</web-app>
