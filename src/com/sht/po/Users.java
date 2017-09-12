@@ -7,6 +7,9 @@ public class Users {
 
     private Object password;
 
+    public String getSalt() {
+		return "";
+	}
     public Object getId() {
         return id;
     }

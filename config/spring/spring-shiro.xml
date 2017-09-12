@@ -20,29 +20,6 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 
 
 
-
-
-
-	<!-- realm start -->
-	<bean id="usersRealm" class="com.sht.users.realm.UsersRealm"></bean>
-	<!-- realm end -->
-
-
-
-
-	<!-- securityManager start -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="usersRealm"></property>
-	</bean>
-	<!-- securityManager end -->
-
-
-
-
-
-
-
-
 	<!-- 	
 		**解释:
 		访问authc权限时,如果存在token字段(username和password),那么提交token到自定义realm验证,验证失败进入loginUrl,成功放行;
@@ -80,6 +57,38 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	
 	
 	
+	
+	<!-- 配置凭证匹配器 start -->
+	<bean id="credentialsMatcher"
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithm" value="md5"></property>
+		<property name="hashIterations" value="1"></property>	
+	</bean>
+	<!-- 配置凭证匹配器 end -->
+
+
+
+
+
+
+	<!-- realm start -->
+	<bean id="usersRealm" class="com.sht.users.realm.UsersRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	</bean>
+	<!-- realm end -->
+
+
+
+
+	<!-- securityManager start -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="usersRealm"></property>
+	</bean>
+	<!-- securityManager end -->
+
+
+
+
 
 
 	<!-- *******************配置spring对 权限管理 层的管理 end******************* -->

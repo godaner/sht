@@ -13,4 +13,6 @@ import com.sht.po.Users;
  */
 public class CustomUsers extends Users {
 
+	
+
 }

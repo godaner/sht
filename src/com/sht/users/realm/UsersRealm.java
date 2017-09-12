@@ -11,6 +11,11 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sht.users.po.CustomUsers;
+import com.sht.users.service.UsersServiceI;
 /**
  * Title:UsersRealm
  * <p>
@@ -22,31 +27,39 @@ import org.apache.shiro.subject.PrincipalCollection;
  */
 public class UsersRealm extends AuthorizingRealm {
 
-	// 用于认证
+	@Autowired
+	private UsersServiceI usersService;
+	
 	@Override
 	public void setName(String name) {
 		super.setName("UsersRealm");
 	}
 
-	
-	//通过用户的身份(唯一标识符,主键)返回正确的认证信息供外部调用org.apache.shiro.authc.pam.ModularRealmAuthenticator
+	//reaml认证方法
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
-		// 从token取出用户信息
+		
+		String username = (String) token.getPrincipal();
+		
+		//查询user
+		CustomUsers user = usersService.selectUserByUsername(username);
 
-		String usercode = (String) token.getPrincipal();
-
-		String passowrd = "123";
-
-		// 封装正确的源数据中的数据
-
-		SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
-				usercode, passowrd, this.getName());
+		if(user == null){
+			return null;
+		}
 
 		
-		// 查询不到返回null查询到返回AuthenticationInfo
-		return simpleAuthenticationInfo;  
+		String password = (String) user.getPassword();
+		
+		String salt = (String) user.getSalt();
+		
+		
+		//将activeUser设置simpleAuthenticationInfo
+		SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
+				username, password,ByteSource.Util.bytes(salt), this.getName());
+
+		return simpleAuthenticationInfo;
 	}
 
 	// 外部认证成功后,根据用户的身份(唯一标识符,主键)返回授权信息供外部的org.apache.shiro.authz.ModularRealmAuthorizer

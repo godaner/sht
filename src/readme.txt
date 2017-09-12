@@ -20,7 +20,7 @@
 
 *.servie层,dao层,action层的每个public方法都需要声明抛出java.lang.Exeption级别的异常;
 
-*.所有的action继承BaseAction;
+*.所有的action继承BaseAction,所有的service继承BaseService;因为BaseXX中含有许多工具,方便开发中直接调用;
 
 *.dao(mybatis),service,action都采用注解将bean添加到spring容器,采用的注解分别为:
 	@Repository,@Service,@Controller;

@@ -10,6 +10,8 @@ import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
+import com.sht.util.GUtil;
+
 /**
  * Title:GeneratorConfig
  * <p>
@@ -36,8 +38,10 @@ public class GeneratorConfig {
 	public static void main(String[] args) throws Exception {
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
+		String path = GeneratorConfig.class.getResource("").getPath() + "generatorConfig.xml";
+		GUtil.logger.info(path);
 		// 指定逆向工程配置文件
-		File configFile = new File(GeneratorConfig.class.getResource("").getPath() + "generatorConfig.xml");
+		File configFile = new File(path);
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(configFile);
 		DefaultShellCallback callback = new DefaultShellCallback(overwrite);

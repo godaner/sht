@@ -38,6 +38,12 @@ import org.springframework.beans.BeanUtils;
  * @version 1.0
  */
 public class GUtil extends GActionUtil{
+	public static void main(String[] args) {
+		//202cb962ac59075b964b07152d234b70
+		System.out.println(GUtil.md5("123"+""));
+	}
+	
+	
 	public static final Logger logger = Logger.getLogger(GUtil.class);
 	
 	
