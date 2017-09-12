@@ -35,8 +35,6 @@ public class UsersService extends BaseService implements UsersServiceI {
 		//判断用户是否存在
 		eject(dbUser == null, "用户不存在");
 		
-		//用户名相同
-		eject(dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
 		//判断密码
 		eject(!dbUser.getPassword().equals(po.getPassword()),"密码错误");
@@ -47,6 +45,12 @@ public class UsersService extends BaseService implements UsersServiceI {
 	@Override
 	public void regist(CustomUsers po) throws Exception {
 		
+		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
+		
+		//用户名相同
+		eject(dbUser.getUsername().equals(po.getUsername()), "用户已存在");
+		
+
 		po.setId(UUID.randomUUID().toString());
 		
 		po.setIsdelete("0");

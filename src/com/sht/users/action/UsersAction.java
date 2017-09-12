@@ -1,11 +1,7 @@
 package com.sht.users.action;
 
-import javax.annotation.Resource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.opensymphony.xwork2.ModelDriven;
 import com.sht.action.BaseAction;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
@@ -21,25 +17,11 @@ import com.sht.users.service.UsersServiceI;
  * @version 1.0
  */
 @Controller
-public class UsersAction extends BaseAction implements ModelDriven<CustomUsers>{
+public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
 	
 	public static final String FILED_ONLINE_USER = "onlineUser";
 
 
-	@Autowired
-	private UsersServiceI us;
-	
-	
-	@Autowired
-	private CustomUsers customUsers;
-	
-	
-	
-
-	@Override
-	public CustomUsers getModel() {
-		return customUsers;
-	}
 	/**
 	 * 
 	 * Title:login
@@ -55,7 +37,7 @@ public class UsersAction extends BaseAction implements ModelDriven<CustomUsers>{
 	public String login() throws Exception{
 		try{
 
-			us.login(customUsers);
+			service.login(po);
 		}catch(Exception e){
 			
 			e.printStackTrace();
@@ -65,7 +47,7 @@ public class UsersAction extends BaseAction implements ModelDriven<CustomUsers>{
 			return "fLogin";
 		}
 
-		setRequestAttr(FILED_ONLINE_USER, customUsers);
+		setRequestAttr(FILED_ONLINE_USER, po);
 
 		return "fIndex";
 	}
@@ -84,7 +66,7 @@ public class UsersAction extends BaseAction implements ModelDriven<CustomUsers>{
 	public String regist() throws Exception{
 		try{
 
-			us.regist(customUsers);
+			service.regist(po);
 		}catch(Exception e){
 			
 			e.printStackTrace();
