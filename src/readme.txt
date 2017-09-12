@@ -1,0 +1,28 @@
+*.请不要擅自修改目录结构和文件,只允许修改自己负责的项目模块的文件和结构;
+
+*.包结构
+	包含action,mapper,po,realm,service,users,util,模块包等包;
+
+*.模块包结构同上述;
+	
+*.类命名规范:
+	类:
+		action层:
+			xxAction
+		service层:
+			接口:
+				xxServiceI
+			实现类:
+				xxService
+		mapper(dao)层:
+			接口:xxMapper
+	
+
+*.servie层,dao层,action层的每个public方法都需要声明抛出java.lang.Exeption级别的异常;
+
+*.所有的action继承BaseAction;
+
+*.dao(mybatis),service,action都采用注解将bean添加到spring容器,采用的注解分别为:
+	@Repository,@Service,@Controller;
+
+*.开发者最多要配置的是struts配置文件;
