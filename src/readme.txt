@@ -25,6 +25,8 @@
 		因为BaseXX中含有许多工具,方便开发中直接调用;
 		因为BaseXX中提供了封装前台参数的对象po;
 		因为BaseXX中提供了实例业务对象service;
+		
+*.action中最好只有一个参数接受类(已经被BaseAction封装),一个Service(已经被BaseAction封装),service层中可以有多个mapper(dao);
 
 *.dao(mybatis),service,action,po都采用注解将bean添加到spring容器,采用的注解分别为:
 	@Repository,@Service,@Controller,@Component;
