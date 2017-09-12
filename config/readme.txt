@@ -10,10 +10,17 @@
 *.action标签的class可以使用注入到了spring的action的bean,例如
 	<action name="usersAction" class="usersAction">
 
-*.配置action的result的名称时如果为转发则result的name开头为f,例如fIndex;
+*.配置action的result的名称时,如果为转发则result的name开头为f,例如fIndex;
 	如果为重定向,name开头为r,例如rIndex;
 
 *.dao(mybatis),service,action都采用注解将bean添加到spring容器,采用的注解分别为:
 	@Repository,@Service,@Controller;
 	
 *.开发者最多要配置的是struts配置文件;
+
+
+*.action的路径配置使用 "通配符" + "namespace"
+	例如:<action name="*" class="usersAction" method="{0}">
+	访问方式:http://localhost/sht/users/login.action
+	
+*.在对struts配置时,在自己负责的模块中,能够使用全局的result或者exception就用全局的,避免重复

@@ -46,8 +46,7 @@ public class UsersRealm extends AuthorizingRealm {
 
 		
 		// 查询不到返回null查询到返回AuthenticationInfo
-
-		return simpleAuthenticationInfo;
+		return simpleAuthenticationInfo;  
 	}
 
 	// 外部认证成功后,根据用户的身份(唯一标识符,主键)返回授权信息供外部的org.apache.shiro.authz.ModularRealmAuthorizer
@@ -65,8 +64,7 @@ public class UsersRealm extends AuthorizingRealm {
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		
 		simpleAuthorizationInfo.addStringPermissions(permissions);;
-		
-		return simpleAuthorizationInfo;
+		return simpleAuthorizationInfo;  
 	}
 
 }

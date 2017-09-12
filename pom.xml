@@ -14,8 +14,11 @@
 	<properties>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<struts.version>2.3.4.1</struts.version>
-		<shiro.version>1.2.3</shiro.version>
+		<shiro.version>1.3.2</shiro.version>
+		<shiro.aspectj.version>1.8.8</shiro.aspectj.version>
+		<shiro.cglib.version>2.2.2</shiro.cglib.version>
 		<struts.javassist.version>3.15.0-GA</struts.javassist.version>
+		<ojdbc6.version>11.2.0.1.0</ojdbc6.version>
 
 	</properties>
 	<!-- 属性配置 end -->
@@ -51,11 +54,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-ehcache</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
 			<version>${shiro.version}</version>
 		</dependency>
@@ -69,6 +67,26 @@
 			<artifactId>shiro-quartz</artifactId>
 			<version>${shiro.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${shiro.aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${shiro.aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${shiro.cglib.version}</version>
+		</dependency> 
 		<!-- shiro end -->
 
 
@@ -77,7 +95,7 @@
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.1.0</version>
+			<version>${ojdbc6.version}</version>
 		</dependency>
 		<!-- 数据库连接驱动 end -->
 
@@ -188,11 +206,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>0.2.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

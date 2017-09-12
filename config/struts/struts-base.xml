@@ -26,7 +26,7 @@
 	<!-- 文件上传paeser -->
 	<constant name="struts.multipart.paeser" value="cos"></constant>
 	<!-- 让struts2支持动态方法调用 -->
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<!-- Action名称中是否还是用斜线 -->
 	<constant name="struts.enable.SlashesInActionNames" value="false" />
 	<!-- 允许标签中使用表达式语法 -->
