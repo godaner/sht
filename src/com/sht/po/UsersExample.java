@@ -283,6 +283,206 @@ public class UsersExample {
             addCriterion("PASSWORD not between", value1, value2, "password");
             return (Criteria) this;
         }
+
+        public Criteria andSaltIsNull() {
+            addCriterion("SALT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltIsNotNull() {
+            addCriterion("SALT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltEqualTo(Object value) {
+            addCriterion("SALT =", value, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltNotEqualTo(Object value) {
+            addCriterion("SALT <>", value, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltGreaterThan(Object value) {
+            addCriterion("SALT >", value, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltGreaterThanOrEqualTo(Object value) {
+            addCriterion("SALT >=", value, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltLessThan(Object value) {
+            addCriterion("SALT <", value, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltLessThanOrEqualTo(Object value) {
+            addCriterion("SALT <=", value, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltIn(List<Object> values) {
+            addCriterion("SALT in", values, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltNotIn(List<Object> values) {
+            addCriterion("SALT not in", values, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltBetween(Object value1, Object value2) {
+            addCriterion("SALT between", value1, value2, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltNotBetween(Object value1, Object value2) {
+            addCriterion("SALT not between", value1, value2, "salt");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedIsNull() {
+            addCriterion("LOCKED is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedIsNotNull() {
+            addCriterion("LOCKED is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedEqualTo(String value) {
+            addCriterion("LOCKED =", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedNotEqualTo(String value) {
+            addCriterion("LOCKED <>", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedGreaterThan(String value) {
+            addCriterion("LOCKED >", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedGreaterThanOrEqualTo(String value) {
+            addCriterion("LOCKED >=", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedLessThan(String value) {
+            addCriterion("LOCKED <", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedLessThanOrEqualTo(String value) {
+            addCriterion("LOCKED <=", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedLike(String value) {
+            addCriterion("LOCKED like", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedNotLike(String value) {
+            addCriterion("LOCKED not like", value, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedIn(List<String> values) {
+            addCriterion("LOCKED in", values, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedNotIn(List<String> values) {
+            addCriterion("LOCKED not in", values, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedBetween(String value1, String value2) {
+            addCriterion("LOCKED between", value1, value2, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockedNotBetween(String value1, String value2) {
+            addCriterion("LOCKED not between", value1, value2, "locked");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteIsNull() {
+            addCriterion("ISDELETE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteIsNotNull() {
+            addCriterion("ISDELETE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteEqualTo(String value) {
+            addCriterion("ISDELETE =", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteNotEqualTo(String value) {
+            addCriterion("ISDELETE <>", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteGreaterThan(String value) {
+            addCriterion("ISDELETE >", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteGreaterThanOrEqualTo(String value) {
+            addCriterion("ISDELETE >=", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteLessThan(String value) {
+            addCriterion("ISDELETE <", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteLessThanOrEqualTo(String value) {
+            addCriterion("ISDELETE <=", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteLike(String value) {
+            addCriterion("ISDELETE like", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteNotLike(String value) {
+            addCriterion("ISDELETE not like", value, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteIn(List<String> values) {
+            addCriterion("ISDELETE in", values, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteNotIn(List<String> values) {
+            addCriterion("ISDELETE not in", values, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteBetween(String value1, String value2) {
+            addCriterion("ISDELETE between", value1, value2, "isdelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsdeleteNotBetween(String value1, String value2) {
+            addCriterion("ISDELETE not between", value1, value2, "isdelete");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

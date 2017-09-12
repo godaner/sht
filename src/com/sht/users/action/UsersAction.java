@@ -1,11 +1,15 @@
 package com.sht.users.action;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ModelDriven;
 import com.sht.action.BaseAction;
+import com.sht.users.po.CustomUsers;
+import com.sht.users.service.UsersServiceI;
+
 
 /**
  * Title:UsersAction
@@ -17,43 +21,102 @@ import com.sht.action.BaseAction;
  * @version 1.0
  */
 @Controller
-public class UsersAction extends BaseAction{
-
+public class UsersAction extends BaseAction implements ModelDriven<CustomUsers>{
 	
+	public static final String FILED_ONLINE_USER = "onlineUser";
+
+
+	@Autowired
+	private UsersServiceI us;
+	
+	
+	@Autowired
+	private CustomUsers customUsers;
+	
+	
+	
+
+	@Override
+	public CustomUsers getModel() {
+		return customUsers;
+	}
 	/**
+	 * 
 	 * Title:login
 	 * <p>
-	 * Description:shiro认证失败时被指定调用,用于判断显示信息和跳转页面;
+	 * Description:用戶登录
 	 * <p>
 	 * @author Kor_Zhang
-	 * @date 2017年9月11日 下午5:24:36
+	 * @date 2017年9月12日 下午6:24:20
 	 * @version 1.0
 	 * @return
 	 * @throws Exception
 	 */
 	public String login() throws Exception{
-		String exceptionClassName = getRequestAttr("shiroLoginFailure");
-	    logger.debug("异常信息：" + exceptionClassName);
-	    String msg = "";
-		if(exceptionClassName != null){
+		try{
+
+			us.login(customUsers);
+		}catch(Exception e){
 			
-			if(UnknownAccountException.class.getName().equals(exceptionClassName)){
-				msg = "账户不存在";
-			}else if(IncorrectCredentialsException.class.getName().equals(exceptionClassName)){
-				msg = "用户名/密码错误";
-			}else if(AuthenticationException.class.getName().equals(exceptionClassName)){
-				msg = "用户名/密码错误";
-			}else{
-				msg = "登录错误";
-			}
+			e.printStackTrace();
 			
+			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			
+			return "fLogin";
 		}
-		
-		setRequestAttr("msg", msg);
+
+		setRequestAttr(FILED_ONLINE_USER, customUsers);
+
+		return "fIndex";
+	}
+
+	/**
+	 * Title:regist
+	 * <p>
+	 * Description:用户注册
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月12日 下午6:46:36
+	 * @version 1.0
+	 * @return
+	 * @throws Exception
+	 */
+	public String regist() throws Exception{
+		try{
+
+			us.regist(customUsers);
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			
+			return "fRegist";
+		}
 		
 		return "fLogin";
 	}
-	public void doo(){
-		logger.info("doo");
+	
+	/**
+	 * Title:logout
+	 * <p>
+	 * Description:用户注销
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月12日 下午6:46:21
+	 * @version 1.0
+	 * @return
+	 * @throws Exception
+	 */
+	public String logout() throws Exception{
+		
+		removeSessionAttr(FILED_ONLINE_USER);
+		
+		getSession().invalidate();
+		
+		setRequestAttr(FIELD_REQUEST_RETURN_MSG, "注销成功");
+		
+		return "fLogin";
 	}
+
 }

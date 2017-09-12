@@ -1,7 +1,7 @@
 *.请不要擅自修改目录结构和文件,只允许修改自己负责的项目模块的文件和结构;
 
 *.包结构
-	包含action,mapper,po,realm,service,users,util,模块包等包;
+	包含action,mapper,po,service,users,util,模块包等包;
 
 *.模块包结构同上述;
 	
@@ -22,7 +22,9 @@
 
 *.所有的action继承BaseAction,所有的service继承BaseService;因为BaseXX中含有许多工具,方便开发中直接调用;
 
-*.dao(mybatis),service,action都采用注解将bean添加到spring容器,采用的注解分别为:
-	@Repository,@Service,@Controller;
+*.dao(mybatis),service,action,po都采用注解将bean添加到spring容器,采用的注解分别为:
+	@Repository,@Service,@Controller,@Component;
 
 *.开发者最多要配置的是struts配置文件;
+
+*.项目中不要使用生成的po,使用方法为:继承生成的po然后使用,例如com.sht.users.po.CustomUsers

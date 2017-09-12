@@ -13,15 +13,30 @@ import com.sht.users.po.CustomUsers;
  */
 public interface UsersServiceI {
 	/**
-	 * Title:selectUserByUsername
+	 * 
+	 * Title:login
 	 * <p>
-	 * Description:通过username查询一个user;
+	 * Description:用户登录
 	 * <p>
 	 * @author Kor_Zhang
-	 * @date 2017年9月12日 上午11:30:29
+	 * @date 2017年9月12日 下午6:22:34
 	 * @version 1.0
-	 * @param username
+	 * @param po
 	 * @return
+	 * @throws Exception 
 	 */
-	public CustomUsers selectUserByUsername(String username);
+	public CustomUsers login(CustomUsers po) throws Exception;
+
+	/**
+	 * Title:regist
+	 * <p>
+	 * Description:用户注册;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月12日 下午6:49:17
+	 * @version 1.0
+	 * @param po
+	 * @throws Exception
+	 */
+	public void regist(CustomUsers po) throws Exception;
 }

@@ -1,5 +1,7 @@
 package com.sht.users.service.impl;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +24,42 @@ public class UsersService extends BaseService implements UsersServiceI {
 	@Autowired
 	private CustomUsersMapper customUsersMapper;
 
+	@Autowired
+	private UsersMapper usersMapper;
+	
 	@Override
-	public CustomUsers selectUserByUsername(String username) {
-		return customUsersMapper.selectUserByUsername(username);
+	public CustomUsers login(CustomUsers po) throws Exception {
+		
+		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
+		
+		//判断用户是否存在
+		eject(dbUser == null, "用户不存在");
+		
+		//用户名相同
+		eject(dbUser.getUsername().equals(po.getUsername()), "用户已存在");
+		
+		//判断密码
+		eject(!dbUser.getPassword().equals(po.getPassword()),"密码错误");
+		
+		return dbUser;
 	}
+
+	@Override
+	public void regist(CustomUsers po) throws Exception {
+		
+		po.setId(UUID.randomUUID().toString());
+		
+		po.setIsdelete("0");
+		
+		po.setLocked("0");
+		
+		po.setSalt("");
+		
+		usersMapper.insert(po);
+		
+	}
+	
+
 	
 	
 }
