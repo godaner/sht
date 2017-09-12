@@ -19,14 +19,18 @@ import com.sht.util.GUtil;
  * @see GUtil
  */
 public class BaseAction<P,S> extends GUtil implements ModelDriven<P>{
-
+	/**
+	 * 前台参数封装类
+	 */
 	protected P po;
 	
 	@Autowired
 	public void setP(P po){
 		this.po = po;
 	}
-
+	/**
+	 * 业务类
+	 */
 	protected S service;
 	
 	
