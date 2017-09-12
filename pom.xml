@@ -5,7 +5,7 @@
 	<artifactId>sht-web-pc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<description>这是一个基于spring+struts2+mybatis+shiro+oracle的二手交易平台WEB项目(SHT)。</description>
+	<description>这是一个基于spring+struts2+mybatis+oracle的二手交易平台前台WEB项目(SHT)。</description>
 	<name>sht</name>
 	<organization>
 		<name>hougong</name>
@@ -14,9 +14,6 @@
 	<properties>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<struts.version>2.3.4.1</struts.version>
-		<shiro.version>1.3.2</shiro.version>
-		<shiro.aspectj.version>1.8.8</shiro.aspectj.version>
-		<shiro.cglib.version>2.2.2</shiro.cglib.version>
 		<struts.javassist.version>3.15.0-GA</struts.javassist.version>
 		<ojdbc6.version>11.2.0.1.0</ojdbc6.version>
 
@@ -44,52 +41,6 @@
 			<version>1.3.5</version>
 		</dependency>
 		<!-- mybatis end -->
-
-
-		<!-- shiro start -->
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-core</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-web</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-quartz</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-ehcache</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${shiro.aspectj.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>${shiro.aspectj.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>${shiro.cglib.version}</version>
-		</dependency> 
-		<!-- shiro end -->
-
-
 
 		<!-- 数据库连接驱动 start -->
 		<dependency>
@@ -179,7 +130,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -190,6 +140,16 @@
 			<artifactId>junit</artifactId>
 			<version>4.11-beta-1</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.15.0-GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.1.0.GA</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.spec.javax.transaction</groupId>
@@ -206,6 +166,11 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>0.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

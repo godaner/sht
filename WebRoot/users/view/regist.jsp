@@ -6,17 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登录</title>
+<title>注册</title>
 </head>
 <body>
 	${msg}
-	<a href="${baseUrl}/users/view/regist.jsp">去注册</a>
+	<a href="${baseUrl}/users/view/login.jsp">去登录</a>
 	<!-- 注意,此处的url需与shiro的loginUrl相同 -->
 	<form method="post"
-		action="${baseUrl}/users/login.action">
+		action="${baseUrl}/users/regist.action">
 		名称：<input name="username" value="" /> 
 		密码：<input name="password" value="" /> 
-		<input type="submit" value="登录"/>
+		<input type="submit" value="注册"/>
 	</form>
 </body>
 </html>

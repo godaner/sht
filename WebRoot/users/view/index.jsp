@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	PM ${baseUrl}
+	${onlineUser.username}
 	<a href="${baseUrl}/users/logout.action">注銷</a>
 </body>
 </html>

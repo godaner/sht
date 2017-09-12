@@ -1,33 +1,63 @@
 package com.sht.po;
 
 public class Users {
-    private Object id;
+    private String id;
 
-    private Object username;
+    private String username;
 
-    private Object password;
+    private String password;
 
-    public Object getId() {
+    private String salt;
+
+    private String locked;
+
+    private String isdelete;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Object username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public Object getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Object password) {
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getLocked() {
+        return locked;
+    }
+
+    public void setLocked(String locked) {
+        this.locked = locked == null ? null : locked.trim();
+    }
+
+    public String getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(String isdelete) {
+        this.isdelete = isdelete == null ? null : isdelete.trim();
     }
 }

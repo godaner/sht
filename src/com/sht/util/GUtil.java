@@ -28,21 +28,29 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 
 /**
- * Title:工具类
+ * Title:GUtil
  * <p>
- * Description:
+ * Description:全局工具类;
  * <p>
  * 
  * @author Kor_Zhang
  * @date 2017年8月31日 下午3:14:15
  * @version 1.0
+ * @see GActionUtil
+ * @see GStatic
  */
-public class GUtil extends GActionUtil{
+public class GUtil extends GActionUtil implements GStatic{
+	public static void main(String[] args) {
+		//202cb962ac59075b964b07152d234b70
+		System.out.println(GUtil.md5("123"+""));
+	}
+	
+	
 	public static final Logger logger = Logger.getLogger(GUtil.class);
 	
 	
 	/**
-	 * Title:如果表达式成立,抛出一个含字符串的异常;
+	 * Title:如果表达式成立,抛出一个含错误信息的异常;
 	 * <p>
 	 * Description:
 	 * <p>
@@ -57,7 +65,7 @@ public class GUtil extends GActionUtil{
 		}
 	}
 	/**
-	 * Title:抛出一个空字符串的异常;
+	 * Title:抛出不含错误信息的异常;
 	 * <p>
 	 * Description:
 	 * <p>
@@ -72,7 +80,7 @@ public class GUtil extends GActionUtil{
 	/**
 	 * Title:eject
 	 * <p>
-	 * Description:抛出一个含字符串的异常;
+	 * Description:抛出一个含错误信息的异常;
 	 * <p>
 	 * @author Kor_Zhang
 	 * @date 2017年9月11日 下午5:20:07
