@@ -2,6 +2,7 @@
 /bin/
 /target/
 /build/
+/.settings/
 *.class
 
 # Log file
