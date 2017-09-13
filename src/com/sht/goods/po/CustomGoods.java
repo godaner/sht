@@ -7,7 +7,7 @@ import com.sht.po.Goods;
 /**
  * Title:CustomUsers
  * <p>
- * Description:自定义Users;
+ * Description:自定义po;
  * <p>
  * @author Kor_Zhang
  * @date 2017年9月11日 下午4:45:49

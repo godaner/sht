@@ -1,5 +1,6 @@
 package com.sht.users.action;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -34,8 +35,9 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 	 */
 	public String login() throws Exception{
 		try{
-
+			
 			service.login(po);
+			
 		}catch(Exception e){
 			
 			e.printStackTrace();
@@ -65,6 +67,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 		try{
 
 			service.regist(po);
+			
 		}catch(Exception e){
 			
 			e.printStackTrace();

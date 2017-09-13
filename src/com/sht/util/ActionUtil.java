@@ -39,7 +39,7 @@ public class ActionUtil extends Util{
 	 * @return
 	 */
 	public CustomUsers getOnlineUser(){
-
+		
 		CustomUsers onlineUser = new CustomUsers();
 		
 		onlineUser.setId("1");
@@ -60,7 +60,7 @@ public class ActionUtil extends Util{
 	 */
 	public void setOnlineUser(CustomUsers user){
 		
-		setRequestAttr(Static.FILED_ONLINE_USER, user);
+		setSessionAttr(Static.FILED_ONLINE_USER, user);
 		
 	}
 	

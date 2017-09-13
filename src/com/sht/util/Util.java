@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,6 +49,21 @@ public class Util{
 	}
 	
 	public static final Logger logger = Logger.getLogger(Util.class);
+	
+	
+	/**
+	 * Title:uuid
+	 * <p>
+	 * Description:返回一个不重复的uuid字符串;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月13日 下午10:34:27
+	 * @version 1.0
+	 * @return
+	 */
+	public static String uuid(){
+		return UUID.randomUUID().toString();
+	}
 	
 	
 	/**
