@@ -39,7 +39,7 @@ import org.springframework.beans.BeanUtils;
  * @see GActionUtil
  * @see GStatic
  */
-public class GUtil extends GActionUtil{
+public class GUtil{
 	
 	
 	public static void main(String[] args) {
