@@ -22,7 +22,7 @@
 
 *.所有的action继承xxBaseAction,所有的service继承xxBaseAction;
 	原因:
-		因为xxBaseAction和xxBaseService中含有许多工具,方便开发中直接调用;通过Util.xx()调用;
+		因为xxBaseAction和xxBaseService中含有许多工具,方便开发中直接调用;通过xx()调用;
 		因为xxBaseAction中提供了封装前台参数的对象po;通过po.xx()调用;
 		因为xxBaseAction中提供了实例业务对象service;通过service.xx()调用;
 		
@@ -36,3 +36,5 @@
 *.项目中不要直接使用生成的po;正确的做法:在本模块的po包继承生成的po然后使用,例如com.sht.users.po.CustomUsers
 
 *.如果想要自定义本模块的工具类,原则上应该继承上一层的util包中的工具类;
+
+*.action的scope为@Scope("prototype")

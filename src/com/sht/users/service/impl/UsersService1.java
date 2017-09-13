@@ -9,6 +9,7 @@ import com.sht.mapper.UsersMapper;
 import com.sht.service.impl.BaseService;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
+import com.sht.users.service.UsersServiceI;
 /**
  * Title:UsersService
  * <p>
@@ -19,7 +20,7 @@ import com.sht.users.po.CustomUsers;
  * @version 1.0
  */
 @Service
-public class UsersService1 extends BaseService {
+public class UsersService1 extends BaseService implements UsersServiceI{
 	@Autowired
 	private CustomUsersMapper customUsersMapper;
 

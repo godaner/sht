@@ -1,9 +1,10 @@
 package com.sht.users.action;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.users.po.CustomUsers;
-import com.sht.users.service.UsersServiceI;
+import com.sht.users.service.impl.UsersService;
 
 
 /**
@@ -16,7 +17,8 @@ import com.sht.users.service.UsersServiceI;
  * @version 1.0
  */
 @Controller
-public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
+@Scope("prototype")
+public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 
 	/**
 	 * 
