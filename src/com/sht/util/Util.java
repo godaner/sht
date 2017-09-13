@@ -52,6 +52,11 @@ public class Util{
 	
 	
 	/**
+	 * 发送邮件工具
+	 */
+	public static Email email = new Email();
+	
+	/**
 	 * Title:uuid
 	 * <p>
 	 * Description:返回一个不重复的uuid字符串;

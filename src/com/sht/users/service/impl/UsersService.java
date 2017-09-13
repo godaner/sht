@@ -51,7 +51,6 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		//用户名相同
 		eject(null!=dbUser && dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
-
 		po.setId(UUID.randomUUID().toString());
 		
 		po.setIsdelete("0");

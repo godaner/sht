@@ -1,6 +1,5 @@
 package com.sht.users.action;
 
-import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -8,7 +7,7 @@ import com.sht.users.po.CustomUsers;
 import com.sht.users.service.impl.UsersService;
 
 
-/**
+/**	
  * Title:UsersAction
  * <p>
  * Description:用户的action
