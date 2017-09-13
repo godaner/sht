@@ -1,7 +1,7 @@
 *.请不要擅自修改该目录的文件信息(除db.properties,log4j.properties);
 
 *.对于action的配置采用xml配置的方式,在classpath:struts/struts-*.xml中;struts配置文件命名规则为:
-	struts-(front/back)-[模块名];例如struts-front-users.xml;
+	struts-[模块名];例如struts-users.xml;
 	
 *.一个模块,一个struts文件,一个package,一个namespace;
 	例如:
@@ -20,7 +20,11 @@
 
 
 *.action的路径配置使用 "通配符" + "namespace"
-	例如:<action name="*" class="usersAction" method="{0}">
+	例如:
+		<package namespace="/users" name="users-package" extends="base-package">
+			<action name="*" class="usersAction" method="{1}">
+			</action>
+		</package>    
 	访问方式:http://localhost/sht/users/login.action
 	
 *.在对struts配置时,在自己负责的模块中,能够使用全局的result或者exception就用全局的,避免重复
