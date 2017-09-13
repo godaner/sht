@@ -14,4 +14,9 @@ public interface GStatic {
 	 * request返回信息的字段名
 	 */
 	public static final String FIELD_REQUEST_RETURN_MSG = "msg";
+	/**
+	 * request中存放在线用户的信息的字段
+	 */
+	public static final String FILED_ONLINE_USER = "onlineUser";
+
 }

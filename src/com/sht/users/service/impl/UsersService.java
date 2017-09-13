@@ -30,6 +30,8 @@ public class UsersService extends BaseService implements UsersServiceI {
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
 		
+		logger.info("UsersService");
+		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
 		//判断用户是否存在
