@@ -20,6 +20,8 @@
 
 *.servie层,dao层,action层的每个public方法都需要声明抛出java.lang.Exeption级别的异常;
 
+*.*.业务层不符合判断的可以直接向上抛出异常,由action捕获处理;
+
 *.所有的action继承xxBaseAction,所有的service继承xxBaseAction;
 	原因:
 		因为xxBaseAction和xxBaseService中含有许多工具,方便开发中直接调用;通过xx()调用;
@@ -38,3 +40,4 @@
 *.如果想要自定义本模块的工具类,原则上应该继承上一层的util包中的工具类;
 
 *.action的scope为@Scope("prototype")
+
