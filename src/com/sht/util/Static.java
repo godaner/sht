@@ -9,7 +9,7 @@ package com.sht.util;
  * @date 2017年9月11日 下午3:12:24
  * @version 1.0
  */
-public interface GStatic {
+public interface Static {
 	/**
 	 * request返回信息的字段名
 	 */

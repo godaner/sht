@@ -28,7 +28,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 
 /**
- * Title:GUtil
+ * Title:Util
  * <p>
  * Description:全局工具类;
  * <p>
@@ -36,18 +36,18 @@ import org.springframework.beans.BeanUtils;
  * @author Kor_Zhang
  * @date 2017年8月31日 下午3:14:15
  * @version 1.0
- * @see GActionUtil
- * @see GStatic
+ * @see ActionUtil
+ * @see Static
  */
-public class GUtil{
+public class Util{
 	
 	
 	public static void main(String[] args) {
 		//202cb962ac59075b964b07152d234b70
-		System.out.println(GUtil.md5("123"+""));
+		System.out.println(Util.md5("123"+""));
 	}
 	
-	public static final Logger logger = Logger.getLogger(GUtil.class);
+	public static final Logger logger = Logger.getLogger(Util.class);
 	
 	
 	/**
@@ -245,7 +245,7 @@ public class GUtil{
 		// 申明初始化properties
 		Properties props = new Properties();
 		// 获取类路径下的properties文件
-		InputStream inStream = GUtil.class.getClassLoader()
+		InputStream inStream = Util.class.getClassLoader()
 				.getResourceAsStream(propsPath);
 		try {
 			props.load(inStream);
@@ -253,7 +253,7 @@ public class GUtil{
 			e.printStackTrace();
 		}
 		// 关闭流
-		GUtil.closeStream(inStream, null);
+		Util.closeStream(inStream, null);
 		// 返回参数
 		return props;
 	}

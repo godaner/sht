@@ -1,6 +1,6 @@
 package com.sht.users.util;
 
-import com.sht.util.GUtil;
+import com.sht.util.Util;
 
 /**
  * Title:UUtil
@@ -12,6 +12,6 @@ import com.sht.util.GUtil;
  * @date 2017年9月13日 上午8:39:29
  * @version 1.0
  */
-public class UUtil extends GUtil{
+public class UUtil extends Util{
 
 }

@@ -24,7 +24,7 @@ import com.sht.users.po.CustomUsers;
  * 注意：请不要与项目其他工具包发生关系，保持工具包的纯洁性；<br/>
  * @author Kor_Zhang
  */
-public class GActionUtil extends GUtil{
+public class ActionUtil extends Util{
 
 	
 	
@@ -38,15 +38,13 @@ public class GActionUtil extends GUtil{
 	 * @version 1.0
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public <T> T getOnlineUser(){
+	public CustomUsers getOnlineUser(){
 
 		CustomUsers onlineUser = new CustomUsers();
 		
-		onlineUser.setId("id");
+		onlineUser.setId("1");
 		
-		
-		return (T) onlineUser;
+		return onlineUser;
 	};
 	
 	
@@ -62,7 +60,7 @@ public class GActionUtil extends GUtil{
 	 */
 	public void setOnlineUser(CustomUsers user){
 		
-		setRequestAttr(GStatic.FILED_ONLINE_USER, user);
+		setRequestAttr(Static.FILED_ONLINE_USER, user);
 		
 	}
 	
