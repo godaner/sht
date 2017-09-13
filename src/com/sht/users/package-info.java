@@ -1,7 +1,7 @@
 /**
  * Title:package-info
  * <p>
- * Description:
+ * Description:用户模块;
  * <p>
  * @author Kor_Zhang
  * @date 2017年9月11日 下午2:56:19

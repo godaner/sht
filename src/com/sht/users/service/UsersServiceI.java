@@ -23,7 +23,7 @@ public interface UsersServiceI {
 	 * @version 1.0
 	 * @param po
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception 登录成功返回数据库的用户数据
 	 */
 	public CustomUsers login(CustomUsers po) throws Exception;
 
@@ -39,4 +39,7 @@ public interface UsersServiceI {
 	 * @throws Exception
 	 */
 	public void regist(CustomUsers po) throws Exception;
+	
+	
+	
 }

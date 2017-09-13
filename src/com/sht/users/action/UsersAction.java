@@ -1,10 +1,10 @@
 package com.sht.users.action;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.sht.action.BaseAction;
 import com.sht.users.po.CustomUsers;
-import com.sht.users.service.UsersServiceI;
+import com.sht.users.service.impl.UsersService;
 
 
 /**
@@ -17,10 +17,8 @@ import com.sht.users.service.UsersServiceI;
  * @version 1.0
  */
 @Controller
-public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
-	
-	public static final String FILED_ONLINE_USER = "onlineUser";
-
+@Scope("prototype")
+public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 
 	/**
 	 * 
@@ -100,5 +98,5 @@ public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
 		
 		return "fLogin";
 	}
-
+	
 }
