@@ -48,7 +48,7 @@ public class UsersService extends BaseService implements UsersServiceI {
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
 		//用户名相同
-		eject(dbUser.getUsername().equals(po.getUsername()), "用户已存在");
+		eject(null != dbUser&&dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
 
 		po.setId(UUID.randomUUID().toString());
