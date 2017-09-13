@@ -9,7 +9,6 @@ import com.sht.mapper.UsersMapper;
 import com.sht.service.impl.BaseService;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
-import com.sht.users.service.UsersServiceI;
 /**
  * Title:UsersService
  * <p>

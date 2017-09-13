@@ -5,7 +5,8 @@ import com.sht.util.GUtil;
 /**
  * Title:UUtil
  * <p>
- * Description:用户模块的自定义工具;
+ * Description:用户模块的自定义工具;<br/>
+ * 	一般需要继承上层的工具类;
  * <p>
  * @author Kor_Zhang
  * @date 2017年9月13日 上午8:39:29

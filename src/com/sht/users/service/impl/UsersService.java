@@ -5,7 +5,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.opensymphony.xwork2.util.logging.Logger;
 import com.sht.mapper.UsersMapper;
 import com.sht.service.impl.BaseService;
 import com.sht.users.mapper.CustomUsersMapper;

@@ -38,12 +38,12 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			
 			e.printStackTrace();
 			
-			Util.setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
 			
 			return "fLogin";
 		}
 
-		Util.setRequestAttr(FILED_ONLINE_USER, po);
+		setRequestAttr(FILED_ONLINE_USER, po);
 
 		return "fIndex";
 	}
@@ -67,7 +67,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			
 			e.printStackTrace();
 			
-			Util.setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
 			
 			return "fRegist";
 		}
@@ -88,11 +88,11 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 */
 	public String logout() throws Exception{
 		
-		Util.removeSessionAttr(FILED_ONLINE_USER);
+		removeSessionAttr(FILED_ONLINE_USER);
 		
-		Util.getSession().invalidate();
+		getSession().invalidate();
 		
-		Util.setRequestAttr(FIELD_REQUEST_RETURN_MSG, "注销成功");
+		setRequestAttr(FIELD_REQUEST_RETURN_MSG, "注销成功");
 		
 		return "fLogin";
 	}
