@@ -8,7 +8,7 @@
 	<description>这是一个基于spring+struts2+mybatis+oracle的二手交易平台前台WEB项目(SHT)。</description>
 	<name>sht</name>
 	<organization>
-		<name>hougong</name>
+		<name>xiyanghong</name>
 	</organization>
 	<!-- 属性配置 start -->
 	<properties>
