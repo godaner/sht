@@ -39,12 +39,13 @@ import org.springframework.beans.BeanUtils;
  * @see GActionUtil
  * @see GStatic
  */
-public class GUtil extends GActionUtil implements GStatic{
+public class GUtil extends GActionUtil{
+	
+	
 	public static void main(String[] args) {
 		//202cb962ac59075b964b07152d234b70
 		System.out.println(GUtil.md5("123"+""));
 	}
-	
 	
 	public static final Logger logger = Logger.getLogger(GUtil.class);
 	

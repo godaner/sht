@@ -2,7 +2,6 @@ package com.sht.users.action;
 
 import org.springframework.stereotype.Controller;
 
-import com.sht.action.BaseAction;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
 
@@ -17,10 +16,7 @@ import com.sht.users.service.UsersServiceI;
  * @version 1.0
  */
 @Controller
-public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
-	
-	public static final String FILED_ONLINE_USER = "onlineUser";
-
+public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 
 	/**
 	 * 
@@ -42,12 +38,12 @@ public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
 			
 			e.printStackTrace();
 			
-			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			Util.setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
 			
 			return "fLogin";
 		}
 
-		setRequestAttr(FILED_ONLINE_USER, po);
+		Util.setRequestAttr(FILED_ONLINE_USER, po);
 
 		return "fIndex";
 	}
@@ -71,7 +67,7 @@ public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
 			
 			e.printStackTrace();
 			
-			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			Util.setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
 			
 			return "fRegist";
 		}
@@ -92,11 +88,11 @@ public class UsersAction extends BaseAction<CustomUsers,UsersServiceI> {
 	 */
 	public String logout() throws Exception{
 		
-		removeSessionAttr(FILED_ONLINE_USER);
+		Util.removeSessionAttr(FILED_ONLINE_USER);
 		
-		getSession().invalidate();
+		Util.getSession().invalidate();
 		
-		setRequestAttr(FIELD_REQUEST_RETURN_MSG, "注销成功");
+		Util.setRequestAttr(FIELD_REQUEST_RETURN_MSG, "注销成功");
 		
 		return "fLogin";
 	}

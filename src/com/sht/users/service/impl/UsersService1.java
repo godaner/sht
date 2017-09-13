@@ -5,7 +5,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.opensymphony.xwork2.util.logging.Logger;
 import com.sht.mapper.UsersMapper;
 import com.sht.service.impl.BaseService;
 import com.sht.users.mapper.CustomUsersMapper;
@@ -21,17 +20,16 @@ import com.sht.users.service.UsersServiceI;
  * @version 1.0
  */
 @Service
-public class UsersService extends BaseService implements UsersServiceI {
+public class UsersService1 extends BaseService {
 	@Autowired
 	private CustomUsersMapper customUsersMapper;
 
 	@Autowired
 	private UsersMapper usersMapper;
 	
-	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
 		
-		logger.info("UsersService");
+		logger.info("UsersService1");
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
@@ -45,7 +43,6 @@ public class UsersService extends BaseService implements UsersServiceI {
 		return dbUser;
 	}
 
-	@Override
 	public void regist(CustomUsers po) throws Exception {
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
