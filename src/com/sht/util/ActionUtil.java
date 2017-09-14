@@ -16,6 +16,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.sht.users.po.CustomUsers;
 
 /**
  * 封装Struts关于原生http的对象的操作；<br/>
@@ -23,8 +24,92 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
  * 注意：请不要与项目其他工具包发生关系，保持工具包的纯洁性；<br/>
  * @author Kor_Zhang
  */
-public class GActionUtil {
+public class ActionUtil extends Util{
 
+	
+	/**
+	 * Title:getWebAddr
+	 * <p>
+	 * Description:获取本项目网络地址
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月14日 上午10:18:56
+	 * @version 1.0
+	 * @return
+	 */
+	public String getWebAddr(){
+		String addr = (String) getValue(Static.FIELD_WEB_ADDR);
+		
+		String projectName = getRequest().getContextPath();
+
+		return addr + projectName;
+	}
+	
+	
+	/**
+	 * Title:validateCode2response
+	 * <p>
+	 * Description:写入验证码到response并且返回验证文本
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月14日 上午8:05:10
+	 * @version 1.0
+	 * @return	返回验证文本
+	 */
+	public String validateCode2response(){
+		
+		
+		vc.createCode();
+		
+		try {
+			vc.write(getResponse().getOutputStream());
+			
+			return vc.getCode();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "";
+	}  
+	
+	
+	/**
+	 * Title:getOnlineUser
+	 * <p>
+	 * Description:获取当前在线user;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月13日 下午8:23:00
+	 * @version 1.0
+	 * @return
+	 */
+	public CustomUsers getOnlineUser(){
+		
+		CustomUsers onlineUser = new CustomUsers();
+		
+		onlineUser.setId("1");
+		
+		return onlineUser;
+	};
+	
+	
+	/**
+	 * Title:setOnlineUser
+	 * <p>
+	 * Description:设置当前在线用户;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月13日 下午8:29:27
+	 * @version 1.0
+	 * @param user
+	 */
+	public void setOnlineUser(CustomUsers user){
+		
+		setSessionAttr(Static.FILED_ONLINE_USER, user);
+		
+	}
+	
+	
 	/**
 	 * 返回一个json对象
 	 * 

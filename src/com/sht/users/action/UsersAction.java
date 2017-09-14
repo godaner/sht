@@ -7,7 +7,7 @@ import com.sht.users.po.CustomUsers;
 import com.sht.users.service.impl.UsersService;
 
 
-/**
+/**	
  * Title:UsersAction
  * <p>
  * Description:用户的action
@@ -34,8 +34,10 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 	 */
 	public String login() throws Exception{
 		try{
-
+			
+			
 			service.login(po);
+			
 		}catch(Exception e){
 			
 			e.printStackTrace();
@@ -65,6 +67,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 		try{
 
 			service.regist(po);
+			
 		}catch(Exception e){
 			
 			e.printStackTrace();
