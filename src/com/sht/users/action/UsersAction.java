@@ -35,6 +35,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 	public String login() throws Exception{
 		try{
 			
+			logger.info("杀人蜂!");
 			
 			service.login(po);
 			
