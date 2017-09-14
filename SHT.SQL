@@ -201,10 +201,13 @@ alter table USERS
 prompt Creating ADDRS...
 create table ADDRS
 (
-  ID     NVARCHAR2(40) not null,
-  MASTER NVARCHAR2(40) not null,
-  REGION NUMBER not null,
-  DETAIL NVARCHAR2(40) not null
+  ID        NVARCHAR2(40) not null,
+  MASTER    NVARCHAR2(40) not null,
+  REGION    NUMBER not null,
+  DETAIL    NVARCHAR2(40) not null,
+  POHNE     NVARCHAR2(20) not null,
+  REALNAME  NVARCHAR2(20) not null,
+  ISDEFAULT NUMBER(1) not null
 )
 tablespace SYSTEM
   pctfree 10
@@ -226,6 +229,12 @@ comment on column ADDRS.REGION
   is '指向地址最低级的id;省-市-县;如:湖南省-张家界-慈利县';
 comment on column ADDRS.DETAIL
   is '地址详情;如:吉首大学张家界校区1食堂';
+comment on column ADDRS.POHNE
+  is '联系电话';
+comment on column ADDRS.REALNAME
+  is '收货人姓名';
+comment on column ADDRS.ISDEFAULT
+  is '是否为默认地址';
 alter table ADDRS
   add constraint ADDRS_PK_ID primary key (ID)
   using index 
