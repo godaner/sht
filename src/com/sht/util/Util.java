@@ -48,13 +48,19 @@ public class Util{
 		System.out.println(Util.md5("123"+""));
 	}
 	
-	public static final Logger logger = Logger.getLogger(Util.class);
+	public final static Logger logger = Logger.getLogger(Util.class);
 	
 	
 	/**
 	 * 发送邮件工具
 	 */
-	public static Email email = new Email();
+	public final static Email email = new Email();
+	
+	
+	/**
+	 * 验证码生成工具
+	 */
+	public final static ValidateCode vc = new ValidateCode(160,40,5,150);
 	
 	/**
 	 * Title:uuid

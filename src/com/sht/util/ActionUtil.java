@@ -26,6 +26,31 @@ import com.sht.users.po.CustomUsers;
  */
 public class ActionUtil extends Util{
 
+	/**
+	 * Title:validateCode2response
+	 * <p>
+	 * Description:写入验证码到response并且返回验证文本
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月14日 上午8:05:10
+	 * @version 1.0
+	 * @return	返回验证文本
+	 */
+	public String validateCode2response(){
+		
+		
+		vc.createCode();
+		
+		try {
+			vc.write(getResponse().getOutputStream());
+			
+			return vc.getCode();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "";
+	}  
 	
 	
 	/**
