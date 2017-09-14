@@ -15,6 +15,11 @@ import java.util.Properties;
 public class ClasssPathProps {
 	private static Properties props = null;
 
+	static{
+		
+		loadProps();
+	}
+	
 	/**
 	 * 
 	 * Title:loadProps

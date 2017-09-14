@@ -26,6 +26,26 @@ import com.sht.users.po.CustomUsers;
  */
 public class ActionUtil extends Util{
 
+	
+	/**
+	 * Title:getWebAddr
+	 * <p>
+	 * Description:获取本项目网络地址
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月14日 上午10:18:56
+	 * @version 1.0
+	 * @return
+	 */
+	public String getWebAddr(){
+		String addr = (String) getValue(Static.FIELD_WEB_ADDR);
+		
+		String projectName = getRequest().getContextPath();
+
+		return addr + projectName;
+	}
+	
+	
 	/**
 	 * Title:validateCode2response
 	 * <p>
