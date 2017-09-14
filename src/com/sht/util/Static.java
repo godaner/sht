@@ -18,5 +18,8 @@ public interface Static {
 	 * request中存放在线用户的信息的字段
 	 */
 	public static final String FILED_ONLINE_USER = "onlineUser";
-
+	/**
+	 * 存放网站地址
+	 */
+	public final static String FIELD_WEB_ADDR = "webaddr";
 }

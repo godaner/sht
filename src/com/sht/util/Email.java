@@ -190,8 +190,7 @@ public class Email {
 			String conetnt = "<a href='http://localhost/sht/users/verifyEmail.action?email=1138829222@qq.com&code="+uuid+"'>请点击这里激活</a>";
 			
 			
-			
-			new Email().sendMessage("1138829222@qq.com", "张可大爷", conetnt);
+			new Email().sendMessage("ergou1217@163.com", "张可大爷", conetnt);
 			
 		} catch (MessagingException e) {
 			e.printStackTrace();
