@@ -1,4 +1,4 @@
-package com.sht.users.action;
+﻿package com.sht.users.action;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -18,8 +18,10 @@ import com.sht.users.service.impl.UsersService;
  */
 @Controller
 @Scope("prototype")
-public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
-	
+
+
+public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
+
 	/**
 	 * 
 	 * Title:login

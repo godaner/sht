@@ -1,4 +1,4 @@
-package com.sht.users.service.impl;
+﻿package com.sht.users.service.impl;
 
 import java.util.Date;
 import java.util.UUID;
@@ -46,16 +46,7 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		}
 		
 		return dbUser;
-		
-		
-<<<<<<< HEAD
-=======
-		String md5pw = md5(po.getPassword()+dbUser.getSalt());
-		
-		//判断密码
-		eject(!dbUser.getPassword().equals(md5pw),"密码错误");
->>>>>>> refs/remotes/godaner/dev
-		
+
 	}
 
 	@Override
