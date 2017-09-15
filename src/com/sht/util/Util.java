@@ -57,6 +57,33 @@ public class Util extends ClasssPathProps {
 	public final static ValidateCode vc = new ValidateCode(160, 40, 5, 150);
 
 	/**
+	 * Title:info
+	 * <p>
+	 * Description:利用log4j的info输出信息
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月15日 上午10:14:17
+	 * @version 1.0
+	 * @param message
+	 */
+	public static void info(Object message){
+		logger.info(message);
+	}
+	/**
+	 * Title:debug
+	 * <p>
+	 * Description:利用log4j的debug输出信息
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月15日 上午10:14:17
+	 * @version 1.0
+	 * @param message
+	 */
+	public static void debug(Object message){
+		logger.debug(message);
+	}
+	
+	/**
 	 * Title:uuid
 	 * <p>
 	 * Description:返回一个不重复的uuid字符串;
