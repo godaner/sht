@@ -30,7 +30,8 @@ public class ActionUtil extends Util{
 	/**
 	 * Title:getWebAddr
 	 * <p>
-	 * Description:获取本项目网络地址
+	 * Description:获取本项目网络地址;<br/>
+	 * 需要在本项目的类路径的根下保存一个key为webaddr的字段;
 	 * <p>
 	 * @author Kor_Zhang
 	 * @date 2017年9月14日 上午10:18:56

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.RegionMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.Region">
+    <id column="REGION_ID" jdbcType="DECIMAL" property="regionId" />
+    <result column="REGION_CODE" jdbcType="VARCHAR" property="regionCode" />
+    <result column="REGION_NAME" jdbcType="VARCHAR" property="regionName" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="REGION_LEVEL" jdbcType="DECIMAL" property="regionLevel" />
+    <result column="REGION_ORDER" jdbcType="DECIMAL" property="regionOrder" />
+    <result column="REGION_NAME_EN" jdbcType="VARCHAR" property="regionNameEn" />
+    <result column="REGION_SHORTNAME_EN" jdbcType="VARCHAR" property="regionShortnameEn" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    REGION_ID, REGION_CODE, REGION_NAME, PARENT_ID, REGION_LEVEL, REGION_ORDER, REGION_NAME_EN, 
+    REGION_SHORTNAME_EN
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.RegionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from REGION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from REGION
+    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from REGION
+    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.RegionExample">
+    delete from REGION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.Region">
+    insert into REGION (REGION_ID, REGION_CODE, REGION_NAME, 
+      PARENT_ID, REGION_LEVEL, REGION_ORDER, 
+      REGION_NAME_EN, REGION_SHORTNAME_EN)
+    values (#{regionId,jdbcType=DECIMAL}, #{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=DECIMAL}, #{regionLevel,jdbcType=DECIMAL}, #{regionOrder,jdbcType=DECIMAL}, 
+      #{regionNameEn,jdbcType=VARCHAR}, #{regionShortnameEn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.Region">
+    insert into REGION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regionId != null">
+        REGION_ID,
+      </if>
+      <if test="regionCode != null">
+        REGION_CODE,
+      </if>
+      <if test="regionName != null">
+        REGION_NAME,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="regionLevel != null">
+        REGION_LEVEL,
+      </if>
+      <if test="regionOrder != null">
+        REGION_ORDER,
+      </if>
+      <if test="regionNameEn != null">
+        REGION_NAME_EN,
+      </if>
+      <if test="regionShortnameEn != null">
+        REGION_SHORTNAME_EN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regionId != null">
+        #{regionId,jdbcType=DECIMAL},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="regionLevel != null">
+        #{regionLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="regionOrder != null">
+        #{regionOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="regionNameEn != null">
+        #{regionNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="regionShortnameEn != null">
+        #{regionShortnameEn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.RegionExample" resultType="java.lang.Long">
+    select count(*) from REGION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update REGION
+    <set>
+      <if test="record.regionId != null">
+        REGION_ID = #{record.regionId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.regionCode != null">
+        REGION_CODE = #{record.regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionName != null">
+        REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentId != null">
+        PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.regionLevel != null">
+        REGION_LEVEL = #{record.regionLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="record.regionOrder != null">
+        REGION_ORDER = #{record.regionOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="record.regionNameEn != null">
+        REGION_NAME_EN = #{record.regionNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionShortnameEn != null">
+        REGION_SHORTNAME_EN = #{record.regionShortnameEn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update REGION
+    set REGION_ID = #{record.regionId,jdbcType=DECIMAL},
+      REGION_CODE = #{record.regionCode,jdbcType=VARCHAR},
+      REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
+      PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
+      REGION_LEVEL = #{record.regionLevel,jdbcType=DECIMAL},
+      REGION_ORDER = #{record.regionOrder,jdbcType=DECIMAL},
+      REGION_NAME_EN = #{record.regionNameEn,jdbcType=VARCHAR},
+      REGION_SHORTNAME_EN = #{record.regionShortnameEn,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Region">
+    update REGION
+    <set>
+      <if test="regionCode != null">
+        REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="regionLevel != null">
+        REGION_LEVEL = #{regionLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="regionOrder != null">
+        REGION_ORDER = #{regionOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="regionNameEn != null">
+        REGION_NAME_EN = #{regionNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="regionShortnameEn != null">
+        REGION_SHORTNAME_EN = #{regionShortnameEn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.Region">
+    update REGION
+    set REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      REGION_LEVEL = #{regionLevel,jdbcType=DECIMAL},
+      REGION_ORDER = #{regionOrder,jdbcType=DECIMAL},
+      REGION_NAME_EN = #{regionNameEn,jdbcType=VARCHAR},
+      REGION_SHORTNAME_EN = #{regionShortnameEn,jdbcType=VARCHAR}
+    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+  </update>
+</mapper>
