@@ -1,5 +1,6 @@
 package com.sht.users.service.impl;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,6 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
 		
-		logger.info("UsersService");
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
@@ -48,7 +48,6 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		return dbUser;
 		
 		
-		
 	}
 
 	@Override
@@ -61,11 +60,25 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		po.setId(UUID.randomUUID().toString());
 		
-		po.setIsdelete("0");
+		po.setEmail(po.getId().substring(0,6)+"@qq.com");
 		
-		po.setLocked("0");
+		po.setSalt(po.getEmail());
 		
-		po.setSalt("");
+		po.setBirthday(new Date());
+		
+		po.setDescription("good");
+
+		po.setPassword(md5(po.getPassword() + po.getSalt()));
+		
+		po.setRegisttime(new Date());
+		
+		po.setSex(Short.valueOf("1"));
+		
+		po.setStatus(Short.valueOf("1"));
+		
+		po.setHeadimg("");
+		
+		po.setScore(1d);
 		
 		usersMapper.insert(po);
 		
