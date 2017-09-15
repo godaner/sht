@@ -34,13 +34,21 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
 		//判断用户是否存在
-		eject(dbUser == null, "用户不存在");
-		
-		
-		//判断密码
-		eject(!dbUser.getPassword().equals(po.getPassword()),"密码错误");
+		if(dbUser != null){
+			//判断密码
+			if(dbUser.getPassword().equals(md5(po.getPassword()))){
+				return dbUser;
+			}else{ 
+				eject(false,"密码错误");
+			}
+		}else{
+			eject(false, "用户不存在");
+		}
 		
 		return dbUser;
+		
+		
+		
 	}
 
 	@Override

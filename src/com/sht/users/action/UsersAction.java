@@ -19,7 +19,7 @@ import com.sht.users.service.impl.UsersService;
 @Controller
 @Scope("prototype")
 public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
-
+	
 	/**
 	 * 
 	 * Title:login
@@ -34,8 +34,6 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
 	 */
 	public String login() throws Exception{
 		try{
-			
-			logger.info("杀人蜂!");
 			
 			service.login(po);
 			

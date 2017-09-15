@@ -557,6 +557,7 @@ public class Util extends ClasssPathProps {
 		return matcher.matches();
 	}
 
+
 	/**
 	 * 复制一个list中的元素到另一个list
 	 * 
@@ -646,7 +647,6 @@ public class Util extends ClasssPathProps {
 	public static String md5(String inputText) {
 		return encrypt(inputText, "md5");
 	}
-
 	/**
 	 * sha加密
 	 * 
