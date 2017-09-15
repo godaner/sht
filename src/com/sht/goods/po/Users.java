@@ -1,26 +1,26 @@
-package com.sht.po;
+package com.sht.goods.po;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Users {
-    private Object id;
+    private String id;
 
-    private Object username;
+    private String username;
 
-    private Object email;
+    private String email;
 
-    private Object password;
+    private String password;
 
-    private Object salt;
+    private String salt;
 
-    private Object headimg;
+    private String headimg;
 
     private Short sex;
 
     private Date birthday;
 
-    private Object description;
+    private String description;
 
     private BigDecimal score;
 
@@ -28,51 +28,51 @@ public class Users {
 
     private Short status;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Object username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public Object getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Object password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Object getSalt() {
+    public String getSalt() {
         return salt;
     }
 
-    public void setSalt(Object salt) {
+    public void setSalt(String salt) {
         this.salt = salt;
     }
 
-    public Object getHeadimg() {
+    public String getHeadimg() {
         return headimg;
     }
 
-    public void setHeadimg(Object headimg) {
+    public void setHeadimg(String headimg) {
         this.headimg = headimg;
     }
 
@@ -92,11 +92,11 @@ public class Users {
         this.birthday = birthday;
     }
 
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Object description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

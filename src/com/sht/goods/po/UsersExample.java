@@ -1,4 +1,4 @@
-package com.sht.po;
+package com.sht.goods.po;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

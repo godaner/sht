@@ -53,10 +53,6 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		po.setId(UUID.randomUUID().toString());
 		
-		po.setIsdelete("0");
-		
-		po.setLocked("0");
-		
 		po.setSalt("");
 		
 		usersMapper.insert(po);
