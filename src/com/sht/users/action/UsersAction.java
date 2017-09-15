@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.users.po.CustomUsers;
-import com.sht.users.service.impl.UsersService;
+import com.sht.users.service.UsersServiceI;
 
 
 /**	
@@ -18,14 +18,14 @@ import com.sht.users.service.impl.UsersService;
  */
 @Controller
 @Scope("prototype")
-public class UsersAction extends UBaseAction<CustomUsers,UsersService> {
+public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 
 	/**
 	 * 
 	 * Title:login
 	 * <p>
 	 * Description:用戶登录
-	 * <p>
+	 * <p>	
 	 * @author Kor_Zhang
 	 * @date 2017年9月12日 下午6:24:20
 	 * @version 1.0

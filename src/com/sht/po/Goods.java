@@ -1,68 +1,67 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Goods {
-    private Object id;
+    private String id;
 
-    private Object title;
+    private String title;
 
-    private Object description;
+    private String description;
 
-    private BigDecimal sprice;
+    private Double sprice;
 
-    private BigDecimal price;
+    private Double price;
 
     private Short condition;
 
-    private BigDecimal region;
+    private Double region;
 
     private Short status;
 
     private Date createtime;
 
-    private Object owner;
+    private String owner;
 
-    private Object buyer;
+    private String buyer;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(Object title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Object description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public BigDecimal getSprice() {
+    public Double getSprice() {
         return sprice;
     }
 
-    public void setSprice(BigDecimal sprice) {
+    public void setSprice(Double sprice) {
         this.sprice = sprice;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -74,11 +73,11 @@ public class Goods {
         this.condition = condition;
     }
 
-    public BigDecimal getRegion() {
+    public Double getRegion() {
         return region;
     }
 
-    public void setRegion(BigDecimal region) {
+    public void setRegion(Double region) {
         this.region = region;
     }
 
@@ -98,19 +97,19 @@ public class Goods {
         this.createtime = createtime;
     }
 
-    public Object getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Object owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
-    public Object getBuyer() {
+    public String getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(Object buyer) {
+    public void setBuyer(String buyer) {
         this.buyer = buyer;
     }
 }

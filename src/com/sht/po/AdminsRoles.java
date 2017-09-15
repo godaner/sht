@@ -3,35 +3,35 @@ package com.sht.po;
 import java.util.Date;
 
 public class AdminsRoles {
-    private Object id;
+    private String id;
 
-    private Object admin;
+    private String admin;
 
-    private Object role;
+    private String role;
 
     private Date granttime;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getAdmin() {
+    public String getAdmin() {
         return admin;
     }
 
-    public void setAdmin(Object admin) {
+    public void setAdmin(String admin) {
         this.admin = admin;
     }
 
-    public Object getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Object role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

@@ -1,6 +1,5 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -356,52 +355,52 @@ public class AdminsExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(BigDecimal value) {
+        public Criteria andStatusEqualTo(Double value) {
             addCriterion("STATUS =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(BigDecimal value) {
+        public Criteria andStatusNotEqualTo(Double value) {
             addCriterion("STATUS <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(BigDecimal value) {
+        public Criteria andStatusGreaterThan(Double value) {
             addCriterion("STATUS >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Double value) {
             addCriterion("STATUS >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(BigDecimal value) {
+        public Criteria andStatusLessThan(Double value) {
             addCriterion("STATUS <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andStatusLessThanOrEqualTo(Double value) {
             addCriterion("STATUS <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<BigDecimal> values) {
+        public Criteria andStatusIn(List<Double> values) {
             addCriterion("STATUS in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<BigDecimal> values) {
+        public Criteria andStatusNotIn(List<Double> values) {
             addCriterion("STATUS not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andStatusBetween(Double value1, Double value2) {
             addCriterion("STATUS between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andStatusNotBetween(Double value1, Double value2) {
             addCriterion("STATUS not between", value1, value2, "status");
             return (Criteria) this;
         }

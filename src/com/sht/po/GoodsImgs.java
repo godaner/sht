@@ -1,35 +1,35 @@
 package com.sht.po;
 
 public class GoodsImgs {
-    private Object id;
+    private String id;
 
-    private Object owner;
+    private String owner;
 
-    private Object img;
+    private String img;
 
     private Short main;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Object owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
-    public Object getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(Object img) {
+    public void setImg(String img) {
         this.img = img;
     }
 

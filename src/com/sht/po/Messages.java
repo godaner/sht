@@ -3,37 +3,37 @@ package com.sht.po;
 import java.util.Date;
 
 public class Messages {
-    private Object id;
+    private String id;
 
-    private Object launcher;
+    private String launcher;
 
-    private Object receiver;
+    private String receiver;
 
     private String text;
 
     private Date createtime;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getLauncher() {
+    public String getLauncher() {
         return launcher;
     }
 
-    public void setLauncher(Object launcher) {
+    public void setLauncher(String launcher) {
         this.launcher = launcher;
     }
 
-    public Object getReceiver() {
+    public String getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Object receiver) {
+    public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
 

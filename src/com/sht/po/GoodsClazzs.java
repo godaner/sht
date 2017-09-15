@@ -1,33 +1,33 @@
 package com.sht.po;
 
 public class GoodsClazzs {
-    private Object id;
+    private String id;
 
-    private Object goods;
+    private String goods;
 
-    private Object clazz;
+    private String clazz;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getGoods() {
+    public String getGoods() {
         return goods;
     }
 
-    public void setGoods(Object goods) {
+    public void setGoods(String goods) {
         this.goods = goods;
     }
 
-    public Object getClazz() {
+    public String getClazz() {
         return clazz;
     }
 
-    public void setClazz(Object clazz) {
+    public void setClazz(String clazz) {
         this.clazz = clazz;
     }
 }

@@ -1,33 +1,33 @@
 package com.sht.po;
 
 public class Files {
-    private Object id;
+    private String id;
 
-    private Object path;
+    private String path;
 
-    private Object name;
+    private String name;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getPath() {
+    public String getPath() {
         return path;
     }
 
-    public void setPath(Object path) {
+    public void setPath(String path) {
         this.path = path;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

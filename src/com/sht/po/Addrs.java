@@ -1,69 +1,68 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 
 public class Addrs {
-    private Object id;
+    private String id;
 
-    private Object master;
+    private String master;
 
-    private BigDecimal region;
+    private Double region;
 
-    private Object detail;
+    private String detail;
 
-    private Object pohne;
+    private String pohne;
 
-    private Object realname;
+    private String realname;
 
     private Short isdefault;
 
     private String postcode;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getMaster() {
+    public String getMaster() {
         return master;
     }
 
-    public void setMaster(Object master) {
+    public void setMaster(String master) {
         this.master = master;
     }
 
-    public BigDecimal getRegion() {
+    public Double getRegion() {
         return region;
     }
 
-    public void setRegion(BigDecimal region) {
+    public void setRegion(Double region) {
         this.region = region;
     }
 
-    public Object getDetail() {
+    public String getDetail() {
         return detail;
     }
 
-    public void setDetail(Object detail) {
+    public void setDetail(String detail) {
         this.detail = detail;
     }
 
-    public Object getPohne() {
+    public String getPohne() {
         return pohne;
     }
 
-    public void setPohne(Object pohne) {
+    public void setPohne(String pohne) {
         this.pohne = pohne;
     }
 
-    public Object getRealname() {
+    public String getRealname() {
         return realname;
     }
 
-    public void setRealname(Object realname) {
+    public void setRealname(String realname) {
         this.realname = realname;
     }
 

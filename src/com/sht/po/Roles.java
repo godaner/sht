@@ -1,25 +1,25 @@
 package com.sht.po;
 
 public class Roles {
-    private Object id;
+    private String id;
 
-    private Object name;
+    private String name;
 
     private Short status;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 
