@@ -2,12 +2,12 @@ package com.sht.po;
 
 import java.util.Date;
 
-public class RolesPermissions {
+public class AdminsRoles {
     private Object id;
 
-    private Object role;
+    private Object admin;
 
-    private Object permission;
+    private Object role;
 
     private Date granttime;
 
@@ -19,20 +19,20 @@ public class RolesPermissions {
         this.id = id;
     }
 
+    public Object getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Object admin) {
+        this.admin = admin;
+    }
+
     public Object getRole() {
         return role;
     }
 
     public void setRole(Object role) {
         this.role = role;
-    }
-
-    public Object getPermission() {
-        return permission;
-    }
-
-    public void setPermission(Object permission) {
-        this.permission = permission;
     }
 
     public Date getGranttime() {

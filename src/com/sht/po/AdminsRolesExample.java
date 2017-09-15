@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class RolesPermissionsExample {
+public class AdminsRolesExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RolesPermissionsExample() {
+    public AdminsRolesExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,6 +165,66 @@ public class RolesPermissionsExample {
             return (Criteria) this;
         }
 
+        public Criteria andAdminIsNull() {
+            addCriterion("ADMIN is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsNotNull() {
+            addCriterion("ADMIN is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminEqualTo(Object value) {
+            addCriterion("ADMIN =", value, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminNotEqualTo(Object value) {
+            addCriterion("ADMIN <>", value, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminGreaterThan(Object value) {
+            addCriterion("ADMIN >", value, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminGreaterThanOrEqualTo(Object value) {
+            addCriterion("ADMIN >=", value, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminLessThan(Object value) {
+            addCriterion("ADMIN <", value, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminLessThanOrEqualTo(Object value) {
+            addCriterion("ADMIN <=", value, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIn(List<Object> values) {
+            addCriterion("ADMIN in", values, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminNotIn(List<Object> values) {
+            addCriterion("ADMIN not in", values, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminBetween(Object value1, Object value2) {
+            addCriterion("ADMIN between", value1, value2, "admin");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminNotBetween(Object value1, Object value2) {
+            addCriterion("ADMIN not between", value1, value2, "admin");
+            return (Criteria) this;
+        }
+
         public Criteria andRoleIsNull() {
             addCriterion("ROLE is null");
             return (Criteria) this;
@@ -222,66 +282,6 @@ public class RolesPermissionsExample {
 
         public Criteria andRoleNotBetween(Object value1, Object value2) {
             addCriterion("ROLE not between", value1, value2, "role");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionIsNull() {
-            addCriterion("PERMISSION is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionIsNotNull() {
-            addCriterion("PERMISSION is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionEqualTo(Object value) {
-            addCriterion("PERMISSION =", value, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionNotEqualTo(Object value) {
-            addCriterion("PERMISSION <>", value, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionGreaterThan(Object value) {
-            addCriterion("PERMISSION >", value, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionGreaterThanOrEqualTo(Object value) {
-            addCriterion("PERMISSION >=", value, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionLessThan(Object value) {
-            addCriterion("PERMISSION <", value, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionLessThanOrEqualTo(Object value) {
-            addCriterion("PERMISSION <=", value, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionIn(List<Object> values) {
-            addCriterion("PERMISSION in", values, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionNotIn(List<Object> values) {
-            addCriterion("PERMISSION not in", values, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionBetween(Object value1, Object value2) {
-            addCriterion("PERMISSION between", value1, value2, "permission");
-            return (Criteria) this;
-        }
-
-        public Criteria andPermissionNotBetween(Object value1, Object value2) {
-            addCriterion("PERMISSION not between", value1, value2, "permission");
             return (Criteria) this;
         }
 

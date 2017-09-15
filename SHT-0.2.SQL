@@ -1,5 +1,5 @@
 ﻿prompt PL/SQL Developer import file
-prompt Created on 2017年9月14日 by Kor_Zhang
+prompt Created on 2017年9月15日 by Kor_Zhang
 set feedback off
 set define off
 prompt Creating REGION...
@@ -207,7 +207,8 @@ create table ADDRS
   DETAIL    NVARCHAR2(40) not null,
   POHNE     NVARCHAR2(20) not null,
   REALNAME  NVARCHAR2(20) not null,
-  ISDEFAULT NUMBER(1) not null
+  ISDEFAULT NUMBER(1) not null,
+  POSTCODE  VARCHAR2(10)
 )
 tablespace SYSTEM
   pctfree 10
@@ -235,6 +236,8 @@ comment on column ADDRS.REALNAME
   is '收货人姓名';
 comment on column ADDRS.ISDEFAULT
   is '是否为默认地址';
+comment on column ADDRS.POSTCODE
+  is '邮编';
 alter table ADDRS
   add constraint ADDRS_PK_ID primary key (ID)
   using index 
@@ -255,6 +258,164 @@ alter table ADDRS
 alter table ADDRS
   add constraint ADDRS_FK_REGION foreign key (REGION)
   references REGION (REGION_ID) on delete cascade;
+
+prompt Creating ADMINS...
+create table ADMINS
+(
+  ID         NVARCHAR2(40) not null,
+  USERNAME   NVARCHAR2(20) not null,
+  PASSWORD   NVARCHAR2(32) not null,
+  SALT       NVARCHAR2(40),
+  STATUS     NUMBER not null,
+  CREATETIME TIMESTAMP(6) not null,
+  CREATOR    NVARCHAR2(40)
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 16K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+comment on column ADMINS.ID
+  is '主键';
+comment on column ADMINS.USERNAME
+  is '用户名';
+comment on column ADMINS.PASSWORD
+  is '密码';
+comment on column ADMINS.SALT
+  is '盐';
+comment on column ADMINS.STATUS
+  is '状态;1为激活,0为冻结,-1为删除';
+comment on column ADMINS.CREATETIME
+  is '创建时间';
+comment on column ADMINS.CREATOR
+  is '创建者';
+alter table ADMINS
+  add constraint ADS_PK_ID primary key (ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table ADMINS
+  add constraint ADS_UK_USERNAME unique (USERNAME)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table ADMINS
+  add constraint ADS_FK_CREATOR foreign key (CREATOR)
+  references ADMINS (ID) on delete set null;
+
+prompt Creating ROLES...
+create table ROLES
+(
+  ID     NVARCHAR2(40) not null,
+  NAME   NVARCHAR2(128) not null,
+  STATUS NUMBER(1) not null
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+comment on column ROLES.ID
+  is '主键';
+comment on column ROLES.NAME
+  is '角色名';
+comment on column ROLES.STATUS
+  is '是否可用,1:可用,0:删除';
+alter table ROLES
+  add constraint ROLES_PK_ID primary key (ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt Creating ADMINS_ROLES...
+create table ADMINS_ROLES
+(
+  ID        NVARCHAR2(40) not null,
+  ADMIN     NVARCHAR2(40) not null,
+  ROLE      NVARCHAR2(40) not null,
+  GRANTTIME TIMESTAMP(6) not null
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+comment on column ADMINS_ROLES.ID
+  is '主键';
+comment on column ADMINS_ROLES.ADMIN
+  is '管理员';
+comment on column ADMINS_ROLES.ROLE
+  is '角色';
+comment on column ADMINS_ROLES.GRANTTIME
+  is '赋权时间';
+alter table ADMINS_ROLES
+  add constraint A_R_PK_ID primary key (ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table ADMINS_ROLES
+  add constraint A_R_FK_ADMIN foreign key (ADMIN)
+  references ADMINS (ID) on delete cascade;
+alter table ADMINS_ROLES
+  add constraint A_R_FK_ROLE foreign key (ROLE)
+  references ROLES (ID) on delete cascade;
 
 prompt Creating CLAZZS...
 create table CLAZZS
@@ -529,6 +690,116 @@ alter table MESSAGES
 alter table MESSAGES
   add constraint MSGS_FK_RECEIVER foreign key (RECEIVER)
   references GOODS (ID) on delete cascade;
+
+prompt Creating PERMISSIONS...
+create table PERMISSIONS
+(
+  ID     NVARCHAR2(40) not null,
+  TEXT   NVARCHAR2(128) not null,
+  TYPE   NVARCHAR2(128),
+  URL    NVARCHAR2(128),
+  CODE   NVARCHAR2(128) not null,
+  PID    NVARCHAR2(40),
+  PIDS   NVARCHAR2(128),
+  SORT   NUMBER(2),
+  STATUS NUMBER(1) not null
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+comment on column PERMISSIONS.ID
+  is '主键';
+comment on column PERMISSIONS.TEXT
+  is '资源名';
+comment on column PERMISSIONS.TYPE
+  is '资源类型：menu,button等';
+comment on column PERMISSIONS.URL
+  is '访问资源url地址';
+comment on column PERMISSIONS.CODE
+  is '权限代码';
+comment on column PERMISSIONS.PID
+  is '父节点id';
+comment on column PERMISSIONS.PIDS
+  is '祖先节点的id,用-分割';
+comment on column PERMISSIONS.SORT
+  is '排序号';
+comment on column PERMISSIONS.STATUS
+  is '是否可用,1:可用,0:删除';
+alter table PERMISSIONS
+  add constraint PERMISSIONS_PK_ID primary key (ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PERMISSIONS
+  add constraint PERMISSIONS_FK_PARENTID foreign key (PID)
+  references PERMISSIONS (ID) on delete cascade;
+
+prompt Creating ROLES_PERMISSIONS...
+create table ROLES_PERMISSIONS
+(
+  ID         NVARCHAR2(40) not null,
+  ROLE       NVARCHAR2(40) not null,
+  PERMISSION NVARCHAR2(40) not null,
+  GRANTTIME  TIMESTAMP(6) not null
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+comment on column ROLES_PERMISSIONS.ID
+  is '主键';
+comment on column ROLES_PERMISSIONS.ROLE
+  is '角色id';
+comment on column ROLES_PERMISSIONS.PERMISSION
+  is '权限id';
+comment on column ROLES_PERMISSIONS.GRANTTIME
+  is '权限赋予时间';
+alter table ROLES_PERMISSIONS
+  add constraint ROLES_PERMISSIONS_PK primary key (ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table ROLES_PERMISSIONS
+  add constraint ROLES_PERMISSIONS_FK_P foreign key (PERMISSION)
+  references PERMISSIONS (ID) on delete cascade;
+alter table ROLES_PERMISSIONS
+  add constraint ROLES_PERMISSIONS_FK_ROLES_ID foreign key (ROLE)
+  references ROLES (ID) on delete cascade;
 
 prompt Loading REGION...
 insert into REGION (REGION_ID, REGION_CODE, REGION_NAME, PARENT_ID, REGION_LEVEL, REGION_ORDER, REGION_NAME_EN, REGION_SHORTNAME_EN)
@@ -7654,8 +7925,23 @@ prompt 3524 records loaded
 prompt Loading FILES...
 prompt Table is empty
 prompt Loading USERS...
-prompt Table is empty
+insert into USERS (ID, USERNAME, EMAIL, PASSWORD, SALT, HEADIMG, SEX, BIRTHDAY, DESCRIPTION, SCORE, REGISTTIME, STATUS)
+values ('1', 'admin', '1138829222@qq.com', '4297f44b13955235245b2497399d7a9', '123', null, -1, null, null, 0, to_timestamp('15-09-2017 10:18:09.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+commit;
+prompt 1 records loaded
 prompt Loading ADDRS...
+prompt Table is empty
+prompt Loading ADMINS...
+insert into ADMINS (ID, USERNAME, PASSWORD, SALT, STATUS, CREATETIME, CREATOR)
+values ('1', '1', '4297f44b13955235245b2497399d7a9', '123', 1, to_timestamp('15-09-2017 10:18:09.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null);
+commit;
+prompt 1 records loaded
+prompt Loading ROLES...
+insert into ROLES (ID, NAME, STATUS)
+values ('1', 'admins', 1);
+commit;
+prompt 1 records loaded
+prompt Loading ADMINS_ROLES...
 prompt Table is empty
 prompt Loading CLAZZS...
 prompt Table is empty
@@ -7667,6 +7953,18 @@ prompt Loading GOODS_IMGS...
 prompt Table is empty
 prompt Loading MESSAGES...
 prompt Table is empty
+prompt Loading PERMISSIONS...
+insert into PERMISSIONS (ID, TEXT, TYPE, URL, CODE, PID, PIDS, SORT, STATUS)
+values ('1', '查看用户', null, '/users/selectUsers.action', '1', null, null, null, 1);
+insert into PERMISSIONS (ID, TEXT, TYPE, URL, CODE, PID, PIDS, SORT, STATUS)
+values ('2', '编辑用户', null, '/users/updateUser.action', '2', null, null, null, 1);
+commit;
+prompt 2 records loaded
+prompt Loading ROLES_PERMISSIONS...
+insert into ROLES_PERMISSIONS (ID, ROLE, PERMISSION, GRANTTIME)
+values ('1', '1', '1', to_timestamp('15-09-2017 10:18:09.000000', 'dd-mm-yyyy hh24:mi:ss.ff'));
+commit;
+prompt 1 records loaded
 set feedback on
 set define on
 prompt Done.
