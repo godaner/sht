@@ -1,77 +1,77 @@
 package com.sht.po;
 
 public class Permissions {
-    private Object id;
+    private String id;
 
-    private Object text;
+    private String text;
 
-    private Object type;
+    private String type;
 
-    private Object url;
+    private String url;
 
-    private Object code;
+    private String code;
 
-    private Object pid;
+    private String pid;
 
-    private Object pids;
+    private String pids;
 
     private Short sort;
 
     private Short status;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(Object text) {
+    public void setText(String text) {
         this.text = text;
     }
 
-    public Object getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Object type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public Object getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(Object url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
-    public Object getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Object code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public Object getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(Object pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 
-    public Object getPids() {
+    public String getPids() {
         return pids;
     }
 
-    public void setPids(Object pids) {
+    public void setPids(String pids) {
         this.pids = pids;
     }
 

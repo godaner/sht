@@ -1,60 +1,59 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Admins {
-    private Object id;
+    private String id;
 
-    private Object username;
+    private String username;
 
-    private Object password;
+    private String password;
 
-    private Object salt;
+    private String salt;
 
-    private BigDecimal status;
+    private Double status;
 
     private Date createtime;
 
-    private Object creator;
+    private String creator;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Object username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public Object getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Object password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Object getSalt() {
+    public String getSalt() {
         return salt;
     }
 
-    public void setSalt(Object salt) {
+    public void setSalt(String salt) {
         this.salt = salt;
     }
 
-    public BigDecimal getStatus() {
+    public Double getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Double status) {
         this.status = status;
     }
 
@@ -66,11 +65,11 @@ public class Admins {
         this.createtime = createtime;
     }
 
-    public Object getCreator() {
+    public String getCreator() {
         return creator;
     }
 
-    public void setCreator(Object creator) {
+    public void setCreator(String creator) {
         this.creator = creator;
     }
 }

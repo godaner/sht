@@ -1,5 +1,6 @@
 package com.sht.users.service.impl;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,6 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
 		
-		logger.info("UsersService");
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
@@ -37,8 +37,10 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		eject(dbUser == null, "用户不存在");
 		
 		
+		String md5pw = md5(po.getPassword()+dbUser.getSalt());
+		
 		//判断密码
-		eject(!dbUser.getPassword().equals(po.getPassword()),"密码错误");
+		eject(!dbUser.getPassword().equals(md5pw),"密码错误");
 		
 		return dbUser;
 	}
@@ -53,7 +55,25 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		po.setId(UUID.randomUUID().toString());
 		
-		po.setSalt("");
+		po.setEmail(po.getId().substring(0,6)+"@qq.com");
+		
+		po.setSalt(po.getEmail());
+		
+		po.setBirthday(new Date());
+		
+		po.setDescription("good");
+
+		po.setPassword(md5(po.getPassword() + po.getSalt()));
+		
+		po.setRegisttime(new Date());
+		
+		po.setSex(Short.valueOf("1"));
+		
+		po.setStatus(Short.valueOf("1"));
+		
+		po.setHeadimg("");
+		
+		po.setScore(1d);
 		
 		usersMapper.insert(po);
 		

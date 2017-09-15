@@ -3,35 +3,35 @@ package com.sht.po;
 import java.util.Date;
 
 public class RolesPermissions {
-    private Object id;
+    private String id;
 
-    private Object role;
+    private String role;
 
-    private Object permission;
+    private String permission;
 
     private Date granttime;
 
-    public Object getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Object role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public Object getPermission() {
+    public String getPermission() {
         return permission;
     }
 
-    public void setPermission(Object permission) {
+    public void setPermission(String permission) {
         this.permission = permission;
     }
 
