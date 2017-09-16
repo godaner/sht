@@ -18,6 +18,7 @@ import com.sht.users.service.UsersServiceI;
  */
 @Controller
 @Scope("prototype")
+
 public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 
 	/**
@@ -34,7 +35,6 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 */
 	public String login() throws Exception{
 		try{
-			
 			
 			service.login(po);
 			
