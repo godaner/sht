@@ -5,4 +5,8 @@
 		SELECT * FROM USERS WHERE USERNAME=#{USERNAME}
 		
 	</select>
+	
+	<insert id="insertUser" parameterType="com.sht.users.po.CustomUsers">
+		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime}) 
+	</insert>
 </mapper>

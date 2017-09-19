@@ -2,8 +2,8 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
 "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	
-	
+
+
 	<package namespace="/users" name="users-package" extends="base-package">
 		<!-- 全局result配置 -->
 		<global-results>
