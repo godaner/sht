@@ -13,6 +13,8 @@
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
     <result column="OWNER" jdbcType="OTHER" property="owner" />
     <result column="BUYER" jdbcType="OTHER" property="buyer" />
+    <result column="BROWSE_NUMBER" jdbcType="DECIMAL" property="browseNumber" />
+    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, 
-    BUYER
+    BUYER, BROWSE_NUMBER, LAST_UPDATE_TIME
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.GoodsExample" resultMap="BaseResultMap">
     select
@@ -110,11 +112,13 @@
     insert into GOODS (ID, TITLE, DESCRIPTION, 
       SPRICE, PRICE, CONDITION, 
       REGION, STATUS, CREATETIME, 
-      OWNER, BUYER)
+      OWNER, BUYER, BROWSE_NUMBER, 
+      LAST_UPDATE_TIME)
     values (#{id,jdbcType=OTHER}, #{title,jdbcType=OTHER}, #{description,jdbcType=OTHER}, 
       #{sprice,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{condition,jdbcType=DECIMAL}, 
       #{region,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{owner,jdbcType=OTHER}, #{buyer,jdbcType=OTHER})
+      #{owner,jdbcType=OTHER}, #{buyer,jdbcType=OTHER}, #{browseNumber,jdbcType=DECIMAL}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Goods">
     insert into GOODS
@@ -152,6 +156,12 @@
       <if test="buyer != null">
         BUYER,
       </if>
+      <if test="browseNumber != null">
+        BROWSE_NUMBER,
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -186,6 +196,12 @@
       </if>
       <if test="buyer != null">
         #{buyer,jdbcType=OTHER},
+      </if>
+      <if test="browseNumber != null">
+        #{browseNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -231,6 +247,12 @@
       <if test="record.buyer != null">
         BUYER = #{record.buyer,jdbcType=OTHER},
       </if>
+      <if test="record.browseNumber != null">
+        BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -248,7 +270,9 @@
       STATUS = #{record.status,jdbcType=DECIMAL},
       CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
       OWNER = #{record.owner,jdbcType=OTHER},
-      BUYER = #{record.buyer,jdbcType=OTHER}
+      BUYER = #{record.buyer,jdbcType=OTHER},
+      BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
+      LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -286,6 +310,12 @@
       <if test="buyer != null">
         BUYER = #{buyer,jdbcType=OTHER},
       </if>
+      <if test="browseNumber != null">
+        BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where ID = #{id,jdbcType=OTHER}
   </update>
@@ -300,7 +330,9 @@
       STATUS = #{status,jdbcType=DECIMAL},
       CREATETIME = #{createtime,jdbcType=TIMESTAMP},
       OWNER = #{owner,jdbcType=OTHER},
-      BUYER = #{buyer,jdbcType=OTHER}
+      BUYER = #{buyer,jdbcType=OTHER},
+      BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=OTHER}
   </update>
 </mapper>
