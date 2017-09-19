@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.users.po.CustomUsers;
-import com.sht.users.service.impl.UsersService;
+import com.sht.users.service.UsersServiceI;
 
 
 /**	
@@ -16,10 +16,8 @@ import com.sht.users.service.impl.UsersService;
  * @date 2017年9月11日 上午10:29:03
  * @version 1.0
  */
-@Controller
 @Scope("prototype")
-
-
+@Controller
 public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 
 	/**
@@ -34,23 +32,24 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 * @return
 	 * @throws Exception
 	 */
-	public String login() throws Exception{
+	public void login() throws Exception{
+		logger.info("UserAction");
 		try{
+			po = service.login(po);
 			
-			service.login(po);
+			setSessionAttr(FILED_ONLINE_USER, po);
 			
 		}catch(Exception e){
 			
 			e.printStackTrace();
 			
-			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			po.setMsg(e.getMessage());
 			
-			return "fLogin";
 		}
-
-		setRequestAttr(FILED_ONLINE_USER, po);
-
-		return "fIndex";
+		
+		//返回一个json的数据
+		writeJSON(po);
+		
 	}
 
 	/**
@@ -73,7 +72,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			
 			e.printStackTrace();
 			
-			setRequestAttr(FIELD_REQUEST_RETURN_MSG, e.getMessage());
+			po.setMsg(e.getMessage());
 			
 			return "fRegist";
 		}

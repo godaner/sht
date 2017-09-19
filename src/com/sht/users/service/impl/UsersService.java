@@ -32,21 +32,15 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
-		
+		logger.info("UserService");
 		//判断用户是否存在
-		if(dbUser != null){
-			//判断密码
-			if(dbUser.getPassword().equals(md5(po.getPassword()))){
-				return dbUser;
-			}else{ 
-				eject(false,"密码错误");
-			}
-		}else{
-			eject(false, "用户不存在");
-		}
+		
+		eject(dbUser == null, "用户不存在");
+		/**下面的代码必须不满足上面的条件**/
+		eject(!dbUser.getPassword().equals(md5(po.getPassword() + po.getSalt())), "密码错误");
 		
 		return dbUser;
-
+		
 	}
 
 	@Override
@@ -57,15 +51,17 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		//用户名相同
 		eject(null!=dbUser && dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
+		eject(null!=dbUser && dbUser.getEmail().equals(po.getEmail()), "邮箱已存在");
+		
 		po.setId(UUID.randomUUID().toString());
 		
-		po.setEmail(po.getId().substring(0,6)+"@qq.com");
+		po.setEmail(po.getEmail());
 		
 		po.setSalt(po.getEmail());
 		
-		po.setBirthday(new Date());
+	//	po.setBirthday(new Date());
 		
-		po.setDescription("good");
+	//	po.setDescription("good");
 
 		po.setPassword(md5(po.getPassword() + po.getSalt()));
 		
@@ -75,7 +71,7 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		po.setStatus(Short.valueOf("1"));
 		
-		po.setHeadimg("");
+	//	po.setHeadimg("");
 		
 		po.setScore(1d);
 		
