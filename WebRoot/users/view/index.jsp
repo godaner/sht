@@ -9,6 +9,6 @@
 </head>
 <body>
 	${onlineUser.username}
-	<a href="${baseUrl}/users/logout.action">注销</a>
+	<a href="${baseUrl}/users/logout.action">注銷</a>
 </body>
 </html>
