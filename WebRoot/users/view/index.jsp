@@ -6,15 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../../js/login.js"></script>
-<script type="text/javascript" src="../../js/register.js"></script>
-<link rel="stylesheet" href="../../css/login_style.css">
-<link rel="stylesheet" href="../../css/register_style.css">
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+<script type="text/javascript" src="../js/register.js"></script>
+<script type="text/javascript" src="../js/jquerySession.js"></script>
+<link rel="stylesheet" href="../css/login_style.css">
+<link rel="stylesheet" href="../css/register_style.css">
 <title>Insert title here</title>
 </head>
 <body>
 	${onlineUser.username}
+	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
 	<a href="javascript:showlogin();">想看登陆框吗</a>
 	<a href="javascript:showregister();">想看注册框吗</a>
@@ -48,8 +50,8 @@
 			<div class="register_title">账户注册</div>
 			<div class="register_input">
 				<label>账号</label><input type="text" value="" placeholder="请输入用户名" name="username" id="rs_username"/>
-				<label>邮箱</label><input type="email" value="" placeholder="可用于登陆和找回密码" name="email" id="email" onchange="Check_email();"/>
-				<label>验证码	</label><input id="code" type="text" value="" placeholder="输入验证码" name="code" id="code"/><img src="../../images/code.png"/>
+				<label>邮箱</label><input type="email" value="" placeholder="可用于登陆和找回密码" name="email" id="email" onblur="Check_email();"/>
+				<label>验证码	</label><input id="code" type="text" value="" placeholder="输入验证码" name="code" id="code" /><img onclick="refreshVC();" id="codeimg" src="${baseUrl}/users/getVC.action"/>
 				<label>密码</label><input type="text" value="" placeholder="请输入密码" name="password" id="rs_password" />
 				<label>确认密码</label><input type="text" value="" placeholder="请确认密码" name="repassword" id="sure_ps" />
 			</div>
@@ -62,6 +64,8 @@
 			</div>
 		</div>
 		<!--注册框结束-->
+		<!-- 获取项目地址 -->
+		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 </body>
 
 </html>

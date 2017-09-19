@@ -143,14 +143,14 @@ public class ValidateCode {
      * 测试函数,默认生成到d盘 
      * @param args 
      */  
-    public static void main(String[] args) {  
-        ValidateCode vCode = new ValidateCode(160,40,5,150);  
-        try {  
-            String path="D:/"+new Date().getTime()+".png";  
-            System.out.println(vCode.getCode()+" >"+path);  
-            vCode.write(path);  
-        } catch (IOException e) {  
-            e.printStackTrace();  
-        }  
-    }  
+//    public static void main(String[] args) {  
+//        ValidateCode vCode = new ValidateCode(160,40,5,150);  
+//        try {  
+//            String path="D:/"+new Date().getTime()+".png";  
+//            System.out.println(vCode.getCode()+" >"+path);  
+//            vCode.write(path);  
+//        } catch (IOException e) {  
+//            e.printStackTrace();  
+//        }  
+//    }  
 }  

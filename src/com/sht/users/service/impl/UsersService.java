@@ -1,7 +1,10 @@
 ﻿package com.sht.users.service.impl;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
+
+import javax.mail.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +13,7 @@ import com.sht.mapper.UsersMapper;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
+import com.sht.util.ValidateCode;
 /**
  * Title:UsersService
  * <p>
@@ -36,8 +40,9 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		//判断用户是否存在
 		
 		eject(dbUser == null, "用户不存在");
+		
 		/**下面的代码必须不满足上面的条件**/
-		eject(!dbUser.getPassword().equals(md5(po.getPassword() + po.getSalt())), "密码错误");
+		eject(!dbUser.getPassword().equals(md5(po.getPassword() + dbUser.getSalt())), "密码错误");
 		
 		return dbUser;
 		
@@ -59,27 +64,34 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		po.setSalt(po.getEmail());
 		
-	//	po.setBirthday(new Date());
+		po.setBirthday(new Date());
 		
-	//	po.setDescription("good");
+		po.setDescription("good");
 
-		po.setPassword(md5(po.getPassword() + po.getSalt()));
+		po.setPassword(md5(po.getPassword() + po.getEmail()));
 		
 		po.setRegisttime(new Date());
 		
 		po.setSex(Short.valueOf("1"));
 		
-		po.setStatus(Short.valueOf("1"));
+		po.setStatus(Short.valueOf("0"));
 		
-	//	po.setHeadimg("");
+		po.setHeadimg("");
 		
 		po.setScore(1d);
 		
 		usersMapper.insert(po);
 		
 	}
-	
 
+	@Override
+	public void verifyEmail(String email) {
+
+		usersMapper.updateStatusByEmail(email);
+		
+	}
+
+	
 	
 	
 }
