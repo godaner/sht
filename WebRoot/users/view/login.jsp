@@ -11,9 +11,8 @@
 <body>
 	${msg}
 	<a href="${baseUrl}/users/view/regist.jsp">去注册</a>
-	<!-- 注意,此处的url需与shiro的loginUrl相同 -->
-	<form method="post"
-		action="${baseUrl}/users/login.action">
+	${baseUrl}
+	<form method="post" action="${baseUrl}/users/login.action">
 		名称：<input name="username" value="" /> 
 		密码：<input name="password" value="" /> 
 		<input type="submit" value="登录"/>

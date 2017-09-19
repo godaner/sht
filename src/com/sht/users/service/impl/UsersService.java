@@ -1,12 +1,12 @@
-package com.sht.users.service.impl;
+﻿package com.sht.users.service.impl;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sht.mapper.UsersMapper;
-import com.sht.service.impl.BaseService;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
@@ -20,7 +20,7 @@ import com.sht.users.service.UsersServiceI;
  * @version 1.0
  */
 @Service
-public class UsersService extends BaseService implements UsersServiceI {
+public class UsersService extends UBaseService implements UsersServiceI {
 	@Autowired
 	private CustomUsersMapper customUsersMapper;
 
@@ -30,18 +30,17 @@ public class UsersService extends BaseService implements UsersServiceI {
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
 		
-		logger.info("UsersService");
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
-		
+		logger.info("UserService");
 		//判断用户是否存在
+		
 		eject(dbUser == null, "用户不存在");
-		
-		
-		//判断密码
-		eject(!dbUser.getPassword().equals(po.getPassword()),"密码错误");
+		/**下面的代码必须不满足上面的条件**/
+		eject(!dbUser.getPassword().equals(md5(po.getPassword() + po.getSalt())), "密码错误");
 		
 		return dbUser;
+		
 	}
 
 	@Override
@@ -50,16 +49,31 @@ public class UsersService extends BaseService implements UsersServiceI {
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		
 		//用户名相同
-		eject(null != dbUser&&dbUser.getUsername().equals(po.getUsername()), "用户已存在");
+		eject(null!=dbUser && dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
-
+		eject(null!=dbUser && dbUser.getEmail().equals(po.getEmail()), "邮箱已存在");
+		
 		po.setId(UUID.randomUUID().toString());
 		
-		po.setIsdelete("0");
+		po.setEmail(po.getEmail());
 		
-		po.setLocked("0");
+		po.setSalt(po.getEmail());
 		
-		po.setSalt("");
+	//	po.setBirthday(new Date());
+		
+	//	po.setDescription("good");
+
+		po.setPassword(md5(po.getPassword() + po.getSalt()));
+		
+		po.setRegisttime(new Date());
+		
+		po.setSex(Short.valueOf("1"));
+		
+		po.setStatus(Short.valueOf("1"));
+		
+	//	po.setHeadimg("");
+		
+		po.setScore(1d);
 		
 		usersMapper.insert(po);
 		

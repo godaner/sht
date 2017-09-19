@@ -28,3 +28,5 @@
 	访问方式:http://localhost/sht/users/login.action
 	
 *.在对struts配置时,在自己负责的模块中,能够使用全局的result或者exception就用全局的,避免重复
+
+*.请使用logger.info();info();等输出,不要使用sysout输出;

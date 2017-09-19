@@ -24,4 +24,9 @@ public interface CustomUsersMapper {
 	 * @return
 	 */
 	public CustomUsers selectUserByUsername(String username);
+	
+	/**
+	 * 增加一个user
+	 */
+	public CustomUsers insertUser(CustomUsers po);
 }

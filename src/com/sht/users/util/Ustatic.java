@@ -1,6 +1,6 @@
 package com.sht.users.util;
 
-import com.sht.util.GStatic;
+import com.sht.util.Static;
 
 /**
  * Title:Ustatic
@@ -12,6 +12,6 @@ import com.sht.util.GStatic;
  * @date 2017年9月13日 上午8:49:12
  * @version 1.0
  */
-public interface Ustatic extends GStatic {
+public interface Ustatic extends Static {
 
 }

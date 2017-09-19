@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.RolesPermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.RolesPermissions">
+    <id column="ID" jdbcType="OTHER" property="id" />
+    <result column="ROLE" jdbcType="OTHER" property="role" />
+    <result column="PERMISSION" jdbcType="OTHER" property="permission" />
+    <result column="GRANTTIME" jdbcType="TIMESTAMP" property="granttime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, ROLE, PERMISSION, GRANTTIME
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.RolesPermissionsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ROLES_PERMISSIONS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ROLES_PERMISSIONS
+    where ID = #{id,jdbcType=OTHER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
+    delete from ROLES_PERMISSIONS
+    where ID = #{id,jdbcType=OTHER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.RolesPermissionsExample">
+    delete from ROLES_PERMISSIONS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.RolesPermissions">
+    insert into ROLES_PERMISSIONS (ID, ROLE, PERMISSION, 
+      GRANTTIME)
+    values (#{id,jdbcType=OTHER}, #{role,jdbcType=OTHER}, #{permission,jdbcType=OTHER}, 
+      #{granttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.RolesPermissions">
+    insert into ROLES_PERMISSIONS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="role != null">
+        ROLE,
+      </if>
+      <if test="permission != null">
+        PERMISSION,
+      </if>
+      <if test="granttime != null">
+        GRANTTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=OTHER},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=OTHER},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=OTHER},
+      </if>
+      <if test="granttime != null">
+        #{granttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.RolesPermissionsExample" resultType="java.lang.Long">
+    select count(*) from ROLES_PERMISSIONS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ROLES_PERMISSIONS
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=OTHER},
+      </if>
+      <if test="record.role != null">
+        ROLE = #{record.role,jdbcType=OTHER},
+      </if>
+      <if test="record.permission != null">
+        PERMISSION = #{record.permission,jdbcType=OTHER},
+      </if>
+      <if test="record.granttime != null">
+        GRANTTIME = #{record.granttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ROLES_PERMISSIONS
+    set ID = #{record.id,jdbcType=OTHER},
+      ROLE = #{record.role,jdbcType=OTHER},
+      PERMISSION = #{record.permission,jdbcType=OTHER},
+      GRANTTIME = #{record.granttime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.RolesPermissions">
+    update ROLES_PERMISSIONS
+    <set>
+      <if test="role != null">
+        ROLE = #{role,jdbcType=OTHER},
+      </if>
+      <if test="permission != null">
+        PERMISSION = #{permission,jdbcType=OTHER},
+      </if>
+      <if test="granttime != null">
+        GRANTTIME = #{granttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=OTHER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.RolesPermissions">
+    update ROLES_PERMISSIONS
+    set ROLE = #{role,jdbcType=OTHER},
+      PERMISSION = #{permission,jdbcType=OTHER},
+      GRANTTIME = #{granttime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=OTHER}
+  </update>
+</mapper>

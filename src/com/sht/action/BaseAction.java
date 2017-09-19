@@ -3,8 +3,9 @@ package com.sht.action;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.sht.util.GStatic;
-import com.sht.util.GUtil;
+import com.sht.util.ActionUtil;
+import com.sht.util.Static;
+import com.sht.util.Util;
 
 /**
  * Title:BaseAction
@@ -18,10 +19,10 @@ import com.sht.util.GUtil;
  * @author Kor_Zhang
  * @date 2017年9月11日 下午2:43:48
  * @version 4.0
- * @see GUtil
- * @see	GStatic
+ * @see Util
+ * @see	Static
  */
-public class BaseAction<P,S> extends GUtil implements ModelDriven<P> , GStatic{
+public class BaseAction<P,S> extends ActionUtil implements ModelDriven<P> , Static{
 	/**
 	 * 前台参数封装类
 	 */
