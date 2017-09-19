@@ -49,7 +49,7 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="addrs"></table>
+        <!-- <table tableName="addrs"></table>
         <table tableName="clazzs"></table>
         <table tableName="files"></table>
         <table tableName="goods"></table>
@@ -60,9 +60,9 @@
         <table tableName="region"></table>
         <table tableName="roles"></table>
         <table tableName="roles_permissions"></table>
-        <table tableName="users"></table>
         <table tableName="admins_roles"></table>
-        <table tableName="admins"></table>
+        <table tableName="admins"></table> -->
+        <table tableName="users"></table>
         
         
         <!-- <table schema="" tableName="sys_user"></table>

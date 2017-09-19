@@ -9,6 +9,7 @@
     <result column="STATUS" jdbcType="DECIMAL" property="status" />
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
     <result column="CREATOR" jdbcType="OTHER" property="creator" />
+    <result column="THEME" jdbcType="OTHER" property="theme" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, USERNAME, PASSWORD, SALT, STATUS, CREATETIME, CREATOR
+    ID, USERNAME, PASSWORD, SALT, STATUS, CREATETIME, CREATOR, THEME
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.AdminsExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.sht.po.Admins">
     insert into ADMINS (ID, USERNAME, PASSWORD, 
       SALT, STATUS, CREATETIME, 
-      CREATOR)
+      CREATOR, THEME)
     values (#{id,jdbcType=OTHER}, #{username,jdbcType=OTHER}, #{password,jdbcType=OTHER}, 
       #{salt,jdbcType=OTHER}, #{status,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=OTHER})
+      #{creator,jdbcType=OTHER}, #{theme,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Admins">
     insert into ADMINS
@@ -133,6 +134,9 @@
       <if test="creator != null">
         CREATOR,
       </if>
+      <if test="theme != null">
+        THEME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -155,6 +159,9 @@
       </if>
       <if test="creator != null">
         #{creator,jdbcType=OTHER},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.creator != null">
         CREATOR = #{record.creator,jdbcType=OTHER},
       </if>
+      <if test="record.theme != null">
+        THEME = #{record.theme,jdbcType=OTHER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       SALT = #{record.salt,jdbcType=OTHER},
       STATUS = #{record.status,jdbcType=DECIMAL},
       CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
-      CREATOR = #{record.creator,jdbcType=OTHER}
+      CREATOR = #{record.creator,jdbcType=OTHER},
+      THEME = #{record.theme,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="creator != null">
         CREATOR = #{creator,jdbcType=OTHER},
       </if>
+      <if test="theme != null">
+        THEME = #{theme,jdbcType=OTHER},
+      </if>
     </set>
     where ID = #{id,jdbcType=OTHER}
   </update>
@@ -237,7 +251,8 @@
       SALT = #{salt,jdbcType=OTHER},
       STATUS = #{status,jdbcType=DECIMAL},
       CREATETIME = #{createtime,jdbcType=TIMESTAMP},
-      CREATOR = #{creator,jdbcType=OTHER}
+      CREATOR = #{creator,jdbcType=OTHER},
+      THEME = #{theme,jdbcType=OTHER}
     where ID = #{id,jdbcType=OTHER}
   </update>
 </mapper>

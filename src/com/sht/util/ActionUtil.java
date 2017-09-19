@@ -16,6 +16,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.opensymphony.xwork2.ActionContext;
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -123,7 +124,13 @@ public class ActionUtil extends Util{
 		PrintWriter pt = null;
 		try {
 			// 获取输出流
-			pt = getResponse().getWriter();
+			/*pt = getResponse().getWriter();
+			getResponse().setCharacterEncoding("UTF-8");  
+			getResponse().setContentType("application/json;charset=utf-8");*/
+			HttpServletResponse response= ServletActionContext.getResponse();
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json;charset=utf-8");
+			pt= response.getWriter();
 			// 序列化对象
 			String json = JSON.toJSONStringWithDateFormat(o,
 					"yyyy-MM-dd HH:mm:ss",

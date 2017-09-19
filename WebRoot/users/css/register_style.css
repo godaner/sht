@@ -1,0 +1,156 @@
+.register_box{
+	margin: 10% auto;
+	width: 320px;
+	height: 430px;
+	border: solid 1px gainsboro;
+	border-radius:5px;
+}
+
+.register_close{
+	width: 4%;
+	height: 3%;
+	float: right;
+	font-size: 12px;
+	text-decoration: none;
+	border: solid 1px rgb(243,243,243);
+	background-color: rgb(243,243,243);
+	border-radius:50%;
+	/* -moz-border-radius: 50%;    */   
+	-webkit-border-radius: 50%;
+	text-align: center;
+}
+.register_close:hover{
+	
+	width: 4%;
+	height: 3%;
+	font-size: 12px;
+	text-decoration: none;
+	border: solid 1px rgb(243,243,243);
+	background-color: grey;
+	border-radius:50%;
+	/* -moz-border-radius: 50%;  */     
+	-webkit-border-radius: 50%;
+	color: white;
+	text-align: center;
+	/*padding-top: -15px;*/
+	
+}
+
+
+
+/*注册的标题*/
+.register_title{
+	width: 100%;
+	height: 8%;
+	background-color: rgb(243,243,243);
+	text-align:center;
+	padding-top: 5%;
+	font-size: 19px;
+	letter-spacing:5px;
+}
+
+
+/*注册的输入框*/
+.register_input label{
+	font-size: 16px;
+	color:rgb(151,151,151);
+	padding-left: 5%;
+}
+.register_input input{
+	width: 65%;
+	margin-left: 10%;
+	height: 30px;
+	border: solid 1px rgb(243,243,243);/*beige*/
+	outline:none;
+	font-size: 13px;
+	margin-top: 4%;
+	margin-left: 13%;
+	border-radius:5px;
+}
+/*确认密码框*/
+#sure_ps{
+	margin-left: 3%;
+}
+/*验证码框*/
+#code{
+	width: 20%;
+	margin-left: 7%;
+}
+
+.register_input img{
+	/*border: solid 1px black;*/
+	width: 40%;
+	height: 8%;
+	margin-top: 5%;
+	margin-left: 5%;
+	position: relative;
+	top:10px;
+}
+/*协议书*/
+.descript_book{
+	margin: 5% auto;
+}
+.descript_book input{
+	margin-left: 30%;
+}
+
+
+/*.register_input input{
+	width: 65%;
+	margin-left: 10%;
+	height: 40px;
+	border: none;
+	outline:none;
+	font-size: 16px;
+}
+
+.register_input label{
+	font-size: 16px;
+	color:rgb(151,151,151);
+	padding-left: 5%;
+}
+.register_input hr{
+	width: 80%;
+	padding-left: 10%;
+}
+*/
+/*注册按钮*/
+.register_button{
+	margin-left:5% ;
+	background-color: rgb(255,219,68);
+	border-radius:5px;
+	width: 90%;
+	height: 45px;
+	border: solid 1px gainsboro;
+	font-size: 17px;
+}
+.register_button:hover { 
+	/*border:solid 1px #c00;*/
+	background: none;
+	cursor:pointer;
+	}
+.register_button:focus { 
+	outline: none;
+	/*border:solid 1px black;*/
+	/*background-color: white;*/
+}
+
+.forgive_a{
+	float: right;
+	text-decoration: none;
+	font-size: 15px;
+	color: gray;
+}
+/* 注册错误信息 */
+.register_msg{
+	width:80%;
+	height:5%;
+	margin-left:10%;
+	margin-bottom:2%;
+	text-align:center;
+	float:left;
+	color:red;
+	font-size:15px;
+	border-radius:5px;
+}
+

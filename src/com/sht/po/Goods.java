@@ -25,6 +25,10 @@ public class Goods {
 
     private String buyer;
 
+    private Double browseNumber;
+
+    private Date lastUpdateTime;
+
     public String getId() {
         return id;
     }
@@ -111,5 +115,21 @@ public class Goods {
 
     public void setBuyer(String buyer) {
         this.buyer = buyer;
+    }
+
+    public Double getBrowseNumber() {
+        return browseNumber;
+    }
+
+    public void setBrowseNumber(Double browseNumber) {
+        this.browseNumber = browseNumber;
+    }
+
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 }
