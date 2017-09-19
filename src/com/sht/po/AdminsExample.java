@@ -1,5 +1,6 @@
 package com.sht.po;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -355,52 +356,52 @@ public class AdminsExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Double value) {
+        public Criteria andStatusEqualTo(BigDecimal value) {
             addCriterion("STATUS =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Double value) {
+        public Criteria andStatusNotEqualTo(BigDecimal value) {
             addCriterion("STATUS <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Double value) {
+        public Criteria andStatusGreaterThan(BigDecimal value) {
             addCriterion("STATUS >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Double value) {
+        public Criteria andStatusGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("STATUS >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Double value) {
+        public Criteria andStatusLessThan(BigDecimal value) {
             addCriterion("STATUS <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Double value) {
+        public Criteria andStatusLessThanOrEqualTo(BigDecimal value) {
             addCriterion("STATUS <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Double> values) {
+        public Criteria andStatusIn(List<BigDecimal> values) {
             addCriterion("STATUS in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Double> values) {
+        public Criteria andStatusNotIn(List<BigDecimal> values) {
             addCriterion("STATUS not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Double value1, Double value2) {
+        public Criteria andStatusBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("STATUS between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Double value1, Double value2) {
+        public Criteria andStatusNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("STATUS not between", value1, value2, "status");
             return (Criteria) this;
         }
@@ -522,6 +523,66 @@ public class AdminsExample {
 
         public Criteria andCreatorNotBetween(Object value1, Object value2) {
             addCriterion("CREATOR not between", value1, value2, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeIsNull() {
+            addCriterion("THEME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeIsNotNull() {
+            addCriterion("THEME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeEqualTo(Object value) {
+            addCriterion("THEME =", value, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeNotEqualTo(Object value) {
+            addCriterion("THEME <>", value, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeGreaterThan(Object value) {
+            addCriterion("THEME >", value, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeGreaterThanOrEqualTo(Object value) {
+            addCriterion("THEME >=", value, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeLessThan(Object value) {
+            addCriterion("THEME <", value, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeLessThanOrEqualTo(Object value) {
+            addCriterion("THEME <=", value, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeIn(List<Object> values) {
+            addCriterion("THEME in", values, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeNotIn(List<Object> values) {
+            addCriterion("THEME not in", values, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeBetween(Object value1, Object value2) {
+            addCriterion("THEME between", value1, value2, "theme");
+            return (Criteria) this;
+        }
+
+        public Criteria andThemeNotBetween(Object value1, Object value2) {
+            addCriterion("THEME not between", value1, value2, "theme");
             return (Criteria) this;
         }
     }
