@@ -70,6 +70,15 @@ public interface Static {
 		 * 
 		 */
 		static final String FILED_SRC_GOODS_IMGS = "config.src.goods.imgs";
+		
+		/**
+		 * 用户头像尺寸版本字段
+		 */
+		static final String FILED_USERS_HEADINGS_SIZES = "config.users.headimgs.sizes";
+		/**
+		 * 商品图片尺寸版本字段
+		 */
+		static final String FILED_GOODS_IMGS_SIZES = "config.goods.imgs.sizes";
 	}
 	
 	

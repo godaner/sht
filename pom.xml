@@ -201,6 +201,13 @@
 			<version>1.4.7</version>
 		</dependency>
 		<!-- 邮件 end --> 
+		<!-- 图片压缩 start --> 
+		<dependency>
+		   <groupId>net.coobird</groupId>
+		   <artifactId>thumbnailator</artifactId>
+		   <version>0.4.8</version>
+		</dependency>
+		<!-- 图片压缩 end -->
 		<!-- 其他 jar end -->
 	</dependencies>
 	<!-- 依赖配置 end -->
