@@ -87,6 +87,10 @@ public interface Static {
 		 * 商品图片類型字段
 		 */
 		static final String FILED_GOODS_IMGS_TYPES = "config.goods.imgs.types";
+		/**
+		 * 用户默认头像字段字
+		 */
+		static final String FILED_USERS_HEADIMGS_DEFAULT = "config.users.headimgs.default";
 	}
 	
 	
