@@ -2,11 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.users.mapper.CustomUsersMapper">
 	<select id="selectUserByUsername" parameterType="string" resultType="com.sht.users.po.CustomUsers">
-		SELECT * FROM USERS WHERE USERNAME=#{USERNAME}
+		
+		SELECT * FROM USERS WHERE USERNAME=#{USERNAME} AND STATUS = 1
 		
 	</select>
 	
 	<insert id="insertUser" parameterType="com.sht.users.po.CustomUsers">
-		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime}) 
+	
+		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME,STATUS,BIRTHDAY,DESCRIPTION,HEADIMG) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime},#{status},#{birthday},#{description},#{headimg}) 
+	
 	</insert>
+	
+	<update id="updateStatusByEmail" parameterType="string">
+	
+		UPDATE USERS SET STATUS = '1' WHERE EMAIL = #{email}
+	
+	</update>
 </mapper>

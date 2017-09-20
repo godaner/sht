@@ -1,5 +1,7 @@
 ﻿package com.sht.users.action;
 
+import java.util.UUID;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -20,6 +22,8 @@ import com.sht.users.service.UsersServiceI;
 @Controller
 public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 
+	
+	
 	/**
 	 * 
 	 * Title:login
@@ -35,6 +39,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	public void login() throws Exception{
 		logger.info("UserAction");
 		try{
+			
 			po = service.login(po);
 			
 			setSessionAttr(FILED_ONLINE_USER, po);
@@ -51,7 +56,27 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		writeJSON(po);
 		
 	}
+	/**
+	 * 获取验证码
+	 */
+	public void getVC() throws Exception{
+		try{
+			vc.createCode();
+			
+			vc.write(getResponse().getOutputStream());
 
+			setSessionAttr("vc", vc.getCode());
+			
+			logger.info(vc.getCode());
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+			
+		}
+		
+		
+	}
 	/**
 	 * Title:regist
 	 * <p>
@@ -63,10 +88,17 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 * @return
 	 * @throws Exception
 	 */
-	public String regist() throws Exception{
+	public void regist() throws Exception{
 		try{
-
+			eject(!po.getCode().equals(getSessionAttr("vc")), "验证码错误");
+			
 			service.regist(po);
+			
+			String uuid = UUID.randomUUID().toString();
+			
+			String conetnt = "<a href='http://localhost/sht/users/verifyEmail.action?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
+			
+			email.sendMessage(po.getEmail(), "二手交易市场邮箱验证", conetnt);
 			
 		}catch(Exception e){
 			
@@ -74,12 +106,11 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			
 			po.setMsg(e.getMessage());
 			
-			return "fRegist";
 		}
 		
-		return "fLogin";
+			//返回一个json的数据
+			writeJSON(po);
 	}
-	
 	/**
 	 * Title:logout
 	 * <p>
@@ -102,4 +133,21 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		return "fLogin";
 	}
 	
+	/**
+	 * 
+	 * 邮箱验证
+	 */
+	 public void verifyEmail() throws Exception{
+		 
+		 logger.info("verifyEmail");
+		 logger.info("这里是邮箱验证");
+		 
+		 try {
+			 String email = po.getEmail();
+			service.verifyEmail(email);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
 }

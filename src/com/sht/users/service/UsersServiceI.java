@@ -39,7 +39,7 @@ public interface UsersServiceI {
 	 * @throws Exception
 	 */
 	public void regist(CustomUsers po) throws Exception;
-	
-	
-	
+
+	public void verifyEmail(String email) throws Exception;
+
 }
