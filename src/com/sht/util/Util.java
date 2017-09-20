@@ -24,9 +24,14 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.coobird.thumbnailator.Thumbnails;
+
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
  * Title:Util
@@ -56,6 +61,52 @@ public class Util extends ClasssPathProps {
 	 */
 	public final static ValidateCode vc = new ValidateCode(160, 40, 5, 150);
 
+	
+	
+	/**
+	 * 
+	 * Title:compressImg
+	 * <p>
+	 * Description:按比例缩放图片;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午1:54:30
+	 * @version 1.0
+	 * @param source	待压缩图片;
+	 * @param scale	缩放比例:double类型;宽高同时缩放;1.0代表原比例;
+	 * @param os	压缩后的图片;
+	 */
+	public void compressImg(File source,File target,Double scale){
+		try {
+			Thumbnails.of(source).scale(scale).toFile(target);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * Title:compressImg
+	 * <p>
+	 * Description:压缩图片;遵循原图宽高比例
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午2:00:17
+	 * @version 1.0
+	 * @param source	待压缩图片;
+	 * @param target	压缩后的图片;
+	 * @param width		压缩后的宽;
+	 */
+	public void compressImg(File source,File target,Integer width){
+		try {
+			Thumbnails.of(source).width(width)   
+		    .keepAspectRatio(true).toFile(target);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	/**
 	 * Title:info
 	 * <p>
@@ -193,6 +244,55 @@ public class Util extends ClasssPathProps {
 			closeStream(in, os);
 		}
 		
+	}
+	/**
+	 * 
+	 * Title:multipartFile2File
+	 * <p>
+	 * Description:获取multipartFile2File中的file
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午2:58:59
+	 * @version 1.0
+	 * @param file
+	 * @return
+	 */
+	public File multipartFile2File(MultipartFile file){
+		CommonsMultipartFile cf= (CommonsMultipartFile)file; //这个myfile是MultipartFile的
+	    DiskFileItem fi = (DiskFileItem)cf.getFileItem(); 
+	    return fi.getStoreLocation(); 
+	}
+	
+	
+	
+	
+	/**
+	 * Title:
+	 * <p>
+	 * Description:将原图片压缩成多个版本的压缩图片,保存到指定目录;<br/>
+	 * 宽高比在压缩的过程中不变;<br/>
+	 * 如果源文件名为:a.png,压缩后根据版本会产生名为40_a.png,80_a.png,200_a.png的多个文件;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午2:28:11
+	 * @version 1.0
+	 * @param sourceFile	待压缩文件;
+	 * @param versions	压缩版本:40,80,200;宽分别为40,80,200的图片;宽高比不变;
+	 * @param savePath	文件保存路径,如:d:\floder\
+	 * @param fileName	文件名,如:a.jpg
+	 */
+	public void writeFileWithCompress(File sourceFile, String versions,
+			String savePath, String fileName) {
+		String[] widthStrs = versions.split(",");
+
+		for (String widthStr : widthStrs) {
+			Integer width = Integer.valueOf(widthStr);
+
+			File targetFile = new File(savePath + widthStr + "_" + fileName);
+
+			compressImg(sourceFile, targetFile, width);
+		}
+
 	}
 	/**
 	 * 写入文件到本地磁盘
