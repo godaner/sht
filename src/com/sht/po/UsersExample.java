@@ -1,5 +1,6 @@
 package com.sht.po;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -655,52 +656,52 @@ public class UsersExample {
             return (Criteria) this;
         }
 
-        public Criteria andScoreEqualTo(Double value) {
+        public Criteria andScoreEqualTo(BigDecimal value) {
             addCriterion("SCORE =", value, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotEqualTo(Double value) {
+        public Criteria andScoreNotEqualTo(BigDecimal value) {
             addCriterion("SCORE <>", value, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreGreaterThan(Double value) {
+        public Criteria andScoreGreaterThan(BigDecimal value) {
             addCriterion("SCORE >", value, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreGreaterThanOrEqualTo(Double value) {
+        public Criteria andScoreGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("SCORE >=", value, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreLessThan(Double value) {
+        public Criteria andScoreLessThan(BigDecimal value) {
             addCriterion("SCORE <", value, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreLessThanOrEqualTo(Double value) {
+        public Criteria andScoreLessThanOrEqualTo(BigDecimal value) {
             addCriterion("SCORE <=", value, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreIn(List<Double> values) {
+        public Criteria andScoreIn(List<BigDecimal> values) {
             addCriterion("SCORE in", values, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotIn(List<Double> values) {
+        public Criteria andScoreNotIn(List<BigDecimal> values) {
             addCriterion("SCORE not in", values, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreBetween(Double value1, Double value2) {
+        public Criteria andScoreBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("SCORE between", value1, value2, "score");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotBetween(Double value1, Double value2) {
+        public Criteria andScoreNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("SCORE not between", value1, value2, "score");
             return (Criteria) this;
         }

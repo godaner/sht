@@ -1,5 +1,6 @@
 package com.sht.po;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -234,52 +235,52 @@ public class AddrsExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegionEqualTo(Double value) {
+        public Criteria andRegionEqualTo(BigDecimal value) {
             addCriterion("REGION =", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNotEqualTo(Double value) {
+        public Criteria andRegionNotEqualTo(BigDecimal value) {
             addCriterion("REGION <>", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionGreaterThan(Double value) {
+        public Criteria andRegionGreaterThan(BigDecimal value) {
             addCriterion("REGION >", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionGreaterThanOrEqualTo(Double value) {
+        public Criteria andRegionGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("REGION >=", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLessThan(Double value) {
+        public Criteria andRegionLessThan(BigDecimal value) {
             addCriterion("REGION <", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLessThanOrEqualTo(Double value) {
+        public Criteria andRegionLessThanOrEqualTo(BigDecimal value) {
             addCriterion("REGION <=", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIn(List<Double> values) {
+        public Criteria andRegionIn(List<BigDecimal> values) {
             addCriterion("REGION in", values, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNotIn(List<Double> values) {
+        public Criteria andRegionNotIn(List<BigDecimal> values) {
             addCriterion("REGION not in", values, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionBetween(Double value1, Double value2) {
+        public Criteria andRegionBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("REGION between", value1, value2, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNotBetween(Double value1, Double value2) {
+        public Criteria andRegionNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("REGION not between", value1, value2, "region");
             return (Criteria) this;
         }

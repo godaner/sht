@@ -1,6 +1,5 @@
 package com.sht.po;
 
-
 public class Addrs {
     private String id;
 
