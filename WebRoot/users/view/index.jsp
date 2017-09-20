@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="./base.jsp"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +15,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="./commonTitle.html"%>
 	${onlineUser.username}
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
@@ -69,7 +66,6 @@
 		<!--注册框结束-->
 		<!-- 获取项目地址 -->
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
-<%@include file="./commonFooter.html"%>
 </body>
 
 </html>
