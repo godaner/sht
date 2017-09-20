@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.Goods">
+    <id column="ID" jdbcType="OTHER" property="id" />
+    <result column="TITLE" jdbcType="OTHER" property="title" />
+    <result column="DESCRIPTION" jdbcType="OTHER" property="description" />
+    <result column="SPRICE" jdbcType="DECIMAL" property="sprice" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="CONDITION" jdbcType="DECIMAL" property="condition" />
+    <result column="REGION" jdbcType="DECIMAL" property="region" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="OWNER" jdbcType="OTHER" property="owner" />
+    <result column="BUYER" jdbcType="OTHER" property="buyer" />
+    <result column="BROWSE_NUMBER" jdbcType="DECIMAL" property="browseNumber" />
+    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, 
+    BUYER, BROWSE_NUMBER, LAST_UPDATE_TIME
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.GoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from GOODS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GOODS
+    where ID = #{id,jdbcType=OTHER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
+    delete from GOODS
+    where ID = #{id,jdbcType=OTHER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.GoodsExample">
+    delete from GOODS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.Goods">
+    insert into GOODS (ID, TITLE, DESCRIPTION, 
+      SPRICE, PRICE, CONDITION, 
+      REGION, STATUS, CREATETIME, 
+      OWNER, BUYER, BROWSE_NUMBER, 
+      LAST_UPDATE_TIME)
+    values (#{id,jdbcType=OTHER}, #{title,jdbcType=OTHER}, #{description,jdbcType=OTHER}, 
+      #{sprice,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{condition,jdbcType=DECIMAL}, 
+      #{region,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{owner,jdbcType=OTHER}, #{buyer,jdbcType=OTHER}, #{browseNumber,jdbcType=DECIMAL}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.Goods">
+    insert into GOODS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="sprice != null">
+        SPRICE,
+      </if>
+      <if test="price != null">
+        PRICE,
+      </if>
+      <if test="condition != null">
+        CONDITION,
+      </if>
+      <if test="region != null">
+        REGION,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="owner != null">
+        OWNER,
+      </if>
+      <if test="buyer != null">
+        BUYER,
+      </if>
+      <if test="browseNumber != null">
+        BROWSE_NUMBER,
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=OTHER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=OTHER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=OTHER},
+      </if>
+      <if test="sprice != null">
+        #{sprice,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="condition != null">
+        #{condition,jdbcType=DECIMAL},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=OTHER},
+      </if>
+      <if test="buyer != null">
+        #{buyer,jdbcType=OTHER},
+      </if>
+      <if test="browseNumber != null">
+        #{browseNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.GoodsExample" resultType="java.lang.Long">
+    select count(*) from GOODS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update GOODS
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=OTHER},
+      </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=OTHER},
+      </if>
+      <if test="record.description != null">
+        DESCRIPTION = #{record.description,jdbcType=OTHER},
+      </if>
+      <if test="record.sprice != null">
+        SPRICE = #{record.sprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price != null">
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.condition != null">
+        CONDITION = #{record.condition,jdbcType=DECIMAL},
+      </if>
+      <if test="record.region != null">
+        REGION = #{record.region,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.owner != null">
+        OWNER = #{record.owner,jdbcType=OTHER},
+      </if>
+      <if test="record.buyer != null">
+        BUYER = #{record.buyer,jdbcType=OTHER},
+      </if>
+      <if test="record.browseNumber != null">
+        BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update GOODS
+    set ID = #{record.id,jdbcType=OTHER},
+      TITLE = #{record.title,jdbcType=OTHER},
+      DESCRIPTION = #{record.description,jdbcType=OTHER},
+      SPRICE = #{record.sprice,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      CONDITION = #{record.condition,jdbcType=DECIMAL},
+      REGION = #{record.region,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      OWNER = #{record.owner,jdbcType=OTHER},
+      BUYER = #{record.buyer,jdbcType=OTHER},
+      BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
+      LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Goods">
+    update GOODS
+    <set>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=OTHER},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=OTHER},
+      </if>
+      <if test="sprice != null">
+        SPRICE = #{sprice,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null">
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="condition != null">
+        CONDITION = #{condition,jdbcType=DECIMAL},
+      </if>
+      <if test="region != null">
+        REGION = #{region,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="owner != null">
+        OWNER = #{owner,jdbcType=OTHER},
+      </if>
+      <if test="buyer != null">
+        BUYER = #{buyer,jdbcType=OTHER},
+      </if>
+      <if test="browseNumber != null">
+        BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=OTHER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.Goods">
+    update GOODS
+    set TITLE = #{title,jdbcType=OTHER},
+      DESCRIPTION = #{description,jdbcType=OTHER},
+      SPRICE = #{sprice,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      CONDITION = #{condition,jdbcType=DECIMAL},
+      REGION = #{region,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      OWNER = #{owner,jdbcType=OTHER},
+      BUYER = #{buyer,jdbcType=OTHER},
+      BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=OTHER}
+  </update>
+</mapper>
