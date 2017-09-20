@@ -290,6 +290,7 @@ public class ActionUtil extends Util{
 	 * @param name
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T getRequestAttr(String name) {
 
 		try {
@@ -306,6 +307,7 @@ public class ActionUtil extends Util{
 	 * @param name
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T getRequestParam(String name) {
 
 		try {

@@ -2,9 +2,7 @@ package com.sht.mapper;
 
 import com.sht.po.Users;
 import com.sht.po.UsersExample;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface UsersMapper {
@@ -29,5 +27,4 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
-
 }
