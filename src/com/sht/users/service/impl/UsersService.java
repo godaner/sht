@@ -1,10 +1,7 @@
 ﻿package com.sht.users.service.impl;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
-
-import javax.mail.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +10,6 @@ import com.sht.mapper.UsersMapper;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
-import com.sht.util.ValidateCode;
 /**
  * Title:UsersService
  * <p>
@@ -38,6 +34,9 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		logger.info("UserService");
 		//判断用户是否存在
+		if(dbUser==null){
+			dbUser = customUsersMapper.selectUserByEmail((String) po.getEmail());
+		}
 		
 		eject(dbUser == null, "用户不存在");
 		
@@ -51,11 +50,15 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	@Override
 	public void regist(CustomUsers po) throws Exception {
 		
-		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
+		CustomUsers dbUser = customUsersMapper.selectUserByUsername_reg((String) po.getUsername());
 		
+		if(dbUser==null){
+			dbUser = customUsersMapper.selectUserByEmail_reg((String) po.getEmail());
+		}
 		//用户名相同
 		eject(null!=dbUser && dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
+		//邮箱相同
 		eject(null!=dbUser && dbUser.getEmail().equals(po.getEmail()), "邮箱已存在");
 		
 		po.setId(UUID.randomUUID().toString());
@@ -74,11 +77,13 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 		po.setSex(Short.valueOf("1"));
 		
-		po.setStatus(Short.valueOf("0"));
+		po.setStatus(Short.valueOf("-2"));
 		
 		po.setHeadimg("");
 		
 		po.setScore(1d);
+		
+		po.setMoney(Double.valueOf("0"));
 		
 		usersMapper.insert(po);
 		

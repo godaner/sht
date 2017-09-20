@@ -19,3 +19,10 @@ COMMENT ON COLUMN users.MONEY
 IS '用户余额'
 
 
+
+/**
+ * 时间:11:11
+ */
+/*更正users表的错误额度外键约束SHT.USERS_FK_HEADIMG*/
+ALTER TABLE USERS DROP CONSTRAINT USERS_FK_HEADIMG;
+

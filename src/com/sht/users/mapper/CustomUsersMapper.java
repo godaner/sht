@@ -15,7 +15,7 @@ public interface CustomUsersMapper {
 	/**
 	 * Title:selectUserByUsername
 	 * <p>
-	 * Description:通过username查询一个user;
+	 * Description:通过username查询一个user（登陆）;
 	 * <p>
 	 * @author Kor_Zhang
 	 * @date 2017年9月12日 上午11:30:29
@@ -26,6 +26,23 @@ public interface CustomUsersMapper {
 	public CustomUsers selectUserByUsername(String username);
 	
 	/**
+	 * 根据email查询一个user（登陆）
+	 * 
+	 */
+	public CustomUsers selectUserByEmail(String email);
+	
+	/**
+	 * 根据username查询一个user（注册）
+	 * 
+	 */
+	public CustomUsers selectUserByUsername_reg(String email);
+	/**
+	 * 根据email查询一个user（注册）
+	 * 
+	 */
+	public CustomUsers selectUserByEmail_reg(String email);
+	
+	/**
 	 * 增加一个user
 	 */
 	public CustomUsers insertUser(CustomUsers po);
@@ -34,4 +51,6 @@ public interface CustomUsersMapper {
 	 * @param email:根据email激活账户
 	 */
 	public void updateStatusByEmail(String email);
+
+	
 }
