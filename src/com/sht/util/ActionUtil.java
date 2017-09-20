@@ -40,7 +40,7 @@ public class ActionUtil extends Util{
 	 * @return
 	 */
 	public String getWebAddr(){
-		String addr = (String) getValue(Static.FIELD_WEB_ADDR);
+		String addr = (String) getValue(Static.CONFIG.FIELD_WEB_ADDR);
 		
 		String projectName = getRequest().getContextPath();
 
