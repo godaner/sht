@@ -18,7 +18,7 @@ public interface Static {
 	 * request中存放在线用户的信息的字段
 	 */
 	public static final String FILED_ONLINE_USER = "onlineUser";
-	
+
 	
 	
 	/**
@@ -59,7 +59,11 @@ public interface Static {
 		/**
 		 * 存放网站地址字段
 		 */
-		String FIELD_WEB_ADDR = "config.webaddr";
+		static final String FIELD_WEB_ADDR = "config.webaddr";
+		/**
+		 * 存放资源的路径的字段
+		 */
+		static final String FILED_SRC_PATH = "config.srcPath";
 	}
 	
 	
@@ -76,16 +80,16 @@ public interface Static {
 	public interface REG{
 		
 		//邮箱
-		String EMAIL = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+$";
+		static final String EMAIL = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+$";
 		
 		//密码
-		String PASSWORD = "^[a-zA-Z]\\w{5,12}$";
+		static final String PASSWORD = "^[a-zA-Z]\\w{5,12}$";
 		
 		//用户名
-		String USERNAME = "^[A-Za-z][A-Za-z1-9_-]{5,20}$";
+		static final String USERNAME = "^[A-Za-z][A-Za-z1-9_-]{5,20}$";
 		
 		//邮编
-		String POST_CODE = "^[1-9]\\d{5}$";
+		static final String POST_CODE = "^[1-9]\\d{5}$";
 	}
 	
 }
