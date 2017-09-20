@@ -145,7 +145,55 @@ public class Util extends ClasssPathProps {
 	public static void eject(String msg) throws Exception {
 		throw new Exception(msg);
 	}
+	/**
+	 * Title:writeFileToOS
+	 * <p>
+	 * Description:将文件写入输出流
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 上午10:29:56
+	 * @version 1.0
+	 * @param os
+	 */
+	public static void writeFileToOS(String filePath,OutputStream os){
+		
+		writeFileToOS(new File(filePath), os);
+		
+	}
+	
+	/**
+	 * Title:writeFileToOS
+	 * <p>
+	 * Description:将文件写入输出流
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 上午10:29:56
+	 * @version 1.0
+	 * @param os
+	 */
+	public static void writeFileToOS(File file,OutputStream os){
+		
+		FileInputStream in = null;
+		
+		byte[] bytes = new byte[1024];
+		
+		int len = 0;
+		
+		try {
+			
+			in = new FileInputStream(file);
 
+			while ((len = in.read(bytes)) != -1) {
+				os.write(bytes, 0, len);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			closeStream(in, os);
+		}
+		
+	}
 	/**
 	 * 写入文件到本地磁盘
 	 * 
