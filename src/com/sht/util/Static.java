@@ -18,10 +18,49 @@ public interface Static {
 	 * request中存放在线用户的信息的字段
 	 */
 	public static final String FILED_ONLINE_USER = "onlineUser";
+	
+	
+	
 	/**
-	 * 存放网站地址
+	 * Title:USERS
+	 * <p>
+	 * Description:users模块常量字段;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 上午7:58:55
+	 * @version 1.0
 	 */
-	public final static String FIELD_WEB_ADDR = "webaddr";
+	public interface USERS{
+		
+	}
+	/**
+	 * Title:GOODS
+	 * <p>
+	 * Description:goods模块常量字段;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 上午7:58:57
+	 * @version 1.0
+	 */
+	public interface GOODS{
+		
+	}
+	
+	/**
+	 * Title:CONFIG
+	 * <p>
+	 * Description:condig文件中的key常量字段;
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 上午7:57:57
+	 * @version 1.0
+	 */
+	public interface CONFIG{
+		/**
+		 * 存放网站地址字段
+		 */
+		String FIELD_WEB_ADDR = "config.webaddr";
+	}
 	
 	
 	/**

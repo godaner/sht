@@ -16,7 +16,6 @@ import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.opensymphony.xwork2.ActionContext;
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -40,7 +39,7 @@ public class ActionUtil extends Util{
 	 * @return
 	 */
 	public String getWebAddr(){
-		String addr = (String) getValue(Static.FIELD_WEB_ADDR);
+		String addr = (String) getValue(Static.CONFIG.FIELD_WEB_ADDR);
 		
 		String projectName = getRequest().getContextPath();
 
