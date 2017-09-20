@@ -79,6 +79,14 @@ public interface Static {
 		 * 商品图片尺寸版本字段
 		 */
 		static final String FILED_GOODS_IMGS_SIZES = "config.goods.imgs.sizes";
+		/**
+		 * 用户头像圖片類型字段
+		 */
+		static final String FILED_USERS_HEADINGS_TYPES = "config.users.headimgs.types";
+		/**
+		 * 商品图片類型字段
+		 */
+		static final String FILED_GOODS_IMGS_TYPES = "config.goods.imgs.types";
 	}
 	
 	
