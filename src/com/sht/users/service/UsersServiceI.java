@@ -40,6 +40,6 @@ public interface UsersServiceI {
 	 */
 	public void regist(CustomUsers po) throws Exception;
 
-	public void verifyEmail(String email);
+	public void verifyEmail(String email) throws Exception;
 
 }
