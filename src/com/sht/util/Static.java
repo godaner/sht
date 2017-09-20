@@ -63,7 +63,7 @@ public interface Static {
 		/**
 		 * 存放资源的路径的字段
 		 */
-		static final String FILED_SRC_PATH = "config.srcPath";
+		static final String FILED_SRC_HOME = "config.srcHome";
 	}
 	
 	
