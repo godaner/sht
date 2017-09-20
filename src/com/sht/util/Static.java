@@ -61,9 +61,15 @@ public interface Static {
 		 */
 		static final String FIELD_WEB_ADDR = "config.webaddr";
 		/**
-		 * 存放资源的路径的字段
+		 * 用户头像资源存放路径
+		 * 
 		 */
-		static final String FILED_SRC_HOME = "config.srcHome";
+		static final String FILED_SRC_USERS_HEADIMGS = "config.src.users.heaimgs";
+		/**
+		 * 商品图片资源存放路径
+		 * 
+		 */
+		static final String FILED_SRC_GOODS_IMGS = "config.src.goods.imgs";
 	}
 	
 	
