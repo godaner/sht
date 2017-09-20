@@ -3,13 +3,31 @@
 <mapper namespace="com.sht.users.mapper.CustomUsersMapper">
 	<select id="selectUserByUsername" parameterType="string" resultType="com.sht.users.po.CustomUsers">
 		
-		SELECT * FROM USERS WHERE USERNAME=#{USERNAME} AND STATUS = 1
+		SELECT * FROM USERS WHERE USERNAME=#{username} AND STATUS = 1
+		
+	</select>
+	
+	<select id="selectUserByEmail" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE EMAIL=#{email} AND STATUS = 1
+		
+	</select>
+	
+	<select id="selectUserByUsername_reg" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE USERNAME=#{username} 
+		
+	</select>
+	
+	<select id="selectUserByEmail_reg" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE EMAIL=#{email} 
 		
 	</select>
 	
 	<insert id="insertUser" parameterType="com.sht.users.po.CustomUsers">
 	
-		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME,STATUS,BIRTHDAY,DESCRIPTION,HEADIMG) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime},#{status},#{birthday},#{description},#{headimg}) 
+		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME,STATUS,BIRTHDAY,DESCRIPTION,HEADIMG,MONEY) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime},#{status},#{birthday},#{description},#{headimg},#{money}) 
 	
 	</insert>
 	

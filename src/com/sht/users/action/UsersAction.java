@@ -54,7 +54,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		
 		//返回一个json的数据
 		writeJSON(po);
-		
+		po.setMsg(null);
 	}
 	/**
 	 * 获取验证码
@@ -110,6 +110,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		
 			//返回一个json的数据
 			writeJSON(po);
+			po.setMsg(null);
 	}
 	/**
 	 * Title:logout
@@ -140,7 +141,6 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 public void verifyEmail() throws Exception{
 		 
 		 logger.info("verifyEmail");
-		 logger.info("这里是邮箱验证");
 		 
 		 try {
 			 String email = po.getEmail();
