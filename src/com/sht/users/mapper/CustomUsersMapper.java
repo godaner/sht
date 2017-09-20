@@ -29,4 +29,9 @@ public interface CustomUsersMapper {
 	 * 增加一个user
 	 */
 	public CustomUsers insertUser(CustomUsers po);
+	
+	/**
+	 * @param email:根据email激活账户
+	 */
+	public void updateStatusByEmail(String email);
 }

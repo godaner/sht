@@ -137,10 +137,17 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 * 
 	 * 邮箱验证
 	 */
-	 public void verifyEmail(){
+	 public void verifyEmail() throws Exception{
 		 
 		 logger.info("verifyEmail");
+		 logger.info("这里是邮箱验证");
 		 
-		 service.verifyEmail(po.getEmail());
+		 try {
+			 String email = po.getEmail();
+			service.verifyEmail(email);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	 }
 }

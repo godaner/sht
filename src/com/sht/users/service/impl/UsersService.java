@@ -85,9 +85,9 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	}
 
 	@Override
-	public void verifyEmail(String email) {
+	public void verifyEmail(String email)  throws Exception{
 
-		usersMapper.updateStatusByEmail(email);
+		customUsersMapper.updateStatusByEmail(email);
 		
 	}
 
