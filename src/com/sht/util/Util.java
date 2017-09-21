@@ -148,7 +148,23 @@ public class Util extends ClasssPathProps {
 	public static String uuid() {
 		return UUID.randomUUID().toString();
 	}
-
+	/**
+	 * Title:如果表达式成立,抛出一个不含错误信息的异常;
+	 * <p>
+	 * Description:
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午6:34:14
+	 * @version 1.0
+	 * @param expr
+	 * @param msg
+	 * @throws Exception
+	 */
+	public static void eject(Boolean expr) throws Exception {
+		if (expr) {
+			throw new Exception("");
+		}
+	}
 	/**
 	 * Title:如果表达式成立,抛出一个含错误信息的异常;
 	 * <p>
