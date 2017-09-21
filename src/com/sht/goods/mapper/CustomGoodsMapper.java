@@ -1,5 +1,7 @@
 package com.sht.goods.mapper;
 
+
+
 import com.sht.goods.po.Goods;
 
 
@@ -20,6 +22,9 @@ public interface CustomGoodsMapper {
 	 * <p>
 	 
 	 */
-	public Goods selectAllGoodsInfo();
+
+
+	public List<CustomGoods> selectAllGoodsInfo();
+
 	
 }

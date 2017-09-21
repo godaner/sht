@@ -15,6 +15,8 @@
 <body>
 <%@ include file="commonTitle.jsp"  %>
 
+<input type="hidden" value="${baseUrl}" id="baseUrl"/>
+
 <article>
     <span>个人闲置:</span>
 
@@ -397,4 +399,8 @@
 
 <%@ include file="commonFooter.jsp"  %>
 </body>
+
+<%@include file="../../common/view/visit.jsp"%>
+
+
 </html>

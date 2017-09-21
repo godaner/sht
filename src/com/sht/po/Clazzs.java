@@ -9,7 +9,8 @@ public class Clazzs {
 
     private Double num;
 
-    public Object getId() {
+    public String getId() {
+
         return id;
     }
 

@@ -1,5 +1,8 @@
 package com.sht.goods.service;
 
+
+import java.util.List;
+
 import com.sht.goods.po.CustomGoods;
 
 /**
@@ -26,6 +29,8 @@ public interface GoodsServiceI {
 	 * @return
 	 * @throws Exception 登录成功返回数据库的用户数据
 	 */
-	public CustomGoods dispalyGoodsInfo(CustomGoods po) throws Exception;
+
+	public List<CustomGoods> dispalyGoodsInfo() throws Exception;
+
 	
 }
