@@ -132,4 +132,38 @@ comment on column ADMINS_LOGIN_LOG.TIME
   is '登陆时间';
 comment on column ADMINS_LOGIN_LOG.RESULT
   is '1为登录成功,0为因为登录失败';
+/**
+ * 09:27
+ */
+  /*修改字段browser*/
+ALTER TABLE ADMINS_LOGIN_LOG MODIFY BROWSER NVARCHAR2(255)
+ALTER TABLE USERS_LOGIN_LOG MODIFY BROWSER NVARCHAR2(255)
+ALTER TABLE USERS_LOGIN_LOG MODIFY BROWSER NVARCHAR2(255)
 
+
+
+/**
+ * 11:11
+ */
+/*添加商品种类总数字段*/
+alter table clazzs add(num number default 0 not null );
+
+comment  on  column  clazzs.num is '各个类别商品总数';
+
+/**
+ * 15:21
+ */
+
+/*更新users字段注释*/
+comment on column users.username
+  is '唯一用户名称;如果用户被删除,那么在其username前加上0_;避免干擾管理員對其他賬戶名的修改;';
+comment on column users.EMAIL
+  is '唯一用户邮箱;如果用户被删除,那么在其EMAIL前加上0_;避免干擾管理員對其他賬戶郵箱的修改;';
+
+  
+  
+/**
+ * 17:41
+ */
+ /*增加wander_log的page字段为100长度*/
+alter table wander_log modify page nvarchar2(100)
