@@ -8,7 +8,7 @@ creatReq("http://localhost/sht/common/insertWanderInfo.action");
 
 /**
  * 发送信息到服务器;
- * @param url	http://localhost:8080/sht/common/insertWanderInfo.action
+ * @param url	http://localhost/sht/common/insertWanderInfo.action
  */
 function creatReq(url) {
     // 后台处理的文件地址，注意，必须把这个文件的前台页面大部分清空，只留下第一行
