@@ -1,5 +1,6 @@
 package com.sht.po;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -221,6 +222,66 @@ public class ClazzsExample {
 
         public Criteria andTextNotBetween(Object value1, Object value2) {
             addCriterion("TEXT not between", value1, value2, "text");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumIsNull() {
+            addCriterion("NUM is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumIsNotNull() {
+            addCriterion("NUM is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumEqualTo(BigDecimal value) {
+            addCriterion("NUM =", value, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumNotEqualTo(BigDecimal value) {
+            addCriterion("NUM <>", value, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumGreaterThan(BigDecimal value) {
+            addCriterion("NUM >", value, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("NUM >=", value, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumLessThan(BigDecimal value) {
+            addCriterion("NUM <", value, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("NUM <=", value, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumIn(List<BigDecimal> values) {
+            addCriterion("NUM in", values, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumNotIn(List<BigDecimal> values) {
+            addCriterion("NUM not in", values, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("NUM between", value1, value2, "num");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("NUM not between", value1, value2, "num");
             return (Criteria) this;
         }
     }

@@ -1,5 +1,7 @@
 package com.sht.goods.mapper;
 
+import com.sht.goods.po.Goods;
+
 
 /**
  * Title:CustomGoodsMapper
@@ -11,4 +13,13 @@ package com.sht.goods.mapper;
  * @version 1.0
  */
 public interface CustomGoodsMapper {
+	/**
+	 * Title:selectAllGoodsInfo
+	 * <p>
+	 * Description:查询所有的商品信息
+	 * <p>
+	 
+	 */
+	public Goods selectAllGoodsInfo();
+	
 }

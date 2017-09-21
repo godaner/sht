@@ -5,9 +5,6 @@
 
 $(function(){
 
-
-
-
     //闲置
     $('.idle').hover(function(){
         console.log('hover');

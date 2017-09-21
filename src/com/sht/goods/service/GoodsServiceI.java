@@ -1,5 +1,6 @@
 package com.sht.goods.service;
 
+import com.sht.goods.po.CustomGoods;
 
 /**
  * Title:GoodsServiceI
@@ -11,5 +12,20 @@ package com.sht.goods.service;
  * @version 1.0
  */
 public interface GoodsServiceI {
+	
+	/**
+	 * 
+	 * Title:displayGoodsInfo
+	 * <p>
+	 * Description:Display the goods' first page information
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月12日 下午6:22:34
+	 * @version 1.0
+	 * @param po
+	 * @return
+	 * @throws Exception 登录成功返回数据库的用户数据
+	 */
+	public CustomGoods dispalyGoodsInfo(CustomGoods po) throws Exception;
 	
 }
