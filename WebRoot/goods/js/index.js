@@ -122,13 +122,15 @@ $(function () {
 
 
 $(function(){
+	
 	var baseUrl = $('#baseUrl').val();
+	//location.href = "http://localhost/sht/goods/showInfo.action";//location.href实现客户端页面的跳转  
 	console.log(baseUrl);
 	$.ajax({
 		type : "post",  //请求方式,get,post等
 	    dataType:'json',//response返回数据的格式
 	    async : true,  //同步请求  
-	    url : baseUrl+"/goods/showInfo.action",  //需要访问的地址
+	    url : "http://localhost"+baseUrl+"/goods/showInfo.action",  //需要访问的地址
 		success:function(data){
 			console.log("访问成功!");
 			setData(data);
