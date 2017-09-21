@@ -1,6 +1,8 @@
 package com.sht.goods.service.impl;
 
+
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +32,14 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	
 	
 	@Override
+
 	public List<CustomGoods> dispalyGoodsInfo() throws Exception {
 		List<CustomGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo();
 		logger.info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
 		
 		return dbGoods;
+
 	}
 	
 	

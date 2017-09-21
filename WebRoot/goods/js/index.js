@@ -122,7 +122,7 @@ $(function () {
 
 
 $(function(){
-	
+
 	var baseUrl = $('#baseUrl').val();
 
 	console.log(baseUrl);
