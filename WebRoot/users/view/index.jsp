@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../js/login.js"></script>
-<script type="text/javascript" src="../js/register.js"></script>
-<script type="text/javascript" src="../js/jquerySession.js"></script>
-<link rel="stylesheet" href="../css/login_style.css">
-<link rel="stylesheet" href="../css/register_style.css">
+<script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/login.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/register.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/jquerySession.js"></script>
+<link rel="stylesheet" href="${baseUrl}/users/css/login_style.css">
+<link rel="stylesheet" href="${baseUrl}/users/css/register_style.css">
 <title>Insert title here</title>
 </head>
 <body>
