@@ -4,10 +4,17 @@
   <resultMap id="BaseResultMap" type="com.sht.po.Users">
     <id column="ID" jdbcType="OTHER" property="id" />
     <result column="USERNAME" jdbcType="OTHER" property="username" />
+    <result column="EMAIL" jdbcType="OTHER" property="email" />
     <result column="PASSWORD" jdbcType="OTHER" property="password" />
     <result column="SALT" jdbcType="OTHER" property="salt" />
-    <result column="LOCKED" jdbcType="CHAR" property="locked" />
-    <result column="ISDELETE" jdbcType="CHAR" property="isdelete" />
+    <result column="HEADIMG" jdbcType="OTHER" property="headimg" />
+    <result column="SEX" jdbcType="DECIMAL" property="sex" />
+    <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="DESCRIPTION" jdbcType="OTHER" property="description" />
+    <result column="SCORE" jdbcType="DECIMAL" property="score" />
+    <result column="REGISTTIME" jdbcType="TIMESTAMP" property="registtime" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="MONEY" jdbcType="DECIMAL" property="money" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, USERNAME, PASSWORD, SALT, LOCKED, ISDELETE
+    ID, USERNAME, EMAIL, PASSWORD, SALT, HEADIMG, SEX, BIRTHDAY, DESCRIPTION, SCORE, 
+    REGISTTIME, STATUS, MONEY
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.UsersExample" resultMap="BaseResultMap">
     select
@@ -101,10 +109,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Users">
-    insert into USERS (ID, USERNAME, PASSWORD, 
-      SALT, LOCKED, ISDELETE)
-    values (#{id,jdbcType=OTHER}, #{username,jdbcType=OTHER}, #{password,jdbcType=OTHER}, 
-      #{salt,jdbcType=OTHER}, #{locked,jdbcType=CHAR}, #{isdelete,jdbcType=CHAR})
+    insert into USERS (ID, USERNAME, EMAIL, 
+      PASSWORD, SALT, HEADIMG, 
+      SEX, BIRTHDAY, DESCRIPTION, 
+      SCORE, REGISTTIME, STATUS, 
+      MONEY)
+    values (#{id,jdbcType=OTHER}, #{username,jdbcType=OTHER}, #{email,jdbcType=OTHER}, 
+      #{password,jdbcType=OTHER}, #{salt,jdbcType=OTHER}, #{headimg,jdbcType=OTHER}, 
+      #{sex,jdbcType=DECIMAL}, #{birthday,jdbcType=TIMESTAMP}, #{description,jdbcType=OTHER}, 
+      #{score,jdbcType=DECIMAL}, #{registtime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, 
+      #{money,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Users">
     insert into USERS
@@ -115,17 +129,38 @@
       <if test="username != null">
         USERNAME,
       </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
       <if test="password != null">
         PASSWORD,
       </if>
       <if test="salt != null">
         SALT,
       </if>
-      <if test="locked != null">
-        LOCKED,
+      <if test="headimg != null">
+        HEADIMG,
       </if>
-      <if test="isdelete != null">
-        ISDELETE,
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+      <if test="registtime != null">
+        REGISTTIME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="money != null">
+        MONEY,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -135,17 +170,38 @@
       <if test="username != null">
         #{username,jdbcType=OTHER},
       </if>
+      <if test="email != null">
+        #{email,jdbcType=OTHER},
+      </if>
       <if test="password != null">
         #{password,jdbcType=OTHER},
       </if>
       <if test="salt != null">
         #{salt,jdbcType=OTHER},
       </if>
-      <if test="locked != null">
-        #{locked,jdbcType=CHAR},
+      <if test="headimg != null">
+        #{headimg,jdbcType=OTHER},
       </if>
-      <if test="isdelete != null">
-        #{isdelete,jdbcType=CHAR},
+      <if test="sex != null">
+        #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=OTHER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="registtime != null">
+        #{registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -164,17 +220,38 @@
       <if test="record.username != null">
         USERNAME = #{record.username,jdbcType=OTHER},
       </if>
+      <if test="record.email != null">
+        EMAIL = #{record.email,jdbcType=OTHER},
+      </if>
       <if test="record.password != null">
         PASSWORD = #{record.password,jdbcType=OTHER},
       </if>
       <if test="record.salt != null">
         SALT = #{record.salt,jdbcType=OTHER},
       </if>
-      <if test="record.locked != null">
-        LOCKED = #{record.locked,jdbcType=CHAR},
+      <if test="record.headimg != null">
+        HEADIMG = #{record.headimg,jdbcType=OTHER},
       </if>
-      <if test="record.isdelete != null">
-        ISDELETE = #{record.isdelete,jdbcType=CHAR},
+      <if test="record.sex != null">
+        SEX = #{record.sex,jdbcType=DECIMAL},
+      </if>
+      <if test="record.birthday != null">
+        BIRTHDAY = #{record.birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.description != null">
+        DESCRIPTION = #{record.description,jdbcType=OTHER},
+      </if>
+      <if test="record.score != null">
+        SCORE = #{record.score,jdbcType=DECIMAL},
+      </if>
+      <if test="record.registtime != null">
+        REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.money != null">
+        MONEY = #{record.money,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,10 +262,17 @@
     update USERS
     set ID = #{record.id,jdbcType=OTHER},
       USERNAME = #{record.username,jdbcType=OTHER},
+      EMAIL = #{record.email,jdbcType=OTHER},
       PASSWORD = #{record.password,jdbcType=OTHER},
       SALT = #{record.salt,jdbcType=OTHER},
-      LOCKED = #{record.locked,jdbcType=CHAR},
-      ISDELETE = #{record.isdelete,jdbcType=CHAR}
+      HEADIMG = #{record.headimg,jdbcType=OTHER},
+      SEX = #{record.sex,jdbcType=DECIMAL},
+      BIRTHDAY = #{record.birthday,jdbcType=TIMESTAMP},
+      DESCRIPTION = #{record.description,jdbcType=OTHER},
+      SCORE = #{record.score,jdbcType=DECIMAL},
+      REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      MONEY = #{record.money,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,17 +283,38 @@
       <if test="username != null">
         USERNAME = #{username,jdbcType=OTHER},
       </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=OTHER},
+      </if>
       <if test="password != null">
         PASSWORD = #{password,jdbcType=OTHER},
       </if>
       <if test="salt != null">
         SALT = #{salt,jdbcType=OTHER},
       </if>
-      <if test="locked != null">
-        LOCKED = #{locked,jdbcType=CHAR},
+      <if test="headimg != null">
+        HEADIMG = #{headimg,jdbcType=OTHER},
       </if>
-      <if test="isdelete != null">
-        ISDELETE = #{isdelete,jdbcType=CHAR},
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=OTHER},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="registtime != null">
+        REGISTTIME = #{registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        MONEY = #{money,jdbcType=DECIMAL},
       </if>
     </set>
     where ID = #{id,jdbcType=OTHER}
@@ -217,10 +322,17 @@
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Users">
     update USERS
     set USERNAME = #{username,jdbcType=OTHER},
+      EMAIL = #{email,jdbcType=OTHER},
       PASSWORD = #{password,jdbcType=OTHER},
       SALT = #{salt,jdbcType=OTHER},
-      LOCKED = #{locked,jdbcType=CHAR},
-      ISDELETE = #{isdelete,jdbcType=CHAR}
+      HEADIMG = #{headimg,jdbcType=OTHER},
+      SEX = #{sex,jdbcType=DECIMAL},
+      BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      DESCRIPTION = #{description,jdbcType=OTHER},
+      SCORE = #{score,jdbcType=DECIMAL},
+      REGISTTIME = #{registtime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=DECIMAL},
+      MONEY = #{money,jdbcType=DECIMAL}
     where ID = #{id,jdbcType=OTHER}
   </update>
 </mapper>

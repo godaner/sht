@@ -1,5 +1,6 @@
-package com.sht.users.service.impl;
+﻿package com.sht.users.service.impl;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,41 +30,73 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
 		
-		logger.info("UsersService");
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
-		
+		logger.info("UserService");
 		//判断用户是否存在
+		if(dbUser==null){
+			dbUser = customUsersMapper.selectUserByEmail((String) po.getEmail());
+		}
+		
 		eject(dbUser == null, "用户不存在");
 		
-		
-		//判断密码
-		eject(!dbUser.getPassword().equals(po.getPassword()),"密码错误");
+		/**下面的代码必须不满足上面的条件**/
+		eject(!dbUser.getPassword().equals(md5(po.getPassword() + dbUser.getSalt())), "密码错误");
 		
 		return dbUser;
+		
 	}
 
 	@Override
 	public void regist(CustomUsers po) throws Exception {
 		
-		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
+		CustomUsers dbUser = customUsersMapper.selectUserByUsername_reg((String) po.getUsername());
 		
+		if(dbUser==null){
+			dbUser = customUsersMapper.selectUserByEmail_reg((String) po.getEmail());
+		}
 		//用户名相同
 		eject(null!=dbUser && dbUser.getUsername().equals(po.getUsername()), "用户已存在");
 		
+		//邮箱相同
+		eject(null!=dbUser && dbUser.getEmail().equals(po.getEmail()), "邮箱已存在");
+		
 		po.setId(UUID.randomUUID().toString());
 		
-		po.setIsdelete("0");
+		po.setEmail(po.getEmail());
 		
-		po.setLocked("0");
+		po.setSalt(po.getEmail());
 		
-		po.setSalt("");
+		po.setBirthday(new Date());
+		
+		po.setDescription("good");
+
+		po.setPassword(md5(po.getPassword() + po.getEmail()));
+		
+		po.setRegisttime(new Date());
+		
+		po.setSex(Short.valueOf("1"));
+		
+		po.setStatus(Short.valueOf("-2"));
+		
+		po.setHeadimg("");
+		
+		po.setScore(1d);
+		
+		po.setMoney(Double.valueOf("0"));
 		
 		usersMapper.insert(po);
 		
 	}
-	
 
+	@Override
+	public void verifyEmail(String email)  throws Exception{
+
+		customUsersMapper.updateStatusByEmail(email);
+		
+	}
+
+	
 	
 	
 }

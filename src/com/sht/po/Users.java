@@ -1,17 +1,33 @@
 package com.sht.po;
 
+import java.util.Date;
+
 public class Users {
     private String id;
 
     private String username;
 
+    private String email;
+
     private String password;
 
     private String salt;
 
-    private String locked;
+    private String headimg;
 
-    private String isdelete;
+    private Short sex;
+
+    private Date birthday;
+
+    private String description;
+
+    private Double score;
+
+    private Date registtime;
+
+    private Short status;
+
+    private Double money;
 
     public String getId() {
         return id;
@@ -27,6 +43,14 @@ public class Users {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -45,19 +69,67 @@ public class Users {
         this.salt = salt;
     }
 
-    public String getLocked() {
-        return locked;
+    public String getHeadimg() {
+        return headimg;
     }
 
-    public void setLocked(String locked) {
-        this.locked = locked == null ? null : locked.trim();
+    public void setHeadimg(String headimg) {
+        this.headimg = headimg;
     }
 
-    public String getIsdelete() {
-        return isdelete;
+    public Short getSex() {
+        return sex;
     }
 
-    public void setIsdelete(String isdelete) {
-        this.isdelete = isdelete == null ? null : isdelete.trim();
+    public void setSex(Short sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public Date getRegisttime() {
+        return registtime;
+    }
+
+    public void setRegisttime(Date registtime) {
+        this.registtime = registtime;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
     }
 }

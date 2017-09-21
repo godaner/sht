@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.AdminsMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.Admins">
+    <id column="ID" jdbcType="OTHER" property="id" />
+    <result column="USERNAME" jdbcType="OTHER" property="username" />
+    <result column="PASSWORD" jdbcType="OTHER" property="password" />
+    <result column="SALT" jdbcType="OTHER" property="salt" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CREATOR" jdbcType="OTHER" property="creator" />
+    <result column="THEME" jdbcType="OTHER" property="theme" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, USERNAME, PASSWORD, SALT, STATUS, CREATETIME, CREATOR, THEME
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.AdminsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ADMINS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ADMINS
+    where ID = #{id,jdbcType=OTHER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
+    delete from ADMINS
+    where ID = #{id,jdbcType=OTHER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.AdminsExample">
+    delete from ADMINS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.Admins">
+    insert into ADMINS (ID, USERNAME, PASSWORD, 
+      SALT, STATUS, CREATETIME, 
+      CREATOR, THEME)
+    values (#{id,jdbcType=OTHER}, #{username,jdbcType=OTHER}, #{password,jdbcType=OTHER}, 
+      #{salt,jdbcType=OTHER}, #{status,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=OTHER}, #{theme,jdbcType=OTHER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.Admins">
+    insert into ADMINS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="salt != null">
+        SALT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="theme != null">
+        THEME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=OTHER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=OTHER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=OTHER},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=OTHER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=OTHER},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=OTHER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.AdminsExample" resultType="java.lang.Long">
+    select count(*) from ADMINS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ADMINS
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=OTHER},
+      </if>
+      <if test="record.username != null">
+        USERNAME = #{record.username,jdbcType=OTHER},
+      </if>
+      <if test="record.password != null">
+        PASSWORD = #{record.password,jdbcType=OTHER},
+      </if>
+      <if test="record.salt != null">
+        SALT = #{record.salt,jdbcType=OTHER},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creator != null">
+        CREATOR = #{record.creator,jdbcType=OTHER},
+      </if>
+      <if test="record.theme != null">
+        THEME = #{record.theme,jdbcType=OTHER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ADMINS
+    set ID = #{record.id,jdbcType=OTHER},
+      USERNAME = #{record.username,jdbcType=OTHER},
+      PASSWORD = #{record.password,jdbcType=OTHER},
+      SALT = #{record.salt,jdbcType=OTHER},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      CREATOR = #{record.creator,jdbcType=OTHER},
+      THEME = #{record.theme,jdbcType=OTHER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Admins">
+    update ADMINS
+    <set>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=OTHER},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=OTHER},
+      </if>
+      <if test="salt != null">
+        SALT = #{salt,jdbcType=OTHER},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=OTHER},
+      </if>
+      <if test="theme != null">
+        THEME = #{theme,jdbcType=OTHER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=OTHER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.Admins">
+    update ADMINS
+    set USERNAME = #{username,jdbcType=OTHER},
+      PASSWORD = #{password,jdbcType=OTHER},
+      SALT = #{salt,jdbcType=OTHER},
+      STATUS = #{status,jdbcType=DECIMAL},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      CREATOR = #{creator,jdbcType=OTHER},
+      THEME = #{theme,jdbcType=OTHER}
+    where ID = #{id,jdbcType=OTHER}
+  </update>
+</mapper>

@@ -16,6 +16,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.opensymphony.xwork2.ActionContext;
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -30,7 +31,8 @@ public class ActionUtil extends Util{
 	/**
 	 * Title:getWebAddr
 	 * <p>
-	 * Description:获取本项目网络地址
+	 * Description:获取本项目网络地址;<br/>
+	 * 需要在本项目的类路径的根下保存一个key为webaddr的字段;
 	 * <p>
 	 * @author Kor_Zhang
 	 * @date 2017年9月14日 上午10:18:56
@@ -38,7 +40,7 @@ public class ActionUtil extends Util{
 	 * @return
 	 */
 	public String getWebAddr(){
-		String addr = (String) getValue(Static.FIELD_WEB_ADDR);
+		String addr = (String) getValue(Static.CONFIG.FIELD_WEB_ADDR);
 		
 		String projectName = getRequest().getContextPath();
 
@@ -122,7 +124,13 @@ public class ActionUtil extends Util{
 		PrintWriter pt = null;
 		try {
 			// 获取输出流
-			pt = getResponse().getWriter();
+			/*pt = getResponse().getWriter();
+			getResponse().setCharacterEncoding("UTF-8");  
+			getResponse().setContentType("application/json;charset=utf-8");*/
+			HttpServletResponse response= ServletActionContext.getResponse();
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json;charset=utf-8");
+			pt= response.getWriter();
 			// 序列化对象
 			String json = JSON.toJSONStringWithDateFormat(o,
 					"yyyy-MM-dd HH:mm:ss",
@@ -282,6 +290,7 @@ public class ActionUtil extends Util{
 	 * @param name
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T getRequestAttr(String name) {
 
 		try {
@@ -298,6 +307,7 @@ public class ActionUtil extends Util{
 	 * @param name
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T getRequestParam(String name) {
 
 		try {
