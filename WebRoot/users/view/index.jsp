@@ -15,6 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="../../goods/view/commonTitle.jsp" %>
 	${onlineUser.username}
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
@@ -66,6 +67,7 @@
 		<!--注册框结束-->
 		<!-- 获取项目地址 -->
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
+<%@include file="../../goods/view/commonFooter.jsp"%>
 </body>
 
 </html>

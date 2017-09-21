@@ -1,21 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@include file="./base.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登录</title>
+    <title></title>
+    <link href="${baseUrl }/goods/css/commonFooter.css" rel="stylesheet"/>
 </head>
 <body>
-	${msg}
-	<a href="${baseUrl}/users/view/regist.jsp">去注册</a>
-	${baseUrl}
-	<form method="post" action="${baseUrl}/users/login.action">
-		名称：<input name="username" value="" /> 
-		密码：<input name="password" value="" /> 
-		<input type="submit" value="登录"/>
-	</form>
+<footer>
+
+    <ul>
+        <li>
+            SHT二手交易网站
+        </li>
+        <li>
+            &copy;版权著作
+        </li>
+    </ul>
+</footer>
 </body>
 </html>

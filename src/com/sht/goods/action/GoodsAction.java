@@ -20,5 +20,18 @@ import com.sht.goods.service.impl.GoodsService;
 @Scope("prototype")
 public class GoodsAction extends GBaseAction<CustomGoods,GoodsService> {
 	
+	/**
+	 * Title:login
+	 * <p>
+	 * Description:显示商品主页面信息
+	 * <p>
+	 * 
+	 * @date 2017年9月12日 下午6:24:20
+	 */
+	public void showInfo() throws Exception{
+		logger.info("GoodsAction");
+//		service.
+	}
+	
 	
 }
