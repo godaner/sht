@@ -1,5 +1,7 @@
 package com.sht.goods.action;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -30,7 +32,16 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsService> {
 	 */
 	public void showInfo() throws Exception{
 		logger.info("GoodsAction");
-//		service.
+		List<CustomGoods> goodsList = null;
+		try {
+			goodsList = service.dispalyGoodsInfo();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		//返回一个json的数据
+		writeJSON(goodsList);
+		
 	}
 	
 	
