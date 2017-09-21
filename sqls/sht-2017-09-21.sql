@@ -167,3 +167,21 @@ comment on column users.EMAIL
  */
  /*增加wander_log的page字段为100长度*/
 alter table wander_log modify page nvarchar2(100)
+
+
+
+/**
+ * 18:56
+ */
+/*修改users表的username和email长度;原因:当管理员删除摸个用户时需要在username和email前添加一个uuid_,当前长度不满足,所以添加*/
+ALTER TABLE users MODIFY username NVARCHAR2(255);
+ALTER TABLE users MODIFY email NVARCHAR2(255);
+
+
+/*更新users字段注释*/
+comment on column users.username
+  is '唯一用户名称;如果用户被删除,那么在其username前加上uuid_;避免干擾管理員對其他賬戶名的修改;';
+comment on column users.EMAIL
+  is '唯一用户邮箱;如果用户被删除,那么在其EMAIL前加上uuid_;避免干擾管理員對其他賬戶郵箱的修改;';
+
+  

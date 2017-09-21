@@ -32,6 +32,7 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsService> {
 	 */
 	public void showInfo() throws Exception{
 		logger.info("GoodsAction");
+
 		List<CustomGoods> goodsList = null;
 		try {
 			goodsList = service.dispalyGoodsInfo();
@@ -41,7 +42,7 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsService> {
 		
 		//返回一个json的数据
 		writeJSON(goodsList);
-		
+
 	}
 	
 	

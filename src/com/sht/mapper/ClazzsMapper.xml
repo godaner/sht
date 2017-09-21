@@ -5,6 +5,7 @@
     <id column="ID" jdbcType="OTHER" property="id" />
     <result column="TEXT" jdbcType="OTHER" property="text" />
     <result column="NUM" jdbcType="DECIMAL" property="num" />
+
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
