@@ -243,7 +243,7 @@
             </div>
 
             <div class="trading_item_info">
-                <ul>16   64   200  30
+                <ul>
                     <li>
                         <div class="trading_info_title">
                             <img src="goods/img/content_icon.png" title="xxxxxxxx"/>

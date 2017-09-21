@@ -29,41 +29,7 @@ $(function () {
 
     });
 
-   /* //闲置
-     $('.idle').hover(function(){
-     $('.idle>img').attr('src','../img/up_black.png');
-     $('.idle_down').show();
-     },function(){
-     $('.idle>img').attr('src','../img/down_black.png');
-     $('.idle_down').hide();
-     });*/
 
-
-   /* //显示我的店铺下拉列表信息
-    $('#myShop').hover(function(){
-        $('#myShop').css('background-color','white');
-        $('#myShop>ul').show();
-    },function(){
-        $('#myShop').css('background-color','transparent');
-        $('#myShop>ul').hide();
-    });
-
-    //显示收藏夹下拉列表信息
-    $('.collection').hover(function(){
-        $('.collection').css('background-color','white');
-        //切换图片
-        $('.collection>img:nth-of-type(1)').attr('src','../img/star_yellow.png');
-        $('.collection>img:nth-of-type(2)').attr('src','../img/down_yellow.png');
-
-        $('.collection>ul').show();
-    },function(){
-        $('.collection').css('background-color','transparent');
-        //切换图片
-        $('.collection>img:nth-of-type(1)').attr('src','../img/star_grey.png');
-        $('.collection>img:nth-of-type(2)').attr('src','../img/down_grey.png');
-
-        $('.collection>ul').hide();
-    });*/
 
     //根据点击事件切换价格上下箭头的颜色
     var direction = 1;
@@ -150,19 +116,26 @@ $(function () {
         table.empty().hide();
     });
 
-    //获得鼠标的坐标位置
-    //function getX(e){
-    //   var x= e.clientX;
-    //    return x;
-    //}
-    //
-    //function getY(e){
-    //    //e = e || window.event;
-    //    //y = e.pageY || e.clientY + document.body.scrollTop;
-    //    var y = e.clientY
-    //    return y;
-    //}
+
+});
 
 
 
+$(function(){
+	$.ajax({
+		type:"POST",
+		dataType:"json",
+		url:"InfoServlet?flag=showList&value=${param.value}&title=${param.title}",
+		success:function(data){
+			
+			setData(data);
+		},
+		error:function(){
+			alert("失败!");
+		}
+	});
+	
+	function setData(){
+		
+	}
 })
