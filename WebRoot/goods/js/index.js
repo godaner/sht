@@ -136,6 +136,7 @@ $(function(){
 			setData(data);
 		},
 		error:function(data){
+			console.log("失败");
 			console.log(data);
 		}
 	});
