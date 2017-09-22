@@ -122,20 +122,26 @@ $(function () {
 
 
 $(function(){
+
+	var baseUrl = $('#baseUrl').val();
+
+	console.log(baseUrl);
 	$.ajax({
-		type:"POST",
-		dataType:"json",
-		url:"InfoServlet?flag=showList&value=${param.value}&title=${param.title}",
+		type : "post",  //请求方式,get,post等
+	    dataType:'json',//response返回数据的格式
+	    async : true,  //同步请求  
+	    url : baseUrl+"/goods/showInfo.action",  //需要访问的地址
 		success:function(data){
-			
+			console.log("访问成功!");
 			setData(data);
 		},
-		error:function(){
-			alert("失败!");
+		error:function(data){
+			console.log("失败");
+			console.log(data);
 		}
 	});
 	
-	function setData(){
-		
+	function setData(data){
+		console.log(data);
 	}
 })

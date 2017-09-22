@@ -96,7 +96,10 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			
 			String uuid = UUID.randomUUID().toString();
 			
-			String conetnt = "<a href='http://localhost/sht/users/verifyEmail.action?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
+			//http://localhost:80/sht
+			String webaddr = getWebAddr();
+			
+			String conetnt = "<a href='"+webaddr+"/users/verifyEmail.action?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
 			
 			email.sendMessage(po.getEmail(), "二手交易市场邮箱验证", conetnt);
 			

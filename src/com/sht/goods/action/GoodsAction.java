@@ -1,10 +1,13 @@
 package com.sht.goods.action;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.goods.po.CustomGoods;
-import com.sht.goods.service.impl.GoodsService;
+import com.sht.goods.service.GoodsServiceI;
+
 
 
 /**
@@ -18,19 +21,39 @@ import com.sht.goods.service.impl.GoodsService;
  */
 @Controller
 @Scope("prototype")
-public class GoodsAction extends GBaseAction<CustomGoods,GoodsService> {
+public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 	
 	/**
-	 * Title:login
+	 * Title:showInfo
 	 * <p>
 	 * Description:显示商品主页面信息
 	 * <p>
 	 * 
-	 * @date 2017年9月12日 下午6:24:20
 	 */
 	public void showInfo() throws Exception{
-		logger.info("GoodsAction");
-//		service.
+		logger.info("GoodsAction-showInfo");
+
+		List<CustomGoods> goodsList = null;
+		try {
+			goodsList = service.dispalyGoodsInfo();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		
+		//返回一个json的数据
+		writeJSON(goodsList);
+
+	}
+	
+	public void createGoods() throws Exception{
+		logger.info("GoodsAction-createGoods");
+		try {
+//			service.
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 	

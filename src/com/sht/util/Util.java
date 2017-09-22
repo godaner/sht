@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -60,7 +61,49 @@ public class Util extends ClasssPathProps {
 	 * 验证码生成工具
 	 */
 	public final static ValidateCode vc = new ValidateCode(160, 40, 5, 150);
-
+	/**
+	 * Title:null2Empty
+	 * <p>
+	 * Description:將對象obj的字符串({@link java.lang.String})值為null的字段轉化爲空字符串""
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月21日 下午8:13:48
+	 * @version 1.0
+	 * @param e
+	 * @return
+	 */
+	public static <T> T null2Empty(T obj){
+		
+		
+		
+		Field[] fields = obj.getClass().getDeclaredFields();
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+			
+			f.setAccessible(true);
+			Class<?> c0 = f.getType();
+			Class<?> c1 = String.class;
+			
+			if(c0 == c1){
+				try {
+					
+					Object value = f.get(obj);
+					
+					if(value == null){
+						f.set(obj, "");
+					}
+					
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
+		return obj;
+	}
 	
 	
 	/**
@@ -148,7 +191,23 @@ public class Util extends ClasssPathProps {
 	public static String uuid() {
 		return UUID.randomUUID().toString();
 	}
-
+	/**
+	 * Title:如果表达式成立,抛出一个不含错误信息的异常;
+	 * <p>
+	 * Description:
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午6:34:14
+	 * @version 1.0
+	 * @param expr
+	 * @param msg
+	 * @throws Exception
+	 */
+	public static void eject(Boolean expr) throws Exception {
+		if (expr) {
+			throw new Exception("");
+		}
+	}
 	/**
 	 * Title:如果表达式成立,抛出一个含错误信息的异常;
 	 * <p>

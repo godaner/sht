@@ -188,7 +188,7 @@ public class ActionUtil extends Util{
 	}
 
 	/**
-	 * 将指定路劲和文件名的文件写入json返回，出现异常自动获取默认图片
+	 * 将指定路径和文件名的文件写入json返回，出现异常自动获取默认图片
 	 * 
 	 * @param imgName
 	 *            ：图片名字

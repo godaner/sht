@@ -41,6 +41,7 @@
 	
 	
 	<!-- 导入其他模块的struts文件 start -->
+    <include file="struts/struts-common.xml"></include>
     <include file="struts/struts-users.xml"></include>
     <include file="struts/struts-goods.xml"></include>
 	<!-- 导入其他模块的struts文件 end -->

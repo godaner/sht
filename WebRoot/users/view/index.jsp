@@ -6,17 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../js/login.js"></script>
-<script type="text/javascript" src="../js/register.js"></script>
-<script type="text/javascript" src="../js/jquerySession.js"></script>
-<link rel="stylesheet" href="../css/login_style.css">
-<link rel="stylesheet" href="../css/register_style.css">
+<script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/login.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/register.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/jquerySession.js"></script>
+<link rel="stylesheet" href="${baseUrl}/users/css/login_style.css">
+<link rel="stylesheet" href="${baseUrl}/users/css/register_style.css">
 <title>Insert title here</title>
 </head>
 <body>
 <%@include file="../../goods/view/commonTitle.jsp" %>
 	${onlineUser.username}
+	<a href="./personalInfo.jsp">个人信息页面</a>
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
 	<a href="javascript:showlogin();">想看登陆框吗</a>
@@ -24,10 +25,10 @@
 		<!-- 登入框开始 -->
 		<div class="login_box" style="display: none;">
 		<a href="javascript:closelogin();" class="login_close" title="关闭">x</a>
-			<div class="login_title">账户登录</div>
+			<div class="login_title">账户登录</div><br>
 			<div class="login_input">
 				<label>账号</label><input id="username" name="username" type="text" value="" placeholder="                            用户名/邮箱"/>
-				<hr />
+				<hr /><br>
 				<label>密码</label><input id="password" name="password" type="password" value="" placeholder="                            请输入密码" />
 				<hr />
 			</div>
