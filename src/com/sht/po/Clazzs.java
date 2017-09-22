@@ -3,9 +3,9 @@ package com.sht.po;
 
 
 public class Clazzs {
-    private Object id;
+    private String id;
 
-    private Object text;
+    private String text;
 
     private Double num;
 
@@ -14,15 +14,15 @@ public class Clazzs {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Object getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(Object text) {
+    public void setText(String text) {
         this.text = text;
     }
 
