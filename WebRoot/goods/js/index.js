@@ -124,6 +124,7 @@ $(function () {
 $(function(){
 
 	var baseUrl = $('#baseUrl').val();
+
 	console.log(baseUrl);
 	$.ajax({
 		type : "post",  //请求方式,get,post等
@@ -135,6 +136,7 @@ $(function(){
 			setData(data);
 		},
 		error:function(data){
+			console.log("失败");
 			console.log(data);
 		}
 	});

@@ -35,7 +35,7 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		logger.info("UserService");
 		//判断用户是否存在
 		if(dbUser==null){
-			dbUser = customUsersMapper.selectUserByEmail((String) po.getEmail());
+			dbUser = customUsersMapper.selectUserByEmail((String) po.getUsername());
 		}
 		
 		eject(dbUser == null, "用户不存在");

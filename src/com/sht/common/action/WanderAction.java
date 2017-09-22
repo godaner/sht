@@ -15,9 +15,8 @@ import com.sht.common.service.WanderServiceI;
 @Controller
 @Scope("prototype")
 public class WanderAction extends BaseAction<CustomWanderLog, WanderServiceI>{
-	public void insertWanderInfo(){
 	
-        
+	public void insertWanderInfo(){
         try {
 			service.insertWanderLog(po);
 		} catch (Exception e) {
