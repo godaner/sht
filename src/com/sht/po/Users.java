@@ -1,5 +1,6 @@
 package com.sht.po;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Users {
@@ -23,7 +24,7 @@ public class Users {
 
     private Double score;
 
-    private Date registtime;
+    private Timestamp registtime;
 
     private Short status;
 
@@ -34,7 +35,7 @@ public class Users {
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getUsername() {
@@ -42,7 +43,7 @@ public class Users {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getEmail() {
@@ -50,7 +51,7 @@ public class Users {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getPassword() {
@@ -58,7 +59,7 @@ public class Users {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getSalt() {
@@ -66,7 +67,7 @@ public class Users {
     }
 
     public void setSalt(String salt) {
-        this.salt = salt;
+        this.salt = salt == null ? null : salt.trim();
     }
 
     public String getHeadimg() {
@@ -74,7 +75,7 @@ public class Users {
     }
 
     public void setHeadimg(String headimg) {
-        this.headimg = headimg;
+        this.headimg = headimg == null ? null : headimg.trim();
     }
 
     public Short getSex() {
@@ -98,7 +99,7 @@ public class Users {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description == null ? null : description.trim();
     }
 
     public Double getScore() {
@@ -109,11 +110,11 @@ public class Users {
         this.score = score;
     }
 
-    public Date getRegisttime() {
+    public Timestamp getRegisttime() {
         return registtime;
     }
 
-    public void setRegisttime(Date registtime) {
+    public void setRegisttime(Timestamp registtime) {
         this.registtime = registtime;
     }
 
