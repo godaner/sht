@@ -15,3 +15,13 @@ IS '管理员的界面主题'
 /*emial注解*/
 COMMENT ON COLUMN admins.email
 IS '管理员的邮箱'
+
+
+/**
+ * 16:23
+ */
+/*更新admins表的email为非空字段*/
+UPDATE admins 
+SET email = '1138829222@qq.com';
+
+alter table admins MODIFY (email not null);
