@@ -45,9 +45,11 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 
 
 	@Override
-	public void createGoodsInfo(Goods goods) throws Exception {
+	public void createGoodsInfo(CustomGoods goods) throws Exception {
 		// TODO Auto-generated method stub
+		int result = goodsMapper.insert(goods);
 		
+		System.out.println(result);
 	}
 	
 	

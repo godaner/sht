@@ -45,38 +45,43 @@
     <div class="content-right">
         <div class="add-img">
             <ul>
-                <li title="最多可添加五张图片"><img src="goods/img/add.png"></li>
+                
+                <a href="javascript:void(0);" id="preview" >
+                	<li title="最多可添加五张图片"><img src="goods/img/add.png" id="img"></li>
+                </a>
+    			<input id="file" type="file" style="visibility:hidden;width:0;height:0;"/>
             </ul>
+            
         </div>
         <div class="line"></div>
-        <div class="detail-info">
+        <div class="detail-info" >
             <p>宝贝介绍&nbsp;:&nbsp;</p>
-            <textarea placeholder="请详细描述你的宝贝..."></textarea>
+            <textarea placeholder="请详细描述你的宝贝..." id="description"></textarea>
             <ul>
                 <li>
                     <span>商品名称&nbsp;:&nbsp;</span>
-                    <input type="text" placeholder="商品名称"/>
+                    <input type="text" placeholder="商品名称" id="title"/>
                 </li>
                 <li>
                     <span>商品转卖价&nbsp;:&nbsp;</span>
-                    <input type="text" placeholder="商品转卖价"/>
+                    <input type="text" placeholder="商品转卖价" id="sprice"/>
                 </li>
                 <br/>
                 <li>
                     <span>商品原价&nbsp;:&nbsp;</span>
-                    <input type="text" placeholder="商品原价"/>
+                    <input type="text" placeholder="商品原价" id="price"/>
                 </li>
                 <li>
                     <span>商&nbsp;品&nbsp;&nbsp;成&nbsp;色&nbsp;:&nbsp;</span>
-                    <input type="text" placeholder="商品成色"/>
+                    <input type="text" placeholder="商品成色" id="condition"/>
                 </li>
                 <br/>
                 <li>
                     <span>所&nbsp;&nbsp;在&nbsp;&nbsp;地&nbsp;:&nbsp;</span>
-                    <input type="text" placeholder="所在地"/>
+                    <input type="text" placeholder="所在地" id="region"/>
                 </li>
             </ul>
-            <input type="button" value="立即发布">
+            <input type="button" value="立即发布" id="create">
         </div>
     </div>
     <div class="clearFloat"></div>
