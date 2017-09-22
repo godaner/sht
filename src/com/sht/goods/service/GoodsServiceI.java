@@ -32,6 +32,6 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert goods info
 	 */
-	public void createGoodsInfo(Goods goods) throws Exception;
+	public void createGoodsInfo(CustomGoods goods) throws Exception;
 	
 }

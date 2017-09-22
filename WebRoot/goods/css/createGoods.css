@@ -120,7 +120,11 @@ h1 {
 .add-img>ul{
     margin: 20px;
 }
-.add-img>ul>li{
+.add-img>ul>a{
+	display:inlin-block;
+	position:relative;
+}
+.add-img>ul>a>li,.newLi{
     display: inline-block;
     position: relative;
     width: 100px;
@@ -130,7 +134,7 @@ h1 {
     margin-right: 40px;
 }
 
-.add-img>ul>li>img{
+.add-img>ul>a>li>img{
     display: inline-block;
     position: relative;
     width: 50px;
@@ -139,8 +143,6 @@ h1 {
     left:50%;
     margin-left: -25px;
     margin-top: -30px;
-    /*border: 1px solid red;*/
-    /*vertical-align: middle;*/
 }
 
 
