@@ -127,5 +127,83 @@ public interface Static {
 		//邮编
 		static final String POST_CODE = "^[1-9]\\d{5}$";
 	}
+	/**
+	 * ajax返回的操作结果代号的字段
+	 */
+	public interface RESULT{
+		/**
+		 * 操作成功
+		 */
+		Integer TRUE = 1;
+		/**
+		 * 操作失败
+		 */
+		Integer FALSE = 0;
+		
+	}
+	/**
+	 * Title:USERS_STATUS
+	 * <p>
+	 * Description:用户状态<br/>
+	 * 状态:1为激活，,0为冻结,-1为删除 ,-2为注册未激活<br/>
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月20日 下午4:58:39
+	 * @version 1.0
+	 */
+	public interface USERS_STATUS{
+		static final Short ACTIVITY = 1;
+		static final Short FROZEN = 0;
+		static final Short UNACTIVITY = -2;
+		static final Short DELETE = -1;
+	}
+	/**
+	 * 
+	 * Title:GOODS_STAUS
+	 * <p>
+	 * Description:商品状态
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月22日 下午1:57:55
+	 * @version 1.0
+	 */
+	public interface GOODS_STAUS{
+		/*状态:
+			2为已发货，
+			1为购买了且待发货,
+			0为创建且待购买,
+			-1为买家收货后交易正常结束,
+			-2为卖家取消了出售本商品,
+			-3是用户取消购买本商品,
+			-4管理员取消发布的商品*/
+		/**
+		 * 已发货
+		 */
+		static final Short SENDED = 2;
+		/**
+		 * 购买了且待发货
+		 */
+		static final Short BUY_BUT_NOT_SEND = 1;
+		/**
+		 * 创建且待购买
+		 */
+		static final Short CREATE_BUT_NOT_BUY = 0;
+		/**
+		 * 买家收货后正常结束
+		 */
+		static final Short BUYER_RECEIVED = -1;
+		/**
+		 * 卖家取消了出售本商品
+		 */
+		static final Short SELLER_CANCEL_SELL = -2;
+		/**
+		 * 用户取消购买本商品
+		 */
+		static final Short BUYER_CANCEL = -3;
+		/**
+		 * 管理员取消发布的商品
+		 */
+		static final Short ADMIN_CANCEL = -4;
+	}
 	
 }

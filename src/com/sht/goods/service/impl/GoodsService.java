@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sht.goods.mapper.CustomGoodsMapper;
 import com.sht.goods.po.CustomGoods;
+import com.sht.goods.po.Goods;
 import com.sht.goods.service.GoodsServiceI;
 import com.sht.mapper.GoodsMapper;
 
@@ -40,6 +41,15 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 		
 		return dbGoods;
 
+	}
+
+
+	@Override
+	public void createGoodsInfo(CustomGoods goods) throws Exception {
+		// TODO Auto-generated method stub
+		int result = goodsMapper.insert(goods);
+		
+		System.out.println(result);
 	}
 	
 	
