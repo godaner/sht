@@ -51,6 +51,12 @@ public interface CustomUsersMapper {
 	 * @param email:根据email激活账户
 	 */
 	public void updateStatusByEmail(String email);
+	
+	/**
+	 * 根据用户id获取发布信息
+	 * @param id
+	 */
+	public void getGoodsById(String id);
 
 	
 }

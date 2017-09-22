@@ -1,7 +1,6 @@
 package com.sht.goods.mapper;
 
 import java.util.List;
-
 import com.sht.goods.po.CustomGoods;
 import com.sht.goods.po.Goods;
 
@@ -16,6 +15,7 @@ import com.sht.goods.po.Goods;
  * @version 1.0
  */
 public interface CustomGoodsMapper {
+
 	/**
 	 * Title:selectAllGoodsInfo
 	 * <p>
@@ -23,6 +23,7 @@ public interface CustomGoodsMapper {
 	 * <p>
 	 
 	 */
+
 	public List<CustomGoods> selectAllGoodsInfo();
 	
 	/**
