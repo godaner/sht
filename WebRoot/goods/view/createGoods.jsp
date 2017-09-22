@@ -45,7 +45,7 @@
     <div class="content-right">
         <div class="add-img">
             <ul>
-                <li title="最多可添加五张图片"><img src="goods/img/add.png"></li>
+                <li title="最多可添加五张图片" id="preview" ><img src="goods/img/add.png"></li>
             </ul>
         </div>
         <div class="line"></div>

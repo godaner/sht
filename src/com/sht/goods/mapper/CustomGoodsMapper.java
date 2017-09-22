@@ -32,6 +32,6 @@ public interface CustomGoodsMapper {
 	 * <p>
 	 
 	 */
-	public void createGoodsInfo(Goods goods);
+	public void insert(Goods goods);
 	
 }
