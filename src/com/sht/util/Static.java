@@ -91,6 +91,15 @@ public interface Static {
 		 * 用户默认头像字段字
 		 */
 		static final String FILED_USERS_HEADIMGS_DEFAULT = "config.users.headimgs.default";
+		/**
+		 * 用户头像圖片上传大小字段
+		 */
+		static final String FILED_USERS_HEADIMGS_MAXSIZE = "config.users.headimgs.maxsize";
+		/**
+		 * 商品图片上传大小字段
+		 */
+		static final String FILED_GOODS_IMGS_MAXSIZE = "config.goods.imgs.maxsize";
+		
 	}
 	
 	
@@ -110,10 +119,10 @@ public interface Static {
 		static final String EMAIL = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+$";
 		
 		//密码
-		static final String PASSWORD = "^[a-zA-Z]\\w{5,12}$";
+		static final String PASSWORD = "^[a-zA-Z]\\w{4,12}$";
 		
 		//用户名
-		static final String USERNAME = "^[A-Za-z][A-Za-z1-9_-]{5,20}$";
+		static final String USERNAME = "^[A-Za-z][A-Za-z1-9_-]{4,20}$";
 		
 		//邮编
 		static final String POST_CODE = "^[1-9]\\d{5}$";
