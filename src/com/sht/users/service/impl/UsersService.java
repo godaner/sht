@@ -1,5 +1,6 @@
 ﻿package com.sht.users.service.impl;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.UUID;
 
@@ -73,7 +74,7 @@ public class UsersService extends UBaseService implements UsersServiceI {
 
 		po.setPassword(md5(po.getPassword() + po.getEmail()));
 		
-		po.setRegisttime(new Date());
+		po.setRegisttime(timestamp());
 		
 		po.setSex(Short.valueOf("1"));
 		

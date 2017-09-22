@@ -10,7 +10,7 @@ public interface ClazzsMapper {
 
     int deleteByExample(ClazzsExample example);
 
-    int deleteByPrimaryKey(Object id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Clazzs record);
 
@@ -18,7 +18,7 @@ public interface ClazzsMapper {
 
     List<Clazzs> selectByExample(ClazzsExample example);
 
-    Clazzs selectByPrimaryKey(Object id);
+    Clazzs selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Clazzs record, @Param("example") ClazzsExample example);
 
