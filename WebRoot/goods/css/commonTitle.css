@@ -34,7 +34,10 @@ nav>ul>li{
     margin-top: 20px;
 }
 
-
+nav>ul>li>a{
+	color:black;
+	text-decoration:none;
+}
 nav>ul>li:first-of-type{
     font-size: 50px;
     font-weight: bold;

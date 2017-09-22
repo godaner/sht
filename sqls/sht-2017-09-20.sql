@@ -26,3 +26,18 @@ IS '用户余额'
 /*更正users表的错误额度外键约束SHT.USERS_FK_HEADIMG*/
 ALTER TABLE USERS DROP CONSTRAINT USERS_FK_HEADIMG;
 
+
+/**
+ * 时间:20:55
+ */
+/*更新goods*/
+/*添加字段BUYTIME*/
+ALTER TABLE goods ADD (BUYTIME TIMESTAMP(6))
+
+COMMENT ON COLUMN goods.BUYTIME 
+IS '商品被购买时写入购买时间'
+/*添加字段BUYTIME*/
+ALTER TABLE goods ADD (finishtime TIMESTAMP(6))
+
+COMMENT ON COLUMN goods.finishtime 
+IS '商品交易正常完成时的时间'

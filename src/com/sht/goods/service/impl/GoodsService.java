@@ -1,8 +1,17 @@
 package com.sht.goods.service.impl;
 
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sht.goods.mapper.CustomGoodsMapper;
+import com.sht.goods.po.CustomGoods;
 import com.sht.goods.service.GoodsServiceI;
+import com.sht.mapper.GoodsMapper;
+
 
 /**
  * Title:UsersService
@@ -15,6 +24,23 @@ import com.sht.goods.service.GoodsServiceI;
  */
 @Service
 public class GoodsService extends GBaseService implements GoodsServiceI {
+	@Autowired
+	private CustomGoodsMapper customGoodsMapper;
+
+	@Autowired
+	private GoodsMapper goodsMapper;
+	
+	
+	@Override
+
+	public List<CustomGoods> dispalyGoodsInfo() throws Exception {
+		List<CustomGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo();
+		logger.info("GoodsService");
+		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
+		
+		return dbGoods;
+
+	}
 	
 	
 }

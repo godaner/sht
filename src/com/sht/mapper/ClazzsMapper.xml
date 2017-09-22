@@ -4,6 +4,8 @@
   <resultMap id="BaseResultMap" type="com.sht.po.Clazzs">
     <id column="ID" jdbcType="OTHER" property="id" />
     <result column="TEXT" jdbcType="OTHER" property="text" />
+    <result column="NUM" jdbcType="DECIMAL" property="num" />
+
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, TEXT
+    ID, TEXT, NUM
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.ClazzsExample" resultMap="BaseResultMap">
     select
@@ -97,8 +99,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Clazzs">
-    insert into CLAZZS (ID, TEXT)
-    values (#{id,jdbcType=OTHER}, #{text,jdbcType=OTHER})
+    insert into CLAZZS (ID, TEXT, NUM)
+    values (#{id,jdbcType=OTHER}, #{text,jdbcType=OTHER}, #{num,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Clazzs">
     insert into CLAZZS
@@ -109,6 +111,9 @@
       <if test="text != null">
         TEXT,
       </if>
+      <if test="num != null">
+        NUM,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -116,6 +121,9 @@
       </if>
       <if test="text != null">
         #{text,jdbcType=OTHER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -134,6 +142,9 @@
       <if test="record.text != null">
         TEXT = #{record.text,jdbcType=OTHER},
       </if>
+      <if test="record.num != null">
+        NUM = #{record.num,jdbcType=DECIMAL},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -142,7 +153,8 @@
   <update id="updateByExample" parameterType="map">
     update CLAZZS
     set ID = #{record.id,jdbcType=OTHER},
-      TEXT = #{record.text,jdbcType=OTHER}
+      TEXT = #{record.text,jdbcType=OTHER},
+      NUM = #{record.num,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -153,12 +165,16 @@
       <if test="text != null">
         TEXT = #{text,jdbcType=OTHER},
       </if>
+      <if test="num != null">
+        NUM = #{num,jdbcType=DECIMAL},
+      </if>
     </set>
     where ID = #{id,jdbcType=OTHER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Clazzs">
     update CLAZZS
-    set TEXT = #{text,jdbcType=OTHER}
+    set TEXT = #{text,jdbcType=OTHER},
+      NUM = #{num,jdbcType=DECIMAL}
     where ID = #{id,jdbcType=OTHER}
   </update>
 </mapper>

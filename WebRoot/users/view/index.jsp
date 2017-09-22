@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="./base.jsp"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../js/login.js"></script>
-<script type="text/javascript" src="../js/register.js"></script>
-<script type="text/javascript" src="../js/jquerySession.js"></script>
-<link rel="stylesheet" href="../css/login_style.css">
-<link rel="stylesheet" href="../css/register_style.css">
+<script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/login.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/register.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/jquerySession.js"></script>
+<link rel="stylesheet" href="${baseUrl}/users/css/login_style.css">
+<link rel="stylesheet" href="${baseUrl}/users/css/register_style.css">
 <title>Insert title here</title>
 </head>
 <body>
- <%@include file="./commonTitle.html"%> 
+<%@include file="../../goods/view/commonTitle.jsp" %>
 	${onlineUser.username}
 	<a href="./personalInfo.jsp">个人信息页面</a>
 	
@@ -70,7 +68,7 @@
 		<!--注册框结束-->
 		<!-- 获取项目地址 -->
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
-<%@include file="./commonFooter.html"%> 
+<%@include file="../../goods/view/commonFooter.jsp"%>
 </body>
 
 </html>
