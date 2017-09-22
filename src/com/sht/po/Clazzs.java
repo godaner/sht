@@ -1,29 +1,26 @@
 package com.sht.po;
 
-
-
 public class Clazzs {
-    private Object id;
+    private String id;
 
-    private Object text;
+    private String text;
 
     private Double num;
 
     public String getId() {
-
         return id;
     }
 
-    public void setId(Object id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Object getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(Object text) {
-        this.text = text;
+    public void setText(String text) {
+        this.text = text == null ? null : text.trim();
     }
 
     public Double getNum() {

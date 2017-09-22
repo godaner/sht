@@ -2,10 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.ClazzsMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Clazzs">
-    <id column="ID" jdbcType="OTHER" property="id" />
-    <result column="TEXT" jdbcType="OTHER" property="text" />
-    <result column="NUM" jdbcType="DECIMAL" property="num" />
-
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="TEXT" jdbcType="CHAR" property="text" />
+    <result column="NUM" jdbcType="DOUBLE" property="num" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +73,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from CLAZZS
+    from SHT.CLAZZS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,28 +81,28 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from CLAZZS
-    where ID = #{id,jdbcType=OTHER}
+    from SHT.CLAZZS
+    where ID = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
-    delete from CLAZZS
-    where ID = #{id,jdbcType=OTHER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHT.CLAZZS
+    where ID = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.ClazzsExample">
-    delete from CLAZZS
+    delete from SHT.CLAZZS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Clazzs">
-    insert into CLAZZS (ID, TEXT, NUM)
-    values (#{id,jdbcType=OTHER}, #{text,jdbcType=OTHER}, #{num,jdbcType=DECIMAL})
+    insert into SHT.CLAZZS (ID, TEXT, NUM)
+    values (#{id,jdbcType=CHAR}, #{text,jdbcType=CHAR}, #{num,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Clazzs">
-    insert into CLAZZS
+    insert into SHT.CLAZZS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -117,33 +116,33 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=OTHER},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="text != null">
-        #{text,jdbcType=OTHER},
+        #{text,jdbcType=CHAR},
       </if>
       <if test="num != null">
-        #{num,jdbcType=DECIMAL},
+        #{num,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.sht.po.ClazzsExample" resultType="java.lang.Long">
-    select count(*) from CLAZZS
+    select count(*) from SHT.CLAZZS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update CLAZZS
+    update SHT.CLAZZS
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=OTHER},
+        ID = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.text != null">
-        TEXT = #{record.text,jdbcType=OTHER},
+        TEXT = #{record.text,jdbcType=CHAR},
       </if>
       <if test="record.num != null">
-        NUM = #{record.num,jdbcType=DECIMAL},
+        NUM = #{record.num,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -151,30 +150,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update CLAZZS
-    set ID = #{record.id,jdbcType=OTHER},
-      TEXT = #{record.text,jdbcType=OTHER},
-      NUM = #{record.num,jdbcType=DECIMAL}
+    update SHT.CLAZZS
+    set ID = #{record.id,jdbcType=CHAR},
+      TEXT = #{record.text,jdbcType=CHAR},
+      NUM = #{record.num,jdbcType=DOUBLE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Clazzs">
-    update CLAZZS
+    update SHT.CLAZZS
     <set>
       <if test="text != null">
-        TEXT = #{text,jdbcType=OTHER},
+        TEXT = #{text,jdbcType=CHAR},
       </if>
       <if test="num != null">
-        NUM = #{num,jdbcType=DECIMAL},
+        NUM = #{num,jdbcType=DOUBLE},
       </if>
     </set>
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Clazzs">
-    update CLAZZS
-    set TEXT = #{text,jdbcType=OTHER},
-      NUM = #{num,jdbcType=DECIMAL}
-    where ID = #{id,jdbcType=OTHER}
+    update SHT.CLAZZS
+    set TEXT = #{text,jdbcType=CHAR},
+      NUM = #{num,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -62,47 +61,17 @@ public class Util extends ClasssPathProps {
 	 */
 	public final static ValidateCode vc = new ValidateCode(160, 40, 5, 150);
 	/**
-	 * Title:null2Empty
+	 * Title:timestamp
 	 * <p>
-	 * Description:將對象obj的字符串({@link java.lang.String})值為null的字段轉化爲空字符串""
+	 * Description:返回当前时间的Timestamp
 	 * <p>
 	 * @author Kor_Zhang
-	 * @date 2017年9月21日 下午8:13:48
+	 * @date 2017年9月21日 下午10:46:06
 	 * @version 1.0
-	 * @param e
 	 * @return
 	 */
-	public static <T> T null2Empty(T obj){
-		
-		
-		
-		Field[] fields = obj.getClass().getDeclaredFields();
-		for (int i = 0; i < fields.length; i++) {
-			Field f = fields[i];
-			
-			f.setAccessible(true);
-			Class<?> c0 = f.getType();
-			Class<?> c1 = String.class;
-			
-			if(c0 == c1){
-				try {
-					
-					Object value = f.get(obj);
-					
-					if(value == null){
-						f.set(obj, "");
-					}
-					
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		}
-		
-		return obj;
+	public static Timestamp timestamp(){
+		return new Timestamp(new Date().getTime());
 	}
 	
 	
