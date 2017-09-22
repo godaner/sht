@@ -3,130 +3,74 @@
  */
 
 $(function() {
-	
-	
-	$('#preview').click(function(){
-		console.log('click');
-		previewImage($(this));
+
+	$("#create").click(function() {
+		var description = $("#description").val();
+		var title = $('#title').val();
+		var sprice = $('#sprice').val();
+		var price = $('#price').val();
+		var condition = $('#condition').val();
+		var region = $('#region').val();
+
+		$.ajax({
+			type : "post",
+			// dataType:'json',//response返回数据的格式
+			async : true, // 同步请求
+			url : baseUrl + "/goods/showInfo.action", // 需要访问的地址
+			success : function(data) {
+
+			},
+			error : function(data) {
+				console.log('失败');
+			}
+		})
+
 	});
-	
-	
-	
-	function previewImage(file){
-		var MAXWIDTH = 100;//图片的最大宽度
 
-		var MAXHEIGHT = 100;//图片的最大高度
-		console.log(file);
-		var li =$('#preview');
+	$('#preview').click(function() {
+		$("#file").click();
+		// previewImage($("#file"));
+		$('#file').change(function(e) {
+			var file = e.target.files[0];
 
-		if (file.files && file.files[0])
+			console.log(file);
+			preview1(file);
+		});
 
-		{
+	});
 
-			li.innerHTML = '<img id=imghead>';
-			
-			var createLi = $("<li><img class='new-img'/></li>")
+	function preview1(file) {
 
-			var img = document.getElementById('imghead');
-
-			img.onload = function() {
-
-				var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT,
-						img.offsetWidth, img.offsetHeight);
-
-				img.width = rect.width;
-
-				img.height = rect.height;
-
-				img.style.marginLeft = rect.left + 'px';
-
-				img.style.marginTop = rect.top + 'px';
-
-			}
-
-			var reader = new FileReader();
-
-			reader.onload = function(evt) {
-				img.src = evt.target.result;
-			}
-
-			reader.readAsDataURL(file.files[0]);
-
+		//检查图片格式和大小
+//		console.log(file.name);
+		if(file.size > 20480){
+			alert("对不起，图片超过20k，请调整图片大小后上传，谢谢 !");
+			return;
+		}
+		var suffix = file.name.substring(file.name.lastIndexOf("."),
+				file.name.length);
+//		console.log(suffix);
+		if (suffix != ".jpg" && suffix != ".gif" && suffix != ".png"
+				&& suffix != ".jpeg" && suffix != ".bmp") {
+			alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+			return;
 		}
 
-		else
+		//显示图片
+		var img = new Image(), url = img.src = URL.createObjectURL(file);
 
-		{
-
-			var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
-
-			file.select();
-
-			var src = document.selection.createRange().text;
-
-			li.innerHTML = '<img id=imghead>';
-
-			var img = document.getElementById('imghead');
-
-			img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
-
-			var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth,
-					img.offsetHeight);
-
-			status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width
-					+ ',' + rect.height);
-
-			li.innerHTML = "<div id=divhead style='width:" + rect.width
-					+ "px;height:" + rect.height + "px;margin-top:" + rect.top
-					+ "px;margin-left:" + rect.left + "px;" + sFilter + src
-					+ "\"'></div>";
-
+		var li = $("<li class='.newLi'></li>");
+		var container = $('.add-img>ul');
+		container.append(li);
+		var $img = $(img);
+		img.onload = function() {
+			URL.revokeObjectURL(url);
+			li.empty().prepend($img);
 		}
 
-	}
+	
 
-	function clacImgZoomParam(maxWidth, maxHeight, width, height) {
-
-		var param = {
-			top : 0,
-			left : 0,
-			width : width,
-			height : height
-		};
-
-		if (width > maxWidth || height > maxHeight)
-
-		{
-
-			rateWidth = width / maxWidth;
-
-			rateHeight = height / maxHeight;
-
-			if (rateWidth > rateHeight)
-
-			{
-
-				param.width = maxWidth;
-
-				param.height = Math.round(height / rateWidth);
-
-			} else
-
-			{
-
-				param.width = Math.round(width / rateHeight);
-
-				param.height = maxHeight;
-
-			}
-
-		}
-
-		param.left = Math.round((maxWidth - param.width) / 2);
-
-		param.top = Math.round((maxHeight - param.height) / 2);
-
-		return param;
+	
 
 	}
 })
