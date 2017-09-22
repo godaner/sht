@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.sht.goods.po.Goods;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
 
@@ -149,6 +150,20 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			 String email = po.getEmail();
 			service.verifyEmail(email);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+	 
+	 public void getGoodsById() throws Exception{
+		 
+		 logger.info("getGoods");
+		 
+		 try {
+			service.getGoodsById(po.getId());
+			
+		} catch (Exception e) {
+			
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

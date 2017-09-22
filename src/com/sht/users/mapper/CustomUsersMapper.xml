@@ -36,4 +36,10 @@
 		UPDATE USERS SET STATUS = '1' WHERE EMAIL = #{email}
 	
 	</update>
+	
+	<select id="getGoodsById" parameterType="string" resultType="com.sht.po.Goods">
+		
+		SELECT * FROM GOODS WHERE OWNER=#{id} 
+		
+	</select>
 </mapper>

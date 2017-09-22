@@ -17,7 +17,7 @@
 <body>
 <%@include file="../../goods/view/commonTitle.jsp" %>
 	${onlineUser.username}
-	<a href="./personalInfo.jsp">个人信息页面</a>
+	<a href="./users/view/personalInfo.jsp">个人信息页面</a>
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
 	<a href="javascript:showlogin();">想看登陆框吗</a>
@@ -70,5 +70,5 @@
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 <%@include file="../../goods/view/commonFooter.jsp"%>
 </body>
-
+<%@include file="../../common/view/visit.jsp"%>
 </html>

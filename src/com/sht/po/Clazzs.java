@@ -11,7 +11,7 @@ public class Clazzs {
 
     public String getId() {
 
-        return id;
+        return (String) id;
     }
 
     public void setId(Object id) {

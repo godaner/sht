@@ -40,7 +40,20 @@ public interface UsersServiceI {
 	 * @throws Exception
 	 */
 	public void regist(CustomUsers po) throws Exception;
+	
+	/**
+	 * 邮箱验证
+	 * @param email
+	 * @throws Exception
+	 */
 
 	public void verifyEmail(String email) throws Exception;
+	
+	/**
+	 * 根据id 获取已发布的信息
+	 * @param id
+	 */
+
+	public void getGoodsById(String id);
 
 }

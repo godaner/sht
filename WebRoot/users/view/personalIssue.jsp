@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>个人信息</title>
     <link rel="stylesheet" href="../css/personalInfo.css"/>
+    <link rel="stylesheet" href="../css/personalIssue.css"/>
 </head>
 <body>
 <div id="header">
@@ -45,22 +46,56 @@
         </ul>
         <ul >
             <a href=""><li>我的信息</li></a>
-            <a href="./personalIssue.jsp"><li>我的发布</li></a>
+            <a href=""><li>我的发布</li></a>
             <a href=""><li>我的购买</li></a>
             <a href=""><li>地址管理</li></a>
             <a href=""><li>密码找回</li></a>
             <a href=""><li>充值</li></a>
         </ul>
     </div> 
-    <div id="body_right">
-    <iframe src="./personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
-    
-    </iframe>
-       <%--  <div>
-            <span id="email">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;:&nbsp;</span>&nbsp;&nbsp;<input type="email" value="${onlineUser.email}"><br>
-            <span id="introduce">用户介绍&nbsp;&nbsp;:&nbsp;&nbsp;</span><textarea>${onlineUser.description}</textarea>
-            <div class="clearFloat"></div>
-        </div> --%>
+    <div id="show_issueGoods">
+			
+		<!-- 搜索框 -->
+			<div class="search">
+			<input type="text" placeholder="请输入商品标题"/> <button >搜索</button>
+			</div>
+			<!-- 顶部标题栏 -->
+			<div class="title">
+			<table id="title_table">
+			<tr>
+			<td>宝贝标题</td>
+			<td>介绍</td>
+			<td>价格</td>
+			<td>状态</td>
+			<td>操作</td>
+			</tr>
+			</table>
+			</div>
+		<!-- 已发布列表 -->
+		<div class="issue">
+		<div class="issue_title">
+		<p>创建时间 :&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p>
+		</div>
+		<div class="issue_body">
+		<table>
+		<tr>
+		<td><img alt="" src=""><p>标题<p></td>
+		<td><p>介绍<p></td>
+		<td><p>价格<p></td>
+		<td><p>状态<p></td>
+		<td><p>操作<p></td>
+		
+		</tr>
+		
+		
+		</table>
+		
+		</div>
+		
+		</div>
+			
+			
+			
     </div>
 
     <div class="clearFloat"></div>
@@ -68,5 +103,10 @@
 </body>
   	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/personalInfo.js"></script>
-    <%@include file="../../common/view/visit.jsp"%>
+    <script type="text/javascript">
+    
+    
+    
+    
+    </script>
 </html>

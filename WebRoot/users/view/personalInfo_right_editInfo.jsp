@@ -61,7 +61,7 @@
 
 input[type="text"] {
 	border: solid 1px #8B8B83;
-	​ outline: none;
+	 ​outline: none;
 	border-radius: 3px;
 	width: 350px;
 }
