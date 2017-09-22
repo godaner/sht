@@ -43,10 +43,10 @@ $(function() {
 
 		//检查图片格式和大小
 //		console.log(file.name);
-		if(file.size > 20480){
-			alert("对不起，图片超过20k，请调整图片大小后上传，谢谢 !");
-			return;
-		}
+//		if(file.size > 20480){
+//			alert("对不起，图片超过20k，请调整图片大小后上传，谢谢 !");
+//			return;
+//		}
 		var suffix = file.name.substring(file.name.lastIndexOf("."),
 				file.name.length);
 //		console.log(suffix);
@@ -58,21 +58,17 @@ $(function() {
 
 		//显示图片
 		var img = new Image(), url = img.src = URL.createObjectURL(file);
-		img.css({
-			"width":"50px",
-			"height":"70px"
-			
-		});
+		img.style.width="60px";
+		img.style.height="80px";
+		
 		var li = $("<li class='.newLi'></li>");
 		var container = $('.add-img>ul');
 		container.append(li);
-		var $img = $(img);
+
 		img.onload = function() {
 			URL.revokeObjectURL(url);
-			li.empty().prepend($img);
+			li.append(img);
 		}
-
-	
 
 	
 

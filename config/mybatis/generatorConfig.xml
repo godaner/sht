@@ -65,9 +65,40 @@
 
         <table tableName="users_login_log"></table>
         <table tableName="admins_login_log"></table> 
-        <table tableName="clazzs"></table>-->
-        <table tableName="wander_log"></table>
-
+        <table tableName="clazzs"></table>
+        <table tableName="wander_log"></table>-->
+		<table schema="sht" tableName="users">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="username" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="email" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="password" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="salt" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="headimg" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="sex" javaType="java.lang.Short"  jdbcType="CHAR"/>
+			<columnOverride column="birthday" javaType="java.util.Date"  jdbcType="DATE"/>
+        	<columnOverride column="description" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="score" javaType="java.lang.Double"  jdbcType="CHAR"/>
+        	<columnOverride column="registtime" javaType="java.sql.Timestamp"  jdbcType="DATE"/>
+        	<columnOverride column="status" javaType="java.lang.Short" jdbcType="SMALLINT"/>
+        	<columnOverride column="money" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+        	
+        </table> 
+        <table schema="sht" tableName="admins">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="username" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="email" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="password" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="salt" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="createtime" javaType="java.sql.Timestamp"  jdbcType="TIMESTAMP"/>
+        	<columnOverride column="status" javaType="java.lang.Short" jdbcType="SMALLINT"/>
+        	<columnOverride column="theme" javaType="java.lang.String" jdbcType="CHAR"/>
+        	<columnOverride column="creator" javaType="java.lang.String" jdbcType="CHAR"/>
+        </table>
+        <table schema="sht" tableName="clazzs">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="text" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="num" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+        </table>
         
         
         <!-- <table schema="" tableName="sys_user"></table>

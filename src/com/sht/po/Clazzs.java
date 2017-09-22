@@ -1,7 +1,5 @@
 package com.sht.po;
 
-
-
 public class Clazzs {
     private String id;
 
@@ -10,12 +8,12 @@ public class Clazzs {
     private Double num;
 
     public String getId() {
-
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+
+        this.id = id == null ? null : id.trim();
     }
 
     public String getText() {
@@ -23,7 +21,7 @@ public class Clazzs {
     }
 
     public void setText(String text) {
-        this.text = text;
+        this.text = text == null ? null : text.trim();
     }
 
     public Double getNum() {

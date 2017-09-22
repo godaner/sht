@@ -45,7 +45,7 @@
     <div class="content-right">
         <div class="add-img">
             <ul>
-                
+               <!--  <li id="first"></li> -->
                 <a href="javascript:void(0);" id="preview" >
                 	<li title="最多可添加五张图片"><img src="goods/img/add.png" id="img"></li>
                 </a>
