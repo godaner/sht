@@ -58,7 +58,11 @@ $(function() {
 
 		//显示图片
 		var img = new Image(), url = img.src = URL.createObjectURL(file);
-
+		img.css({
+			"width":"50px",
+			"height":"70px"
+			
+		});
 		var li = $("<li class='.newLi'></li>");
 		var container = $('.add-img>ul');
 		container.append(li);
