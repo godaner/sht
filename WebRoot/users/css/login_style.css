@@ -1,10 +1,15 @@
 /* 登陆框 */
 .login_box{
-	margin: 10% auto;
-	width: 390px;
-	height: 410px;
+	
+	width: 350px;
+	height: 390px;
 	border: solid 1px gainsboro;
 	border-radius:5px;
+	background-color:white;
+	position: absolute;
+  	z-index:999;
+  	left:35%;
+  	top:25%;
 }
 
 .login_close{
@@ -80,6 +85,7 @@
 .login_input hr{
 	width: 80%;
 	padding-left: 10%;
+	
 }
 
 /*登陆按钮*/
@@ -113,7 +119,7 @@
 /*注册按钮*/
 .register_a{
 	border-radius:5px;
-	margin:10% auto;
+	margin:6% auto;
 	border: solid 1px blue;
 	width: 37%;
 	height: 9%;
