@@ -36,6 +36,7 @@ public interface UsersServiceI {
 	 * @date 2017年9月12日 下午6:49:17
 	 * @version 1.0
 	 * @param po
+	 * @return 
 	 * @throws Exception
 	 */
 	public void regist(CustomUsers po) throws Exception;

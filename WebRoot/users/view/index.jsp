@@ -17,8 +17,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="./commonTitle.html"%>
+ <%@include file="./commonTitle.html"%> 
 	${onlineUser.username}
+	<a href="./personalInfo.jsp">个人信息页面</a>
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
 	<a href="javascript:showlogin();">想看登陆框吗</a>
@@ -26,10 +27,10 @@
 		<!-- 登入框开始 -->
 		<div class="login_box" style="display: none;">
 		<a href="javascript:closelogin();" class="login_close" title="关闭">x</a>
-			<div class="login_title">账户登录</div>
+			<div class="login_title">账户登录</div><br>
 			<div class="login_input">
 				<label>账号</label><input id="username" name="username" type="text" value="" placeholder="                            用户名/邮箱"/>
-				<hr />
+				<hr /><br>
 				<label>密码</label><input id="password" name="password" type="password" value="" placeholder="                            请输入密码" />
 				<hr />
 			</div>
@@ -69,7 +70,7 @@
 		<!--注册框结束-->
 		<!-- 获取项目地址 -->
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
-<%@include file="./commonFooter.html"%>
+<%@include file="./commonFooter.html"%> 
 </body>
 
 </html>

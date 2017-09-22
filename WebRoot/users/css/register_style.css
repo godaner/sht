@@ -1,9 +1,14 @@
 .register_box{
-	margin: 10% auto;
+	
 	width: 320px;
 	height: 430px;
 	border: solid 1px gainsboro;
 	border-radius:5px;
+	background-color:white;
+	position: absolute;
+  	z-index:998;
+  	left:35%;
+  	top:30%;
 }
 
 .register_close{

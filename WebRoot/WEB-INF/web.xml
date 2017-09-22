@@ -62,12 +62,13 @@
 	</filter-mapping>
 	<!-- ****** 配置编码过滤器 end ****** -->
 
+	<!-- ****** 配置html编码过滤器 start ****** -->
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.html</url-pattern>
 			<page-encoding>UTF-8</page-encoding>
 		</jsp-property-group>
 	</jsp-config>
-
+	<!-- ****** 配置html编码过滤器 end ****** -->
 
 </web-app>
