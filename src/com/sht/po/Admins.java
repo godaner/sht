@@ -1,6 +1,6 @@
 package com.sht.po;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Admins {
     private String id;
@@ -11,20 +11,22 @@ public class Admins {
 
     private String salt;
 
-    private Double status;
+    private Short status;
 
-    private Date createtime;
+    private Timestamp createtime;
 
     private String creator;
 
     private String theme;
+
+    private String email;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getUsername() {
@@ -32,7 +34,7 @@ public class Admins {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -40,7 +42,7 @@ public class Admins {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getSalt() {
@@ -48,22 +50,22 @@ public class Admins {
     }
 
     public void setSalt(String salt) {
-        this.salt = salt;
+        this.salt = salt == null ? null : salt.trim();
     }
 
-    public Double getStatus() {
+    public Short getStatus() {
         return status;
     }
 
-    public void setStatus(Double status) {
+    public void setStatus(Short status) {
         this.status = status;
     }
 
-    public Date getCreatetime() {
+    public Timestamp getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
     }
 
@@ -72,7 +74,7 @@ public class Admins {
     }
 
     public void setCreator(String creator) {
-        this.creator = creator;
+        this.creator = creator == null ? null : creator.trim();
     }
 
     public String getTheme() {
@@ -80,6 +82,14 @@ public class Admins {
     }
 
     public void setTheme(String theme) {
-        this.theme = theme;
+        this.theme = theme == null ? null : theme.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 }

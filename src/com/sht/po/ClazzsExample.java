@@ -1,6 +1,5 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,52 +114,52 @@ public class ClazzsExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Object value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Object value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Object value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Object value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Object value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Object value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Object> values) {
+        public Criteria andIdIn(List<String> values) {
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Object> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Object value1, Object value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Object value1, Object value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -175,52 +174,52 @@ public class ClazzsExample {
             return (Criteria) this;
         }
 
-        public Criteria andTextEqualTo(Object value) {
+        public Criteria andTextEqualTo(String value) {
             addCriterion("TEXT =", value, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextNotEqualTo(Object value) {
+        public Criteria andTextNotEqualTo(String value) {
             addCriterion("TEXT <>", value, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextGreaterThan(Object value) {
+        public Criteria andTextGreaterThan(String value) {
             addCriterion("TEXT >", value, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextGreaterThanOrEqualTo(Object value) {
+        public Criteria andTextGreaterThanOrEqualTo(String value) {
             addCriterion("TEXT >=", value, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextLessThan(Object value) {
+        public Criteria andTextLessThan(String value) {
             addCriterion("TEXT <", value, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextLessThanOrEqualTo(Object value) {
+        public Criteria andTextLessThanOrEqualTo(String value) {
             addCriterion("TEXT <=", value, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextIn(List<Object> values) {
+        public Criteria andTextIn(List<String> values) {
             addCriterion("TEXT in", values, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextNotIn(List<Object> values) {
+        public Criteria andTextNotIn(List<String> values) {
             addCriterion("TEXT not in", values, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextBetween(Object value1, Object value2) {
+        public Criteria andTextBetween(String value1, String value2) {
             addCriterion("TEXT between", value1, value2, "text");
             return (Criteria) this;
         }
 
-        public Criteria andTextNotBetween(Object value1, Object value2) {
+        public Criteria andTextNotBetween(String value1, String value2) {
             addCriterion("TEXT not between", value1, value2, "text");
             return (Criteria) this;
         }
@@ -235,52 +234,52 @@ public class ClazzsExample {
             return (Criteria) this;
         }
 
-        public Criteria andNumEqualTo(BigDecimal value) {
+        public Criteria andNumEqualTo(Double value) {
             addCriterion("NUM =", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumNotEqualTo(BigDecimal value) {
+        public Criteria andNumNotEqualTo(Double value) {
             addCriterion("NUM <>", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumGreaterThan(BigDecimal value) {
+        public Criteria andNumGreaterThan(Double value) {
             addCriterion("NUM >", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andNumGreaterThanOrEqualTo(Double value) {
             addCriterion("NUM >=", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumLessThan(BigDecimal value) {
+        public Criteria andNumLessThan(Double value) {
             addCriterion("NUM <", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andNumLessThanOrEqualTo(Double value) {
             addCriterion("NUM <=", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumIn(List<BigDecimal> values) {
+        public Criteria andNumIn(List<Double> values) {
             addCriterion("NUM in", values, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumNotIn(List<BigDecimal> values) {
+        public Criteria andNumNotIn(List<Double> values) {
             addCriterion("NUM not in", values, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andNumBetween(Double value1, Double value2) {
             addCriterion("NUM between", value1, value2, "num");
             return (Criteria) this;
         }
 
-        public Criteria andNumNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andNumNotBetween(Double value1, Double value2) {
             addCriterion("NUM not between", value1, value2, "num");
             return (Criteria) this;
         }

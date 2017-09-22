@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.UsersMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Users">
-    <id column="ID" jdbcType="OTHER" property="id" />
-    <result column="USERNAME" jdbcType="OTHER" property="username" />
-    <result column="EMAIL" jdbcType="OTHER" property="email" />
-    <result column="PASSWORD" jdbcType="OTHER" property="password" />
-    <result column="SALT" jdbcType="OTHER" property="salt" />
-    <result column="HEADIMG" jdbcType="OTHER" property="headimg" />
-    <result column="SEX" jdbcType="DECIMAL" property="sex" />
-    <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="DESCRIPTION" jdbcType="OTHER" property="description" />
-    <result column="SCORE" jdbcType="DECIMAL" property="score" />
-    <result column="REGISTTIME" jdbcType="TIMESTAMP" property="registtime" />
-    <result column="STATUS" jdbcType="DECIMAL" property="status" />
-    <result column="MONEY" jdbcType="DECIMAL" property="money" />
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="USERNAME" jdbcType="CHAR" property="username" />
+    <result column="EMAIL" jdbcType="CHAR" property="email" />
+    <result column="PASSWORD" jdbcType="CHAR" property="password" />
+    <result column="SALT" jdbcType="CHAR" property="salt" />
+    <result column="HEADIMG" jdbcType="CHAR" property="headimg" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="BIRTHDAY" jdbcType="DATE" property="birthday" />
+    <result column="DESCRIPTION" jdbcType="CHAR" property="description" />
+    <result column="SCORE" jdbcType="CHAR" property="score" />
+    <result column="REGISTTIME" jdbcType="DATE" property="registtime" />
+    <result column="STATUS" jdbcType="SMALLINT" property="status" />
+    <result column="MONEY" jdbcType="DOUBLE" property="money" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -84,7 +84,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from USERS
+    from SHT.USERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,36 +92,34 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from USERS
-    where ID = #{id,jdbcType=OTHER}
+    from SHT.USERS
+    where ID = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
-    delete from USERS
-    where ID = #{id,jdbcType=OTHER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHT.USERS
+    where ID = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.UsersExample">
-    delete from USERS
+    delete from SHT.USERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Users">
-    insert into USERS (ID, USERNAME, EMAIL, 
-      PASSWORD, SALT, HEADIMG, 
-      SEX, BIRTHDAY, DESCRIPTION, 
-      SCORE, REGISTTIME, STATUS, 
-      MONEY)
-    values (#{id,jdbcType=OTHER}, #{username,jdbcType=OTHER}, #{email,jdbcType=OTHER}, 
-      #{password,jdbcType=OTHER}, #{salt,jdbcType=OTHER}, #{headimg,jdbcType=OTHER}, 
-      #{sex,jdbcType=DECIMAL}, #{birthday,jdbcType=TIMESTAMP}, #{description,jdbcType=OTHER}, 
-      #{score,jdbcType=DECIMAL}, #{registtime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, 
-      #{money,jdbcType=DECIMAL})
+    insert into SHT.USERS (ID, USERNAME, EMAIL, PASSWORD, 
+      SALT, HEADIMG, SEX, BIRTHDAY, 
+      DESCRIPTION, SCORE, REGISTTIME, 
+      STATUS, MONEY)
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=CHAR}, #{email,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
+      #{salt,jdbcType=CHAR}, #{headimg,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, 
+      #{description,jdbcType=CHAR}, #{score,jdbcType=CHAR}, #{registtime,jdbcType=DATE}, 
+      #{status,jdbcType=SMALLINT}, #{money,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Users">
-    insert into USERS
+    insert into SHT.USERS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -165,93 +163,93 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=OTHER},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="username != null">
-        #{username,jdbcType=OTHER},
+        #{username,jdbcType=CHAR},
       </if>
       <if test="email != null">
-        #{email,jdbcType=OTHER},
+        #{email,jdbcType=CHAR},
       </if>
       <if test="password != null">
-        #{password,jdbcType=OTHER},
+        #{password,jdbcType=CHAR},
       </if>
       <if test="salt != null">
-        #{salt,jdbcType=OTHER},
+        #{salt,jdbcType=CHAR},
       </if>
       <if test="headimg != null">
-        #{headimg,jdbcType=OTHER},
+        #{headimg,jdbcType=CHAR},
       </if>
       <if test="sex != null">
-        #{sex,jdbcType=DECIMAL},
+        #{sex,jdbcType=CHAR},
       </if>
       <if test="birthday != null">
-        #{birthday,jdbcType=TIMESTAMP},
+        #{birthday,jdbcType=DATE},
       </if>
       <if test="description != null">
-        #{description,jdbcType=OTHER},
+        #{description,jdbcType=CHAR},
       </if>
       <if test="score != null">
-        #{score,jdbcType=DECIMAL},
+        #{score,jdbcType=CHAR},
       </if>
       <if test="registtime != null">
-        #{registtime,jdbcType=TIMESTAMP},
+        #{registtime,jdbcType=DATE},
       </if>
       <if test="status != null">
-        #{status,jdbcType=DECIMAL},
+        #{status,jdbcType=SMALLINT},
       </if>
       <if test="money != null">
-        #{money,jdbcType=DECIMAL},
+        #{money,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.sht.po.UsersExample" resultType="java.lang.Long">
-    select count(*) from USERS
+    select count(*) from SHT.USERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update USERS
+    update SHT.USERS
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=OTHER},
+        ID = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.username != null">
-        USERNAME = #{record.username,jdbcType=OTHER},
+        USERNAME = #{record.username,jdbcType=CHAR},
       </if>
       <if test="record.email != null">
-        EMAIL = #{record.email,jdbcType=OTHER},
+        EMAIL = #{record.email,jdbcType=CHAR},
       </if>
       <if test="record.password != null">
-        PASSWORD = #{record.password,jdbcType=OTHER},
+        PASSWORD = #{record.password,jdbcType=CHAR},
       </if>
       <if test="record.salt != null">
-        SALT = #{record.salt,jdbcType=OTHER},
+        SALT = #{record.salt,jdbcType=CHAR},
       </if>
       <if test="record.headimg != null">
-        HEADIMG = #{record.headimg,jdbcType=OTHER},
+        HEADIMG = #{record.headimg,jdbcType=CHAR},
       </if>
       <if test="record.sex != null">
-        SEX = #{record.sex,jdbcType=DECIMAL},
+        SEX = #{record.sex,jdbcType=CHAR},
       </if>
       <if test="record.birthday != null">
-        BIRTHDAY = #{record.birthday,jdbcType=TIMESTAMP},
+        BIRTHDAY = #{record.birthday,jdbcType=DATE},
       </if>
       <if test="record.description != null">
-        DESCRIPTION = #{record.description,jdbcType=OTHER},
+        DESCRIPTION = #{record.description,jdbcType=CHAR},
       </if>
       <if test="record.score != null">
-        SCORE = #{record.score,jdbcType=DECIMAL},
+        SCORE = #{record.score,jdbcType=CHAR},
       </if>
       <if test="record.registtime != null">
-        REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
+        REGISTTIME = #{record.registtime,jdbcType=DATE},
       </if>
       <if test="record.status != null">
-        STATUS = #{record.status,jdbcType=DECIMAL},
+        STATUS = #{record.status,jdbcType=SMALLINT},
       </if>
       <if test="record.money != null">
-        MONEY = #{record.money,jdbcType=DECIMAL},
+        MONEY = #{record.money,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -259,80 +257,80 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update USERS
-    set ID = #{record.id,jdbcType=OTHER},
-      USERNAME = #{record.username,jdbcType=OTHER},
-      EMAIL = #{record.email,jdbcType=OTHER},
-      PASSWORD = #{record.password,jdbcType=OTHER},
-      SALT = #{record.salt,jdbcType=OTHER},
-      HEADIMG = #{record.headimg,jdbcType=OTHER},
-      SEX = #{record.sex,jdbcType=DECIMAL},
-      BIRTHDAY = #{record.birthday,jdbcType=TIMESTAMP},
-      DESCRIPTION = #{record.description,jdbcType=OTHER},
-      SCORE = #{record.score,jdbcType=DECIMAL},
-      REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
-      STATUS = #{record.status,jdbcType=DECIMAL},
-      MONEY = #{record.money,jdbcType=DECIMAL}
+    update SHT.USERS
+    set ID = #{record.id,jdbcType=CHAR},
+      USERNAME = #{record.username,jdbcType=CHAR},
+      EMAIL = #{record.email,jdbcType=CHAR},
+      PASSWORD = #{record.password,jdbcType=CHAR},
+      SALT = #{record.salt,jdbcType=CHAR},
+      HEADIMG = #{record.headimg,jdbcType=CHAR},
+      SEX = #{record.sex,jdbcType=CHAR},
+      BIRTHDAY = #{record.birthday,jdbcType=DATE},
+      DESCRIPTION = #{record.description,jdbcType=CHAR},
+      SCORE = #{record.score,jdbcType=CHAR},
+      REGISTTIME = #{record.registtime,jdbcType=DATE},
+      STATUS = #{record.status,jdbcType=SMALLINT},
+      MONEY = #{record.money,jdbcType=DOUBLE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Users">
-    update USERS
+    update SHT.USERS
     <set>
       <if test="username != null">
-        USERNAME = #{username,jdbcType=OTHER},
+        USERNAME = #{username,jdbcType=CHAR},
       </if>
       <if test="email != null">
-        EMAIL = #{email,jdbcType=OTHER},
+        EMAIL = #{email,jdbcType=CHAR},
       </if>
       <if test="password != null">
-        PASSWORD = #{password,jdbcType=OTHER},
+        PASSWORD = #{password,jdbcType=CHAR},
       </if>
       <if test="salt != null">
-        SALT = #{salt,jdbcType=OTHER},
+        SALT = #{salt,jdbcType=CHAR},
       </if>
       <if test="headimg != null">
-        HEADIMG = #{headimg,jdbcType=OTHER},
+        HEADIMG = #{headimg,jdbcType=CHAR},
       </if>
       <if test="sex != null">
-        SEX = #{sex,jdbcType=DECIMAL},
+        SEX = #{sex,jdbcType=CHAR},
       </if>
       <if test="birthday != null">
-        BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+        BIRTHDAY = #{birthday,jdbcType=DATE},
       </if>
       <if test="description != null">
-        DESCRIPTION = #{description,jdbcType=OTHER},
+        DESCRIPTION = #{description,jdbcType=CHAR},
       </if>
       <if test="score != null">
-        SCORE = #{score,jdbcType=DECIMAL},
+        SCORE = #{score,jdbcType=CHAR},
       </if>
       <if test="registtime != null">
-        REGISTTIME = #{registtime,jdbcType=TIMESTAMP},
+        REGISTTIME = #{registtime,jdbcType=DATE},
       </if>
       <if test="status != null">
-        STATUS = #{status,jdbcType=DECIMAL},
+        STATUS = #{status,jdbcType=SMALLINT},
       </if>
       <if test="money != null">
-        MONEY = #{money,jdbcType=DECIMAL},
+        MONEY = #{money,jdbcType=DOUBLE},
       </if>
     </set>
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Users">
-    update USERS
-    set USERNAME = #{username,jdbcType=OTHER},
-      EMAIL = #{email,jdbcType=OTHER},
-      PASSWORD = #{password,jdbcType=OTHER},
-      SALT = #{salt,jdbcType=OTHER},
-      HEADIMG = #{headimg,jdbcType=OTHER},
-      SEX = #{sex,jdbcType=DECIMAL},
-      BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
-      DESCRIPTION = #{description,jdbcType=OTHER},
-      SCORE = #{score,jdbcType=DECIMAL},
-      REGISTTIME = #{registtime,jdbcType=TIMESTAMP},
-      STATUS = #{status,jdbcType=DECIMAL},
-      MONEY = #{money,jdbcType=DECIMAL}
-    where ID = #{id,jdbcType=OTHER}
+    update SHT.USERS
+    set USERNAME = #{username,jdbcType=CHAR},
+      EMAIL = #{email,jdbcType=CHAR},
+      PASSWORD = #{password,jdbcType=CHAR},
+      SALT = #{salt,jdbcType=CHAR},
+      HEADIMG = #{headimg,jdbcType=CHAR},
+      SEX = #{sex,jdbcType=CHAR},
+      BIRTHDAY = #{birthday,jdbcType=DATE},
+      DESCRIPTION = #{description,jdbcType=CHAR},
+      SCORE = #{score,jdbcType=CHAR},
+      REGISTTIME = #{registtime,jdbcType=DATE},
+      STATUS = #{status,jdbcType=SMALLINT},
+      MONEY = #{money,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>
