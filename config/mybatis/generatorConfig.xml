@@ -67,7 +67,7 @@
         <table tableName="admins_login_log"></table> 
         <table tableName="clazzs"></table>
         <table tableName="wander_log"></table>-->
-		<table schema="sht" tableName="users">
+		<!-- <table schema="sht" tableName="users">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="username" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="email" javaType="java.lang.String"  jdbcType="CHAR"/>
@@ -98,9 +98,25 @@
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="text" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="num" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
-        </table>
+        </table> -->
         
-        
+        <table schema="sht" tableName="goods">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="title" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="description" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="sprice" javaType="java.lang.Double"  jdbcType="NUMBER"/>
+        	<columnOverride column="price" javaType="java.lang.Double"  jdbcType="NUMBER"/>
+        	<columnOverride column="condition" javaType="java.lang.Short"  jdbcType="NUMBER(1)"/>
+        	<columnOverride column="region" javaType="java.lang.Double"  jdbcType="NUMBER"/>
+			<columnOverride column="status" javaType="java.lang.Short"  jdbcType="NUMBER(1)"/>
+        	<columnOverride column="createtime" javaType="java.util.Date"  jdbcType="TIMESTAMP(6)"/>
+        	<columnOverride column="owner" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="buyer" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="brows_number" javaType="java.lang.Double" jdbcType="NUMBER"/>
+        	<columnOverride column="last_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP(6)"/>
+        	<columnOverride column="buytime" javaType="java.util.Date" jdbcType="TIMESTAMP(6)"/>
+        	<columnOverride column="finishtime" javaType="java.util.Date" jdbcType="TIMESTAMP(6)"/>
+        </table> 
         <!-- <table schema="" tableName="sys_user"></table>
         <table schema="" tableName="sys_role"></table>
         <table schema="" tableName="sys_permission"></table>

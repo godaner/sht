@@ -4,7 +4,7 @@ package com.sht.goods.service;
 import java.util.List;
 
 import com.sht.goods.po.CustomGoods;
-import com.sht.goods.po.Goods;
+import com.sht.goods.po.CustomGoodsImgs;
 
 /**
  * Title:GoodsServiceI
@@ -34,4 +34,11 @@ public interface GoodsServiceI {
 	 */
 	public void createGoodsInfo(CustomGoods goods) throws Exception;
 	
+	/**
+	 * 
+	 * createGoodsImagsInfo
+	 * <p>
+	 * Description:insert goodsImags info
+	 */
+	public void createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception;
 }

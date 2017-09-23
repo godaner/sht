@@ -4,11 +4,14 @@
 
 $(function() {
 	var baseUrl = $('#baseUrl').val();
-	
+	console.log(baseUrl);
 	/**
 	 * 点击按钮上传
 	 */
+	var imgDatas = new Array(),imgDataLen = 0;
+	
 	$("#create").click(function() {
+		//console.log(imgDatas.length);
 		var description = $("#description").val();
 		var title = $('#title').val();
 		var sprice = $('#sprice').val();
@@ -22,7 +25,9 @@ $(function() {
 			return false;
 		}
 		
-		var date = Format(new Date(),"yyyy-MM-dd HH:mm");
+		//console.log("----"+new Date("yyyy-MM-dd HH:mm"));
+		//var date = Format(new Date(),"yyyy-MM-dd HH:mm");
+		
 		var url = "?description="+description+
 					"&title="+title+
 					"&sprice="+sprice+
@@ -30,21 +35,23 @@ $(function() {
 					"&condition="+condition+
 					"&region="+region+
 					"&status=0"+
-					"&createtime="+date+
+					
 					"&owner=1";
-//		console.log(url);
-		/*$.ajax({
+		
+		var imgDataJson = JSON.stringify(imgDatas);
+		console.log(baseUrl+url);
+		$.ajax({
 			type : "post",
-			// dataType:'json',//response返回数据的格式
+			//data:{'img':imgDataJson},
 			async : true, // 同步请求
 			url : baseUrl + "/goods/createGoods.action"+url, // 需要访问的地址
 			success : function(data) {
 				alert("商品发布成功");
 			},
 			error : function(data) {
-				console.log('失败');
+				console.log('ajax-失败');
 			}
-		})*/
+		})
 
 	});
 	
@@ -149,7 +156,9 @@ $(function() {
 	
 	
 	function preview(file) {
-		console.log(file);
+		
+	    
+//		console.log(file);
 		//检查图片格式和大小
 
 //		if(file.size > 20480){
@@ -172,10 +181,26 @@ $(function() {
 		img.style.height="120px";
 		
 		var container = $('.add-img>ul');
-		console.log(file.name);
 		
-		img.onload = function() {
+		 //创建读取文件的对象  
+	    var reader = new FileReader(); 
+	    reader.readAsDataURL(file);
+		console.log(file.type);
+		
+		reader.onerror = function(){
+			alert("无法上传该图片");
+		}
+		
+		reader.onprogress = function(){
+			console.log("upload...");
+		}
+		
+		reader.onload = function(e) {
+			//保存图片数据,base64码
+			imgDatas[imgDataLen] = e.target.result;
+			imgDataLen ++;
 			
+			//显示预览图片
 			upLoadImg(container,img);
 			uploadNum ++;
 			if(uploadNum >=5){
@@ -188,14 +213,6 @@ $(function() {
 	
 	function upLoadImg(container,img){
 		var url = img.src;
-		//console.log(url);
-		/*$.ajax({
-			type:"post",
-			async:true,
-			url : baseUrl + "/goods/createGoods.action"+url, // 需要访问的地址
-			
-		})*/
-		
 		var li = $("<li class='preview new-li'></li>");
 		container.append(li);
 		li.empty().append(img);
