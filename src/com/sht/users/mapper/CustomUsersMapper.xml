@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.users.mapper.CustomUsersMapper">
+	<select id="selectUserByUsername" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE USERNAME=#{username} AND STATUS = 1
+		
+	</select>
+	
+	<select id="selectUserByEmail" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE EMAIL=#{email} AND STATUS = 1
+		
+	</select>
+	
+	<select id="selectUserByUsername_reg" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE USERNAME=#{username} 
+		
+	</select>
+	
+	<select id="selectUserByEmail_reg" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE EMAIL=#{email} 
+		
+	</select>
+	
+	<insert id="insertUser" parameterType="com.sht.users.po.CustomUsers">
+	
+		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME,STATUS,BIRTHDAY,DESCRIPTION,HEADIMG,MONEY) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime},#{status},#{birthday},#{description},#{headimg},#{money}) 
+	
+	</insert>
+	
+	<update id="updateStatusByEmail" parameterType="string">
+	
+		UPDATE USERS SET STATUS = '1' WHERE EMAIL = #{email}
+	
+	</update>
+</mapper>

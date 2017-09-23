@@ -1,0 +1,10 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script>
+var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+            $.getJSON(url, function(data) {
+                console.info(data);
+                alert(data.Ip);
+            });
+</script>
