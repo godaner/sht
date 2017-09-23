@@ -1,8 +1,6 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Goods {
     private String id;
@@ -27,9 +25,9 @@ public class Goods {
 
     private String buyer;
 
-    private BigDecimal browsenumber;
+    private Double browsenumber;
 
-    private Date lastupdatetime;
+    private Timestamp lastupdatetime;
 
     private Timestamp buytime;
 
@@ -123,19 +121,19 @@ public class Goods {
         this.buyer = buyer == null ? null : buyer.trim();
     }
 
-    public BigDecimal getBrowsenumber() {
+    public Double getBrowsenumber() {
         return browsenumber;
     }
 
-    public void setBrowsenumber(BigDecimal browsenumber) {
+    public void setBrowsenumber(Double browsenumber) {
         this.browsenumber = browsenumber;
     }
 
-    public Date getLastupdatetime() {
+    public Timestamp getLastupdatetime() {
         return lastupdatetime;
     }
 
-    public void setLastupdatetime(Date lastupdatetime) {
+    public void setLastupdatetime(Timestamp lastupdatetime) {
         this.lastupdatetime = lastupdatetime;
     }
 

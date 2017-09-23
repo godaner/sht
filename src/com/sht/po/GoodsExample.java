@@ -1,9 +1,7 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class GoodsExample {
@@ -777,52 +775,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberEqualTo(BigDecimal value) {
+        public Criteria andBrowsenumberEqualTo(Double value) {
             addCriterion("BROWSENUMBER =", value, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberNotEqualTo(BigDecimal value) {
+        public Criteria andBrowsenumberNotEqualTo(Double value) {
             addCriterion("BROWSENUMBER <>", value, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberGreaterThan(BigDecimal value) {
+        public Criteria andBrowsenumberGreaterThan(Double value) {
             addCriterion("BROWSENUMBER >", value, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andBrowsenumberGreaterThanOrEqualTo(Double value) {
             addCriterion("BROWSENUMBER >=", value, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberLessThan(BigDecimal value) {
+        public Criteria andBrowsenumberLessThan(Double value) {
             addCriterion("BROWSENUMBER <", value, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andBrowsenumberLessThanOrEqualTo(Double value) {
             addCriterion("BROWSENUMBER <=", value, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberIn(List<BigDecimal> values) {
+        public Criteria andBrowsenumberIn(List<Double> values) {
             addCriterion("BROWSENUMBER in", values, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberNotIn(List<BigDecimal> values) {
+        public Criteria andBrowsenumberNotIn(List<Double> values) {
             addCriterion("BROWSENUMBER not in", values, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andBrowsenumberBetween(Double value1, Double value2) {
             addCriterion("BROWSENUMBER between", value1, value2, "browsenumber");
             return (Criteria) this;
         }
 
-        public Criteria andBrowsenumberNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andBrowsenumberNotBetween(Double value1, Double value2) {
             addCriterion("BROWSENUMBER not between", value1, value2, "browsenumber");
             return (Criteria) this;
         }
@@ -837,52 +835,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeEqualTo(Date value) {
+        public Criteria andLastupdatetimeEqualTo(Timestamp value) {
             addCriterion("LASTUPDATETIME =", value, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeNotEqualTo(Date value) {
+        public Criteria andLastupdatetimeNotEqualTo(Timestamp value) {
             addCriterion("LASTUPDATETIME <>", value, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeGreaterThan(Date value) {
+        public Criteria andLastupdatetimeGreaterThan(Timestamp value) {
             addCriterion("LASTUPDATETIME >", value, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andLastupdatetimeGreaterThanOrEqualTo(Timestamp value) {
             addCriterion("LASTUPDATETIME >=", value, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeLessThan(Date value) {
+        public Criteria andLastupdatetimeLessThan(Timestamp value) {
             addCriterion("LASTUPDATETIME <", value, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeLessThanOrEqualTo(Date value) {
+        public Criteria andLastupdatetimeLessThanOrEqualTo(Timestamp value) {
             addCriterion("LASTUPDATETIME <=", value, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeIn(List<Date> values) {
+        public Criteria andLastupdatetimeIn(List<Timestamp> values) {
             addCriterion("LASTUPDATETIME in", values, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeNotIn(List<Date> values) {
+        public Criteria andLastupdatetimeNotIn(List<Timestamp> values) {
             addCriterion("LASTUPDATETIME not in", values, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeBetween(Date value1, Date value2) {
+        public Criteria andLastupdatetimeBetween(Timestamp value1, Timestamp value2) {
             addCriterion("LASTUPDATETIME between", value1, value2, "lastupdatetime");
             return (Criteria) this;
         }
 
-        public Criteria andLastupdatetimeNotBetween(Date value1, Date value2) {
+        public Criteria andLastupdatetimeNotBetween(Timestamp value1, Timestamp value2) {
             addCriterion("LASTUPDATETIME not between", value1, value2, "lastupdatetime");
             return (Criteria) this;
         }
