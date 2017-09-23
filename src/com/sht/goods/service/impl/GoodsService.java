@@ -98,8 +98,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
             
             int length = 0 ;  
               
-            while(-1 != (length = is.read(buf) ) )  
-            {  
+            while(-1 != (length = is.read(buf) ) )  {  
                 os.write(buf, 0, length) ;  
             }  
               
