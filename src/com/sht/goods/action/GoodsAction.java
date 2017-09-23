@@ -47,15 +47,17 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 
 	}
 	
-	public void createGoods(CustomGoods goods) throws Exception{
+	public void createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
 		try {
-			service.createGoodsInfo(goods);
+			service.createGoodsInfo(po);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	
 }

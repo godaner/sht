@@ -1,5 +1,6 @@
 package com.sht.po;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Goods {
@@ -25,16 +26,20 @@ public class Goods {
 
     private String buyer;
 
-    private Double browseNumber;
+    private BigDecimal browseNumber;
 
     private Date lastUpdateTime;
+
+    private Date buytime;
+
+    private Date finishtime;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getTitle() {
@@ -42,7 +47,7 @@ public class Goods {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getDescription() {
@@ -50,7 +55,7 @@ public class Goods {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description == null ? null : description.trim();
     }
 
     public Double getSprice() {
@@ -106,7 +111,7 @@ public class Goods {
     }
 
     public void setOwner(String owner) {
-        this.owner = owner;
+        this.owner = owner == null ? null : owner.trim();
     }
 
     public String getBuyer() {
@@ -114,14 +119,14 @@ public class Goods {
     }
 
     public void setBuyer(String buyer) {
-        this.buyer = buyer;
+        this.buyer = buyer == null ? null : buyer.trim();
     }
 
-    public Double getBrowseNumber() {
+    public BigDecimal getBrowseNumber() {
         return browseNumber;
     }
 
-    public void setBrowseNumber(Double browseNumber) {
+    public void setBrowseNumber(BigDecimal browseNumber) {
         this.browseNumber = browseNumber;
     }
 
@@ -131,5 +136,21 @@ public class Goods {
 
     public void setLastUpdateTime(Date lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public Date getBuytime() {
+        return buytime;
+    }
+
+    public void setBuytime(Date buytime) {
+        this.buytime = buytime;
+    }
+
+    public Date getFinishtime() {
+        return finishtime;
+    }
+
+    public void setFinishtime(Date finishtime) {
+        this.finishtime = finishtime;
     }
 }

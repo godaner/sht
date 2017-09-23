@@ -1,16 +1,18 @@
 package com.sht.goods.service.impl;
 
 
-import java.util.List;
 
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sht.goods.mapper.CustomGoodsMapper;
 import com.sht.goods.po.CustomGoods;
-import com.sht.goods.po.Goods;
+import com.sht.goods.po.CustomGoodsImgs;
 import com.sht.goods.service.GoodsServiceI;
+import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
 
 
@@ -31,7 +33,12 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
 	private GoodsMapper goodsMapper;
 	
+	@Autowired
+	private GoodsImgsMapper goodsImgsMapper;
 	
+	/**
+	 * 	显示商品主页面商品信息
+	 */
 	@Override
 
 	public List<CustomGoods> dispalyGoodsInfo() throws Exception {
@@ -43,14 +50,32 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 
 	}
 
-
+	/**
+	 * 发布商品信息
+	 */
 	@Override
 	public void createGoodsInfo(CustomGoods goods) throws Exception {
 		// TODO Auto-generated method stub
+		goods.setId(uuid());
+		
+		goods.setCreatetime(new Date());
+		
 		int result = goodsMapper.insert(goods);
 		
 		System.out.println(result);
 	}
+
+	/**
+	 * 发布商品图片信息
+	 */
+	@Override
+	public void createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
+		// TODO Auto-generated method stub
+		goodsImgs.setId(uuid());
+		goodsImgsMapper.insert(goodsImgs);
+	}
+	
+	
 	
 	
 }
