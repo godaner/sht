@@ -45,10 +45,10 @@ $(function() {
 	 * 上传图片
 	 */
 	function uploadImg(){
-		$.post(baseUrl+"/goods/createGoodsImagsInfo.action",pd,function(data,status){
+		/*$.post(baseUrl+"/goods/createGoodsImagsInfo.action?",pd,function(data,status){
 			
-		}); 
-		/*$.ajax({
+		}); */
+		$.ajax({
 			type:"post",
 			async:true,
 			data:{'imgs':imgDataJson},
@@ -62,7 +62,7 @@ $(function() {
 					
 				})
 			}
-		});*/
+		});
 	}
 	
 	/**
