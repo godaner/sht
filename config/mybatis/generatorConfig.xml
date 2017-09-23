@@ -106,7 +106,7 @@
         	<columnOverride column="owner" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="img" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="main" javaType="java.lang.Double" jdbcType="DOUBLE"/>
-        </table>-->
+        </table>
        
       
        
@@ -115,7 +115,7 @@
         	<columnOverride column="path" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="name" javaType="java.lang.String"  jdbcType="CHAR"/>
         </table>
-        
+        -->
         <table schema="sht" tableName="goods">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="title" javaType="java.lang.String"  jdbcType="CHAR"/>
