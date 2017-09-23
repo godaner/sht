@@ -1,5 +1,6 @@
 package com.sht.goods.action;
 
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 

@@ -98,25 +98,40 @@
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="text" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="num" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
-        </table> -->
-        
-        <table schema="sht" tableName="goods">
+        </table>
+         -->
+         
+         <table schema="sht" tableName="goods_imgs">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="owner" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="img" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="main" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+        </table>
+       <table schema="sht" tableName="goods">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="title" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="description" javaType="java.lang.String"  jdbcType="CHAR"/>
-        	<columnOverride column="sprice" javaType="java.lang.Double"  jdbcType="NUMBER"/>
-        	<columnOverride column="price" javaType="java.lang.Double"  jdbcType="NUMBER"/>
-        	<columnOverride column="condition" javaType="java.lang.Short"  jdbcType="NUMBER(1)"/>
-        	<columnOverride column="region" javaType="java.lang.Double"  jdbcType="NUMBER"/>
-			<columnOverride column="status" javaType="java.lang.Short"  jdbcType="NUMBER(1)"/>
-        	<columnOverride column="createtime" javaType="java.util.Date"  jdbcType="TIMESTAMP(6)"/>
+        	<columnOverride column="sprice" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+        	<columnOverride column="price" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+        	<columnOverride column="condition" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+        	<columnOverride column="region" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+			<columnOverride column="status" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+        	<columnOverride column="createtime" javaType="java.sql.Timestamp"  jdbcType="TIMESTAMP"/>
         	<columnOverride column="owner" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="buyer" javaType="java.lang.String"  jdbcType="CHAR"/>
-        	<columnOverride column="brows_number" javaType="java.lang.Double" jdbcType="NUMBER"/>
-        	<columnOverride column="last_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP(6)"/>
-        	<columnOverride column="buytime" javaType="java.util.Date" jdbcType="TIMESTAMP(6)"/>
-        	<columnOverride column="finishtime" javaType="java.util.Date" jdbcType="TIMESTAMP(6)"/>
-        </table> 
+        	<columnOverride column="brows_number" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+        	<columnOverride column="last_update_time" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+        	<columnOverride column="buytime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+        	<columnOverride column="finishtime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+        </table>  
+      
+       
+        <table schema="sht" tableName="files">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="path" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="name" javaType="java.lang.String"  jdbcType="CHAR"/>
+        </table>
+         
         <!-- <table schema="" tableName="sys_user"></table>
         <table schema="" tableName="sys_role"></table>
         <table schema="" tableName="sys_permission"></table>

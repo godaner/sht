@@ -114,52 +114,52 @@ public class FilesExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Object value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Object value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Object value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Object value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Object value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Object value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Object> values) {
+        public Criteria andIdIn(List<String> values) {
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Object> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Object value1, Object value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Object value1, Object value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -174,52 +174,52 @@ public class FilesExample {
             return (Criteria) this;
         }
 
-        public Criteria andPathEqualTo(Object value) {
+        public Criteria andPathEqualTo(String value) {
             addCriterion("PATH =", value, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathNotEqualTo(Object value) {
+        public Criteria andPathNotEqualTo(String value) {
             addCriterion("PATH <>", value, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathGreaterThan(Object value) {
+        public Criteria andPathGreaterThan(String value) {
             addCriterion("PATH >", value, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathGreaterThanOrEqualTo(Object value) {
+        public Criteria andPathGreaterThanOrEqualTo(String value) {
             addCriterion("PATH >=", value, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathLessThan(Object value) {
+        public Criteria andPathLessThan(String value) {
             addCriterion("PATH <", value, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathLessThanOrEqualTo(Object value) {
+        public Criteria andPathLessThanOrEqualTo(String value) {
             addCriterion("PATH <=", value, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathIn(List<Object> values) {
+        public Criteria andPathIn(List<String> values) {
             addCriterion("PATH in", values, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathNotIn(List<Object> values) {
+        public Criteria andPathNotIn(List<String> values) {
             addCriterion("PATH not in", values, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathBetween(Object value1, Object value2) {
+        public Criteria andPathBetween(String value1, String value2) {
             addCriterion("PATH between", value1, value2, "path");
             return (Criteria) this;
         }
 
-        public Criteria andPathNotBetween(Object value1, Object value2) {
+        public Criteria andPathNotBetween(String value1, String value2) {
             addCriterion("PATH not between", value1, value2, "path");
             return (Criteria) this;
         }
@@ -234,52 +234,52 @@ public class FilesExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(Object value) {
+        public Criteria andNameEqualTo(String value) {
             addCriterion("NAME =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(Object value) {
+        public Criteria andNameNotEqualTo(String value) {
             addCriterion("NAME <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(Object value) {
+        public Criteria andNameGreaterThan(String value) {
             addCriterion("NAME >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(Object value) {
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
             addCriterion("NAME >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(Object value) {
+        public Criteria andNameLessThan(String value) {
             addCriterion("NAME <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(Object value) {
+        public Criteria andNameLessThanOrEqualTo(String value) {
             addCriterion("NAME <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<Object> values) {
+        public Criteria andNameIn(List<String> values) {
             addCriterion("NAME in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<Object> values) {
+        public Criteria andNameNotIn(List<String> values) {
             addCriterion("NAME not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(Object value1, Object value2) {
+        public Criteria andNameBetween(String value1, String value2) {
             addCriterion("NAME between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(Object value1, Object value2) {
+        public Criteria andNameNotBetween(String value1, String value2) {
             addCriterion("NAME not between", value1, value2, "name");
             return (Criteria) this;
         }

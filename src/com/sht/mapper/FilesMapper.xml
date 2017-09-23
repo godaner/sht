@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.FilesMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Files">
-    <id column="ID" jdbcType="OTHER" property="id" />
-    <result column="PATH" jdbcType="OTHER" property="path" />
-    <result column="NAME" jdbcType="OTHER" property="name" />
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="PATH" jdbcType="CHAR" property="path" />
+    <result column="NAME" jdbcType="CHAR" property="name" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +73,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from FILES
+    from SHT.FILES
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,28 +81,28 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from FILES
-    where ID = #{id,jdbcType=OTHER}
+    from SHT.FILES
+    where ID = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
-    delete from FILES
-    where ID = #{id,jdbcType=OTHER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHT.FILES
+    where ID = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.FilesExample">
-    delete from FILES
+    delete from SHT.FILES
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Files">
-    insert into FILES (ID, PATH, NAME)
-    values (#{id,jdbcType=OTHER}, #{path,jdbcType=OTHER}, #{name,jdbcType=OTHER})
+    insert into SHT.FILES (ID, PATH, NAME)
+    values (#{id,jdbcType=CHAR}, #{path,jdbcType=CHAR}, #{name,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Files">
-    insert into FILES
+    insert into SHT.FILES
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -116,33 +116,33 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=OTHER},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="path != null">
-        #{path,jdbcType=OTHER},
+        #{path,jdbcType=CHAR},
       </if>
       <if test="name != null">
-        #{name,jdbcType=OTHER},
+        #{name,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.sht.po.FilesExample" resultType="java.lang.Long">
-    select count(*) from FILES
+    select count(*) from SHT.FILES
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update FILES
+    update SHT.FILES
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=OTHER},
+        ID = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.path != null">
-        PATH = #{record.path,jdbcType=OTHER},
+        PATH = #{record.path,jdbcType=CHAR},
       </if>
       <if test="record.name != null">
-        NAME = #{record.name,jdbcType=OTHER},
+        NAME = #{record.name,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -150,30 +150,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update FILES
-    set ID = #{record.id,jdbcType=OTHER},
-      PATH = #{record.path,jdbcType=OTHER},
-      NAME = #{record.name,jdbcType=OTHER}
+    update SHT.FILES
+    set ID = #{record.id,jdbcType=CHAR},
+      PATH = #{record.path,jdbcType=CHAR},
+      NAME = #{record.name,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Files">
-    update FILES
+    update SHT.FILES
     <set>
       <if test="path != null">
-        PATH = #{path,jdbcType=OTHER},
+        PATH = #{path,jdbcType=CHAR},
       </if>
       <if test="name != null">
-        NAME = #{name,jdbcType=OTHER},
+        NAME = #{name,jdbcType=CHAR},
       </if>
     </set>
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Files">
-    update FILES
-    set PATH = #{path,jdbcType=OTHER},
-      NAME = #{name,jdbcType=OTHER}
-    where ID = #{id,jdbcType=OTHER}
+    update SHT.FILES
+    set PATH = #{path,jdbcType=CHAR},
+      NAME = #{name,jdbcType=CHAR}
+    where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

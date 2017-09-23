@@ -114,52 +114,52 @@ public class GoodsImgsExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Object value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Object value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Object value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Object value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Object value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Object value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Object> values) {
+        public Criteria andIdIn(List<String> values) {
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Object> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Object value1, Object value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Object value1, Object value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -174,52 +174,52 @@ public class GoodsImgsExample {
             return (Criteria) this;
         }
 
-        public Criteria andOwnerEqualTo(Object value) {
+        public Criteria andOwnerEqualTo(String value) {
             addCriterion("OWNER =", value, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerNotEqualTo(Object value) {
+        public Criteria andOwnerNotEqualTo(String value) {
             addCriterion("OWNER <>", value, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerGreaterThan(Object value) {
+        public Criteria andOwnerGreaterThan(String value) {
             addCriterion("OWNER >", value, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerGreaterThanOrEqualTo(Object value) {
+        public Criteria andOwnerGreaterThanOrEqualTo(String value) {
             addCriterion("OWNER >=", value, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerLessThan(Object value) {
+        public Criteria andOwnerLessThan(String value) {
             addCriterion("OWNER <", value, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerLessThanOrEqualTo(Object value) {
+        public Criteria andOwnerLessThanOrEqualTo(String value) {
             addCriterion("OWNER <=", value, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIn(List<Object> values) {
+        public Criteria andOwnerIn(List<String> values) {
             addCriterion("OWNER in", values, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerNotIn(List<Object> values) {
+        public Criteria andOwnerNotIn(List<String> values) {
             addCriterion("OWNER not in", values, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerBetween(Object value1, Object value2) {
+        public Criteria andOwnerBetween(String value1, String value2) {
             addCriterion("OWNER between", value1, value2, "owner");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerNotBetween(Object value1, Object value2) {
+        public Criteria andOwnerNotBetween(String value1, String value2) {
             addCriterion("OWNER not between", value1, value2, "owner");
             return (Criteria) this;
         }
@@ -234,52 +234,52 @@ public class GoodsImgsExample {
             return (Criteria) this;
         }
 
-        public Criteria andImgEqualTo(Object value) {
+        public Criteria andImgEqualTo(String value) {
             addCriterion("IMG =", value, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgNotEqualTo(Object value) {
+        public Criteria andImgNotEqualTo(String value) {
             addCriterion("IMG <>", value, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgGreaterThan(Object value) {
+        public Criteria andImgGreaterThan(String value) {
             addCriterion("IMG >", value, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgGreaterThanOrEqualTo(Object value) {
+        public Criteria andImgGreaterThanOrEqualTo(String value) {
             addCriterion("IMG >=", value, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgLessThan(Object value) {
+        public Criteria andImgLessThan(String value) {
             addCriterion("IMG <", value, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgLessThanOrEqualTo(Object value) {
+        public Criteria andImgLessThanOrEqualTo(String value) {
             addCriterion("IMG <=", value, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgIn(List<Object> values) {
+        public Criteria andImgIn(List<String> values) {
             addCriterion("IMG in", values, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgNotIn(List<Object> values) {
+        public Criteria andImgNotIn(List<String> values) {
             addCriterion("IMG not in", values, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgBetween(Object value1, Object value2) {
+        public Criteria andImgBetween(String value1, String value2) {
             addCriterion("IMG between", value1, value2, "img");
             return (Criteria) this;
         }
 
-        public Criteria andImgNotBetween(Object value1, Object value2) {
+        public Criteria andImgNotBetween(String value1, String value2) {
             addCriterion("IMG not between", value1, value2, "img");
             return (Criteria) this;
         }
@@ -294,52 +294,52 @@ public class GoodsImgsExample {
             return (Criteria) this;
         }
 
-        public Criteria andMainEqualTo(Short value) {
+        public Criteria andMainEqualTo(Double value) {
             addCriterion("MAIN =", value, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainNotEqualTo(Short value) {
+        public Criteria andMainNotEqualTo(Double value) {
             addCriterion("MAIN <>", value, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainGreaterThan(Short value) {
+        public Criteria andMainGreaterThan(Double value) {
             addCriterion("MAIN >", value, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainGreaterThanOrEqualTo(Short value) {
+        public Criteria andMainGreaterThanOrEqualTo(Double value) {
             addCriterion("MAIN >=", value, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainLessThan(Short value) {
+        public Criteria andMainLessThan(Double value) {
             addCriterion("MAIN <", value, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainLessThanOrEqualTo(Short value) {
+        public Criteria andMainLessThanOrEqualTo(Double value) {
             addCriterion("MAIN <=", value, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainIn(List<Short> values) {
+        public Criteria andMainIn(List<Double> values) {
             addCriterion("MAIN in", values, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainNotIn(List<Short> values) {
+        public Criteria andMainNotIn(List<Double> values) {
             addCriterion("MAIN not in", values, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainBetween(Short value1, Short value2) {
+        public Criteria andMainBetween(Double value1, Double value2) {
             addCriterion("MAIN between", value1, value2, "main");
             return (Criteria) this;
         }
 
-        public Criteria andMainNotBetween(Short value1, Short value2) {
+        public Criteria andMainNotBetween(Double value1, Double value2) {
             addCriterion("MAIN not between", value1, value2, "main");
             return (Criteria) this;
         }
