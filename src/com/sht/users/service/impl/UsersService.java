@@ -97,6 +97,12 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 	}
 
+	@Override
+	public void getGoodsById(String id) {
+		// TODO Auto-generated method stub
+		customUsersMapper.getGoodsById(id);
+	}
+
 	
 	
 	
