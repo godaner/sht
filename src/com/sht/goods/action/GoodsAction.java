@@ -49,12 +49,15 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 	
 	public void createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
+		String goodsId = null;
 		try {
-			service.createGoodsInfo(po);
+			goodsId = service.createGoodsInfo(po);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
+		//返回商品Id
+		writeJSON(goodsId);
+		
 	}
 	
 	public void deleteGoods() throws Exception{

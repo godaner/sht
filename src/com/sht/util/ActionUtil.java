@@ -147,6 +147,9 @@ public class ActionUtil extends Util{
 		}
 	}
 
+	
+	
+	
 	/**
 	 * 返回二进制图片
 	 * 

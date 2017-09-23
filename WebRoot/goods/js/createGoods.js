@@ -26,16 +26,17 @@ $(function() {
 			return false;
 		}
 		
-		var url = "?description="+description+
+		var url = "description="+description+
 					"&title="+title+
 					"&sprice="+sprice+
 					"&price="+price+
 					"&condition="+condition+
 					"&region="+region+
 					"&status=0"+
-					"&owner=1";
+					"&owner=1"+
+					"&browsernumber=0";
 		
-	     
+	    console.log(url);
 		uploadGoodsInfo(url);
 		uploadImg();
 
@@ -51,7 +52,7 @@ $(function() {
 		$.ajax({
 			type:"post",
 			async:true,
-			data:{'imgs':imgDataJson},
+			data:{'imgs':pd},
 			url:baseUrl+"/goods/createGoodsImagsInfo.action?",
 			success:function(data){
 				console.log('上传图片成功');
@@ -72,9 +73,12 @@ $(function() {
 		$.ajax({
 			type : "post",
 			async : true, // 同步请求
-			url : baseUrl + "/goods/createGoods.action"+url, // 需要访问的地址
+			
+			url : baseUrl + "/goods/createGoods.action?"+url, // 需要访问的地址
 			success : function(data) {
 				console.log('商品信息发布成功');
+				//console.log(JSON.parse(data));
+				//console.log(data);
 			},
 			error : function(data) {
 				console.log('商品信息发布失败');

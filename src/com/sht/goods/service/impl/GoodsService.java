@@ -47,7 +47,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
 	private GoodsImgsMapper goodsImgsMapper;
 	
-	private String createGoodsId = null;
+	
 	
 	/**
 	 * 	显示商品主页面商品信息
@@ -67,24 +67,25 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	 * 发布商品信息
 	 */
 	@Override
-	public void createGoodsInfo(CustomGoods goods) throws Exception {
+	public String createGoodsInfo(CustomGoods goods) throws Exception {
 		// TODO Auto-generated method stub
-		createGoodsId = uuid();
+		String createGoodsId = uuid();
 		goods.setId(createGoodsId);
-		Timestamp daTimestamp = new Timestamp(System.currentTimeMillis());
-		goods.setCreatetime(daTimestamp);
-		
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		goods.setCreatetime(timestamp);
+		goods.setLastUpdateTime(timestamp);
 		goodsMapper.insert(goods);
 		
-		
+		return createGoodsId;
 	}
 
 	/**
 	 * 发布商品图片信息
 	 */
 	@Override
-	public void createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
+	public int createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
 		// TODO Auto-generated method stub
+		
 		goodsImgs.setId(uuid());
 		
 		String path = CONFIG.FILED_SRC_GOODS_IMGS;
@@ -105,8 +106,10 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
             closeStream(is, os);
 		}
 	   
-		goodsImgs.setOwner(createGoodsId);
+		goodsImgs.setOwner("");
 		int result = goodsImgsMapper.insert(goodsImgs);
+		
+		return result;
 		
 	}
 	
