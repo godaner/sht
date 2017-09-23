@@ -57,7 +57,9 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 		}
 	}
 	
-	
+	public void deleteGoods() throws Exception{
+		
+	}
 	
 	
 }

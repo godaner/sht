@@ -14,6 +14,8 @@
 		<!-- 配置action -->
 		<action name="*" class="goodsAction" method="{1}">
 		</action>
+		<action name="*" class="goodsImagsAction" method="{1}">
+		</action>
 	</package>    
 	
 </struts>

@@ -49,7 +49,7 @@
 					<li title="最多可添加五张图片" class="preview" id="add"><img src="goods/img/add.png" id="img"></li>
 				</ul>
 				<input id="file" type="file"
-					style="visibility: hidden; width: 1px; height: 1px;" />
+					style="visibility: hidden; width: 1px; height: 1px;" multiple="multiple" />
 			</div>
 			<div class="line"></div>
 			<div class="detail-info">
