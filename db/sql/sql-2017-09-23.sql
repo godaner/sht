@@ -26,4 +26,9 @@ alter table goods modify browse_number not null;
 UPDATE goods
 set LAST_UPDATE_TIME=sysdate;
 alter table  goods modify LAST_UPDATE_TIME not null;
-
+/**
+ * 18:06	alls
+ */
+/*修改商品的browse_number,LAST_UPDATE_TIME为字段名*/
+ALTER TABLE goods RENAME COLUMN browse_number TO browsenumber
+ALTER TABLE goods RENAME COLUMN LAST_UPDATE_TIME TO LASTUPDATETIME
