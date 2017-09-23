@@ -2,6 +2,8 @@ package com.sht.goods.service.impl;
 
 
 
+
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +38,8 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
 	private GoodsImgsMapper goodsImgsMapper;
 	
+	private String createGoodsId = null;
+	
 	/**
 	 * 	显示商品主页面商品信息
 	 */
@@ -56,13 +60,14 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Override
 	public void createGoodsInfo(CustomGoods goods) throws Exception {
 		// TODO Auto-generated method stub
-		goods.setId(uuid());
+		createGoodsId = uuid();
+		goods.setId(createGoodsId);
+		Timestamp daTimestamp = new Timestamp(System.currentTimeMillis());
+		goods.setCreatetime(daTimestamp);
 		
-		goods.setCreatetime(new Date());
+		goodsMapper.insert(goods);
 		
-		int result = goodsMapper.insert(goods);
 		
-		System.out.println(result);
 	}
 
 	/**
@@ -72,6 +77,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	public void createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
 		// TODO Auto-generated method stub
 		goodsImgs.setId(uuid());
+		goodsImgs.setOwner(createGoodsId);
 		goodsImgsMapper.insert(goodsImgs);
 	}
 	

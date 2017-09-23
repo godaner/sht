@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.GoodsImgsMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.GoodsImgs">
-    <id column="ID" jdbcType="OTHER" property="id" />
-    <result column="OWNER" jdbcType="OTHER" property="owner" />
-    <result column="IMG" jdbcType="OTHER" property="img" />
-    <result column="MAIN" jdbcType="DECIMAL" property="main" />
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="OWNER" jdbcType="CHAR" property="owner" />
+    <result column="IMG" jdbcType="CHAR" property="img" />
+    <result column="MAIN" jdbcType="DOUBLE" property="main" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +74,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from GOODS_IMGS
+    from SHT.GOODS_IMGS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,30 +82,30 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from GOODS_IMGS
-    where ID = #{id,jdbcType=OTHER}
+    from SHT.GOODS_IMGS
+    where ID = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
-    delete from GOODS_IMGS
-    where ID = #{id,jdbcType=OTHER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHT.GOODS_IMGS
+    where ID = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.GoodsImgsExample">
-    delete from GOODS_IMGS
+    delete from SHT.GOODS_IMGS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.GoodsImgs">
-    insert into GOODS_IMGS (ID, OWNER, IMG, MAIN
+    insert into SHT.GOODS_IMGS (ID, OWNER, IMG, MAIN
       )
-    values (#{id,jdbcType=OTHER}, #{owner,jdbcType=OTHER}, #{img,jdbcType=OTHER}, #{main,jdbcType=DECIMAL}
+    values (#{id,jdbcType=CHAR}, #{owner,jdbcType=CHAR}, #{img,jdbcType=CHAR}, #{main,jdbcType=DOUBLE}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.GoodsImgs">
-    insert into GOODS_IMGS
+    insert into SHT.GOODS_IMGS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -122,39 +122,39 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=OTHER},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="owner != null">
-        #{owner,jdbcType=OTHER},
+        #{owner,jdbcType=CHAR},
       </if>
       <if test="img != null">
-        #{img,jdbcType=OTHER},
+        #{img,jdbcType=CHAR},
       </if>
       <if test="main != null">
-        #{main,jdbcType=DECIMAL},
+        #{main,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.sht.po.GoodsImgsExample" resultType="java.lang.Long">
-    select count(*) from GOODS_IMGS
+    select count(*) from SHT.GOODS_IMGS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update GOODS_IMGS
+    update SHT.GOODS_IMGS
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=OTHER},
+        ID = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.owner != null">
-        OWNER = #{record.owner,jdbcType=OTHER},
+        OWNER = #{record.owner,jdbcType=CHAR},
       </if>
       <if test="record.img != null">
-        IMG = #{record.img,jdbcType=OTHER},
+        IMG = #{record.img,jdbcType=CHAR},
       </if>
       <if test="record.main != null">
-        MAIN = #{record.main,jdbcType=DECIMAL},
+        MAIN = #{record.main,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update GOODS_IMGS
-    set ID = #{record.id,jdbcType=OTHER},
-      OWNER = #{record.owner,jdbcType=OTHER},
-      IMG = #{record.img,jdbcType=OTHER},
-      MAIN = #{record.main,jdbcType=DECIMAL}
+    update SHT.GOODS_IMGS
+    set ID = #{record.id,jdbcType=CHAR},
+      OWNER = #{record.owner,jdbcType=CHAR},
+      IMG = #{record.img,jdbcType=CHAR},
+      MAIN = #{record.main,jdbcType=DOUBLE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.GoodsImgs">
-    update GOODS_IMGS
+    update SHT.GOODS_IMGS
     <set>
       <if test="owner != null">
-        OWNER = #{owner,jdbcType=OTHER},
+        OWNER = #{owner,jdbcType=CHAR},
       </if>
       <if test="img != null">
-        IMG = #{img,jdbcType=OTHER},
+        IMG = #{img,jdbcType=CHAR},
       </if>
       <if test="main != null">
-        MAIN = #{main,jdbcType=DECIMAL},
+        MAIN = #{main,jdbcType=DOUBLE},
       </if>
     </set>
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.GoodsImgs">
-    update GOODS_IMGS
-    set OWNER = #{owner,jdbcType=OTHER},
-      IMG = #{img,jdbcType=OTHER},
-      MAIN = #{main,jdbcType=DECIMAL}
-    where ID = #{id,jdbcType=OTHER}
+    update SHT.GOODS_IMGS
+    set OWNER = #{owner,jdbcType=CHAR},
+      IMG = #{img,jdbcType=CHAR},
+      MAIN = #{main,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

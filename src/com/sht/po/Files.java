@@ -12,7 +12,7 @@ public class Files {
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getPath() {
@@ -20,7 +20,7 @@ public class Files {
     }
 
     public void setPath(String path) {
-        this.path = path;
+        this.path = path == null ? null : path.trim();
     }
 
     public String getName() {
@@ -28,6 +28,6 @@ public class Files {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 }

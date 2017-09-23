@@ -1,7 +1,7 @@
 package com.sht.po;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Goods {
     private String id;
@@ -20,7 +20,7 @@ public class Goods {
 
     private Short status;
 
-    private Date createtime;
+    private Timestamp createtime;
 
     private String owner;
 
@@ -28,11 +28,11 @@ public class Goods {
 
     private BigDecimal browseNumber;
 
-    private Date lastUpdateTime;
+    private Timestamp lastUpdateTime;
 
-    private Date buytime;
+    private Timestamp buytime;
 
-    private Date finishtime;
+    private Timestamp finishtime;
 
     public String getId() {
         return id;
@@ -98,11 +98,11 @@ public class Goods {
         this.status = status;
     }
 
-    public Date getCreatetime() {
+    public Timestamp getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
     }
 
@@ -130,27 +130,27 @@ public class Goods {
         this.browseNumber = browseNumber;
     }
 
-    public Date getLastUpdateTime() {
+    public Timestamp getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
+    public void setLastUpdateTime(Timestamp lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public Date getBuytime() {
+    public Timestamp getBuytime() {
         return buytime;
     }
 
-    public void setBuytime(Date buytime) {
+    public void setBuytime(Timestamp buytime) {
         this.buytime = buytime;
     }
 
-    public Date getFinishtime() {
+    public Timestamp getFinishtime() {
         return finishtime;
     }
 
-    public void setFinishtime(Date finishtime) {
+    public void setFinishtime(Timestamp finishtime) {
         this.finishtime = finishtime;
     }
 }
