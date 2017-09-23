@@ -2,6 +2,7 @@ package com.sht.po;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Goods {
     private String id;
@@ -26,9 +27,9 @@ public class Goods {
 
     private String buyer;
 
-    private BigDecimal browseNumber;
+    private BigDecimal browsenumber;
 
-    private Timestamp lastUpdateTime;
+    private Date lastupdatetime;
 
     private Timestamp buytime;
 
@@ -122,20 +123,20 @@ public class Goods {
         this.buyer = buyer == null ? null : buyer.trim();
     }
 
-    public BigDecimal getBrowseNumber() {
-        return browseNumber;
+    public BigDecimal getBrowsenumber() {
+        return browsenumber;
     }
 
-    public void setBrowseNumber(BigDecimal browseNumber) {
-        this.browseNumber = browseNumber;
+    public void setBrowsenumber(BigDecimal browsenumber) {
+        this.browsenumber = browsenumber;
     }
 
-    public Timestamp getLastUpdateTime() {
-        return lastUpdateTime;
+    public Date getLastupdatetime() {
+        return lastupdatetime;
     }
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLastupdatetime(Date lastupdatetime) {
+        this.lastupdatetime = lastupdatetime;
     }
 
     public Timestamp getBuytime() {
