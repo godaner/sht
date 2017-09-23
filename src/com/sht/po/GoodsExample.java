@@ -1,8 +1,8 @@
 package com.sht.po;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class GoodsExample {
@@ -596,52 +596,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeEqualTo(Date value) {
+        public Criteria andCreatetimeEqualTo(Timestamp value) {
             addCriterion("CREATETIME =", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeNotEqualTo(Date value) {
+        public Criteria andCreatetimeNotEqualTo(Timestamp value) {
             addCriterion("CREATETIME <>", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeGreaterThan(Date value) {
+        public Criteria andCreatetimeGreaterThan(Timestamp value) {
             addCriterion("CREATETIME >", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andCreatetimeGreaterThanOrEqualTo(Timestamp value) {
             addCriterion("CREATETIME >=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeLessThan(Date value) {
+        public Criteria andCreatetimeLessThan(Timestamp value) {
             addCriterion("CREATETIME <", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeLessThanOrEqualTo(Date value) {
+        public Criteria andCreatetimeLessThanOrEqualTo(Timestamp value) {
             addCriterion("CREATETIME <=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeIn(List<Date> values) {
+        public Criteria andCreatetimeIn(List<Timestamp> values) {
             addCriterion("CREATETIME in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeNotIn(List<Date> values) {
+        public Criteria andCreatetimeNotIn(List<Timestamp> values) {
             addCriterion("CREATETIME not in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeBetween(Date value1, Date value2) {
+        public Criteria andCreatetimeBetween(Timestamp value1, Timestamp value2) {
             addCriterion("CREATETIME between", value1, value2, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andCreatetimeNotBetween(Date value1, Date value2) {
+        public Criteria andCreatetimeNotBetween(Timestamp value1, Timestamp value2) {
             addCriterion("CREATETIME not between", value1, value2, "createtime");
             return (Criteria) this;
         }
@@ -836,52 +836,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeEqualTo(Date value) {
+        public Criteria andLastUpdateTimeEqualTo(Timestamp value) {
             addCriterion("LAST_UPDATE_TIME =", value, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeNotEqualTo(Date value) {
+        public Criteria andLastUpdateTimeNotEqualTo(Timestamp value) {
             addCriterion("LAST_UPDATE_TIME <>", value, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeGreaterThan(Date value) {
+        public Criteria andLastUpdateTimeGreaterThan(Timestamp value) {
             addCriterion("LAST_UPDATE_TIME >", value, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andLastUpdateTimeGreaterThanOrEqualTo(Timestamp value) {
             addCriterion("LAST_UPDATE_TIME >=", value, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeLessThan(Date value) {
+        public Criteria andLastUpdateTimeLessThan(Timestamp value) {
             addCriterion("LAST_UPDATE_TIME <", value, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andLastUpdateTimeLessThanOrEqualTo(Timestamp value) {
             addCriterion("LAST_UPDATE_TIME <=", value, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeIn(List<Date> values) {
+        public Criteria andLastUpdateTimeIn(List<Timestamp> values) {
             addCriterion("LAST_UPDATE_TIME in", values, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeNotIn(List<Date> values) {
+        public Criteria andLastUpdateTimeNotIn(List<Timestamp> values) {
             addCriterion("LAST_UPDATE_TIME not in", values, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeBetween(Date value1, Date value2) {
+        public Criteria andLastUpdateTimeBetween(Timestamp value1, Timestamp value2) {
             addCriterion("LAST_UPDATE_TIME between", value1, value2, "lastUpdateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andLastUpdateTimeNotBetween(Timestamp value1, Timestamp value2) {
             addCriterion("LAST_UPDATE_TIME not between", value1, value2, "lastUpdateTime");
             return (Criteria) this;
         }
@@ -896,52 +896,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeEqualTo(Date value) {
+        public Criteria andBuytimeEqualTo(Timestamp value) {
             addCriterion("BUYTIME =", value, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeNotEqualTo(Date value) {
+        public Criteria andBuytimeNotEqualTo(Timestamp value) {
             addCriterion("BUYTIME <>", value, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeGreaterThan(Date value) {
+        public Criteria andBuytimeGreaterThan(Timestamp value) {
             addCriterion("BUYTIME >", value, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andBuytimeGreaterThanOrEqualTo(Timestamp value) {
             addCriterion("BUYTIME >=", value, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeLessThan(Date value) {
+        public Criteria andBuytimeLessThan(Timestamp value) {
             addCriterion("BUYTIME <", value, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeLessThanOrEqualTo(Date value) {
+        public Criteria andBuytimeLessThanOrEqualTo(Timestamp value) {
             addCriterion("BUYTIME <=", value, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeIn(List<Date> values) {
+        public Criteria andBuytimeIn(List<Timestamp> values) {
             addCriterion("BUYTIME in", values, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeNotIn(List<Date> values) {
+        public Criteria andBuytimeNotIn(List<Timestamp> values) {
             addCriterion("BUYTIME not in", values, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeBetween(Date value1, Date value2) {
+        public Criteria andBuytimeBetween(Timestamp value1, Timestamp value2) {
             addCriterion("BUYTIME between", value1, value2, "buytime");
             return (Criteria) this;
         }
 
-        public Criteria andBuytimeNotBetween(Date value1, Date value2) {
+        public Criteria andBuytimeNotBetween(Timestamp value1, Timestamp value2) {
             addCriterion("BUYTIME not between", value1, value2, "buytime");
             return (Criteria) this;
         }
@@ -956,52 +956,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeEqualTo(Date value) {
+        public Criteria andFinishtimeEqualTo(Timestamp value) {
             addCriterion("FINISHTIME =", value, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeNotEqualTo(Date value) {
+        public Criteria andFinishtimeNotEqualTo(Timestamp value) {
             addCriterion("FINISHTIME <>", value, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeGreaterThan(Date value) {
+        public Criteria andFinishtimeGreaterThan(Timestamp value) {
             addCriterion("FINISHTIME >", value, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andFinishtimeGreaterThanOrEqualTo(Timestamp value) {
             addCriterion("FINISHTIME >=", value, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeLessThan(Date value) {
+        public Criteria andFinishtimeLessThan(Timestamp value) {
             addCriterion("FINISHTIME <", value, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeLessThanOrEqualTo(Date value) {
+        public Criteria andFinishtimeLessThanOrEqualTo(Timestamp value) {
             addCriterion("FINISHTIME <=", value, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeIn(List<Date> values) {
+        public Criteria andFinishtimeIn(List<Timestamp> values) {
             addCriterion("FINISHTIME in", values, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeNotIn(List<Date> values) {
+        public Criteria andFinishtimeNotIn(List<Timestamp> values) {
             addCriterion("FINISHTIME not in", values, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeBetween(Date value1, Date value2) {
+        public Criteria andFinishtimeBetween(Timestamp value1, Timestamp value2) {
             addCriterion("FINISHTIME between", value1, value2, "finishtime");
             return (Criteria) this;
         }
 
-        public Criteria andFinishtimeNotBetween(Date value1, Date value2) {
+        public Criteria andFinishtimeNotBetween(Timestamp value1, Timestamp value2) {
             addCriterion("FINISHTIME not between", value1, value2, "finishtime");
             return (Criteria) this;
         }
