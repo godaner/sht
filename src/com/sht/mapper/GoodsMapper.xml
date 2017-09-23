@@ -13,8 +13,8 @@
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
     <result column="OWNER" jdbcType="CHAR" property="owner" />
     <result column="BUYER" jdbcType="CHAR" property="buyer" />
-    <result column="BROWSE_NUMBER" jdbcType="DECIMAL" property="browseNumber" />
-    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="BROWSENUMBER" jdbcType="DOUBLE" property="browsenumber" />
+    <result column="LASTUPDATETIME" jdbcType="TIMESTAMP" property="lastupdatetime" />
     <result column="BUYTIME" jdbcType="TIMESTAMP" property="buytime" />
     <result column="FINISHTIME" jdbcType="TIMESTAMP" property="finishtime" />
   </resultMap>
@@ -78,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, 
-    BUYER, BROWSE_NUMBER, LAST_UPDATE_TIME, BUYTIME, FINISHTIME
+    BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.GoodsExample" resultMap="BaseResultMap">
     select
@@ -114,14 +114,14 @@
     insert into SHT.GOODS (ID, TITLE, DESCRIPTION, 
       SPRICE, PRICE, CONDITION, 
       REGION, STATUS, CREATETIME, 
-      OWNER, BUYER, BROWSE_NUMBER, 
-      LAST_UPDATE_TIME, BUYTIME, FINISHTIME
+      OWNER, BUYER, BROWSENUMBER, 
+      LASTUPDATETIME, BUYTIME, FINISHTIME
       )
     values (#{id,jdbcType=CHAR}, #{title,jdbcType=CHAR}, #{description,jdbcType=CHAR}, 
       #{sprice,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, #{condition,jdbcType=SMALLINT}, 
       #{region,jdbcType=DOUBLE}, #{status,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{owner,jdbcType=CHAR}, #{buyer,jdbcType=CHAR}, #{browseNumber,jdbcType=DECIMAL}, 
-      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{buytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}
+      #{owner,jdbcType=CHAR}, #{buyer,jdbcType=CHAR}, #{browsenumber,jdbcType=DOUBLE}, 
+      #{lastupdatetime,jdbcType=TIMESTAMP}, #{buytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Goods">
@@ -160,11 +160,11 @@
       <if test="buyer != null">
         BUYER,
       </if>
-      <if test="browseNumber != null">
-        BROWSE_NUMBER,
+      <if test="browsenumber != null">
+        BROWSENUMBER,
       </if>
-      <if test="lastUpdateTime != null">
-        LAST_UPDATE_TIME,
+      <if test="lastupdatetime != null">
+        LASTUPDATETIME,
       </if>
       <if test="buytime != null">
         BUYTIME,
@@ -207,11 +207,11 @@
       <if test="buyer != null">
         #{buyer,jdbcType=CHAR},
       </if>
-      <if test="browseNumber != null">
-        #{browseNumber,jdbcType=DECIMAL},
+      <if test="browsenumber != null">
+        #{browsenumber,jdbcType=DOUBLE},
       </if>
-      <if test="lastUpdateTime != null">
-        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
       </if>
       <if test="buytime != null">
         #{buytime,jdbcType=TIMESTAMP},
@@ -263,11 +263,11 @@
       <if test="record.buyer != null">
         BUYER = #{record.buyer,jdbcType=CHAR},
       </if>
-      <if test="record.browseNumber != null">
-        BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
+      <if test="record.browsenumber != null">
+        BROWSENUMBER = #{record.browsenumber,jdbcType=DOUBLE},
       </if>
-      <if test="record.lastUpdateTime != null">
-        LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      <if test="record.lastupdatetime != null">
+        LASTUPDATETIME = #{record.lastupdatetime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.buytime != null">
         BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
@@ -293,8 +293,8 @@
       CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
       OWNER = #{record.owner,jdbcType=CHAR},
       BUYER = #{record.buyer,jdbcType=CHAR},
-      BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
-      LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      BROWSENUMBER = #{record.browsenumber,jdbcType=DOUBLE},
+      LASTUPDATETIME = #{record.lastupdatetime,jdbcType=TIMESTAMP},
       BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
       FINISHTIME = #{record.finishtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -334,11 +334,11 @@
       <if test="buyer != null">
         BUYER = #{buyer,jdbcType=CHAR},
       </if>
-      <if test="browseNumber != null">
-        BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
+      <if test="browsenumber != null">
+        BROWSENUMBER = #{browsenumber,jdbcType=DOUBLE},
       </if>
-      <if test="lastUpdateTime != null">
-        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      <if test="lastupdatetime != null">
+        LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
       </if>
       <if test="buytime != null">
         BUYTIME = #{buytime,jdbcType=TIMESTAMP},
@@ -361,8 +361,8 @@
       CREATETIME = #{createtime,jdbcType=TIMESTAMP},
       OWNER = #{owner,jdbcType=CHAR},
       BUYER = #{buyer,jdbcType=CHAR},
-      BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
-      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      BROWSENUMBER = #{browsenumber,jdbcType=DOUBLE},
+      LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
       BUYTIME = #{buytime,jdbcType=TIMESTAMP},
       FINISHTIME = #{finishtime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=CHAR}

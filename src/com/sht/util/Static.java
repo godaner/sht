@@ -175,7 +175,9 @@ public interface Static {
 			-1为买家收货后交易正常结束,
 			-2为卖家取消了出售本商品,
 			-3是用户取消购买本商品,
-			-4管理员取消发布的商品*/
+			-4管理员取消发布的商品,
+			-5管理员删除发布的商品
+			*/
 		/**
 		 * 已发货
 		 */
@@ -204,6 +206,10 @@ public interface Static {
 		 * 管理员取消发布的商品
 		 */
 		static final Short ADMIN_CANCEL = -4;
+		/**
+		 * 管理员删除发布的商品
+		 */
+		static final Short ADMIN_DELETE = -5;
 	}
 	
 }
