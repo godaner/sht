@@ -33,12 +33,11 @@ $(function() {
 					"&condition="+condition+
 					"&region="+region+
 					"&status=0"+
-					"&owner=1"+
-					"&browsernumber=0";
+					"&owner=1";
 		
-	    console.log(url);
+	    //console.log(url);
 		uploadGoodsInfo(url);
-		uploadImg();
+		//uploadImg();
 
 	});
 	

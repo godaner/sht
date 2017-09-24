@@ -70,10 +70,15 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	public String createGoodsInfo(CustomGoods goods) throws Exception {
 		// TODO Auto-generated method stub
 		String createGoodsId = uuid();
+		
 		goods.setId(createGoodsId);
+		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		
 		goods.setCreatetime(timestamp);
-		goods.setLastUpdateTime(timestamp);
+		
+		goods.setLastupdatetime(timestamp);
+		
 		goodsMapper.insert(goods);
 		
 		return createGoodsId;
@@ -106,7 +111,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
             closeStream(is, os);
 		}
 	   
-		goodsImgs.setOwner("");
+		goodsImgs.setOwner("1");
 		int result = goodsImgsMapper.insert(goodsImgs);
 		
 		return result;
