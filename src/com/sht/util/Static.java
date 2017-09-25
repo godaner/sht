@@ -166,9 +166,9 @@ public interface Static {
 	 * @author Kor_Zhang
 	 * @date 2017年9月22日 下午1:57:55
 	 * @version 1.0
-	 */
+	 *//*
 	public interface GOODS_STAUS{
-		/*状态:
+		状态:
 			2为已发货，
 			1为购买了且待发货,
 			0为创建且待购买,
@@ -177,39 +177,100 @@ public interface Static {
 			-3是用户取消购买本商品,
 			-4管理员取消发布的商品,
 			-5管理员删除发布的商品
-			*/
-		/**
+			
+		*//**
 		 * 已发货
-		 */
+		 *//*
 		static final Short SENDED = 2;
+		*//**
+		 * 购买了且待发货
+		 *//*
+		static final Short BUY_BUT_NOT_SEND = 1;
+		*//**
+		 * 创建且待购买
+		 *//*
+		static final Short CREATE_BUT_NOT_BUY = 0;
+		*//**
+		 * 买家收货后正常结束
+		 *//*
+		static final Short BUYER_RECEIVED = -1;
+		*//**
+		 * 卖家取消了出售本商品
+		 *//*
+		static final Short SELLER_CANCEL_SELL = -2;
+		*//**
+		 * 用户取消购买本商品
+		 *//*
+		static final Short BUYER_CANCEL = -3;
+		*//**
+		 * 管理员取消发布的商品
+		 *//*
+		static final Short ADMIN_CANCEL = -4;
+		*//**
+		 * 管理员删除发布的商品
+		 *//*
+		static final Short ADMIN_DELETE = -5;
+	}*/
+	/**
+	 * 
+	 * Title:GOODS_STAUS
+	 * <p>
+	 * Description:商品状态
+	 * <p>
+	 * @author Kor_Zhang
+	 * @date 2017年9月22日 下午1:57:55
+	 * @version 1.0
+	 */
+	public interface GOODS_STAUS{
+		/*状态:,
+			-6:待审核状态,(不可以被显示,不可以购买)
+			-7:审核未通过,(不可以被显示,不可以购买)
+			0:审核通过,(可以被显示,可以购买)
+			1:购买了且待发货,
+			2:已发货,
+			-1:买家收货后交易正常结束,
+			-2:卖家取消了出售本商品,
+			-3:买家取消购买本商品,
+			-5:管理员删除本商品*/
+		/**
+		 * 待审核
+		 */
+		static final Short WAIT_TO_PASS = -6;
+		/**
+		 * 审核未通过
+		 */
+		static final Short PASS_FAILURE = -7;
+		
+		/**
+		 * 审核通过
+		 */
+		static final Short PASS_SUCCESS = 0;
 		/**
 		 * 购买了且待发货
 		 */
 		static final Short BUY_BUT_NOT_SEND = 1;
 		/**
-		 * 创建且待购买
+		 * 已发货
 		 */
-		static final Short CREATE_BUT_NOT_BUY = 0;
+		static final Short SENDED = 2;
 		/**
 		 * 买家收货后正常结束
 		 */
-		static final Short BUYER_RECEIVED = -1;
+		static final Short BUYER_RECEIVED_AND_FINISHED = -1;
 		/**
 		 * 卖家取消了出售本商品
 		 */
 		static final Short SELLER_CANCEL_SELL = -2;
 		/**
-		 * 用户取消购买本商品
+		 * 买家取消购买本商品
 		 */
 		static final Short BUYER_CANCEL = -3;
 		/**
-		 * 管理员取消发布的商品
-		 */
-		static final Short ADMIN_CANCEL = -4;
-		/**
-		 * 管理员删除发布的商品
+		 * 管理员删除本的商品
 		 */
 		static final Short ADMIN_DELETE = -5;
+		
+		
 	}
 	
 }
