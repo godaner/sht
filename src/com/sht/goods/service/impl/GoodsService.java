@@ -3,10 +3,19 @@ package com.sht.goods.service.impl;
 
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +47,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
 	private GoodsImgsMapper goodsImgsMapper;
 	
-	private String createGoodsId = null;
+	
 	
 	/**
 	 * 	显示商品主页面商品信息
@@ -58,27 +67,55 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	 * 发布商品信息
 	 */
 	@Override
-	public void createGoodsInfo(CustomGoods goods) throws Exception {
+	public String createGoodsInfo(CustomGoods goods) throws Exception {
 		// TODO Auto-generated method stub
-		createGoodsId = uuid();
+		String createGoodsId = uuid();
+		
 		goods.setId(createGoodsId);
-		Timestamp daTimestamp = new Timestamp(System.currentTimeMillis());
-		goods.setCreatetime(daTimestamp);
+		
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		
+		goods.setCreatetime(timestamp);
+		
+		goods.setLastupdatetime(timestamp);
 		
 		goodsMapper.insert(goods);
 		
-		
+		return createGoodsId;
 	}
 
 	/**
 	 * 发布商品图片信息
 	 */
 	@Override
-	public void createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
+	public int createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
 		// TODO Auto-generated method stub
+		
 		goodsImgs.setId(uuid());
-		goodsImgs.setOwner(createGoodsId);
-		goodsImgsMapper.insert(goodsImgs);
+		
+		String path = CONFIG.FILED_SRC_GOODS_IMGS;
+		
+		for(int i = 0;i < goodsImgs.getFiles().size() ; i++){
+			OutputStream os = new FileOutputStream(new File(path,goodsImgs.getFileNames().get(i)));  
+            
+            InputStream is = new FileInputStream(goodsImgs.getFiles().get(i));  
+              
+            byte[] buf = new byte[1024];  
+            
+            int length = 0 ;  
+              
+            while(-1 != (length = is.read(buf) ) )  {  
+                os.write(buf, 0, length) ;  
+            }  
+              
+            closeStream(is, os);
+		}
+	   
+		goodsImgs.setOwner("1");
+		int result = goodsImgsMapper.insert(goodsImgs);
+		
+		return result;
+		
 	}
 	
 	
