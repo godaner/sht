@@ -2,7 +2,6 @@ package com.sht.mapper;
 
 import com.sht.po.Region;
 import com.sht.po.RegionExample;
-import java.math.BigDecimal;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +10,7 @@ public interface RegionMapper {
 
     int deleteByExample(RegionExample example);
 
-    int deleteByPrimaryKey(BigDecimal regionId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Region record);
 
@@ -19,7 +18,7 @@ public interface RegionMapper {
 
     List<Region> selectByExample(RegionExample example);
 
-    Region selectByPrimaryKey(BigDecimal regionId);
+    Region selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Region record, @Param("example") RegionExample example);
 
