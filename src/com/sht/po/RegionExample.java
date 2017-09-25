@@ -1,6 +1,5 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,523 +104,523 @@ public class RegionExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andRegionIdIsNull() {
-            addCriterion("REGION_ID is null");
+        public Criteria andIdIsNull() {
+            addCriterion("ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdIsNotNull() {
-            addCriterion("REGION_ID is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdEqualTo(BigDecimal value) {
-            addCriterion("REGION_ID =", value, "regionId");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdNotEqualTo(BigDecimal value) {
-            addCriterion("REGION_ID <>", value, "regionId");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdGreaterThan(BigDecimal value) {
-            addCriterion("REGION_ID >", value, "regionId");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("REGION_ID >=", value, "regionId");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdLessThan(BigDecimal value) {
-            addCriterion("REGION_ID <", value, "regionId");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("REGION_ID <=", value, "regionId");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdIn(List<BigDecimal> values) {
-            addCriterion("REGION_ID in", values, "regionId");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdNotIn(List<BigDecimal> values) {
-            addCriterion("REGION_ID not in", values, "regionId");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("REGION_ID between", value1, value2, "regionId");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIdNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("REGION_ID not between", value1, value2, "regionId");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeIsNull() {
-            addCriterion("REGION_CODE is null");
+        public Criteria andCodeIsNull() {
+            addCriterion("CODE is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeIsNotNull() {
-            addCriterion("REGION_CODE is not null");
+        public Criteria andCodeIsNotNull() {
+            addCriterion("CODE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeEqualTo(String value) {
-            addCriterion("REGION_CODE =", value, "regionCode");
+        public Criteria andCodeEqualTo(String value) {
+            addCriterion("CODE =", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeNotEqualTo(String value) {
-            addCriterion("REGION_CODE <>", value, "regionCode");
+        public Criteria andCodeNotEqualTo(String value) {
+            addCriterion("CODE <>", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeGreaterThan(String value) {
-            addCriterion("REGION_CODE >", value, "regionCode");
+        public Criteria andCodeGreaterThan(String value) {
+            addCriterion("CODE >", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("REGION_CODE >=", value, "regionCode");
+        public Criteria andCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("CODE >=", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeLessThan(String value) {
-            addCriterion("REGION_CODE <", value, "regionCode");
+        public Criteria andCodeLessThan(String value) {
+            addCriterion("CODE <", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeLessThanOrEqualTo(String value) {
-            addCriterion("REGION_CODE <=", value, "regionCode");
+        public Criteria andCodeLessThanOrEqualTo(String value) {
+            addCriterion("CODE <=", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeLike(String value) {
-            addCriterion("REGION_CODE like", value, "regionCode");
+        public Criteria andCodeLike(String value) {
+            addCriterion("CODE like", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeNotLike(String value) {
-            addCriterion("REGION_CODE not like", value, "regionCode");
+        public Criteria andCodeNotLike(String value) {
+            addCriterion("CODE not like", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeIn(List<String> values) {
-            addCriterion("REGION_CODE in", values, "regionCode");
+        public Criteria andCodeIn(List<String> values) {
+            addCriterion("CODE in", values, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeNotIn(List<String> values) {
-            addCriterion("REGION_CODE not in", values, "regionCode");
+        public Criteria andCodeNotIn(List<String> values) {
+            addCriterion("CODE not in", values, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeBetween(String value1, String value2) {
-            addCriterion("REGION_CODE between", value1, value2, "regionCode");
+        public Criteria andCodeBetween(String value1, String value2) {
+            addCriterion("CODE between", value1, value2, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionCodeNotBetween(String value1, String value2) {
-            addCriterion("REGION_CODE not between", value1, value2, "regionCode");
+        public Criteria andCodeNotBetween(String value1, String value2) {
+            addCriterion("CODE not between", value1, value2, "code");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameIsNull() {
-            addCriterion("REGION_NAME is null");
+        public Criteria andNameIsNull() {
+            addCriterion("NAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameIsNotNull() {
-            addCriterion("REGION_NAME is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("NAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEqualTo(String value) {
-            addCriterion("REGION_NAME =", value, "regionName");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("NAME =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameNotEqualTo(String value) {
-            addCriterion("REGION_NAME <>", value, "regionName");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("NAME <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameGreaterThan(String value) {
-            addCriterion("REGION_NAME >", value, "regionName");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("NAME >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameGreaterThanOrEqualTo(String value) {
-            addCriterion("REGION_NAME >=", value, "regionName");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("NAME >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameLessThan(String value) {
-            addCriterion("REGION_NAME <", value, "regionName");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("NAME <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameLessThanOrEqualTo(String value) {
-            addCriterion("REGION_NAME <=", value, "regionName");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("NAME <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameLike(String value) {
-            addCriterion("REGION_NAME like", value, "regionName");
+        public Criteria andNameLike(String value) {
+            addCriterion("NAME like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameNotLike(String value) {
-            addCriterion("REGION_NAME not like", value, "regionName");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("NAME not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameIn(List<String> values) {
-            addCriterion("REGION_NAME in", values, "regionName");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("NAME in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameNotIn(List<String> values) {
-            addCriterion("REGION_NAME not in", values, "regionName");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("NAME not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameBetween(String value1, String value2) {
-            addCriterion("REGION_NAME between", value1, value2, "regionName");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("NAME between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameNotBetween(String value1, String value2) {
-            addCriterion("REGION_NAME not between", value1, value2, "regionName");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("NAME not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdIsNull() {
-            addCriterion("PARENT_ID is null");
+        public Criteria andPidIsNull() {
+            addCriterion("PID is null");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdIsNotNull() {
-            addCriterion("PARENT_ID is not null");
+        public Criteria andPidIsNotNull() {
+            addCriterion("PID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdEqualTo(BigDecimal value) {
-            addCriterion("PARENT_ID =", value, "parentId");
+        public Criteria andPidEqualTo(Integer value) {
+            addCriterion("PID =", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdNotEqualTo(BigDecimal value) {
-            addCriterion("PARENT_ID <>", value, "parentId");
+        public Criteria andPidNotEqualTo(Integer value) {
+            addCriterion("PID <>", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdGreaterThan(BigDecimal value) {
-            addCriterion("PARENT_ID >", value, "parentId");
+        public Criteria andPidGreaterThan(Integer value) {
+            addCriterion("PID >", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("PARENT_ID >=", value, "parentId");
+        public Criteria andPidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("PID >=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdLessThan(BigDecimal value) {
-            addCriterion("PARENT_ID <", value, "parentId");
+        public Criteria andPidLessThan(Integer value) {
+            addCriterion("PID <", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("PARENT_ID <=", value, "parentId");
+        public Criteria andPidLessThanOrEqualTo(Integer value) {
+            addCriterion("PID <=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdIn(List<BigDecimal> values) {
-            addCriterion("PARENT_ID in", values, "parentId");
+        public Criteria andPidIn(List<Integer> values) {
+            addCriterion("PID in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdNotIn(List<BigDecimal> values) {
-            addCriterion("PARENT_ID not in", values, "parentId");
+        public Criteria andPidNotIn(List<Integer> values) {
+            addCriterion("PID not in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("PARENT_ID between", value1, value2, "parentId");
+        public Criteria andPidBetween(Integer value1, Integer value2) {
+            addCriterion("PID between", value1, value2, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("PARENT_ID not between", value1, value2, "parentId");
+        public Criteria andPidNotBetween(Integer value1, Integer value2) {
+            addCriterion("PID not between", value1, value2, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelIsNull() {
-            addCriterion("REGION_LEVEL is null");
+        public Criteria andLeveIsNull() {
+            addCriterion("LEVE is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelIsNotNull() {
-            addCriterion("REGION_LEVEL is not null");
+        public Criteria andLeveIsNotNull() {
+            addCriterion("LEVE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelEqualTo(BigDecimal value) {
-            addCriterion("REGION_LEVEL =", value, "regionLevel");
+        public Criteria andLeveEqualTo(Integer value) {
+            addCriterion("LEVE =", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelNotEqualTo(BigDecimal value) {
-            addCriterion("REGION_LEVEL <>", value, "regionLevel");
+        public Criteria andLeveNotEqualTo(Integer value) {
+            addCriterion("LEVE <>", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelGreaterThan(BigDecimal value) {
-            addCriterion("REGION_LEVEL >", value, "regionLevel");
+        public Criteria andLeveGreaterThan(Integer value) {
+            addCriterion("LEVE >", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("REGION_LEVEL >=", value, "regionLevel");
+        public Criteria andLeveGreaterThanOrEqualTo(Integer value) {
+            addCriterion("LEVE >=", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelLessThan(BigDecimal value) {
-            addCriterion("REGION_LEVEL <", value, "regionLevel");
+        public Criteria andLeveLessThan(Integer value) {
+            addCriterion("LEVE <", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("REGION_LEVEL <=", value, "regionLevel");
+        public Criteria andLeveLessThanOrEqualTo(Integer value) {
+            addCriterion("LEVE <=", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelIn(List<BigDecimal> values) {
-            addCriterion("REGION_LEVEL in", values, "regionLevel");
+        public Criteria andLeveIn(List<Integer> values) {
+            addCriterion("LEVE in", values, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelNotIn(List<BigDecimal> values) {
-            addCriterion("REGION_LEVEL not in", values, "regionLevel");
+        public Criteria andLeveNotIn(List<Integer> values) {
+            addCriterion("LEVE not in", values, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("REGION_LEVEL between", value1, value2, "regionLevel");
+        public Criteria andLeveBetween(Integer value1, Integer value2) {
+            addCriterion("LEVE between", value1, value2, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLevelNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("REGION_LEVEL not between", value1, value2, "regionLevel");
+        public Criteria andLeveNotBetween(Integer value1, Integer value2) {
+            addCriterion("LEVE not between", value1, value2, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderIsNull() {
-            addCriterion("REGION_ORDER is null");
+        public Criteria andOrdeIsNull() {
+            addCriterion("ORDE is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderIsNotNull() {
-            addCriterion("REGION_ORDER is not null");
+        public Criteria andOrdeIsNotNull() {
+            addCriterion("ORDE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderEqualTo(BigDecimal value) {
-            addCriterion("REGION_ORDER =", value, "regionOrder");
+        public Criteria andOrdeEqualTo(Integer value) {
+            addCriterion("ORDE =", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderNotEqualTo(BigDecimal value) {
-            addCriterion("REGION_ORDER <>", value, "regionOrder");
+        public Criteria andOrdeNotEqualTo(Integer value) {
+            addCriterion("ORDE <>", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderGreaterThan(BigDecimal value) {
-            addCriterion("REGION_ORDER >", value, "regionOrder");
+        public Criteria andOrdeGreaterThan(Integer value) {
+            addCriterion("ORDE >", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("REGION_ORDER >=", value, "regionOrder");
+        public Criteria andOrdeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ORDE >=", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderLessThan(BigDecimal value) {
-            addCriterion("REGION_ORDER <", value, "regionOrder");
+        public Criteria andOrdeLessThan(Integer value) {
+            addCriterion("ORDE <", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("REGION_ORDER <=", value, "regionOrder");
+        public Criteria andOrdeLessThanOrEqualTo(Integer value) {
+            addCriterion("ORDE <=", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderIn(List<BigDecimal> values) {
-            addCriterion("REGION_ORDER in", values, "regionOrder");
+        public Criteria andOrdeIn(List<Integer> values) {
+            addCriterion("ORDE in", values, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderNotIn(List<BigDecimal> values) {
-            addCriterion("REGION_ORDER not in", values, "regionOrder");
+        public Criteria andOrdeNotIn(List<Integer> values) {
+            addCriterion("ORDE not in", values, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("REGION_ORDER between", value1, value2, "regionOrder");
+        public Criteria andOrdeBetween(Integer value1, Integer value2) {
+            addCriterion("ORDE between", value1, value2, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionOrderNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("REGION_ORDER not between", value1, value2, "regionOrder");
+        public Criteria andOrdeNotBetween(Integer value1, Integer value2) {
+            addCriterion("ORDE not between", value1, value2, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnIsNull() {
-            addCriterion("REGION_NAME_EN is null");
+        public Criteria andEnnameIsNull() {
+            addCriterion("ENNAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnIsNotNull() {
-            addCriterion("REGION_NAME_EN is not null");
+        public Criteria andEnnameIsNotNull() {
+            addCriterion("ENNAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnEqualTo(String value) {
-            addCriterion("REGION_NAME_EN =", value, "regionNameEn");
+        public Criteria andEnnameEqualTo(String value) {
+            addCriterion("ENNAME =", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnNotEqualTo(String value) {
-            addCriterion("REGION_NAME_EN <>", value, "regionNameEn");
+        public Criteria andEnnameNotEqualTo(String value) {
+            addCriterion("ENNAME <>", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnGreaterThan(String value) {
-            addCriterion("REGION_NAME_EN >", value, "regionNameEn");
+        public Criteria andEnnameGreaterThan(String value) {
+            addCriterion("ENNAME >", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnGreaterThanOrEqualTo(String value) {
-            addCriterion("REGION_NAME_EN >=", value, "regionNameEn");
+        public Criteria andEnnameGreaterThanOrEqualTo(String value) {
+            addCriterion("ENNAME >=", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnLessThan(String value) {
-            addCriterion("REGION_NAME_EN <", value, "regionNameEn");
+        public Criteria andEnnameLessThan(String value) {
+            addCriterion("ENNAME <", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnLessThanOrEqualTo(String value) {
-            addCriterion("REGION_NAME_EN <=", value, "regionNameEn");
+        public Criteria andEnnameLessThanOrEqualTo(String value) {
+            addCriterion("ENNAME <=", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnLike(String value) {
-            addCriterion("REGION_NAME_EN like", value, "regionNameEn");
+        public Criteria andEnnameLike(String value) {
+            addCriterion("ENNAME like", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnNotLike(String value) {
-            addCriterion("REGION_NAME_EN not like", value, "regionNameEn");
+        public Criteria andEnnameNotLike(String value) {
+            addCriterion("ENNAME not like", value, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnIn(List<String> values) {
-            addCriterion("REGION_NAME_EN in", values, "regionNameEn");
+        public Criteria andEnnameIn(List<String> values) {
+            addCriterion("ENNAME in", values, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnNotIn(List<String> values) {
-            addCriterion("REGION_NAME_EN not in", values, "regionNameEn");
+        public Criteria andEnnameNotIn(List<String> values) {
+            addCriterion("ENNAME not in", values, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnBetween(String value1, String value2) {
-            addCriterion("REGION_NAME_EN between", value1, value2, "regionNameEn");
+        public Criteria andEnnameBetween(String value1, String value2) {
+            addCriterion("ENNAME between", value1, value2, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNameEnNotBetween(String value1, String value2) {
-            addCriterion("REGION_NAME_EN not between", value1, value2, "regionNameEn");
+        public Criteria andEnnameNotBetween(String value1, String value2) {
+            addCriterion("ENNAME not between", value1, value2, "enname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnIsNull() {
-            addCriterion("REGION_SHORTNAME_EN is null");
+        public Criteria andEnshortnameIsNull() {
+            addCriterion("ENSHORTNAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnIsNotNull() {
-            addCriterion("REGION_SHORTNAME_EN is not null");
+        public Criteria andEnshortnameIsNotNull() {
+            addCriterion("ENSHORTNAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnEqualTo(String value) {
-            addCriterion("REGION_SHORTNAME_EN =", value, "regionShortnameEn");
+        public Criteria andEnshortnameEqualTo(String value) {
+            addCriterion("ENSHORTNAME =", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnNotEqualTo(String value) {
-            addCriterion("REGION_SHORTNAME_EN <>", value, "regionShortnameEn");
+        public Criteria andEnshortnameNotEqualTo(String value) {
+            addCriterion("ENSHORTNAME <>", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnGreaterThan(String value) {
-            addCriterion("REGION_SHORTNAME_EN >", value, "regionShortnameEn");
+        public Criteria andEnshortnameGreaterThan(String value) {
+            addCriterion("ENSHORTNAME >", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnGreaterThanOrEqualTo(String value) {
-            addCriterion("REGION_SHORTNAME_EN >=", value, "regionShortnameEn");
+        public Criteria andEnshortnameGreaterThanOrEqualTo(String value) {
+            addCriterion("ENSHORTNAME >=", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnLessThan(String value) {
-            addCriterion("REGION_SHORTNAME_EN <", value, "regionShortnameEn");
+        public Criteria andEnshortnameLessThan(String value) {
+            addCriterion("ENSHORTNAME <", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnLessThanOrEqualTo(String value) {
-            addCriterion("REGION_SHORTNAME_EN <=", value, "regionShortnameEn");
+        public Criteria andEnshortnameLessThanOrEqualTo(String value) {
+            addCriterion("ENSHORTNAME <=", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnLike(String value) {
-            addCriterion("REGION_SHORTNAME_EN like", value, "regionShortnameEn");
+        public Criteria andEnshortnameLike(String value) {
+            addCriterion("ENSHORTNAME like", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnNotLike(String value) {
-            addCriterion("REGION_SHORTNAME_EN not like", value, "regionShortnameEn");
+        public Criteria andEnshortnameNotLike(String value) {
+            addCriterion("ENSHORTNAME not like", value, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnIn(List<String> values) {
-            addCriterion("REGION_SHORTNAME_EN in", values, "regionShortnameEn");
+        public Criteria andEnshortnameIn(List<String> values) {
+            addCriterion("ENSHORTNAME in", values, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnNotIn(List<String> values) {
-            addCriterion("REGION_SHORTNAME_EN not in", values, "regionShortnameEn");
+        public Criteria andEnshortnameNotIn(List<String> values) {
+            addCriterion("ENSHORTNAME not in", values, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnBetween(String value1, String value2) {
-            addCriterion("REGION_SHORTNAME_EN between", value1, value2, "regionShortnameEn");
+        public Criteria andEnshortnameBetween(String value1, String value2) {
+            addCriterion("ENSHORTNAME between", value1, value2, "enshortname");
             return (Criteria) this;
         }
 
-        public Criteria andRegionShortnameEnNotBetween(String value1, String value2) {
-            addCriterion("REGION_SHORTNAME_EN not between", value1, value2, "regionShortnameEn");
+        public Criteria andEnshortnameNotBetween(String value1, String value2) {
+            addCriterion("ENSHORTNAME not between", value1, value2, "enshortname");
             return (Criteria) this;
         }
     }

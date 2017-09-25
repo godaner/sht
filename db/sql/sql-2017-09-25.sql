@@ -1,0 +1,20 @@
+级别:
+	goods模块需立即更新:goods
+	users模块需立即更新:users
+	admins模块需立即更新:admins
+	全部模块都需立即更新:alls
+	可忽略的,暂时可不更新的:ignoreable
+	
+
+/**
+ * 10:42	alls
+ */
+/*修改表region的字段名*/
+ALTER TABLE region RENAME COLUMN REGION_ID TO ID
+ALTER TABLE region RENAME COLUMN REGION_CODE TO code
+ALTER TABLE region RENAME COLUMN REGION_NAME TO NAME
+ALTER TABLE region RENAME COLUMN PARENT_ID TO pid
+ALTER TABLE region RENAME COLUMN REGION_LEVEL TO LEVE
+ALTER TABLE region RENAME COLUMN REGION_ORDER TO ORDE
+ALTER TABLE region RENAME COLUMN REGION_NAME_EN TO enNAME
+ALTER TABLE region RENAME COLUMN REGION_SHORTNAME_EN TO enshortname
