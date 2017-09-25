@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.AdminsMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.Admins">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="USERNAME" jdbcType="CHAR" property="username" />
+    <result column="PASSWORD" jdbcType="CHAR" property="password" />
+    <result column="SALT" jdbcType="CHAR" property="salt" />
+    <result column="STATUS" jdbcType="SMALLINT" property="status" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CREATOR" jdbcType="CHAR" property="creator" />
+    <result column="THEME" jdbcType="CHAR" property="theme" />
+    <result column="EMAIL" jdbcType="CHAR" property="email" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, USERNAME, PASSWORD, SALT, STATUS, CREATETIME, CREATOR, THEME, EMAIL
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.AdminsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHT.ADMINS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SHT.ADMINS
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHT.ADMINS
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.AdminsExample">
+    delete from SHT.ADMINS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.Admins">
+    insert into SHT.ADMINS (ID, USERNAME, PASSWORD, 
+      SALT, STATUS, CREATETIME, 
+      CREATOR, THEME, EMAIL)
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
+      #{salt,jdbcType=CHAR}, #{status,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=CHAR}, #{theme,jdbcType=CHAR}, #{email,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.Admins">
+    insert into SHT.ADMINS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="salt != null">
+        SALT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="theme != null">
+        THEME,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=CHAR},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.AdminsExample" resultType="java.lang.Long">
+    select count(*) from SHT.ADMINS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHT.ADMINS
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.username != null">
+        USERNAME = #{record.username,jdbcType=CHAR},
+      </if>
+      <if test="record.password != null">
+        PASSWORD = #{record.password,jdbcType=CHAR},
+      </if>
+      <if test="record.salt != null">
+        SALT = #{record.salt,jdbcType=CHAR},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=SMALLINT},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creator != null">
+        CREATOR = #{record.creator,jdbcType=CHAR},
+      </if>
+      <if test="record.theme != null">
+        THEME = #{record.theme,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null">
+        EMAIL = #{record.email,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHT.ADMINS
+    set ID = #{record.id,jdbcType=CHAR},
+      USERNAME = #{record.username,jdbcType=CHAR},
+      PASSWORD = #{record.password,jdbcType=CHAR},
+      SALT = #{record.salt,jdbcType=CHAR},
+      STATUS = #{record.status,jdbcType=SMALLINT},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      CREATOR = #{record.creator,jdbcType=CHAR},
+      THEME = #{record.theme,jdbcType=CHAR},
+      EMAIL = #{record.email,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Admins">
+    update SHT.ADMINS
+    <set>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=CHAR},
+      </if>
+      <if test="salt != null">
+        SALT = #{salt,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=CHAR},
+      </if>
+      <if test="theme != null">
+        THEME = #{theme,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.Admins">
+    update SHT.ADMINS
+    set USERNAME = #{username,jdbcType=CHAR},
+      PASSWORD = #{password,jdbcType=CHAR},
+      SALT = #{salt,jdbcType=CHAR},
+      STATUS = #{status,jdbcType=SMALLINT},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      CREATOR = #{creator,jdbcType=CHAR},
+      THEME = #{theme,jdbcType=CHAR},
+      EMAIL = #{email,jdbcType=CHAR}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
