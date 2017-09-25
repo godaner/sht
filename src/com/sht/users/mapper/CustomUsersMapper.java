@@ -55,8 +55,9 @@ public interface CustomUsersMapper {
 	/**
 	 * 根据用户id获取发布信息
 	 * @param id
+	 * @return 
 	 */
-	public void getGoodsById(String id);
+	public com.sht.po.Goods getGoodsById(String id);
 
 	
 }

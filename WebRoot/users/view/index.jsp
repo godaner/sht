@@ -59,7 +59,7 @@
 			</div>
 			<div class="register_msg"></div>
 			<div class="descript_book">
-				<input type="checkbox"/><a href="#" class="descript_book">《二手网协议》</a>
+				<input type="checkbox" id="descript_book" checked/><a href="#" class="descript_book">《二手网协议》</a>
 			</div>
 			<div class="">
 				<input type="button" onclick="register();"  class="register_button" value="注册二手交易市场"></input>

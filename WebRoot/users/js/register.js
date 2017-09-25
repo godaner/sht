@@ -79,15 +79,15 @@ function refreshVC(){
 
 /*注册*/
 function register(){
-	
 	var rs_username = $("#rs_username").val().trim();
 	var rs_password = $("#rs_password").val().trim();
 	var email = $("#email").val().trim();
 	var code = $("#code").val().trim();
 	var sure_ps = $("#sure_ps").val().trim();
-	
 	//非空验证
-	if(rs_username==""||rs_username==null){
+	if($("#descript_book").is(":checked")){
+		
+	 if(rs_username==""||rs_username==null){
 		msg = "用户名不能为空";
 		//id = "rs_username";
 		RegisterErrorMsg(msg);
@@ -134,4 +134,5 @@ function register(){
 		Check_email();
 	}
 	msg="";
+}
 }
