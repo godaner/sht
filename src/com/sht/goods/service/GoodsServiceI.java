@@ -32,7 +32,7 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert goods info
 	 */
-	public void createGoodsInfo(CustomGoods goods) throws Exception;
+	public String createGoodsInfo(CustomGoods goods) throws Exception;
 	
 	/**
 	 * 
@@ -40,5 +40,5 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert goodsImags info
 	 */
-	public void createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception;
+	public int createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception;
 }

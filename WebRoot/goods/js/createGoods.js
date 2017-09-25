@@ -8,8 +8,9 @@ $(function() {
 	/**
 	 * 点击按钮上传
 	 */
-	var imgDatas = new Array(),imgDataLen = 0;
-	
+	var imgDataLen = 0;
+//	 var params = {}; 
+	var fd = new FormData();
 	$("#create").click(function() {
 		var description = $("#description").val();
 		var title = $('#title').val();
@@ -25,36 +26,41 @@ $(function() {
 			return false;
 		}
 		
-		var url = "?description="+description+
+		var url = "description="+description+
 					"&title="+title+
 					"&sprice="+sprice+
 					"&price="+price+
 					"&condition="+condition+
 					"&region="+region+
 					"&status=0"+
-					
 					"&owner=1";
 		
-		var imgDataJson = JSON.stringify(imgDatas);
-		
-		uploadImg(url,imgDataJson);
+	    //console.log(url);
+		uploadGoodsInfo(url);
+		//uploadImg();
 
 	});
 	
 	/**
 	 * 上传图片
 	 */
-	function uploadImg(goodsUrl,imgDataJson){
+	function uploadImg(){
+		/*$.post(baseUrl+"/goods/createGoodsImagsInfo.action?",pd,function(data,status){
+			
+		}); */
 		$.ajax({
 			type:"post",
 			async:true,
-			data:{'img':imgDataJson},
+			data:{'imgs':pd},
 			url:baseUrl+"/goods/createGoodsImagsInfo.action?",
 			success:function(data){
-				uploadGoodsInfo(goodsUrl);
+				console.log('上传图片成功');
 			},
 			error:function(data){
 				alert("图片上传失败");
+				$.post(baseUrl+"goods/deleteGoods.action",function(data,status){
+					
+				})
 			}
 		});
 	}
@@ -66,12 +72,15 @@ $(function() {
 		$.ajax({
 			type : "post",
 			async : true, // 同步请求
-			url : baseUrl + "/goods/createGoods.action"+url, // 需要访问的地址
+			
+			url : baseUrl + "/goods/createGoods.action?"+url, // 需要访问的地址
 			success : function(data) {
-				alert("商品发布成功");
+				console.log('商品信息发布成功');
+				//console.log(JSON.parse(data));
+				//console.log(data);
 			},
 			error : function(data) {
-				console.log('ajax-失败');
+				console.log('商品信息发布失败');
 			}
 		})
 	}
@@ -111,9 +120,13 @@ $(function() {
 	
 	
 	$('#file').change(function(e) {
-		var file = e.target.files[0];
-		
-		preview(file);
+		var files = e.target.files;
+		var fileName = $('#file').val();
+		console.log(fileName);
+		for(var i = 0; i<files.length ; i++){
+			preview(files[i]);
+			fd.append("file"+(i+1),files[0]);
+		}
 		
 	});
 	$('.preview').click(function() {
@@ -122,7 +135,7 @@ $(function() {
 	
 	
 	function preview(file) {
-		
+		console.log(file);
 		//检查图片格式和大小
 
 //		if(file.size > 20480){
@@ -148,21 +161,27 @@ $(function() {
 		
 		 //创建读取文件的对象  
 	    var reader = new FileReader(); 
-	    reader.readAsDataURL(file);
-		console.log(file.type);
+//	    reader.readAsDataURL(file);
+//		console.log(file.type);
+//		
+//		reader.onerror = function(){
+//			alert("无法预览该图片");
+//		}
+//		
+//		reader.onprogress = function(){
+//			console.log("upload...");
+//		}
 		
-		reader.onerror = function(){
-			alert("无法预览该图片");
-		}
-		
-		reader.onprogress = function(){
-			console.log("upload...");
-		}
-		
-		reader.onload = function(e) {
+		img.onload = function(e) {
+//			console.log(e.target.result);
 			//保存图片数据,base64码
-			imgDatas[imgDataLen] = e.target.result;
-			imgDataLen ++;
+//			if(imgDataLen == 0){
+//				 params["requestMap.imgmain"] = e.target.result;  
+//			}else{
+//				 params["requestMap.img"+imgDataLen] = e.target.result;  
+//			}
+			//imgDatas[imgDataLen] = e.target.result;
+//			imgDataLen ++;
 			
 			//显示预览图片
 			previewImg(container,img);
