@@ -49,11 +49,6 @@ public interface UsersServiceI {
 
 	public void verifyEmail(String email) throws Exception;
 	
-	/**
-	 * 根据id 获取已发布的信息
-	 * @param id
-	 */
-
-	public void getGoodsById(String id);
+	
 
 }

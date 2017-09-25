@@ -10,7 +10,7 @@
 	<!-- 头部开始 -->
 	
 	<div class="head">
-		<a href="#">基本资料</a><a href="./personal_right_editImg.jsp">头像照片</a>
+		<a href="#">基本资料</a><a href="./personalInfo_right_editImg.jsp">头像照片</a>
 		<hr />
 	</div>
 	<br/>
