@@ -98,6 +98,15 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 	}
 
+	@Override
+	public void updateByPrimaryKeySelective(CustomUsers po) {
+
+		usersMapper.updateByPrimaryKeySelective(po);
+		
+	}
+
+
+
 
 	
 	

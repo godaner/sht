@@ -48,6 +48,9 @@ public interface UsersServiceI {
 	 */
 
 	public void verifyEmail(String email) throws Exception;
+
+	public void updateByPrimaryKeySelective(CustomUsers po);
+
 	
 	
 

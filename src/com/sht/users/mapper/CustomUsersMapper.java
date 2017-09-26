@@ -60,4 +60,12 @@ public interface CustomUsersMapper {
 	public com.sht.po.Goods getGoodsById(String id);
 
 	
+	/**
+	 * 
+	 * 更新用户信息
+	 * @param id
+	 */
+	public void updatePersonalInfo(CustomUsers po);
+
+	
 }
