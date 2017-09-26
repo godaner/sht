@@ -62,7 +62,7 @@ END;
 
 
 /**
- * 10:45	alls
+ * 19:44	alls
  */
 /*通过goodsid获取主图的path,例如a.jpg*/
 CREATE OR REPLACE FUNCTION getGoodsMainImgPath(goodsid IN NVARCHAR2)
@@ -75,6 +75,24 @@ BEGIN
        select f.path into r
        from  files f,goods_imgs gi
        where f.id=gi.img and gi.main = 1 and gi.owner = goodsid;
+
+       RETURN r;
+END;
+
+/**
+ * 20:06	alls
+ */
+/*通过goodsid获取留言数量*/
+CREATE OR REPLACE FUNCTION getGoodsMessageNum(goodsid IN NVARCHAR2)
+RETURN NUMBER 
+AS
+       
+       r NUMBER;
+BEGIN
+
+       select count(messages.id) into r
+       from  messages
+       where  messages.receiver = goodsid;
 
        RETURN r;
 END;
