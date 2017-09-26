@@ -2,7 +2,7 @@ package com.sht.common.po;
 
 import org.springframework.stereotype.Component;
 
-import com.sht.goods.po.Users;
+import com.sht.po.Users;
 
 /**
  * Title:CustomUsers
