@@ -12,6 +12,7 @@ public class Clazzs {
     }
 
     public void setId(String id) {
+
         this.id = id == null ? null : id.trim();
     }
 

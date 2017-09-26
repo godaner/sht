@@ -157,6 +157,7 @@ public interface Static {
 		static final Short UNACTIVITY = -2;
 		static final Short DELETE = -1;
 	}
+	
 	/**
 	 * 
 	 * Title:GOODS_STAUS
@@ -168,42 +169,41 @@ public interface Static {
 	 * @version 1.0
 	 */
 	public interface GOODS_STAUS{
-		/*状态:
-			2为已发货，
-			1为购买了且待发货,
-			0为创建且待购买,
-			-1为买家收货后交易正常结束,
-			-2为卖家取消了出售本商品,
-			-3是用户取消购买本商品,
-			-4管理员取消发布的商品*/
+		/*状态:,
+		-6:待审核状态,(不可以被显示,不可以购买)
+		0:审核通过,(可以被显示,可以购买)
+		1:购买了且待发货,
+		2:已发货,
+		-1:买家收货后交易正常结束,
+		-5:管理员删除本商品*/
 		/**
-		 * 已发货
+		 * 待审核
 		 */
-		static final Short SENDED = 2;
+		static final Short WAIT_TO_PASS = -6;
+		
+		/**
+		 * 审核通过
+		 */
+		static final Short PASS_SUCCESS = 0;
 		/**
 		 * 购买了且待发货
 		 */
 		static final Short BUY_BUT_NOT_SEND = 1;
 		/**
-		 * 创建且待购买
+		 * 已发货
 		 */
-		static final Short CREATE_BUT_NOT_BUY = 0;
+		static final Short SENDED = 2;
 		/**
 		 * 买家收货后正常结束
 		 */
-		static final Short BUYER_RECEIVED = -1;
+		static final Short BUYER_RECEIVED_AND_FINISHED = -1;
 		/**
-		 * 卖家取消了出售本商品
+		 * 管理员删除本的商品
 		 */
-		static final Short SELLER_CANCEL_SELL = -2;
-		/**
-		 * 用户取消购买本商品
-		 */
-		static final Short BUYER_CANCEL = -3;
-		/**
-		 * 管理员取消发布的商品
-		 */
-		static final Short ADMIN_CANCEL = -4;
+		static final Short ADMIN_DELETE = -5;
+	
+		
+		
 	}
 	
 }

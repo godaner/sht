@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.sht.goods.po.CustomFiles;
 import com.sht.goods.po.CustomGoods;
 import com.sht.goods.service.GoodsServiceI;
 
@@ -47,15 +48,21 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 
 	}
 	
-	public void createGoods(CustomGoods goods) throws Exception{
+	public void createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
+		
 		try {
-			service.createGoodsInfo(goods);
+			 service.createGoodsInfo(po);
+			
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
+		
+		
+		
 	}
+	
+	
 	
 	
 }
