@@ -91,7 +91,7 @@
 		<div class="clearFloat"></div>
 	</div>
 	<script src="goods/js/jquery-1.11.3.js" type="text/javascript"></script>
-	<script src="goods/plugin/pekeUpload.js" type="text/javascript"></script>
+	<script src="goods/plugin/jquery.uploadify.min.js" type="text/javascript"></script>
 	<script src="goods/js/createGoods.js" type="text/javascript"></script>
 </body>
 </html>

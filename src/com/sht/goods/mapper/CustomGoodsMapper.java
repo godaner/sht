@@ -1,9 +1,9 @@
 package com.sht.goods.mapper;
 
 import java.util.List;
-import com.sht.goods.po.CustomGoods;
-import com.sht.goods.po.Files;
-import com.sht.goods.po.Goods;
+import com.sht.goods.po.GGoods;
+import com.sht.po.Files;
+import com.sht.po.Goods;
 
 
 /**
@@ -25,7 +25,7 @@ public interface CustomGoodsMapper {
 	 
 	 */
 
-	public List<CustomGoods> selectAllGoodsInfo();
+	public List<GGoods> selectAllGoodsInfo();
 	
 	/**
 	 * insert goods info
@@ -44,5 +44,7 @@ public interface CustomGoodsMapper {
 	 
 	 */
 	public void insert(Files files);
+	
+	
 	
 }
