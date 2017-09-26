@@ -586,11 +586,19 @@ comment on column GOODS.SPRICE
 comment on column GOODS.PRICE
   is '商品原价';
 comment on column GOODS.CONDITION
-  is '商品成色,1-10';
+  is '商品成色,1-9';
 comment on column GOODS.REGION
   is '商品地区';
 comment on column GOODS.STATUS
-  is '状态:2为已发货，1为购买了且待发货，,0为创建且待购买,-1为买家收货后交易正常结束，-2为卖家取消了出售本商品，-3是用户取消购买本商品，-4管理员取消发布的商品,-5为管理员删除了商品';
+  is '-6:待审核状态,(不可以被显示,不可以购买)
+      -7:审核未通过,(不可以被显示,不可以购买)
+      0:审核通过,(可以被显示,可以购买)
+      1:购买了且待发货,
+      2:已发货,
+      -1:买家收货后交易正常结束,
+      -2:卖家取消了出售本商品,
+			-3:买家取消购买本商品,
+			-5:管理员删除本商品';
 comment on column GOODS.CREATETIME
   is '创建时间';
 comment on column GOODS.OWNER
@@ -8376,8 +8384,72 @@ insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY
 values ('c9698ba6-fd23-4d11-ac1c-cfec757c11a1', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 10:28:29.695000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
 insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
 values ('43146cdd-6628-40fc-95ba-45ae2726f359', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 10:33:50.965000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('9ec75594-3286-414a-b915-0800d518b558', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 11:40:01.555000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('b3fb0796-c4e2-40a7-9a52-4f2139f07d34', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 11:51:03.084000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('0e8c1337-2d88-4847-8a4a-0e0d3a0b358b', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 14:32:32.637000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('c8e76ba9-123c-41b9-8bd4-fc4725c3d2dc', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 14:36:25.644000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('1e2c3b66-b2b1-4d35-916e-4d5a9c5293dd', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 14:43:45.975000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
 commit;
-prompt 95 records loaded
+prompt 100 records committed...
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('ce282393-6bd4-42e4-abea-225efcf9c151', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 14:50:07.663000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('dbf62e2b-7b4d-47ec-98c1-0aaa140bb0e7', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 15:43:07.732000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('48a6dc92-7201-4195-a70b-7f711234db4c', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 16:36:54.594000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('0f7c0429-3f05-485a-b183-b8db1721b535', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 16:39:55.072000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('006e02ab-4de0-4bd5-8715-31cbe394b9a0', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 16:47:25.906000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('e9489120-e92c-4407-9d74-4cf801d736fe', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 18:58:25.968000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('4a5388ba-556c-48e9-a42c-04098d1f3f52', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:06:10.501000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('61f7b992-b7ce-4422-81fd-a891c272ce4b', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:08:09.920000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('8c1636a1-4012-4b2e-9c71-396d4a1c7995', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:10:17.138000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('26d0030f-788d-46bb-91ee-7ffb9296738d', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:14:23.936000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('7bd79b69-820a-4a67-937e-6fad3402ca62', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:17:46.938000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('c7cc199a-7904-4464-99bb-861461674643', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:28:01.562000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('76e4cd65-f24f-4b0f-9082-f81ba653edbe', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:36:50.533000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('c1379506-6fff-4851-b7c8-b68787530cf8', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:38:23.882000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('48d9646b-5d6b-40d3-84f5-36f4e6e55860', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 19:40:42.739000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('51b858d1-f821-4bd4-8e44-261d8805dcc0', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 20:12:18.276000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('95b8cc3a-64c1-4e4f-b560-b2021768c9d0', '1', '223.113.10.234', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 20:15:16.221000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('c972ce42-70f5-4bf2-b95e-28ac7816b53c', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 21:27:17.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('e4bce526-972e-4dcd-8d30-ad4845a62d4f', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 21:41:22.710000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('8f2bd876-cc12-4f2b-993c-15f67d8ed10b', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 22:13:47.567000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('c7af7a67-01a3-463a-bfa4-7735d235f1df', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 22:32:02.362000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('1679f252-9bf0-47c0-b98c-03c62fe4cf66', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 22:47:33.448000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('092acc14-7a56-43c9-ba03-337459a50974', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 22:50:23.297000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('de917913-ad8d-4448-9c6e-585fc7b31df6', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 23:06:25.253000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('d196f6b9-84ad-43e4-9864-0dc87a8eb8e4', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 23:20:25.784000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+insert into ADMINS_LOGIN_LOG (ID, LOGIN_ADMIN, IP, SYSTEM, DPI, BROWSER, COUNTRY, PROVINCE, CITY, TIME, RESULT)
+values ('53ce16ef-df9e-4590-bf8e-679380cd3481', '1', '114.232.225.201', 'Windows', '1920*1080', 'firefox 55.0', '中国', '江苏', '南通', to_timestamp('25-09-2017 23:23:32.675000', 'dd-mm-yyyy hh24:mi:ss.ff'), 1);
+commit;
+prompt 126 records loaded
 prompt Loading ROLES...
 insert into ROLES (ID, NAME, STATUS)
 values ('1', 'admins', 1);
@@ -8391,35 +8463,35 @@ prompt Loading FILES...
 prompt Table is empty
 prompt Loading GOODS...
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('24be7628-8db1-4652-99ef-8c3f4485961c', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 10:19:21.785000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 10, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('24be7628-8db1-4652-99ef-8c3f4485961c', '1', '1', 1, 1, 1, 2738, 1, to_timestamp('23-09-2017 10:19:21.785000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 10, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('7c783090-c4b2-4ca9-ab4d-7cf009dc54db', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 10:36:03.338000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('7c783090-c4b2-4ca9-ab4d-7cf009dc54db', '1', '1', 1, 1, 1, 2738, 1, to_timestamp('23-09-2017 10:36:03.338000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('4d04aeff-d5ab-44e5-bb7e-4c65f42a94e9', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 10:40:30.362000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('4d04aeff-d5ab-44e5-bb7e-4c65f42a94e9', '转让刘二狗', '速速快来，刘二狗转让', 9998, .1, 9, 1633, -6, to_timestamp('23-09-2017 10:40:30.362000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 23:29:14.769000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('8c5b3952-2045-41ac-891c-b4759afe753e', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 13:52:45.385000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('8c5b3952-2045-41ac-891c-b4759afe753e', '1', '1', 1, 1, 1, 1659, -5, to_timestamp('23-09-2017 13:52:45.385000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('73605e59-a348-4c79-ba15-83a3dbe255c5', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:36.103000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('73605e59-a348-4c79-ba15-83a3dbe255c5', '哈哈哈', '������������', 45, 90, 8, 1521, -6, to_timestamp('23-09-2017 15:46:36.103000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 22:06:40.444000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('e49ee43c-ac55-4f53-8b07-92974a15d69d', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 15:40:45.682000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('e49ee43c-ac55-4f53-8b07-92974a15d69d', '张可', '厉害了', 999, .1, 9, 2777, -5, to_timestamp('23-09-2017 15:40:45.682000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 21:59:38.378000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('340e19f8-22a7-4c55-ae58-1a7d58ed8c7f', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:43:45.877000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('340e19f8-22a7-4c55-ae58-1a7d58ed8c7f', '女士短裤', '清凉夏装', 45, 90, 8, 1313, -6, to_timestamp('23-09-2017 15:43:45.877000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 23:30:03.131000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('06318885-f82d-4b2a-8754-c29e79907e74', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:36.689000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('06318885-f82d-4b2a-8754-c29e79907e74', '女士短裤', '清凉夏装', 45, 90, 8, 1313, -1, to_timestamp('23-09-2017 15:46:36.689000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 23:07:12.215000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('b78e3a77-877d-4ca6-a7f6-d29b06dd004a', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 15:36:37.791000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('b78e3a77-877d-4ca6-a7f6-d29b06dd004a', '1', '1', 1, 1, 9, 1313, 1, to_timestamp('23-09-2017 15:36:37.791000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 23:06:50.276000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('ee1922e2-b94c-4919-a368-37424023c222', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:26.484000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('ee1922e2-b94c-4919-a368-37424023c222', '女士短裤', '清凉夏装', 45, 90, 8, 1366, 1, to_timestamp('23-09-2017 15:46:26.484000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('8d3bd6e5-6519-4281-b4be-9ddc4bae96c2', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:46.789000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('8d3bd6e5-6519-4281-b4be-9ddc4bae96c2', '女士短裤', '清凉夏装', 45, 90, 8, 1179, 2, to_timestamp('23-09-2017 15:46:46.789000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 23:18:17.261000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('492581bb-ce03-444f-8b8a-888ba06c2ad6', '1', '1', 1, 1, 1, 1, 0, to_timestamp('23-09-2017 15:26:24.509000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('492581bb-ce03-444f-8b8a-888ba06c2ad6', '1', '1', 1, 1, 1, 1633, -3, to_timestamp('23-09-2017 15:26:24.509000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('25-09-2017 23:18:24.807000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('765be64e-382b-4dfe-8322-2cff5a21cfcc', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:37.041000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('765be64e-382b-4dfe-8322-2cff5a21cfcc', '女士短裤', '清凉夏装', 45, 90, 8, 282, 2, to_timestamp('23-09-2017 15:46:37.041000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('1a45316a-a777-4c14-83e8-482278032e94', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:37.532000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('1a45316a-a777-4c14-83e8-482278032e94', '女士短裤', '清凉夏装', 45, 90, 8, 1659, 2, to_timestamp('23-09-2017 15:46:37.532000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 insert into GOODS (ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME)
-values ('a4135505-aaf4-4b30-8e42-194e54ace856', '女士短裤', '清凉夏装', 45, 90, 8, 1, 0, to_timestamp('23-09-2017 15:46:34.963000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
+values ('a4135505-aaf4-4b30-8e42-194e54ace856', '女士短裤', '清凉夏装', 45, 90, 8, 1659, -1, to_timestamp('23-09-2017 15:46:34.963000', 'dd-mm-yyyy hh24:mi:ss.ff'), '1', null, 0, to_timestamp('23-09-2017 16:45:02.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null);
 commit;
 prompt 15 records loaded
 prompt Loading GOODS_CLAZZS...
