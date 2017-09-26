@@ -16,4 +16,9 @@
 		SELECT count(*) FROM GOODS WHERE OWNER=#{id} 
 		
 	</select>
+	
+	<select id="getGoodsDetailById" parameterType="string" resultType="com.sht.users.po.UGoods">
+		
+		SELECT * FROM GOODS WHERE id=#{id}
+	</select>
 </mapper>

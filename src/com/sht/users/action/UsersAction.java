@@ -154,5 +154,28 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			e.printStackTrace();
 		}
 	 }
+	 /**
+	  * 修改个人信息
+	 * @throws Exception 
+	  * 
+	  * 
+	  */
+	 public void updatePersonalInfo() throws Exception{
+		 
+		 CustomUsers cs = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 eject(cs==null, "未登入");
+		 
+		 po.setId(cs.getId());
+		 
+		 try {
+		
+			 service.updateByPrimaryKeySelective(po);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+	 }
 
 }

@@ -21,4 +21,6 @@ public interface UGoodsMapper {
 
 	int getGoodsCountById(String id);
 
+	UGoods getGoodsDetailById(String id);
+
 }

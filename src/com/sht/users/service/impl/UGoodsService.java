@@ -44,9 +44,19 @@ public int getGoodsCountById(String id) throws Exception {
 @Override
 public List<UGoods> searchUGoodsBytitle(String title, String pageStar,String pageEnd) throws Exception {
 	
-	List<UGoods> dbGoods = UGoodsMapper.getGoodsById(title, pageStar,pageEnd);
+	List<UGoods> dbGoods = UGoodsMapper.searchUGoodsBytitle(title, pageStar,pageEnd);
 	
 	eject(dbGoods == null, "无匹配信息");
+	
+	return dbGoods;
+}
+
+@Override
+public UGoods getGoodsDetailById(String id) throws Exception {
+		
+	UGoods dbGoods = UGoodsMapper.getGoodsDetailById(id);
+	
+	eject(dbGoods==null, "不存在该商品");
 	
 	return dbGoods;
 }
