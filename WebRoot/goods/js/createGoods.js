@@ -158,7 +158,7 @@ $(function() {
 		
 	});
 	$('.preview').click(function() {
-		$("#file").click();
+		$("#file").pekeUpload();
 	});
 	
 	
