@@ -7,15 +7,7 @@
 	
 *.类命名规范:
 	类:
-		action层:
-			xxAction(继承xxBaseAction)
-		service层:
-			接口:
-				xxServiceI(com.**.service包中)
-			实现类:
-				xxService(com.**.service.impl包中)
-		mapper(dao)层:
-			接口:xxMapper
+		在本模块的类中加上本模块名的首字母大写,避免冲突
 	
 
 *.servie层,dao层,action层的每个public方法都需要声明抛出java.lang.Exeption级别的异常;

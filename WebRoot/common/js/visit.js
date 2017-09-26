@@ -1,7 +1,7 @@
 var req;
 var visitID;
 
-creatReq("http://localhost/sht/common/insertWanderInfo.action");
+creatReq("http://localhost/sht/common/wander_insertWanderInfo.action");
 
 
 
