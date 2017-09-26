@@ -14,6 +14,7 @@
 .register_close{
 	width: 4%;
 	height: 3%;
+	padding-bottom:1%;
 	float: right;
 	font-size: 12px;
 	text-decoration: none;
@@ -25,7 +26,7 @@
 	text-align: center;
 }
 .register_close:hover{
-	
+	padding-bottom:1%;
 	width: 4%;
 	height: 3%;
 	font-size: 12px;

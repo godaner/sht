@@ -2,11 +2,9 @@ package com.sht.goods.po;
 
 import org.springframework.stereotype.Component;
 
-import com.sht.po.GoodsImgs;
+import com.sht.po.Files;
 
 @Component
-public class CustomGoodsImgs extends GoodsImgs {
-	
-	
+public class CustomFiles extends Files {
 	
 }

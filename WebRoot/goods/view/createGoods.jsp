@@ -44,33 +44,49 @@
 
 		</div>
 		<div class="content-right">
+			<form action="/sht/goods/createGoods.action" method="post" enctype="multipart/form-data">
 			<div class="add-img">
 				<ul>
 					<li title="最多可添加五张图片" class="preview" id="add"><img src="goods/img/add.png" id="img"></li>
 				</ul>
-				<input id="file" type="file"
-					style="visibility: hidden; width: 1px; height: 1px;" multiple="multiple" />
+					<input id="file" type="file" name="files"
+					 multiple="multiple" />
+					
+					<input id="file" type="file" name="files"
+					 multiple="multiple" />
+					
+					<input id="file" type="file" name="files"
+					 multiple="multiple" />
+					
+					<input id="file" type="file" name="files"
+					 multiple="multiple" />
+					
+					<input id="file" type="file" name="files"
+					 multiple="multiple" />
+					
+					<!-- -->
 			</div>
 			<div class="line"></div>
 			<div class="detail-info">
 				<p>宝贝介绍&nbsp;:&nbsp;</p>
-				<textarea placeholder="请详细描述你的宝贝..." id="description"></textarea>
+				<textarea name="description" placeholder="请详细描述你的宝贝..." id="description"></textarea>
 				<ul>
 					<li><span>商品名称&nbsp;:&nbsp;</span> <input type="text"
-						placeholder="商品名称" id="title" /></li>
+						name="title" placeholder="商品名称" id="title" /></li>
 					<li><span>商品转卖价&nbsp;:&nbsp;</span> <input type="text"
-						placeholder="商品转卖价" id="sprice" /></li>
+						name="sprice" placeholder="商品转卖价" id="sprice" /></li>
 					<br />
 					<li><span>商品原价&nbsp;:&nbsp;</span> <input type="text"
-						placeholder="商品原价" id="price" /></li>
+						name="price" placeholder="商品原价" id="price" /></li>
 					<li><span>商&nbsp;品&nbsp;&nbsp;成&nbsp;色&nbsp;:&nbsp;</span> <input
-						type="text" placeholder="商品成色" id="condition" /></li>
+						name="condition" type="text" placeholder="商品成色" id="condition" /></li>
 					<br />
 					<li><span>所&nbsp;&nbsp;在&nbsp;&nbsp;地&nbsp;:&nbsp;</span> <input
-						type="text" placeholder="所在地" id="region" /></li>
+						name="region" type="text" placeholder="所在地" id="region" /></li>
 				</ul>
-				<input type="button" value="立即发布" id="create">
+				<input type="submit" value="立即发布" id="create">
 			</div>
+			</form>
 		</div>
 		<div class="clearFloat"></div>
 	</div>
