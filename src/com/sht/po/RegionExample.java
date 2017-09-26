@@ -114,52 +114,71 @@ public class RegionExample {
             return (Criteria) this;
         }
 
+
         public Criteria andIdEqualTo(Integer value) {
+
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdNotEqualTo(Integer value) {
+
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
         public Criteria andIdGreaterThan(Integer value) {
+
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdLessThan(Integer value) {
+
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdLessThanOrEqualTo(Integer value) {
+
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdIn(List<Integer> values) {
+
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdNotIn(List<Integer> values) {
+
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdBetween(Integer value1, Integer value2) {
+
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
+
         public Criteria andIdNotBetween(Integer value1, Integer value2) {
+
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -315,51 +334,68 @@ public class RegionExample {
         }
 
         public Criteria andPidEqualTo(Integer value) {
+
             addCriterion("PID =", value, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidNotEqualTo(Integer value) {
+
             addCriterion("PID <>", value, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidGreaterThan(Integer value) {
+
             addCriterion("PID >", value, "pid");
             return (Criteria) this;
         }
 
         public Criteria andPidGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("PID >=", value, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidLessThan(Integer value) {
+
             addCriterion("PID <", value, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidLessThanOrEqualTo(Integer value) {
+
             addCriterion("PID <=", value, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidIn(List<Integer> values) {
+
             addCriterion("PID in", values, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidNotIn(List<Integer> values) {
+
             addCriterion("PID not in", values, "pid");
             return (Criteria) this;
         }
 
+
         public Criteria andPidBetween(Integer value1, Integer value2) {
+
             addCriterion("PID between", value1, value2, "pid");
             return (Criteria) this;
         }
 
         public Criteria andPidNotBetween(Integer value1, Integer value2) {
+
             addCriterion("PID not between", value1, value2, "pid");
             return (Criteria) this;
         }
@@ -374,52 +410,70 @@ public class RegionExample {
             return (Criteria) this;
         }
 
+
         public Criteria andLeveEqualTo(Integer value) {
+
             addCriterion("LEVE =", value, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveNotEqualTo(Integer value) {
+
             addCriterion("LEVE <>", value, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveGreaterThan(Integer value) {
+
             addCriterion("LEVE >", value, "leve");
             return (Criteria) this;
         }
 
         public Criteria andLeveGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("LEVE >=", value, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveLessThan(Integer value) {
+
             addCriterion("LEVE <", value, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveLessThanOrEqualTo(Integer value) {
+
             addCriterion("LEVE <=", value, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveIn(List<Integer> values) {
+
             addCriterion("LEVE in", values, "leve");
             return (Criteria) this;
         }
 
         public Criteria andLeveNotIn(List<Integer> values) {
+
             addCriterion("LEVE not in", values, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveBetween(Integer value1, Integer value2) {
+
             addCriterion("LEVE between", value1, value2, "leve");
             return (Criteria) this;
         }
 
+
         public Criteria andLeveNotBetween(Integer value1, Integer value2) {
+
             addCriterion("LEVE not between", value1, value2, "leve");
             return (Criteria) this;
         }
@@ -434,52 +488,71 @@ public class RegionExample {
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeEqualTo(Integer value) {
+
             addCriterion("ORDE =", value, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeNotEqualTo(Integer value) {
+
             addCriterion("ORDE <>", value, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeGreaterThan(Integer value) {
+
             addCriterion("ORDE >", value, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("ORDE >=", value, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeLessThan(Integer value) {
+
             addCriterion("ORDE <", value, "orde");
             return (Criteria) this;
         }
 
         public Criteria andOrdeLessThanOrEqualTo(Integer value) {
+
             addCriterion("ORDE <=", value, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeIn(List<Integer> values) {
+
             addCriterion("ORDE in", values, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeNotIn(List<Integer> values) {
+
             addCriterion("ORDE not in", values, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeBetween(Integer value1, Integer value2) {
+
             addCriterion("ORDE between", value1, value2, "orde");
             return (Criteria) this;
         }
 
+
         public Criteria andOrdeNotBetween(Integer value1, Integer value2) {
+
             addCriterion("ORDE not between", value1, value2, "orde");
             return (Criteria) this;
         }

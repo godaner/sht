@@ -3,6 +3,7 @@ package com.sht.goods.service;
 
 import java.util.List;
 
+import com.sht.goods.po.CustomFiles;
 import com.sht.goods.po.CustomGoods;
 import com.sht.goods.po.CustomGoodsImgs;
 
@@ -40,5 +41,13 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert goodsImags info
 	 */
-	public int createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception;
+	public String createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception;
+	
+	/**
+	 * 
+	 * createGoodsFileInfo
+	 * <p>
+	 * Description:insert imags  info into file
+	 */
+	public String createGoodsFileInfo(CustomFiles files) throws Exception;
 }

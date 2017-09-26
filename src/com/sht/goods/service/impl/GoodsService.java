@@ -13,16 +13,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.opensymphony.xwork2.ModelDriven;
 import com.sht.goods.mapper.CustomGoodsMapper;
+import com.sht.goods.po.CustomFiles;
 import com.sht.goods.po.CustomGoods;
 import com.sht.goods.po.CustomGoodsImgs;
 import com.sht.goods.service.GoodsServiceI;
+import com.sht.mapper.FilesMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
 
@@ -37,7 +41,7 @@ import com.sht.mapper.GoodsMapper;
  * @version 1.0
  */
 @Service
-public class GoodsService extends GBaseService implements GoodsServiceI {
+public class GoodsService extends GBaseService implements GoodsServiceI{
 	@Autowired
 	private CustomGoodsMapper customGoodsMapper;
 
@@ -47,6 +51,8 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
 	private GoodsImgsMapper goodsImgsMapper;
 	
+	@Autowired
+	private FilesMapper filesMapper;
 	
 	
 	/**
@@ -68,10 +74,12 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	 */
 	@Override
 	public String createGoodsInfo(CustomGoods goods) throws Exception {
-		// TODO Auto-generated method stub
-		String createGoodsId = uuid();
 		
-		goods.setId(createGoodsId);
+		
+		//商品信息
+		String goodsId = uuid();
+		
+		goods.setId(goodsId);
 		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
@@ -79,44 +87,70 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 		
 		goods.setLastupdatetime(timestamp);
 		
+		goods.setBrowsenumber(0.0);
+		
+		goods.setOwner("1");
+		
+		short a = 0;
+		goods.setStatus(a);
+		
 		goodsMapper.insert(goods);
 		
-		return createGoodsId;
+		//向文件写入图片
+		
+		File[] file = goods.getFiles();
+		for(int i = 0 ;i < file.length ;i++){
+			String fileId =uuid();
+			writeFileWithCompress(file[0], getValue(CONFIG.FILED_GOODS_IMGS_SIZES).toString(), 
+					getValue(CONFIG.FILED_SRC_GOODS_IMGS).toString(), fileId+".png");
+			
+			//向文件表插入图片信息
+			CustomFiles files =new CustomFiles();
+			
+			files.setId(fileId);
+			files.setPath(fileId+".png");
+			files.setName(file[0].getName());
+			
+			createGoodsFileInfo(files);
+			//向图片表中插入信息
+			CustomGoodsImgs imgs = new CustomGoodsImgs();
+			imgs.setId(uuid());
+			imgs.setOwner(goodsId);
+			imgs.setImg(fileId);
+			if(i == 0)
+			   imgs.setMain(1.0);
+			else 
+				imgs.setMain(0.0);
+			createGoodsImagsInfo(imgs);
+		}
+		return "fCreateGoods";
 	}
 
 	/**
 	 * 发布商品图片信息
 	 */
 	@Override
-	public int createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
+	public String createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
 		// TODO Auto-generated method stub
 		
-		goodsImgs.setId(uuid());
+		goodsImgsMapper.insert(goodsImgs);
 		
-		String path = CONFIG.FILED_SRC_GOODS_IMGS;
-		
-		for(int i = 0;i < goodsImgs.getFiles().size() ; i++){
-			OutputStream os = new FileOutputStream(new File(path,goodsImgs.getFileNames().get(i)));  
-            
-            InputStream is = new FileInputStream(goodsImgs.getFiles().get(i));  
-              
-            byte[] buf = new byte[1024];  
-            
-            int length = 0 ;  
-              
-            while(-1 != (length = is.read(buf) ) )  {  
-                os.write(buf, 0, length) ;  
-            }  
-              
-            closeStream(is, os);
-		}
-	   
-		goodsImgs.setOwner("1");
-		int result = goodsImgsMapper.insert(goodsImgs);
-		
-		return result;
+		return "";
 		
 	}
+
+	@Override
+	public String createGoodsFileInfo(CustomFiles files) throws Exception {
+		// TODO Auto-generated method stub
+	
+		filesMapper.insert(files);	
+		
+		return "";
+		
+	}
+	
+	
+	
 	
 	
 	

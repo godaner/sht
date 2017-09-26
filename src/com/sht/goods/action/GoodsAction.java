@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.sht.goods.po.CustomFiles;
 import com.sht.goods.po.CustomGoods;
 import com.sht.goods.service.GoodsServiceI;
 
@@ -49,20 +50,19 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 	
 	public void createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
-		String goodsId = null;
+		
 		try {
-			goodsId = service.createGoodsInfo(po);
+			 service.createGoodsInfo(po);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//返回商品Id
-		writeJSON(goodsId);
+		
+		
 		
 	}
 	
-	public void deleteGoods() throws Exception{
-		
-	}
+	
 	
 	
 }

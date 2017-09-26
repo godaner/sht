@@ -1,5 +1,7 @@
 package com.sht.goods.po;
 
+import java.io.File;
+
 import org.springframework.stereotype.Component;
 
 import com.sht.po.Goods;
@@ -15,6 +17,19 @@ import com.sht.po.Goods;
  */
 @Component
 public class CustomGoods extends Goods {
+	private File[] files;
+	
+	
+
+	public File[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(File[] files) {
+		this.files = files;
+	}
+	
+	
 	
 
 }
