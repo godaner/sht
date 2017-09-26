@@ -38,8 +38,12 @@ public interface UGoodsServiceI {
 	 * @param title
 	 * @param pageStar
 	 * @param pageEnd
+	 * @param pageEnd2 
 	 * @return
 	 * @throws Exception 
 	 */
 	public List<UGoods> searchUGoodsBytitle(String title, String pageStar,String pageEnd) throws Exception;
+
+
+	public UGoods getGoodsDetailById(String id) throws Exception;
 }

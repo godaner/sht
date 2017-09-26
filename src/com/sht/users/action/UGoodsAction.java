@@ -48,7 +48,6 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 			
 		} catch (Exception e) {
 			
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
 			//po.setMsg(e.getMessage());
@@ -79,7 +78,6 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 			
 		} catch (Exception e) {
 			
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
 			
@@ -95,8 +93,10 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 	  * 
 	  */
 	 public void searchUGoodsBytitle() throws Exception{
- 
-		 String PageToStr = getRequestParam("PageTo");
+		 
+		 PageNum = 6; //分页显示，每一页的数据数量
+		 
+		 String PageToStr = getRequestParam("searchTo");
 		 
 		 eject(PageToStr==null, "指定的跳转页不存在");
 		 
@@ -104,7 +104,7 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		 
 		 int PageTo = Integer.parseInt(PageToStr);
 		 
-		 CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
+		// CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
 		 
 		 List<UGoods> Goodlist = null;
 		 
@@ -118,7 +118,6 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 			
 		} catch (Exception e) {
 			
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
 			//po.setMsg(e.getMessage());
@@ -126,6 +125,26 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		}finally{
 			
 			writeJSON(Goodlist);
+		}
+	 }
+	 
+	 public void getGoodsDetailById() throws Exception{
+		 String id = getRequestParam("id");
+		 
+		 eject(id==null, "商品不存在");
+		 
+		 try {
+			 po = service.getGoodsDetailById(id);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			po.setMsg(e.getMessage());
+			
+		}finally{ 
+			
+			writeJSON(po);
 		}
 	 }
 }

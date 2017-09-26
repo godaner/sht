@@ -24,14 +24,20 @@
 			</tr>
 			</table>
 			<div class="turnPage">
-			<button type="button" onclick="NextPage();">下一页</button>
-			<button type="button" onclick="redPage();">上一页</button>
+			<!-- <button type="button" onclick="NextPage();">下一页</button>
+			<button type="button" onclick="redPage();">上一页</button> -->
 			</div>
 			</div>
 		<!-- 已发布列表 -->
 	
 		<div class="list"></div>
 		
+		<div class="detail">
+		
+		
+		
+		
+		</div>
 			
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 <input type="hidden" value="${onlineUser.id}" id="userid"/>
@@ -83,6 +89,7 @@
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 var PageTo = 0;
+var searchTo = 1;
 var maxPage = 1;
 var userid = $("#userid").val();
 var baseUrl =$("#baseUrl").val();
@@ -119,11 +126,33 @@ function getGoodscount(){
 	    },error:function(){
 	    	
 	    }
-	
-	
-	
 	})
 }
+//显示商品的详细信息
+function showGoodsdetail(id){
+	$.ajax({
+		type : 'post',  //请求方式,get,post等
+	    dataType:'json',//response返回数据的格式
+	    async : true,  //同步请求  
+	    url : baseUrl+"/users/U_getGoodsDetailById.action",  //需要访问的地址
+	    data :'id='+id,  //传递到后台的参数
+	    success:function(data){
+	    	console.info(data);
+	    	$(".list").empty();
+	    	$(".turnPage").empty();
+	    	var h = "";
+	    	h+="<p>标题"+data['title']+"</p><p>介绍"+data['description']+"</p><p>现价"+data['sprice']+"</p><p>原价"+data['price']+"</p><p>成色"+data['condition']+"</p>";
+	    	h+="<p>地区"+data['region']+"</p><p>状态"+data['status']+"</p><p>创建时间"+data['createtime']+"</p><p>浏览次数"+data['browse_number']+"</p><p>最后更新时间"+data['last_update_time']+"</p>";
+	    	$(".detail").html(h);
+	    	h="";
+	    },error:function(){
+	    	alert("失败");
+	    }
+	})
+}
+
+
+
 //商品列表显示
 function showList(){
 	$.ajax({
@@ -139,58 +168,67 @@ function showList(){
 	    			var goods = data[i];
 	    		
 	    		h+="<div class='issue'><div class='issue_title'><p>创建时间 :"+goods['createtime']+"&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div><div class='issue_body'>";
-	    		h+="<table><tr><td><img  src='../img/content_icon.png'></td><td><p>"+goods['title']+"<p></td>";
+	    		h+="<table><tr><td><img  src='../img/content_icon.png'></td>";
+	    		h+="<td><a href='javascript:showGoodsdetail("+goods['id']+");'>"+goods['title']+"<a></td>";
 	    		h+="<td><p>介绍"+goods['description']+"<p></td>";
 	    		h+="<td><p>价格"+goods['price']+" "+goods['sprice']+"<p></td>";
 	    		h+="<td><p>状态"+goods['status']+"<p></td>";
-	    		h+="<td><a href='#'>删除</a>&nbsp;|&nbsp;<a href='#'>详情</a></td></tr></table></div></div>";
+	    		h+="<td><a href='#'>取消</a>&nbsp;|&nbsp;<a href='#'>详情</a></td></tr></table></div></div>";
 	    		}
 	    		$(".list").html(h);
 	    		h="";
-	    	
+	    		h+="<button type='button' onclick='NextPage();'>下一页</button>";
+				h+="<button type='button' onclick='redPage();'>上一页</button>";
+	    		$(".turnPage").html(h);
+	    		h="";
 	    	
 	    },error:function(data){
 	    	alert("失败");
 	    }
 	});
-	
+}
 	
 //搜索商品
 function searchUGoods(){
 	
 	var title = $("#search_input").val();
 	
-	alert(title);
-
-	$.ajax({
-		type : 'post',  //请求方式,get,post等
-	    dataType:'json',//response返回数据的格式
-	    async : true,  //同步请求  
-	    url : baseUrl+"/users/U_searchUGoodsBytitle.action",  //需要访问的地址
-	    data :'PageTo='+PageTo+"&title="+title,  //传递到后台的参数
-	    success:function(data){
-	    	console.info(data);
-	    		/* var h = "";
-	    		for(var i =0;i<data.length;i++){
-	    			var goods = data[i];
-	    		
-	    		h+="<div class='issue'><div class='issue_title'><p>创建时间 :"+goods['createtime']+"&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div><div class='issue_body'>";
-	    		h+="<table><tr><td><img  src='../img/content_icon.png'></td><td><p>"+goods['title']+"<p></td>";
-	    		h+="<td><p>介绍"+goods['description']+"<p></td>";
-	    		h+="<td><p>价格"+goods['price']+" "+goods['sprice']+"<p></td>";
-	    		h+="<td><p>状态"+goods['status']+"<p></td>";
-	    		h+="<td><a href='#'>删除</a>&nbsp;|&nbsp;<a href='#'>详情</a></td></tr></table></div></div>";
-	    		}
-	    		$(".list").html(h);
-	    		h="";
-	    	 */
-	    	
-	    },error:function(data){
-	    	alert("失败");
-	    }
-	});
+	if(title!=null&&title!=""){
+		$(".turnPage").empty();
+		$.ajax({
+			type : 'post',  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : true,  //同步请求  
+		    url : baseUrl+"/users/U_searchUGoodsBytitle.action",  //需要访问的地址
+		    data :'searchTo='+searchTo+"&title="+title,  //传递到后台的参数
+		    success:function(data){
+		    	console.info(data);
+		    	
+		    		var h = "";
+		    		for(var i =0;i<data.length;i++){
+		    			var goods = data[i];
+		    		
+		    		h+="<div class='issue'><div class='issue_title'><p>创建时间 :"+goods['createtime']+"&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div><div class='issue_body'>";
+		    		h+="<table><tr><td><img  src='../img/content_icon.png'></td><td><p>"+goods['title']+"<p></td>";
+		    		h+="<td><p>介绍"+goods['description']+"<p></td>";
+		    		h+="<td><p>价格"+goods['price']+" "+goods['sprice']+"<p></td>";
+		    		h+="<td><p>状态"+goods['status']+"<p></td>";
+		    		h+="<td><a href='#'>删除</a>&nbsp;|&nbsp;<a href='#'>详情</a></td></tr></table></div></div>";
+		    		}
+		    		$(".list").html(h);
+		    		h=""; 
+		    	 
+		    	
+		    },error:function(data){
+		    	alert("失败");
+		    }
+		});
 	}
-}
+
+
+
+	}
+
 
 </script>
 </html>
