@@ -59,3 +59,22 @@ BEGIN
        
        RETURN r;
 END;
+
+
+/**
+ * 10:45	alls
+ */
+/*通过goodsid获取主图的path,例如a.jpg*/
+CREATE OR REPLACE FUNCTION getGoodsMainImgPath(goodsid IN NVARCHAR2)
+RETURN NVARCHAR2
+AS
+       
+       r NVARCHAR2(255);
+BEGIN
+
+       select f.path into r
+       from  files f,goods_imgs gi
+       where f.id=gi.img and gi.main = 1 and gi.owner = goodsid;
+
+       RETURN r;
+END;
