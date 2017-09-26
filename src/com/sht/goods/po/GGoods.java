@@ -16,9 +16,12 @@ import com.sht.po.Goods;
  * @version 1.0
  */
 @Component
-public class CustomGoods extends Goods {
+public class GGoods extends Goods {
 	private File[] files;
 	
+	private String path;
+	
+	private String headImg;
 	
 
 	public File[] getFiles() {
@@ -27,6 +30,22 @@ public class CustomGoods extends Goods {
 
 	public void setFiles(File[] files) {
 		this.files = files;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getHeadImg() {
+		return headImg;
+	}
+
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
 	}
 	
 	

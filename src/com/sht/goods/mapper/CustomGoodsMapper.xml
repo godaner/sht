@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.goods.mapper.CustomGoodsMapper">
-
-	<select id="selectAllGoodsInfo" resultType="com.sht.goods.po.Goods">
+	<select id="selectAllGoodsInfo"  resultType="com.sht.goods.po.GGoods">
 		
-		SELECT * FROM GOODS 
-		
+		SELECT GOODS.*,FILES.PATH AS PATH,USERS.HEADIMG AS HEADIMG
+    	FROM GOODS,FILES,USERS
+    	WHERE GOODS.OWNER = USERS.ID AND FILES.ID = (SELECT IMG FROM GOODS,GOODS_IMGS
+                           						 WHERE GOODS.ID = GOODS_IMGS.OWNER
+                            					 AND MAIN = 1) AND GOODS.STATUS = 0
 	</select>
 	
-	
-
 </mapper>
