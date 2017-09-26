@@ -2,7 +2,7 @@ package com.sht.common.po;
 
 import org.springframework.stereotype.Component;
 
-import com.sht.goods.po.Goods;
+import com.sht.po.Goods;
 
 /**
  * Title:CustomGoods
