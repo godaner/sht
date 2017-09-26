@@ -1,0 +1,67 @@
+.container {
+	margin-left:350px;
+	margin-top:25px;
+	width: 776px;
+	height: 300px;
+}
+
+.content {
+	width: 776px;
+	height: 270px;
+}
+
+.control-group {
+	width: 776px;
+	height: 42px;
+	margin-bottom: 12px;
+	font-size: 14px;
+}
+
+.control-label {
+	width: 190px;
+	height: 28px;
+	margin-left: 100px;
+	line-height: 34px;
+}
+
+.input-append {
+	float: right;
+	margin-right: 300px;
+	width: 256px;
+	height: 42px;
+}
+
+.input-append input {
+	width: 256px;
+	height: 36px;
+	margin-bottom: 0;
+	font-size: 14px;
+	vertical-align: top;
+}
+
+.input-append1 {
+	float: right;
+	margin-right: 377px;
+	width: 180px;
+	height: 42px;
+}
+
+.input-append1 input {
+	width: 150px;
+	height: 36px;
+	margin-bottom: 0;
+	font-size: 14px;
+	vertical-align: top;
+}
+
+.money {
+	margin-top:8px;
+	float: right;
+}
+
+.recharge {
+	margin-top: 30px;
+	margin-left: 220px;
+	width: 80px;
+	height: 38px;
+}
