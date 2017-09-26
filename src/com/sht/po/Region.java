@@ -1,84 +1,85 @@
 package com.sht.po;
 
 
+
 public class Region {
-    private Double regionId;
+    private Double id;
 
-    private String regionCode;
+    private String code;
 
-    private String regionName;
+    private String name;
 
-    private Double parentId;
+    private Double pid;
 
-    private Double regionLevel;
+    private Double leve;
 
-    private Double regionOrder;
+    private Double orde;
 
-    private String regionNameEn;
+    private String enname;
 
-    private String regionShortnameEn;
+    private String enshortname;
 
-    public Double getRegionId() {
-        return regionId;
+    public Double getId() {
+        return id;
     }
 
-    public void setRegionId(Double regionId) {
-        this.regionId = regionId;
+    public void setId(Double id) {
+        this.id = id;
     }
 
-    public String getRegionCode() {
-        return regionCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setRegionCode(String regionCode) {
-        this.regionCode = regionCode == null ? null : regionCode.trim();
+    public void setCode(String code) {
+        this.code = code == null ? null : code.trim();
     }
 
-    public String getRegionName() {
-        return regionName;
+    public String getName() {
+        return name;
     }
 
-    public void setRegionName(String regionName) {
-        this.regionName = regionName == null ? null : regionName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Double getParentId() {
-        return parentId;
+    public Double getPid() {
+        return pid;
     }
 
-    public void setParentId(Double parentId) {
-        this.parentId = parentId;
+    public void setPid(Double pid) {
+        this.pid = pid;
     }
 
-    public Double getRegionLevel() {
-        return regionLevel;
+    public Double getLeve() {
+        return leve;
     }
 
-    public void setRegionLevel(Double regionLevel) {
-        this.regionLevel = regionLevel;
+    public void setLeve(Double leve) {
+        this.leve = leve;
     }
 
-    public Double getRegionOrder() {
-        return regionOrder;
+    public Double getOrde() {
+        return orde;
     }
 
-    public void setRegionOrder(Double regionOrder) {
-        this.regionOrder = regionOrder;
+    public void setOrde(Double orde) {
+        this.orde = orde;
     }
 
-    public String getRegionNameEn() {
-        return regionNameEn;
+    public String getEnname() {
+        return enname;
     }
 
-    public void setRegionNameEn(String regionNameEn) {
-        this.regionNameEn = regionNameEn == null ? null : regionNameEn.trim();
+    public void setEnname(String enname) {
+        this.enname = enname == null ? null : enname.trim();
     }
 
-    public String getRegionShortnameEn() {
-        return regionShortnameEn;
+    public String getEnshortname() {
+        return enshortname;
     }
 
-    public void setRegionShortnameEn(String regionShortnameEn) {
-        this.regionShortnameEn = regionShortnameEn == null ? null : regionShortnameEn.trim();
+    public void setEnshortname(String enshortname) {
+        this.enshortname = enshortname == null ? null : enshortname.trim();
     }
 }

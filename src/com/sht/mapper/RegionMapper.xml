@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.RegionMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Region">
-    <id column="REGION_ID" jdbcType="DECIMAL" property="regionId" />
-    <result column="REGION_CODE" jdbcType="VARCHAR" property="regionCode" />
-    <result column="REGION_NAME" jdbcType="VARCHAR" property="regionName" />
-    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
-    <result column="REGION_LEVEL" jdbcType="DECIMAL" property="regionLevel" />
-    <result column="REGION_ORDER" jdbcType="DECIMAL" property="regionOrder" />
-    <result column="REGION_NAME_EN" jdbcType="VARCHAR" property="regionNameEn" />
-    <result column="REGION_SHORTNAME_EN" jdbcType="VARCHAR" property="regionShortnameEn" />
+    <id column="ID" jdbcType="DOUBLE" property="id" />
+    <result column="CODE" jdbcType="CHAR" property="code" />
+    <result column="NAME" jdbcType="CHAR" property="name" />
+    <result column="PID" jdbcType="DOUBLE" property="pid" />
+    <result column="LEVE" jdbcType="DECIMAL" property="leve" />
+    <result column="ORDE" jdbcType="DECIMAL" property="orde" />
+    <result column="ENNAME" jdbcType="CHAR" property="enname" />
+    <result column="ENSHORTNAME" jdbcType="CHAR" property="enshortname" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,8 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    REGION_ID, REGION_CODE, REGION_NAME, PARENT_ID, REGION_LEVEL, REGION_ORDER, REGION_NAME_EN, 
-    REGION_SHORTNAME_EN
+    ID, CODE, NAME, PID, LEVE, ORDE, ENNAME, ENSHORTNAME
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.RegionExample" resultMap="BaseResultMap">
     select
@@ -87,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from REGION
-    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DOUBLE}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Double">
     delete from REGION
-    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DOUBLE}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.RegionExample">
     delete from REGION
@@ -104,65 +103,65 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Region">
-    insert into REGION (REGION_ID, REGION_CODE, REGION_NAME, 
-      PARENT_ID, REGION_LEVEL, REGION_ORDER, 
-      REGION_NAME_EN, REGION_SHORTNAME_EN)
-    values (#{regionId,jdbcType=DECIMAL}, #{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, 
-      #{parentId,jdbcType=DECIMAL}, #{regionLevel,jdbcType=DECIMAL}, #{regionOrder,jdbcType=DECIMAL}, 
-      #{regionNameEn,jdbcType=VARCHAR}, #{regionShortnameEn,jdbcType=VARCHAR})
+    insert into REGION (ID, CODE, NAME, PID, 
+      LEVE, ORDE, ENNAME, ENSHORTNAME
+      )
+    values (#{id,jdbcType=DOUBLE}, #{code,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{pid,jdbcType=DOUBLE}, 
+      #{leve,jdbcType=DECIMAL}, #{orde,jdbcType=DECIMAL}, #{enname,jdbcType=CHAR}, #{enshortname,jdbcType=CHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Region">
     insert into REGION
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="regionId != null">
-        REGION_ID,
+      <if test="id != null">
+        ID,
       </if>
-      <if test="regionCode != null">
-        REGION_CODE,
+      <if test="code != null">
+        CODE,
       </if>
-      <if test="regionName != null">
-        REGION_NAME,
+      <if test="name != null">
+        NAME,
       </if>
-      <if test="parentId != null">
-        PARENT_ID,
+      <if test="pid != null">
+        PID,
       </if>
-      <if test="regionLevel != null">
-        REGION_LEVEL,
+      <if test="leve != null">
+        LEVE,
       </if>
-      <if test="regionOrder != null">
-        REGION_ORDER,
+      <if test="orde != null">
+        ORDE,
       </if>
-      <if test="regionNameEn != null">
-        REGION_NAME_EN,
+      <if test="enname != null">
+        ENNAME,
       </if>
-      <if test="regionShortnameEn != null">
-        REGION_SHORTNAME_EN,
+      <if test="enshortname != null">
+        ENSHORTNAME,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="regionId != null">
-        #{regionId,jdbcType=DECIMAL},
+      <if test="id != null">
+        #{id,jdbcType=DOUBLE},
       </if>
-      <if test="regionCode != null">
-        #{regionCode,jdbcType=VARCHAR},
+      <if test="code != null">
+        #{code,jdbcType=CHAR},
       </if>
-      <if test="regionName != null">
-        #{regionName,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
       </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=DECIMAL},
+      <if test="pid != null">
+        #{pid,jdbcType=DOUBLE},
       </if>
-      <if test="regionLevel != null">
-        #{regionLevel,jdbcType=DECIMAL},
+      <if test="leve != null">
+        #{leve,jdbcType=DECIMAL},
       </if>
-      <if test="regionOrder != null">
-        #{regionOrder,jdbcType=DECIMAL},
+      <if test="orde != null">
+        #{orde,jdbcType=DECIMAL},
       </if>
-      <if test="regionNameEn != null">
-        #{regionNameEn,jdbcType=VARCHAR},
+      <if test="enname != null">
+        #{enname,jdbcType=CHAR},
       </if>
-      <if test="regionShortnameEn != null">
-        #{regionShortnameEn,jdbcType=VARCHAR},
+      <if test="enshortname != null">
+        #{enshortname,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -175,29 +174,29 @@
   <update id="updateByExampleSelective" parameterType="map">
     update REGION
     <set>
-      <if test="record.regionId != null">
-        REGION_ID = #{record.regionId,jdbcType=DECIMAL},
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=DOUBLE},
       </if>
-      <if test="record.regionCode != null">
-        REGION_CODE = #{record.regionCode,jdbcType=VARCHAR},
+      <if test="record.code != null">
+        CODE = #{record.code,jdbcType=CHAR},
       </if>
-      <if test="record.regionName != null">
-        REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=CHAR},
       </if>
-      <if test="record.parentId != null">
-        PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
+      <if test="record.pid != null">
+        PID = #{record.pid,jdbcType=DOUBLE},
       </if>
-      <if test="record.regionLevel != null">
-        REGION_LEVEL = #{record.regionLevel,jdbcType=DECIMAL},
+      <if test="record.leve != null">
+        LEVE = #{record.leve,jdbcType=DECIMAL},
       </if>
-      <if test="record.regionOrder != null">
-        REGION_ORDER = #{record.regionOrder,jdbcType=DECIMAL},
+      <if test="record.orde != null">
+        ORDE = #{record.orde,jdbcType=DECIMAL},
       </if>
-      <if test="record.regionNameEn != null">
-        REGION_NAME_EN = #{record.regionNameEn,jdbcType=VARCHAR},
+      <if test="record.enname != null">
+        ENNAME = #{record.enname,jdbcType=CHAR},
       </if>
-      <if test="record.regionShortnameEn != null">
-        REGION_SHORTNAME_EN = #{record.regionShortnameEn,jdbcType=VARCHAR},
+      <if test="record.enshortname != null">
+        ENSHORTNAME = #{record.enshortname,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -206,14 +205,14 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update REGION
-    set REGION_ID = #{record.regionId,jdbcType=DECIMAL},
-      REGION_CODE = #{record.regionCode,jdbcType=VARCHAR},
-      REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
-      PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
-      REGION_LEVEL = #{record.regionLevel,jdbcType=DECIMAL},
-      REGION_ORDER = #{record.regionOrder,jdbcType=DECIMAL},
-      REGION_NAME_EN = #{record.regionNameEn,jdbcType=VARCHAR},
-      REGION_SHORTNAME_EN = #{record.regionShortnameEn,jdbcType=VARCHAR}
+    set ID = #{record.id,jdbcType=DOUBLE},
+      CODE = #{record.code,jdbcType=CHAR},
+      NAME = #{record.name,jdbcType=CHAR},
+      PID = #{record.pid,jdbcType=DOUBLE},
+      LEVE = #{record.leve,jdbcType=DECIMAL},
+      ORDE = #{record.orde,jdbcType=DECIMAL},
+      ENNAME = #{record.enname,jdbcType=CHAR},
+      ENSHORTNAME = #{record.enshortname,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -221,39 +220,39 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Region">
     update REGION
     <set>
-      <if test="regionCode != null">
-        REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      <if test="code != null">
+        CODE = #{code,jdbcType=CHAR},
       </if>
-      <if test="regionName != null">
-        REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      <if test="name != null">
+        NAME = #{name,jdbcType=CHAR},
       </if>
-      <if test="parentId != null">
-        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      <if test="pid != null">
+        PID = #{pid,jdbcType=DOUBLE},
       </if>
-      <if test="regionLevel != null">
-        REGION_LEVEL = #{regionLevel,jdbcType=DECIMAL},
+      <if test="leve != null">
+        LEVE = #{leve,jdbcType=DECIMAL},
       </if>
-      <if test="regionOrder != null">
-        REGION_ORDER = #{regionOrder,jdbcType=DECIMAL},
+      <if test="orde != null">
+        ORDE = #{orde,jdbcType=DECIMAL},
       </if>
-      <if test="regionNameEn != null">
-        REGION_NAME_EN = #{regionNameEn,jdbcType=VARCHAR},
+      <if test="enname != null">
+        ENNAME = #{enname,jdbcType=CHAR},
       </if>
-      <if test="regionShortnameEn != null">
-        REGION_SHORTNAME_EN = #{regionShortnameEn,jdbcType=VARCHAR},
+      <if test="enshortname != null">
+        ENSHORTNAME = #{enshortname,jdbcType=CHAR},
       </if>
     </set>
-    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DOUBLE}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Region">
     update REGION
-    set REGION_CODE = #{regionCode,jdbcType=VARCHAR},
-      REGION_NAME = #{regionName,jdbcType=VARCHAR},
-      PARENT_ID = #{parentId,jdbcType=DECIMAL},
-      REGION_LEVEL = #{regionLevel,jdbcType=DECIMAL},
-      REGION_ORDER = #{regionOrder,jdbcType=DECIMAL},
-      REGION_NAME_EN = #{regionNameEn,jdbcType=VARCHAR},
-      REGION_SHORTNAME_EN = #{regionShortnameEn,jdbcType=VARCHAR}
-    where REGION_ID = #{regionId,jdbcType=DECIMAL}
+    set CODE = #{code,jdbcType=CHAR},
+      NAME = #{name,jdbcType=CHAR},
+      PID = #{pid,jdbcType=DOUBLE},
+      LEVE = #{leve,jdbcType=DECIMAL},
+      ORDE = #{orde,jdbcType=DECIMAL},
+      ENNAME = #{enname,jdbcType=CHAR},
+      ENSHORTNAME = #{enshortname,jdbcType=CHAR}
+    where ID = #{id,jdbcType=DOUBLE}
   </update>
 </mapper>

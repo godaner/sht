@@ -9,7 +9,6 @@ $(function() {
 	 * 点击按钮上传
 	 */
 	var imgDataLen = 0;
-//	 var params = {}; 
 	var fd = new FormData();
 	$("#create").click(function() {
 		var description = $("#description").val();
@@ -18,9 +17,10 @@ $(function() {
 		var price = $('#price').val();
 		var condition = $('#condition').val();
 		var region = $('#region').val();
+		var img = $('#file').val();
 		
 		//判断是否为空
-		var isEmpty = judgementEmpty(description,title,sprice,price,condition,region);
+		var isEmpty = judgementEmpty(description,title,sprice,price,condition,region,img);
 		
 		if(!isEmpty){
 			return false;
@@ -33,36 +33,51 @@ $(function() {
 					"&condition="+condition+
 					"&region="+region+
 					"&status=0"+
-					"&owner=1";
+					"&owner=1"+
+					"file="+fd;
 		
 	    //console.log(url);
-		uploadGoodsInfo(url);
-		//uploadImg();
+		//uploadGoodsInfo(url);
+		
 
 	});
 	
 	/**
 	 * 上传图片
 	 */
-	function uploadImg(){
+	
+	function uploadImg(goodsId){
 		/*$.post(baseUrl+"/goods/createGoodsImagsInfo.action?",pd,function(data,status){
 			
 		}); */
-		$.ajax({
-			type:"post",
-			async:true,
-			data:{'imgs':pd},
-			url:baseUrl+"/goods/createGoodsImagsInfo.action?",
-			success:function(data){
-				console.log('上传图片成功');
-			},
-			error:function(data){
-				alert("图片上传失败");
-				$.post(baseUrl+"goods/deleteGoods.action",function(data,status){
-					
-				})
-			}
-		});
+		var xhr = new XMLHttpRequest();
+
+		var fileController = baseUrl + "/files/createFiles.action";    
+
+		xhr.open("post", fileController, true);
+
+        xhr.onload = function () {
+
+            alert("上传完成!");
+
+        };
+
+        xhr.send(pd);
+//		$.ajax({
+//			url:baseUrl+"/files/createFiles.action",
+//			type:"post",
+//			data:"{'imgs':"+pd+"}",
+//			success:function(data){
+//				console.log('上传图片成功');
+//				
+//			},
+//			error:function(data){
+//				alert("图片上传失败");
+//				$.post(baseUrl+"goods/deleteGoods.action",function(data,status){
+//					
+//				})
+//			}
+//		});
 	}
 	
 	/**
@@ -71,13 +86,18 @@ $(function() {
 	function uploadGoodsInfo(url){
 		$.ajax({
 			type : "post",
-			async : true, // 同步请求
-			
+			async : false, // 同步请求
 			url : baseUrl + "/goods/createGoods.action?"+url, // 需要访问的地址
 			success : function(data) {
 				console.log('商品信息发布成功');
-				//console.log(JSON.parse(data));
-				//console.log(data);
+//				if(data['msg']){
+//		    		msg = data['msg'];
+//		    		console.log(msg);
+//		    	}else{
+//		    		goodsId = data;
+//		    		
+//		    	}
+				//uploadImg(data);
 			},
 			error : function(data) {
 				console.log('商品信息发布失败');
@@ -88,7 +108,7 @@ $(function() {
 	/**
 	 * 判断商品信息输入字段是否为空
 	 */
-	function judgementEmpty(description,title,sprice,price,condition,region){
+	function judgementEmpty(description,title,sprice,price,condition,region,img){
 		if(null == description || "" == description){
 			alert("请描述你的商品");
 			return false;
@@ -107,6 +127,9 @@ $(function() {
 		}else if(null == region || "" == region){
 			alert("请填写商品销售地");
 			return false;
+		}else if(null == img || "" == img){
+			alert("请至少上传一张图片");
+			return false;
 		}
 		return true;
 	}
@@ -117,15 +140,20 @@ $(function() {
      * 
      */
 	var uploadNum = 0;
-	
+//	var index = 0;
 	
 	$('#file').change(function(e) {
 		var files = e.target.files;
-		var fileName = $('#file').val();
-		console.log(fileName);
+		console.log("length="+files.length);
+//		var fileName = $('#file').val();
 		for(var i = 0; i<files.length ; i++){
 			preview(files[i]);
-			fd.append("file"+(i+1),files[0]);
+			//fd.append("file",files[i]);
+//			console.log("index="+index);
+			//$("input[name='files']").eq(index).css("background","red");
+			
+			
+//			index++;
 		}
 		
 	});
@@ -135,7 +163,7 @@ $(function() {
 	
 	
 	function preview(file) {
-		console.log(file);
+//		console.log(file);
 		//检查图片格式和大小
 
 //		if(file.size > 20480){
@@ -185,6 +213,12 @@ $(function() {
 			
 			//显示预览图片
 			previewImg(container,img);
+//			var wshShell = new ActiveXObject("WScript.Shell");
+//			window.clipboardData.setData('text',url);
+			$("input[name='files']").eq(uploadNum).focus();
+//			wshShell.sendKeys("^a");
+//			wshShell.sendKeys("^v");
+			
 			uploadNum ++;
 			if(uploadNum >=5){
 				$('#add').css("display","none");
