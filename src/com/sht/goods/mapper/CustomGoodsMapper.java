@@ -1,8 +1,8 @@
 package com.sht.goods.mapper;
 
 import java.util.List;
-
 import com.sht.goods.po.CustomGoods;
+import com.sht.goods.po.Files;
 import com.sht.goods.po.Goods;
 
 
@@ -16,6 +16,7 @@ import com.sht.goods.po.Goods;
  * @version 1.0
  */
 public interface CustomGoodsMapper {
+
 	/**
 	 * Title:selectAllGoodsInfo
 	 * <p>
@@ -23,15 +24,25 @@ public interface CustomGoodsMapper {
 	 * <p>
 	 
 	 */
+
 	public List<CustomGoods> selectAllGoodsInfo();
 	
 	/**
-	 * createGoodsInfo
+	 * insert goods info
 	 * <p>
 	 * Description:发布商品
 	 * <p>
 	 
 	 */
-	public void createGoodsInfo(Goods goods);
+	public void insert(Goods goods);
+	
+	/**
+	 * insert files info
+	 * <p>
+	 * Description:发布商品
+	 * <p>
+	 
+	 */
+	public void insert(Files files);
 	
 }

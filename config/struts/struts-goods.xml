@@ -6,14 +6,27 @@
 	
 	<package namespace="/goods" name="goods-package" extends="base-package">
 		<!-- 全局result配置 -->
-		<!-- <global-results>
-		</global-results> -->
+		<global-results>
+			<result name="fCreateGoods">/goods/view/index.jsp</result>
+			<result name="fCreateError">/goods/view/createGoods.jsp</result>
+		</global-results>
 		<!-- 全局异常配置 -->
 		<!-- <global-exception-mappings>
 		</global-exception-mappings> -->
 		<!-- 配置action -->
 		<action name="*" class="goodsAction" method="{1}">
 		</action>
-	</package>    
+		
+	</package>
 	
+	<!-- <package namespace="/imgs" name="imgs-package" extends="base-package" >
+		<action name="*" class="goodsImagsAction" method="{1}">
+		</action>
+	</package>  
+	  
+	<package namespace="/files" name="files-package" extends="base-package" >
+		<action name="*" class="filesAction" method="{1}">
+		</action>
+	</package>  -->
+	 
 </struts>

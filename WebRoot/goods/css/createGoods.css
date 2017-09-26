@@ -120,7 +120,8 @@ h1 {
 .add-img>ul{
     margin: 20px;
 }
-.add-img>ul>li{
+
+.add-img>ul>li,.new-li{
     display: inline-block;
     position: relative;
     width: 100px;
@@ -130,19 +131,25 @@ h1 {
     margin-right: 40px;
 }
 
-.add-img>ul>li>img{
+#add>img{
     display: inline-block;
-    position: relative;
-    width: 50px;
-    height: 70px;
+    position: absolute;
+    width: 60px;
+    height: 80px;
     top:50%;
     left:50%;
-    margin-left: -25px;
-    margin-top: -30px;
-    /*border: 1px solid red;*/
-    /*vertical-align: middle;*/
+    margin-left: -30px;
+    margin-top: -40px;
 }
 
+.new-li>img{
+	display: inline-block;
+    position: absolute;
+    top:0;
+    left:0;
+    margin-left:0;
+    margin-top:0;
+}
 
 .line{
     position: relative;

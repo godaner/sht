@@ -36,4 +36,16 @@
 		UPDATE USERS SET STATUS = '1' WHERE EMAIL = #{email}
 	
 	</update>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET USERNAME = #{username},SEX=#{sex},DESCRIPTION=#{description} WHERE id = #{id}
+	
+	</update>
+	
+	<select id="getGoodsById" parameterType="string" resultType="com.sht.po.Goods">
+		
+		SELECT * FROM GOODS WHERE OWNER=#{id} 
+		
+	</select>
 </mapper>

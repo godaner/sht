@@ -2,19 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.GoodsMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Goods">
-    <id column="ID" jdbcType="OTHER" property="id" />
-    <result column="TITLE" jdbcType="OTHER" property="title" />
-    <result column="DESCRIPTION" jdbcType="OTHER" property="description" />
-    <result column="SPRICE" jdbcType="DECIMAL" property="sprice" />
-    <result column="PRICE" jdbcType="DECIMAL" property="price" />
-    <result column="CONDITION" jdbcType="DECIMAL" property="condition" />
-    <result column="REGION" jdbcType="DECIMAL" property="region" />
-    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="TITLE" jdbcType="CHAR" property="title" />
+    <result column="DESCRIPTION" jdbcType="CHAR" property="description" />
+    <result column="SPRICE" jdbcType="DOUBLE" property="sprice" />
+    <result column="PRICE" jdbcType="DOUBLE" property="price" />
+    <result column="CONDITION" jdbcType="SMALLINT" property="condition" />
+    <result column="REGION" jdbcType="DOUBLE" property="region" />
+    <result column="STATUS" jdbcType="SMALLINT" property="status" />
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="OWNER" jdbcType="OTHER" property="owner" />
-    <result column="BUYER" jdbcType="OTHER" property="buyer" />
-    <result column="BROWSE_NUMBER" jdbcType="DECIMAL" property="browseNumber" />
-    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="OWNER" jdbcType="CHAR" property="owner" />
+    <result column="BUYER" jdbcType="CHAR" property="buyer" />
+    <result column="BROWSENUMBER" jdbcType="DOUBLE" property="browsenumber" />
+    <result column="LASTUPDATETIME" jdbcType="TIMESTAMP" property="lastupdatetime" />
+    <result column="BUYTIME" jdbcType="TIMESTAMP" property="buytime" />
+    <result column="FINISHTIME" jdbcType="TIMESTAMP" property="finishtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, 
-    BUYER, BROWSE_NUMBER, LAST_UPDATE_TIME
+    BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.GoodsExample" resultMap="BaseResultMap">
     select
@@ -84,7 +86,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from GOODS
+    from SHT.GOODS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,36 +94,38 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from GOODS
-    where ID = #{id,jdbcType=OTHER}
+    from SHT.GOODS
+    where ID = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
-    delete from GOODS
-    where ID = #{id,jdbcType=OTHER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHT.GOODS
+    where ID = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.GoodsExample">
-    delete from GOODS
+    delete from SHT.GOODS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Goods">
-    insert into GOODS (ID, TITLE, DESCRIPTION, 
+    insert into SHT.GOODS (ID, TITLE, DESCRIPTION, 
       SPRICE, PRICE, CONDITION, 
       REGION, STATUS, CREATETIME, 
-      OWNER, BUYER, BROWSE_NUMBER, 
-      LAST_UPDATE_TIME)
-    values (#{id,jdbcType=OTHER}, #{title,jdbcType=OTHER}, #{description,jdbcType=OTHER}, 
-      #{sprice,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{condition,jdbcType=DECIMAL}, 
-      #{region,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{owner,jdbcType=OTHER}, #{buyer,jdbcType=OTHER}, #{browseNumber,jdbcType=DECIMAL}, 
-      #{lastUpdateTime,jdbcType=TIMESTAMP})
+      OWNER, BUYER, BROWSENUMBER, 
+      LASTUPDATETIME, BUYTIME, FINISHTIME
+      )
+    values (#{id,jdbcType=CHAR}, #{title,jdbcType=CHAR}, #{description,jdbcType=CHAR}, 
+      #{sprice,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, #{condition,jdbcType=SMALLINT}, 
+      #{region,jdbcType=DOUBLE}, #{status,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{owner,jdbcType=CHAR}, #{buyer,jdbcType=CHAR}, #{browsenumber,jdbcType=DOUBLE}, 
+      #{lastupdatetime,jdbcType=TIMESTAMP}, #{buytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Goods">
-    insert into GOODS
+    insert into SHT.GOODS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -156,102 +160,120 @@
       <if test="buyer != null">
         BUYER,
       </if>
-      <if test="browseNumber != null">
-        BROWSE_NUMBER,
+      <if test="browsenumber != null">
+        BROWSENUMBER,
       </if>
-      <if test="lastUpdateTime != null">
-        LAST_UPDATE_TIME,
+      <if test="lastupdatetime != null">
+        LASTUPDATETIME,
+      </if>
+      <if test="buytime != null">
+        BUYTIME,
+      </if>
+      <if test="finishtime != null">
+        FINISHTIME,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=OTHER},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="title != null">
-        #{title,jdbcType=OTHER},
+        #{title,jdbcType=CHAR},
       </if>
       <if test="description != null">
-        #{description,jdbcType=OTHER},
+        #{description,jdbcType=CHAR},
       </if>
       <if test="sprice != null">
-        #{sprice,jdbcType=DECIMAL},
+        #{sprice,jdbcType=DOUBLE},
       </if>
       <if test="price != null">
-        #{price,jdbcType=DECIMAL},
+        #{price,jdbcType=DOUBLE},
       </if>
       <if test="condition != null">
-        #{condition,jdbcType=DECIMAL},
+        #{condition,jdbcType=SMALLINT},
       </if>
       <if test="region != null">
-        #{region,jdbcType=DECIMAL},
+        #{region,jdbcType=DOUBLE},
       </if>
       <if test="status != null">
-        #{status,jdbcType=DECIMAL},
+        #{status,jdbcType=SMALLINT},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="owner != null">
-        #{owner,jdbcType=OTHER},
+        #{owner,jdbcType=CHAR},
       </if>
       <if test="buyer != null">
-        #{buyer,jdbcType=OTHER},
+        #{buyer,jdbcType=CHAR},
       </if>
-      <if test="browseNumber != null">
-        #{browseNumber,jdbcType=DECIMAL},
+      <if test="browsenumber != null">
+        #{browsenumber,jdbcType=DOUBLE},
       </if>
-      <if test="lastUpdateTime != null">
-        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buytime != null">
+        #{buytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null">
+        #{finishtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.sht.po.GoodsExample" resultType="java.lang.Long">
-    select count(*) from GOODS
+    select count(*) from SHT.GOODS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update GOODS
+    update SHT.GOODS
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=OTHER},
+        ID = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.title != null">
-        TITLE = #{record.title,jdbcType=OTHER},
+        TITLE = #{record.title,jdbcType=CHAR},
       </if>
       <if test="record.description != null">
-        DESCRIPTION = #{record.description,jdbcType=OTHER},
+        DESCRIPTION = #{record.description,jdbcType=CHAR},
       </if>
       <if test="record.sprice != null">
-        SPRICE = #{record.sprice,jdbcType=DECIMAL},
+        SPRICE = #{record.sprice,jdbcType=DOUBLE},
       </if>
       <if test="record.price != null">
-        PRICE = #{record.price,jdbcType=DECIMAL},
+        PRICE = #{record.price,jdbcType=DOUBLE},
       </if>
       <if test="record.condition != null">
-        CONDITION = #{record.condition,jdbcType=DECIMAL},
+        CONDITION = #{record.condition,jdbcType=SMALLINT},
       </if>
       <if test="record.region != null">
-        REGION = #{record.region,jdbcType=DECIMAL},
+        REGION = #{record.region,jdbcType=DOUBLE},
       </if>
       <if test="record.status != null">
-        STATUS = #{record.status,jdbcType=DECIMAL},
+        STATUS = #{record.status,jdbcType=SMALLINT},
       </if>
       <if test="record.createtime != null">
         CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.owner != null">
-        OWNER = #{record.owner,jdbcType=OTHER},
+        OWNER = #{record.owner,jdbcType=CHAR},
       </if>
       <if test="record.buyer != null">
-        BUYER = #{record.buyer,jdbcType=OTHER},
+        BUYER = #{record.buyer,jdbcType=CHAR},
       </if>
-      <if test="record.browseNumber != null">
-        BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
+      <if test="record.browsenumber != null">
+        BROWSENUMBER = #{record.browsenumber,jdbcType=DOUBLE},
       </if>
-      <if test="record.lastUpdateTime != null">
-        LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      <if test="record.lastupdatetime != null">
+        LASTUPDATETIME = #{record.lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.buytime != null">
+        BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.finishtime != null">
+        FINISHTIME = #{record.finishtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -259,80 +281,90 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update GOODS
-    set ID = #{record.id,jdbcType=OTHER},
-      TITLE = #{record.title,jdbcType=OTHER},
-      DESCRIPTION = #{record.description,jdbcType=OTHER},
-      SPRICE = #{record.sprice,jdbcType=DECIMAL},
-      PRICE = #{record.price,jdbcType=DECIMAL},
-      CONDITION = #{record.condition,jdbcType=DECIMAL},
-      REGION = #{record.region,jdbcType=DECIMAL},
-      STATUS = #{record.status,jdbcType=DECIMAL},
+    update SHT.GOODS
+    set ID = #{record.id,jdbcType=CHAR},
+      TITLE = #{record.title,jdbcType=CHAR},
+      DESCRIPTION = #{record.description,jdbcType=CHAR},
+      SPRICE = #{record.sprice,jdbcType=DOUBLE},
+      PRICE = #{record.price,jdbcType=DOUBLE},
+      CONDITION = #{record.condition,jdbcType=SMALLINT},
+      REGION = #{record.region,jdbcType=DOUBLE},
+      STATUS = #{record.status,jdbcType=SMALLINT},
       CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
-      OWNER = #{record.owner,jdbcType=OTHER},
-      BUYER = #{record.buyer,jdbcType=OTHER},
-      BROWSE_NUMBER = #{record.browseNumber,jdbcType=DECIMAL},
-      LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP}
+      OWNER = #{record.owner,jdbcType=CHAR},
+      BUYER = #{record.buyer,jdbcType=CHAR},
+      BROWSENUMBER = #{record.browsenumber,jdbcType=DOUBLE},
+      LASTUPDATETIME = #{record.lastupdatetime,jdbcType=TIMESTAMP},
+      BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
+      FINISHTIME = #{record.finishtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Goods">
-    update GOODS
+    update SHT.GOODS
     <set>
       <if test="title != null">
-        TITLE = #{title,jdbcType=OTHER},
+        TITLE = #{title,jdbcType=CHAR},
       </if>
       <if test="description != null">
-        DESCRIPTION = #{description,jdbcType=OTHER},
+        DESCRIPTION = #{description,jdbcType=CHAR},
       </if>
       <if test="sprice != null">
-        SPRICE = #{sprice,jdbcType=DECIMAL},
+        SPRICE = #{sprice,jdbcType=DOUBLE},
       </if>
       <if test="price != null">
-        PRICE = #{price,jdbcType=DECIMAL},
+        PRICE = #{price,jdbcType=DOUBLE},
       </if>
       <if test="condition != null">
-        CONDITION = #{condition,jdbcType=DECIMAL},
+        CONDITION = #{condition,jdbcType=SMALLINT},
       </if>
       <if test="region != null">
-        REGION = #{region,jdbcType=DECIMAL},
+        REGION = #{region,jdbcType=DOUBLE},
       </if>
       <if test="status != null">
-        STATUS = #{status,jdbcType=DECIMAL},
+        STATUS = #{status,jdbcType=SMALLINT},
       </if>
       <if test="createtime != null">
         CREATETIME = #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="owner != null">
-        OWNER = #{owner,jdbcType=OTHER},
+        OWNER = #{owner,jdbcType=CHAR},
       </if>
       <if test="buyer != null">
-        BUYER = #{buyer,jdbcType=OTHER},
+        BUYER = #{buyer,jdbcType=CHAR},
       </if>
-      <if test="browseNumber != null">
-        BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
+      <if test="browsenumber != null">
+        BROWSENUMBER = #{browsenumber,jdbcType=DOUBLE},
       </if>
-      <if test="lastUpdateTime != null">
-        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      <if test="lastupdatetime != null">
+        LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buytime != null">
+        BUYTIME = #{buytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null">
+        FINISHTIME = #{finishtime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Goods">
-    update GOODS
-    set TITLE = #{title,jdbcType=OTHER},
-      DESCRIPTION = #{description,jdbcType=OTHER},
-      SPRICE = #{sprice,jdbcType=DECIMAL},
-      PRICE = #{price,jdbcType=DECIMAL},
-      CONDITION = #{condition,jdbcType=DECIMAL},
-      REGION = #{region,jdbcType=DECIMAL},
-      STATUS = #{status,jdbcType=DECIMAL},
+    update SHT.GOODS
+    set TITLE = #{title,jdbcType=CHAR},
+      DESCRIPTION = #{description,jdbcType=CHAR},
+      SPRICE = #{sprice,jdbcType=DOUBLE},
+      PRICE = #{price,jdbcType=DOUBLE},
+      CONDITION = #{condition,jdbcType=SMALLINT},
+      REGION = #{region,jdbcType=DOUBLE},
+      STATUS = #{status,jdbcType=SMALLINT},
       CREATETIME = #{createtime,jdbcType=TIMESTAMP},
-      OWNER = #{owner,jdbcType=OTHER},
-      BUYER = #{buyer,jdbcType=OTHER},
-      BROWSE_NUMBER = #{browseNumber,jdbcType=DECIMAL},
-      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=OTHER}
+      OWNER = #{owner,jdbcType=CHAR},
+      BUYER = #{buyer,jdbcType=CHAR},
+      BROWSENUMBER = #{browsenumber,jdbcType=DOUBLE},
+      LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
+      BUYTIME = #{buytime,jdbcType=TIMESTAMP},
+      FINISHTIME = #{finishtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

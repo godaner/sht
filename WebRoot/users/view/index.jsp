@@ -17,7 +17,7 @@
 <body>
 <%@include file="../../goods/view/commonTitle.jsp" %>
 	${onlineUser.username}
-	<a href="./personalInfo.jsp">个人信息页面</a>
+	<a href="./users/view/personalInfo.jsp">个人信息页面</a>
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>
 	<a href="javascript:showlogin();">想看登陆框吗</a>
@@ -59,7 +59,7 @@
 			</div>
 			<div class="register_msg"></div>
 			<div class="descript_book">
-				<input type="checkbox"/><a href="#" class="descript_book">《二手网协议》</a>
+				<input type="checkbox" id="descript_book" checked/><a href="#" class="descript_book">《二手网协议》</a>
 			</div>
 			<div class="">
 				<input type="button" onclick="register();"  class="register_button" value="注册二手交易市场"></input>
@@ -70,5 +70,5 @@
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 <%@include file="../../goods/view/commonFooter.jsp"%>
 </body>
-
+<%@include file="../../common/view/visit.jsp"%>
 </html>

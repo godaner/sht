@@ -45,7 +45,7 @@
         </ul>
         <ul >
             <a href=""><li>我的信息</li></a>
-            <a href=""><li>我的发布</li></a>
+            <a href="./personalIssue.jsp"><li>我的发布</li></a>
             <a href=""><li>我的购买</li></a>
             <a href=""><li>地址管理</li></a>
             <a href=""><li>密码找回</li></a>
@@ -68,4 +68,5 @@
 </body>
   	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/personalInfo.js"></script>
+    <%@include file="../../common/view/visit.jsp"%>
 </html>

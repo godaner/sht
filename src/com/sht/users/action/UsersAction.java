@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.sht.po.Goods;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
 
@@ -149,8 +150,32 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			 String email = po.getEmail();
 			service.verifyEmail(email);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	 }
+	 /**
+	  * 修改个人信息
+	 * @throws Exception 
+	  * 
+	  * 
+	  */
+	 public void updatePersonalInfo() throws Exception{
+		 
+		 CustomUsers cs = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 eject(cs==null, "未登入");
+		 
+		 po.setId(cs.getId());
+		 
+		 try {
+		
+			 service.updateByPrimaryKeySelective(po);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+	 }
+
 }

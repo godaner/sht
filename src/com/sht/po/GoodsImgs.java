@@ -7,14 +7,14 @@ public class GoodsImgs {
 
     private String img;
 
-    private Short main;
+    private Double main;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getOwner() {
@@ -22,7 +22,7 @@ public class GoodsImgs {
     }
 
     public void setOwner(String owner) {
-        this.owner = owner;
+        this.owner = owner == null ? null : owner.trim();
     }
 
     public String getImg() {
@@ -30,14 +30,14 @@ public class GoodsImgs {
     }
 
     public void setImg(String img) {
-        this.img = img;
+        this.img = img == null ? null : img.trim();
     }
 
-    public Short getMain() {
+    public Double getMain() {
         return main;
     }
 
-    public void setMain(Short main) {
+    public void setMain(Double main) {
         this.main = main;
     }
 }

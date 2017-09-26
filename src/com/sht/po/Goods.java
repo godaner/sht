@@ -1,6 +1,6 @@
 package com.sht.po;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Goods {
     private String id;
@@ -19,22 +19,26 @@ public class Goods {
 
     private Short status;
 
-    private Date createtime;
+    private Timestamp createtime;
 
     private String owner;
 
     private String buyer;
 
-    private Double browseNumber;
+    private Double browsenumber;
 
-    private Date lastUpdateTime;
+    private Timestamp lastupdatetime;
+
+    private Timestamp buytime;
+
+    private Timestamp finishtime;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getTitle() {
@@ -42,7 +46,7 @@ public class Goods {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getDescription() {
@@ -50,7 +54,7 @@ public class Goods {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description == null ? null : description.trim();
     }
 
     public Double getSprice() {
@@ -93,11 +97,11 @@ public class Goods {
         this.status = status;
     }
 
-    public Date getCreatetime() {
+    public Timestamp getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
     }
 
@@ -106,7 +110,7 @@ public class Goods {
     }
 
     public void setOwner(String owner) {
-        this.owner = owner;
+        this.owner = owner == null ? null : owner.trim();
     }
 
     public String getBuyer() {
@@ -114,22 +118,38 @@ public class Goods {
     }
 
     public void setBuyer(String buyer) {
-        this.buyer = buyer;
+        this.buyer = buyer == null ? null : buyer.trim();
     }
 
-    public Double getBrowseNumber() {
-        return browseNumber;
+    public Double getBrowsenumber() {
+        return browsenumber;
     }
 
-    public void setBrowseNumber(Double browseNumber) {
-        this.browseNumber = browseNumber;
+    public void setBrowsenumber(Double browsenumber) {
+        this.browsenumber = browsenumber;
     }
 
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
+    public Timestamp getLastupdatetime() {
+        return lastupdatetime;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLastupdatetime(Timestamp lastupdatetime) {
+        this.lastupdatetime = lastupdatetime;
+    }
+
+    public Timestamp getBuytime() {
+        return buytime;
+    }
+
+    public void setBuytime(Timestamp buytime) {
+        this.buytime = buytime;
+    }
+
+    public Timestamp getFinishtime() {
+        return finishtime;
+    }
+
+    public void setFinishtime(Timestamp finishtime) {
+        this.finishtime = finishtime;
     }
 }

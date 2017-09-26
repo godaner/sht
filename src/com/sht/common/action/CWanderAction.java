@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.action.BaseAction;
-import com.sht.common.po.CustomWanderLog;
-import com.sht.common.service.WanderServiceI;
+import com.sht.common.po.CWanderLog;
+import com.sht.common.service.CWanderServiceI;
 
 
 /**
@@ -14,7 +14,7 @@ import com.sht.common.service.WanderServiceI;
  */
 @Controller
 @Scope("prototype")
-public class WanderAction extends BaseAction<CustomWanderLog, WanderServiceI>{
+public class CWanderAction extends BaseAction<CWanderLog, CWanderServiceI>{
 	
 	public void insertWanderInfo(){
         try {
