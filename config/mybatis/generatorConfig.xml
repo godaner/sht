@@ -136,7 +136,6 @@
         -->
         
 
-         -->
        <table schema="sht" tableName="region">
         	<columnOverride column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
         	<columnOverride column="code" javaType="java.lang.String"  jdbcType="CHAR"/>
