@@ -1,6 +1,5 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,52 +114,71 @@ public class RegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Double value) {
+
+        public Criteria andIdEqualTo(Integer value) {
+
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Double value) {
+
+        public Criteria andIdNotEqualTo(Integer value) {
+
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Double value) {
+        public Criteria andIdGreaterThan(Integer value) {
+
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Double value) {
+
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Double value) {
+
+        public Criteria andIdLessThan(Integer value) {
+
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Double value) {
+
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Double> values) {
+
+        public Criteria andIdIn(List<Integer> values) {
+
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Double> values) {
+
+        public Criteria andIdNotIn(List<Integer> values) {
+
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Double value1, Double value2) {
+
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Double value1, Double value2) {
+
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -315,52 +333,69 @@ public class RegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andPidEqualTo(Double value) {
+        public Criteria andPidEqualTo(Integer value) {
+
             addCriterion("PID =", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotEqualTo(Double value) {
+
+        public Criteria andPidNotEqualTo(Integer value) {
+
             addCriterion("PID <>", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidGreaterThan(Double value) {
+
+        public Criteria andPidGreaterThan(Integer value) {
+
             addCriterion("PID >", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidGreaterThanOrEqualTo(Double value) {
+        public Criteria andPidGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("PID >=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLessThan(Double value) {
+
+        public Criteria andPidLessThan(Integer value) {
+
             addCriterion("PID <", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLessThanOrEqualTo(Double value) {
+
+        public Criteria andPidLessThanOrEqualTo(Integer value) {
+
             addCriterion("PID <=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidIn(List<Double> values) {
+
+        public Criteria andPidIn(List<Integer> values) {
+
             addCriterion("PID in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotIn(List<Double> values) {
+
+        public Criteria andPidNotIn(List<Integer> values) {
+
             addCriterion("PID not in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidBetween(Double value1, Double value2) {
+
+        public Criteria andPidBetween(Integer value1, Integer value2) {
+
             addCriterion("PID between", value1, value2, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotBetween(Double value1, Double value2) {
+        public Criteria andPidNotBetween(Integer value1, Integer value2) {
+
             addCriterion("PID not between", value1, value2, "pid");
             return (Criteria) this;
         }
@@ -375,52 +410,70 @@ public class RegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andLeveEqualTo(BigDecimal value) {
+
+        public Criteria andLeveEqualTo(Integer value) {
+
             addCriterion("LEVE =", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveNotEqualTo(BigDecimal value) {
+
+        public Criteria andLeveNotEqualTo(Integer value) {
+
             addCriterion("LEVE <>", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveGreaterThan(BigDecimal value) {
+
+        public Criteria andLeveGreaterThan(Integer value) {
+
             addCriterion("LEVE >", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andLeveGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("LEVE >=", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveLessThan(BigDecimal value) {
+
+        public Criteria andLeveLessThan(Integer value) {
+
             addCriterion("LEVE <", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveLessThanOrEqualTo(BigDecimal value) {
+
+        public Criteria andLeveLessThanOrEqualTo(Integer value) {
+
             addCriterion("LEVE <=", value, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveIn(List<BigDecimal> values) {
+
+        public Criteria andLeveIn(List<Integer> values) {
+
             addCriterion("LEVE in", values, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveNotIn(List<BigDecimal> values) {
+        public Criteria andLeveNotIn(List<Integer> values) {
+
             addCriterion("LEVE not in", values, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveBetween(BigDecimal value1, BigDecimal value2) {
+
+        public Criteria andLeveBetween(Integer value1, Integer value2) {
+
             addCriterion("LEVE between", value1, value2, "leve");
             return (Criteria) this;
         }
 
-        public Criteria andLeveNotBetween(BigDecimal value1, BigDecimal value2) {
+
+        public Criteria andLeveNotBetween(Integer value1, Integer value2) {
+
             addCriterion("LEVE not between", value1, value2, "leve");
             return (Criteria) this;
         }
@@ -435,52 +488,71 @@ public class RegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrdeEqualTo(BigDecimal value) {
+
+        public Criteria andOrdeEqualTo(Integer value) {
+
             addCriterion("ORDE =", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeNotEqualTo(BigDecimal value) {
+
+        public Criteria andOrdeNotEqualTo(Integer value) {
+
             addCriterion("ORDE <>", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeGreaterThan(BigDecimal value) {
+
+        public Criteria andOrdeGreaterThan(Integer value) {
+
             addCriterion("ORDE >", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeGreaterThanOrEqualTo(BigDecimal value) {
+
+        public Criteria andOrdeGreaterThanOrEqualTo(Integer value) {
+
             addCriterion("ORDE >=", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeLessThan(BigDecimal value) {
+
+        public Criteria andOrdeLessThan(Integer value) {
+
             addCriterion("ORDE <", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andOrdeLessThanOrEqualTo(Integer value) {
+
             addCriterion("ORDE <=", value, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeIn(List<BigDecimal> values) {
+
+        public Criteria andOrdeIn(List<Integer> values) {
+
             addCriterion("ORDE in", values, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeNotIn(List<BigDecimal> values) {
+
+        public Criteria andOrdeNotIn(List<Integer> values) {
+
             addCriterion("ORDE not in", values, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeBetween(BigDecimal value1, BigDecimal value2) {
+
+        public Criteria andOrdeBetween(Integer value1, Integer value2) {
+
             addCriterion("ORDE between", value1, value2, "orde");
             return (Criteria) this;
         }
 
-        public Criteria andOrdeNotBetween(BigDecimal value1, BigDecimal value2) {
+
+        public Criteria andOrdeNotBetween(Integer value1, Integer value2) {
+
             addCriterion("ORDE not between", value1, value2, "orde");
             return (Criteria) this;
         }

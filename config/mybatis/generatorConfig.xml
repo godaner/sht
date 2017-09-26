@@ -115,7 +115,7 @@
         	<columnOverride column="path" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="name" javaType="java.lang.String"  jdbcType="CHAR"/>
         </table>
-        
+
         <table schema="sht" tableName="goods">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="title" javaType="java.lang.String"  jdbcType="CHAR"/>
@@ -135,21 +135,20 @@
         </table>
         -->
         
-        
-       
-         <table tableName="region">
-         	<columnOverride column="id" javaType="java.lang.Double" jdbcType="DOUBLE" />
-         	
+
+         -->
+       <table schema="sht" tableName="region">
+        	<columnOverride column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
         	<columnOverride column="code" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="name" javaType="java.lang.String"  jdbcType="CHAR"/>
-        	
-        	<columnOverride column="pid" javaType="java.lang.Double" jdbcType="DOUBLE" />
-        	<columnOverride column="level" javaType="java.lang.Double" jdbcType="DOUBLE" />
-        	<columnOverride column="order" javaType="java.lang.Double" jdbcType="DOUBLE" />
-        	
-        	<columnOverride column="enname" javaType="java.lang.String"  jdbcType="CHAR"/>
-        	<columnOverride column="enshortname" javaType="java.lang.String"  jdbcType="CHAR"/>
-         </table>
+        	<columnOverride column="pid" javaType="java.lang.Integer"  jdbcType="INTEGER"/>
+        	<columnOverride column="LEVE" javaType="java.lang.Integer"  jdbcType="INTEGER"/>
+        	<columnOverride column="ORDE" javaType="java.lang.Integer"  jdbcType="INTEGER"/>
+        	<columnOverride column="ENNAME" javaType="java.lang.String"  jdbcType="CHAR"/>
+			<columnOverride column="ENSHORTNAME" javaType="java.lang.String"  jdbcType="CHAR"/>
+        </table>
+         
+
         <!-- <table schema="" tableName="sys_user"></table>
         <table schema="" tableName="sys_role"></table>
         <table schema="" tableName="sys_permission"></table>

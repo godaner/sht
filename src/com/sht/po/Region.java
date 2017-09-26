@@ -1,29 +1,28 @@
 package com.sht.po;
 
-
-
 public class Region {
-    private Double id;
+    private Integer id;
 
     private String code;
 
     private String name;
 
-    private Double pid;
+    private Integer pid;
 
-    private Double leve;
+    private Integer leve;
 
-    private Double orde;
+    private Integer orde;
 
     private String enname;
 
     private String enshortname;
 
-    public Double getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,27 +42,27 @@ public class Region {
         this.name = name == null ? null : name.trim();
     }
 
-    public Double getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(Double pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 
-    public Double getLeve() {
+    public Integer getLeve() {
         return leve;
     }
 
-    public void setLeve(Double leve) {
+    public void setLeve(Integer leve) {
         this.leve = leve;
     }
 
-    public Double getOrde() {
+    public Integer getOrde() {
         return orde;
     }
 
-    public void setOrde(Double orde) {
+    public void setOrde(Integer orde) {
         this.orde = orde;
     }
 
