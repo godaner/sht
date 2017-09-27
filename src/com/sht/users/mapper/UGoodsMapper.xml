@@ -21,4 +21,12 @@
 		
 		SELECT * FROM GOODS WHERE id=#{id}
 	</select>
+	
+	<delete id="deleteGoodsByid" parameterType="string">
+		DELETE FROM GOODS WHERE ID = #{id}
+	</delete>
+	
+	<update id="UpdateUGoodsById" parameterType="com.sht.users.po.UGoods">
+		UPDATE GOODS SET TITLE=#{title},DESCRIPTION=#{description},PRICE=#{price},SPRICE=#{sprice},CONDITION=#{condition},REGION=#{region} WHERE ID=#{id}	
+	</update>
 </mapper>

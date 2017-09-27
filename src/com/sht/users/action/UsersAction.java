@@ -166,11 +166,17 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		 
 		 eject(cs==null, "未登入");
 		 
-		 po.setId(cs.getId());
+		cs.setDescription(po.getDescription());
+		
+		cs.setUsername(po.getUsername());
+		
+		cs.setSex(po.getSex());
 		 
 		 try {
 		
-			 service.updateByPrimaryKeySelective(po);
+			 service.updateByPrimaryKeySelective(cs);
+			 
+			 setSessionAttr(FILED_ONLINE_USER, cs);
 			
 		} catch (Exception e) {
 			
