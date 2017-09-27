@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.sht.common.action.CGoodsAction;
+import com.sht.common.po.CGoods;
 import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.service.GoodsServiceI;
@@ -24,6 +26,7 @@ import com.sht.goods.service.GoodsServiceI;
 @Scope("prototype")
 public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	
+	private CGoodsAction cGoodsAction;
 	/**
 	 * Title:showInfo
 	 * <p>
@@ -37,10 +40,10 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		List<GGoods> goodsList = null;
 		try {
 			goodsList = service.dispalyGoodsInfo();
+		
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			
 		}
 		
 		//返回一个json的数据

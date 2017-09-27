@@ -23,7 +23,13 @@ public class GGoods extends Goods {
 	
 	private String headImg;
 	
-
+	private String addr;
+	
+	private String userId;
+	
+	
+	private String msgNum;
+	
 	public File[] getFiles() {
 		return files;
 	}
@@ -46,6 +52,34 @@ public class GGoods extends Goods {
 
 	public void setHeadImg(String headImg) {
 		this.headImg = headImg;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+	
+	
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	
+
+	public String getMsgNum() {
+		return msgNum;
+	}
+
+	public void setMsgNum(String msgNum) {
+		this.msgNum = msgNum;
 	}
 	
 	
