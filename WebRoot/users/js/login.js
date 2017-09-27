@@ -21,7 +21,7 @@ function closelogin(){
 /* 打印错误信息 */
 function showErrorMsg(msg){
 	$(".login_msg").css("background-color","rgb(254,242,242)");
-	$(".login_msg").html("<img src='../img/login-msg.png' style='float:left'/> "+msg+" !  ^-^");
+	$(".login_msg").html(msg+" !  ^-^");
 }
 function login(){
 	var username = $("#username").val().trim();

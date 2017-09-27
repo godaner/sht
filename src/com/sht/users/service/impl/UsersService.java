@@ -1,9 +1,13 @@
 ﻿package com.sht.users.service.impl;
 
+import java.awt.image.RenderedImage;
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +16,7 @@ import com.sht.po.Goods;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
+import com.sht.util.Static.CONFIG;
 /**
  * Title:UsersService
  * <p>
@@ -105,9 +110,33 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		
 	}
 
+	@Override
+	public void personalImgUpload(CustomUsers po) {
+		
+		 String versions = getValue(CONFIG.FILED_USERS_HEADINGS_SIZES).toString();
+		 
+		 String savePath = getValue(CONFIG.FILED_SRC_USERS_HEADIMGS).toString();
+		 
+//		 String fileName = po.getId()+ getFileNameExt(po.getFiile().getName());
+		
+		 String fileName = po.getId()+".png";
+		 
+		 writeFileWithCompress(po.getFiile(), versions, savePath, fileName);
+		 
+		 po.setHeadimg(fileName);
+		 
+		 customUsersMapper.personalImgUpload(po);
+	}
 
-
-
-	
-	
+	@Override
+	public List<RenderedImage> getHeadimg(CustomUsers cs) {
+		
+		String fileName = "160_"+cs.getHeadimg();
+		
+		String getPath = getValue(CONFIG.FILED_SRC_USERS_HEADIMGS).toString();
+		
+		List<RenderedImage> childs =  dirChilds(getPath, fileName);
+		
+		return childs;
+	}
 }

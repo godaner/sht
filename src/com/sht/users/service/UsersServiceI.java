@@ -1,5 +1,9 @@
 package com.sht.users.service;
 
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.util.List;
+
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -48,8 +52,28 @@ public interface UsersServiceI {
 	 */
 
 	public void verifyEmail(String email) throws Exception;
-
+	
+	/**
+	 * 修改用户信息
+	 * 
+	 * @param po
+	 */
 	public void updateByPrimaryKeySelective(CustomUsers po);
+
+	/**
+	 * 上传用户头像
+	 * @param po 
+	 * 
+	 */
+	public void personalImgUpload(CustomUsers po);
+	
+	/**
+	 * 
+	 * 获取用户头像
+	 * @param cs
+	 * @return
+	 */
+	public List<RenderedImage> getHeadimg(CustomUsers cs);
 
 	
 	

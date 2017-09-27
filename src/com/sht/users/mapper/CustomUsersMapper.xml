@@ -48,4 +48,10 @@
 		SELECT * FROM GOODS WHERE OWNER=#{id} 
 		
 	</select>
+	
+	<update id="personalImgUpload" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET HEADIMG = #{headimg} WHERE ID=#{id}
+		
+	</update>
 </mapper>
