@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="head">
-	<a href="./personalInfo_right_editInfo.jsp">基本资料</a><a href="./personal_right_editImg.jsp">头像照片</a>
+	<a href="./personalInfo_right_editInfo.jsp">基本资料</a><a href="#">头像照片</a>
 	<hr />
 </div>
 
@@ -19,8 +19,12 @@
 <div id="line"></div>
 <!-- <div class="right"></div> -->
 </div>
-<button >上传</button>
+<!-- <button >上传</button> -->
+<div class="load">上传</div>
+<form action="fileUpload.action" method="post" enctype="multipart/form-data">
+<input type="file" name="fiile"> 
 <button id="save_btn">保存</button>
+</form>
 </body>
 
 <style type="text/css">
@@ -52,6 +56,36 @@ button{
 	border: solid 1px rgb(255, 219, 68);
 	font-size: 16px;
 	cursor: pointer;
+	position:absolute;
+	left:20%;
+}
+.load{
+	width: 70px;
+	height: 35px;
+	margin-left: 10%;
+	margin-top: 2%;
+	border-radius: 5px;
+	background-color: rgb(255, 219, 68);
+	border: solid 1px rgb(255, 219, 68);
+	font-size: 16px;
+	cursor: pointer;
+	position:absolute;
+	line-height:35px;
+	text-align:center;
+	font-size: 16px;
+}
+input{
+	opacity:0;
+	width: 65px;
+	height: 25px;
+	margin-left: 10%;
+	margin-top: 2%;
+	border-radius: 5px;
+	background-color: rgb(255, 219, 68);
+	border: solid 1px rgb(255, 219, 68);
+	font-size: 16px;
+	cursor: pointer;
+	position:absolute;
 }
 p{
 	color:grey;

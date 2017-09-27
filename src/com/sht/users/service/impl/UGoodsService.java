@@ -61,6 +61,21 @@ public UGoods getGoodsDetailById(String id) throws Exception {
 	return dbGoods;
 }
 
+@Override
+public void deleteGoodsByid(String id) {
+
+	UGoodsMapper.deleteGoodsByid(id);
+	
+}
+
+@Override
+public void UpdateUGoodsById(UGoods po) {
+
+	UGoodsMapper.UpdateUGoodsById(po);
+	
+}
+
+
 
 
 

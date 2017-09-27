@@ -3,6 +3,7 @@ package com.sht.users.po;
 import java.io.Serializable;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sht.po.Users;
 
@@ -21,6 +22,17 @@ public class CustomUsers extends Users implements Serializable{
 	private static final long serialVersionUID = 8094072730241347748L;
 	
 	
+	private MultipartFile fiile;//用户头像
+	
+	
+	public MultipartFile getFiile() {
+		return fiile;
+	}
+
+	public void setFiile(MultipartFile fiile) {
+		this.fiile = fiile;
+	}
+
 	private String msg ;		//错误信息
 	private String code;		//验证码
 
