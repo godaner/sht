@@ -3,11 +3,9 @@
 <mapper namespace="com.sht.goods.mapper.CustomGoodsMapper">
 	<select id="selectAllGoodsInfo"  resultType="com.sht.goods.po.GGoods">
 		
-		SELECT GOODS.*,FILES.PATH AS PATH,USERS.HEADIMG AS HEADIMG
-    	FROM GOODS,FILES,USERS
-    	WHERE GOODS.OWNER = USERS.ID AND FILES.ID = (SELECT IMG FROM GOODS,GOODS_IMGS
-                           						 WHERE GOODS.ID = GOODS_IMGS.OWNER
-                            					 AND MAIN = 1) AND GOODS.STATUS = 0
+		SELECT u0.id as userId,u0.headimg as headImg,g0.*,GETREGIONBYBASEID(g0.region) as addr,getGoodsMainImgPath(g0.id) as path,getGoodsMessageNum(g0.id) as msgNum
+		FROM USERS U0,goods g0
+		WHERE g0.owner = U0.id 
 	</select>
 	
 </mapper>

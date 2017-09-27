@@ -39,6 +39,8 @@ public class CGoodsAction extends BaseAction<CGoods, CGoodsServiceI> {
 	public void getGoodsImg() throws Exception {
 		String size = po.getSize();
 		String imgName = po.getImgName();
+		logger.info("---------"+imgName);
+		
 		try {
 
 			eject(size == null || size.trim().isEmpty(), "商品图片size没有指定");
