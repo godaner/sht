@@ -141,19 +141,12 @@ function updatePersonalInfo(){
 	var username = $("#username").val();
 	var sex = $('input:radio:checked').val();
 	var description = $("#description").val();
-	alert(description);
 	$.ajax({
 		type : 'post',  //请求方式,get,post等
 	    dataType:'json',//response返回数据的格式
 	    async : true,  //同步请求  
 	    url : baseUrl+"/users/updatePersonalInfo.action",  //需要访问的地址
 	    data :'username='+username+'&sex='+sex+'&description='+description,  //传递到后台的参数
-	    success:function(data){
-	    	alert("成功");
-	    },error:function(){
-	    	alert("失败");
-	    }
-			
 	});
 }
 </script>

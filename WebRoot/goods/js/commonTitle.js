@@ -7,7 +7,7 @@ $(function(){
 
     //闲置
     $('.idle').hover(function(){
-        console.log('hover');
+        
         $('.idle>img').attr('src','goods/img/up_black.png');
         $('.idle_down').show();
     },function(){
