@@ -137,11 +137,59 @@ $(function(){
 		},
 		error:function(data){
 			console.log("失败");
-			console.log(data);
 		}
 	});
 	
 	function setData(data){
-		console.log(data);
+		console.log();
+		var container = $('.trading_item_info>ul');
+		$.each(data,function(index,item){
+			console.log(item['title']);
+			console.log(item['headImg']);
+			console.log(item['addr']);
+			console.log(item['path']);
+			var title = item['title'];
+			var headImg = item['headImg'];
+			var time =item['createtime'].split("-"); 
+			var hour = time[2].split(" ");
+			//console.log(hour[1]);
+			if(headImg == null){
+				headImg = baseUrl+"/goods/img/default_icon.png";
+			}else{
+				headImg = "http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
+			}
+			var li =	$("<li ></li>");
+			//添加标题
+			var infoTitle = $("<div >"+"</div>");
+			infoTitle.addClass("trading_info_title");
+			
+			infoTitle.append("<img src='"+headImg+"'/> <a"
+					+"	href='#'>"+item['title']+"</a>");
+			//图片
+			var content = $("<a href='#'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?t="+new Date().getTime()+"&size=200&imgName="+item['path']+"'/></a>");
+			content.find("img").attr("width","210px");
+			content.find("img").attr("height","210px");
+			content.find("img").attr("margin","10px 20px 10px 20px");
+			//添加价格
+			var priceContent = $("<div></div>");
+			priceContent.addClass("trading_price");
+			
+			var price = $("<span>￥<span>"+item['sprice']+"</span></span> <span>"+item['addr']+"</span>");
+			
+			priceContent.append(price);
+			
+		
+			var footer = $("<p>"+item['description']+"</p> <span class='time'>"+hour[1]+"前</span> <span class='come'>来自"
+					+"	SHT</span> <span>留言0</span>");
+			
+			li.append(infoTitle);
+			li.append(content);
+			li.append(priceContent);
+			li.append("<hr/>");
+			li.append(footer);
+			
+			container.append(li);
+		});
+		
 	}
 })

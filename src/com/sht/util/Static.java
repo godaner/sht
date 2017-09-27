@@ -99,6 +99,14 @@ public interface Static {
 		 * 商品图片上传大小字段
 		 */
 		static final String FILED_GOODS_IMGS_MAXSIZE = "config.goods.imgs.maxsize";
+		/**
+		 * 商品图片上传最大數量字段
+		 */
+		static final String FILED_GOODS_IMGS_MAXNUMBER = "config.goods.imgs.maxNumber";
+		/**
+		 * 商品類別最大數量字段
+		 */
+		static final String FILED_GOODS_CLAZZS_MAXNUMBER = "config.goods.clazzs.maxNumber";
 		
 	}
 	
