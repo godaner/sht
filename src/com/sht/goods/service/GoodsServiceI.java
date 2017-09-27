@@ -3,9 +3,9 @@ package com.sht.goods.service;
 
 import java.util.List;
 
-import com.sht.goods.po.CustomFiles;
-import com.sht.goods.po.CustomGoods;
-import com.sht.goods.po.CustomGoodsImgs;
+import com.sht.goods.po.GFiles;
+import com.sht.goods.po.GGoods;
+import com.sht.goods.po.GGoodsImgs;
 
 /**
  * Title:GoodsServiceI
@@ -25,7 +25,7 @@ public interface GoodsServiceI {
 	 * Description:Display the goods' first page information
 	 
 	 */
-	public List<CustomGoods> dispalyGoodsInfo() throws Exception;
+	public List<GGoods> dispalyGoodsInfo() throws Exception;
 	
 	/**
 	 * 
@@ -33,7 +33,7 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert goods info
 	 */
-	public String createGoodsInfo(CustomGoods goods) throws Exception;
+	public String createGoodsInfo(GGoods goods) throws Exception;
 	
 	/**
 	 * 
@@ -41,7 +41,7 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert goodsImags info
 	 */
-	public String createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception;
+	public String createGoodsImagsInfo(GGoodsImgs goodsImgs) throws Exception;
 	
 	/**
 	 * 
@@ -49,5 +49,5 @@ public interface GoodsServiceI {
 	 * <p>
 	 * Description:insert imags  info into file
 	 */
-	public String createGoodsFileInfo(CustomFiles files) throws Exception;
+	public String createGoodsFileInfo(GFiles files) throws Exception;
 }

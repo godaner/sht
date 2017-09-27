@@ -7,7 +7,7 @@
 	<package namespace="/goods" name="goods-package" extends="base-package">
 		<!-- 全局result配置 -->
 		<global-results>
-			<result name="fCreateGoods">/goods/view/index.jsp</result>
+			<result name="fCreateGodos">/goods/view/createSuccess.jsp</result>
 			<result name="fCreateError">/goods/view/createGoods.jsp</result>
 		</global-results>
 		<!-- 全局异常配置 -->

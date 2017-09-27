@@ -5,7 +5,8 @@
 
 
 	<package namespace="/common" name="common-package" extends="base-package">
-		<action name="*" method="{1}" class="wanderAction"></action>
-	</package>    
-	
+		<action name="/wander_*" method="{1}" class="CWanderAction"></action>
+		<action name="/users_*" method="{1}" class="CUsersAction"></action>
+		<action name="/goods_*" method="{1}" class="CGoodsAction"></action>
+	</package> 
 </struts>

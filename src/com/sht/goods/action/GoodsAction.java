@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.sht.goods.po.CustomFiles;
-import com.sht.goods.po.CustomGoods;
+import com.sht.common.action.CGoodsAction;
+import com.sht.common.po.CGoods;
+import com.sht.goods.po.GFiles;
+import com.sht.goods.po.GGoods;
 import com.sht.goods.service.GoodsServiceI;
 
 
@@ -22,8 +24,9 @@ import com.sht.goods.service.GoodsServiceI;
  */
 @Controller
 @Scope("prototype")
-public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
+public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	
+	private CGoodsAction cGoodsAction;
 	/**
 	 * Title:showInfo
 	 * <p>
@@ -34,13 +37,13 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 	public void showInfo() throws Exception{
 		logger.info("GoodsAction-showInfo");
 
-		List<CustomGoods> goodsList = null;
+		List<GGoods> goodsList = null;
 		try {
 			goodsList = service.dispalyGoodsInfo();
+		
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			
 		}
 		
 		//返回一个json的数据
@@ -48,17 +51,18 @@ public class GoodsAction extends GBaseAction<CustomGoods,GoodsServiceI> {
 
 	}
 	
-	public void createGoods() throws Exception{
+	public String createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
 		
 		try {
 			 service.createGoodsInfo(po);
-			
+			setSessionAttr("isCreate", "true");
 		} catch (Exception e) {
 			e.printStackTrace();
+			setSessionAttr("isCreate", "false");
 		}
 		
-		
+		return "fCreateGodos";
 		
 	}
 	
