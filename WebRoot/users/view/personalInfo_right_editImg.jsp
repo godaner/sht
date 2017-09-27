@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="./base.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,17 +15,22 @@
 
 <p>仅支持JPG | GIF | PNG图片文件，且文件小于5M</p>
 <div class="load_img">
-<img src="../img/load.png" title="请选择图片"/>
-<p style="position:absolute;color:black;font-size:20px;top:160px;left:50px;">请选择你要上传的头像</p>
+<img src="../img/load.png" title="请选择图片" id="portrait"/>
+<p id="point" style="position:absolute;color:black;font-size:20px;top:160px;left:50px;">请选择你要上传的头像</p>
 <div id="line"></div>
 <!-- <div class="right"></div> -->
 </div>
 <!-- <button >上传</button> -->
-<div class="load">上传</div>
-<form action="fileUpload.action" method="post" enctype="multipart/form-data">
-<input type="file" name="fiile"> 
-<button id="save_btn">保存</button>
+<div class="load">浏览</div>
+<form action="${baseUrl}/users/personalImgUpload.action" method="post" enctype="multipart/form-data">
+<input type="file" name="fiile" onchange="showPreview(this)" > 
+<button id="save_btn" type="submit">上传</button>
 </form>
+
+
+
+
+
 </body>
 
 <style type="text/css">
@@ -108,4 +114,36 @@ p{
 	height:300px;
 } */
 </style>
+
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+
+function showPreview(source) {
+	$("#portrait").attr({
+		"src":"",
+		"title":"",
+	});
+	$("#point").empty();
+	var file = source.files[0];
+
+		if (window.FileReader) {
+
+			var fr = new FileReader();
+
+			console.log(fr);
+
+			var portrait = document.getElementById('portrait');
+
+			fr.onloadend = function(e) {
+
+				portrait.src = e.target.result;
+
+			};
+
+			fr.readAsDataURL(file);
+
+		}
+
+	}
+</script>
 </html>

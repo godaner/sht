@@ -1,6 +1,12 @@
 ﻿package com.sht.users.action;
 
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -8,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import com.sht.po.Goods;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
+import com.sht.util.Static.CONFIG;
 
 
 /**	
@@ -183,5 +190,46 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			e.printStackTrace();
 		}
 	 }
-
+	 
+	 /**
+	  * 上传用户头像
+	 * @throws Exception 
+	  * 
+	  */
+	 public void personalImgUpload() throws Exception{
+		 
+		 CustomUsers cs = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 eject(cs == null, "上传头像需要先登录");
+		 
+		 cs.setFiile(po.getFiile());
+		 
+		 service.personalImgUpload(cs);
+	 }
+	 
+	 /**
+	  * 获取用户头像
+	 * @throws Exception 
+	  * 
+	  * 
+	  */
+	 public void getHeadimg() throws Exception{
+		 
+		 CustomUsers cs = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 eject(cs == null, "用户未登录");
+		 
+		 try{
+			 List<RenderedImage> childs = service.getHeadimg(cs);
+				
+			 for(RenderedImage img: childs){
+				 ImageIO.write(img, "png", getResponse().getOutputStream());
+			 }
+			 
+			 
+			}catch(Exception e){
+				
+				e.printStackTrace();
+			}
+	 }
 }
