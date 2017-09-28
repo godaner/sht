@@ -61,16 +61,33 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 	 */
 	@Override
 
-	public List<GGoods> dispalyGoodsInfo() throws Exception {
-		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo();
+	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception {
+		
+		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo(goods);
 		info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
-		
 		
 		return dbGoods;
 
 	}
 
+	
+	/**
+	 * 	显示所有商品的数量
+	 */
+	@Override
+	public double selectGoodsAllNum(Double region) throws Exception {
+		// TODO Auto-generated method stub
+		
+		if (0 == region ) {
+			return customGoodsMapper.selectGoodsTotalNum();
+		}else{
+			return customGoodsMapper.selectGoodsTotalNumByRegion(region);
+		}
+		
+	}
+	
+	
 	/**
 	 * 发布商品信息
 	 */
@@ -150,6 +167,11 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 		return "";
 		
 	}
+
+
+
+
+	
 	
 	
 	

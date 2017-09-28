@@ -43,7 +43,10 @@ public interface Static {
 	 * @version 1.0
 	 */
 	public interface GOODS{
-		
+		/**
+		 * 记录分页查询时每页显示的数量
+		 */
+		public static final int FILED_PAGE_SIZE = 4;
 	}
 	
 	/**

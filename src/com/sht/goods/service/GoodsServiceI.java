@@ -25,7 +25,16 @@ public interface GoodsServiceI {
 	 * Description:Display the goods' first page information
 	 
 	 */
-	public List<GGoods> dispalyGoodsInfo() throws Exception;
+	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception;
+	
+	/**
+	 * 
+	 * Title:selectGoodsAllNum
+	 * <p>
+	 * Description:query the total number of all goods
+	 
+	 */
+	public double selectGoodsAllNum(Double region) throws Exception;
 	
 	/**
 	 * 
