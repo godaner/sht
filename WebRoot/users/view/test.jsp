@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<img  src="${baseUrl}/users/getHeadimg.action"/>
+<img  src="http://localhost/sht/common/users_getUsersHeadImg.action?size=60&headimg=9"/>
 
 </body>
 

@@ -207,29 +207,4 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		 service.personalImgUpload(cs);
 	 }
 	 
-	 /**
-	  * 获取用户头像
-	 * @throws Exception 
-	  * 
-	  * 
-	  */
-	 public void getHeadimg() throws Exception{
-		 
-		 CustomUsers cs = getSessionAttr(FILED_ONLINE_USER);
-		 
-		 eject(cs == null, "用户未登录");
-		 
-		 try{
-			 List<RenderedImage> childs = service.getHeadimg(cs);
-				
-			 for(RenderedImage img: childs){
-				 ImageIO.write(img, "png", getResponse().getOutputStream());
-			 }
-			 
-			 
-			}catch(Exception e){
-				
-				e.printStackTrace();
-			}
-	 }
 }

@@ -27,10 +27,6 @@
 <button id="save_btn" type="submit">上传</button>
 </form>
 
-
-
-
-
 </body>
 
 <style type="text/css">
