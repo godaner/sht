@@ -66,16 +66,5 @@ public interface UsersServiceI {
 	 * 
 	 */
 	public void personalImgUpload(CustomUsers po);
-	
-	/**
-	 * 
-	 * 获取用户头像
-	 * @param cs
-	 * @return
-	 */
-	public List<RenderedImage> getHeadimg(CustomUsers cs);
-
-	
-	
 
 }

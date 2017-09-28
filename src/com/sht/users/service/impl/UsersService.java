@@ -127,16 +127,4 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		 
 		 customUsersMapper.personalImgUpload(po);
 	}
-
-	@Override
-	public List<RenderedImage> getHeadimg(CustomUsers cs) {
-		
-		String fileName = "160_"+cs.getHeadimg();
-		
-		String getPath = getValue(CONFIG.FILED_SRC_USERS_HEADIMGS).toString();
-		
-		List<RenderedImage> childs =  dirChilds(getPath, fileName);
-		
-		return childs;
-	}
 }

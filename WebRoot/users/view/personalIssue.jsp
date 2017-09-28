@@ -29,9 +29,9 @@
 </div>
 
 <div id="body">
-    <div id="body_left">
+    <div class="body_left">
     <div class="body_left_img">
-    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="../img/default_img.png" title="编辑资料">
+    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="" title="" id="personalImg">
     
     	<p onmouseover="showedit();">编辑资料</p>	
     </div>
@@ -62,11 +62,27 @@
     <div class="clearFloat"></div>
 </div>
 
-
-
+<input type="hidden" value="${onlineUser.headimg}" id="headimg"/>
 
 </body>
   	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/personalInfo.js"></script>
+   <script type="text/javascript">
    
+   $(function(){
+	  	 var headimg = $("#headimg").val();
+	  	 if(headimg!=""&&headimg!=null){
+	  		 $("#personalImg").attr({
+	  			 "src":"http://localhost/sht/common/users_getUsersHeadImg.action?size=160&headimg="+headimg,
+	  			 "title":""
+	  		 });
+	  	 }else{
+	  		$("#personalImg").attr({
+	  			 "src":"../img/default_img.png",
+	  			 "title":"编辑资料"
+	  		 });
+	  	 }
+	  	 
+	   });
+   </script>
 </html>
