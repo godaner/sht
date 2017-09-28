@@ -46,4 +46,10 @@ public interface UGoodsServiceI {
 
 
 	public UGoods getGoodsDetailById(String id) throws Exception;
+
+
+	public void deleteGoodsByid(String id);
+
+
+	public void UpdateUGoodsById(UGoods po);
 }

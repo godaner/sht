@@ -67,7 +67,7 @@ h1 {
     margin-top: 50px;
 }
 
-#body_left{
+.body_left{
     float: left;
     position: relative;
     display: block;
@@ -85,7 +85,7 @@ h1 {
     /*border: 1px solid lightgrey;*/
 }
 
-#body_left {
+.body_left {
 
     margin-left: 100px;
     width: 10%;
@@ -138,21 +138,21 @@ h1 {
 	transition: all 0.6s; /* 所有效果0.6秒内完成 */
 }
 
-#body_left>p{
+.body_left>p{
     text-align: center;
     margin-top: 10px;
 }
 
-#body_left>ul:first-of-type>li{
+.body_left>ul:first-of-type>li{
     display: inline-block;
     position: relative;
     margin-top: 10px;
 }
-#body_left>ul>a{
+.body_left>ul>a{
     color: black;
 }
 
-#body_left>ul:last-of-type li{
+.body_left>ul:last-of-type li{
     display: block;
     position: relative;
     text-align: center;
@@ -160,7 +160,7 @@ h1 {
     cursor: pointer;
     line-height: 38px;
 }
-#body_left>ul:last-of-type li:hover{
+.body_left>ul:last-of-type li:hover{
     background-color: gold;
     color: white;
 }

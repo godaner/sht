@@ -1,5 +1,7 @@
 package com.sht.users.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -66,6 +68,14 @@ public interface CustomUsersMapper {
 	 * @param id
 	 */
 	public void updatePersonalInfo(CustomUsers po);
-
 	
+	/**
+	 * 
+	 * 上传用户头像
+	 * @param fileName
+	 * @param id
+	 */
+
+	public void personalImgUpload(CustomUsers po);
+
 }
