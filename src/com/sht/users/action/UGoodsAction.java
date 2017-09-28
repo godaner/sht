@@ -127,14 +127,17 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 			writeJSON(Goodlist);
 		}
 	 }
-	 
+	 /**
+	  * 
+	  * 根据id获取商品的详细信息
+	  * @throws Exception
+	  */
 	 public void getGoodsDetailById() throws Exception{
-		 String id = getRequestParam("id");
 		 
-		 eject(id==null, "商品不存在");
+		 eject(po==null, "商品不存在");
 		 
 		 try {
-			 po = service.getGoodsDetailById(id);
+			 po = service.getGoodsDetailById(po.getId());
 			
 		} catch (Exception e) {
 			
@@ -145,6 +148,42 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		}finally{ 
 			
 			writeJSON(po);
+		}
+	 }
+	 /**
+	  * 
+	  * 根据id 删除商品信息
+	  * @throws Exception
+	  */
+	 public void deleteGoodsByid() throws Exception{
+		 
+		 eject(po==null, "商品不存在");
+		 
+		 try {
+			 service.deleteGoodsByid(po.getId());
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+	 }
+	 /**
+	  * 
+	  * 根据id更新商品信息
+	  * @throws Exception
+	  */
+	 public void UpdateUGoodsById() throws Exception{
+		 
+		 eject(po==null, "商品不存在");
+		 
+		 try {
+			 service.UpdateUGoodsById(po);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
 		}
 	 }
 }

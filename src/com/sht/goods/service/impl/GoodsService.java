@@ -17,14 +17,15 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
+import org.omg.PortableServer.POA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.sht.goods.mapper.CustomGoodsMapper;
-import com.sht.goods.po.CustomFiles;
-import com.sht.goods.po.CustomGoods;
-import com.sht.goods.po.CustomGoodsImgs;
+import com.sht.goods.po.GFiles;
+import com.sht.goods.po.GGoods;
+import com.sht.goods.po.GGoodsImgs;
 import com.sht.goods.service.GoodsServiceI;
 import com.sht.mapper.FilesMapper;
 import com.sht.mapper.GoodsImgsMapper;
@@ -60,20 +61,38 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 	 */
 	@Override
 
-	public List<CustomGoods> dispalyGoodsInfo() throws Exception {
-		List<CustomGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo();
-		logger.info("GoodsService");
+	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception {
+		
+		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo(goods);
+		info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
 		
 		return dbGoods;
 
 	}
 
+	
+	/**
+	 * 	显示所有商品的数量
+	 */
+	@Override
+	public double selectGoodsAllNum(Double region) throws Exception {
+		// TODO Auto-generated method stub
+		
+		if (0 == region ) {
+			return customGoodsMapper.selectGoodsTotalNum();
+		}else{
+			return customGoodsMapper.selectGoodsTotalNumByRegion(region);
+		}
+		
+	}
+	
+	
 	/**
 	 * 发布商品信息
 	 */
 	@Override
-	public String createGoodsInfo(CustomGoods goods) throws Exception {
+	public String createGoodsInfo(GGoods goods) throws Exception {
 		
 		
 		//商品信息
@@ -101,19 +120,19 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 		File[] file = goods.getFiles();
 		for(int i = 0 ;i < file.length ;i++){
 			String fileId =uuid();
-			writeFileWithCompress(file[0], getValue(CONFIG.FILED_GOODS_IMGS_SIZES).toString(), 
+			writeFileWithCompress(file[i], getValue(CONFIG.FILED_GOODS_IMGS_SIZES).toString(), 
 					getValue(CONFIG.FILED_SRC_GOODS_IMGS).toString(), fileId+".png");
 			
 			//向文件表插入图片信息
-			CustomFiles files =new CustomFiles();
+			GFiles files =new GFiles();
 			
 			files.setId(fileId);
 			files.setPath(fileId+".png");
-			files.setName(file[0].getName());
+			files.setName(file[i].getName());
 			
 			createGoodsFileInfo(files);
 			//向图片表中插入信息
-			CustomGoodsImgs imgs = new CustomGoodsImgs();
+			GGoodsImgs imgs = new GGoodsImgs();
 			imgs.setId(uuid());
 			imgs.setOwner(goodsId);
 			imgs.setImg(fileId);
@@ -130,7 +149,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 	 * 发布商品图片信息
 	 */
 	@Override
-	public String createGoodsImagsInfo(CustomGoodsImgs goodsImgs) throws Exception {
+	public String createGoodsImagsInfo(GGoodsImgs goodsImgs) throws Exception {
 		// TODO Auto-generated method stub
 		
 		goodsImgsMapper.insert(goodsImgs);
@@ -140,7 +159,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 	}
 
 	@Override
-	public String createGoodsFileInfo(CustomFiles files) throws Exception {
+	public String createGoodsFileInfo(GFiles files) throws Exception {
 		// TODO Auto-generated method stub
 	
 		filesMapper.insert(files);	
@@ -148,6 +167,11 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 		return "";
 		
 	}
+
+
+
+
+	
 	
 	
 	

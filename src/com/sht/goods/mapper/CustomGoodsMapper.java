@@ -1,9 +1,9 @@
 package com.sht.goods.mapper;
 
 import java.util.List;
-import com.sht.goods.po.CustomGoods;
-import com.sht.goods.po.Files;
-import com.sht.goods.po.Goods;
+import com.sht.goods.po.GGoods;
+import com.sht.po.Files;
+import com.sht.po.Goods;
 
 
 /**
@@ -22,10 +22,11 @@ public interface CustomGoodsMapper {
 	 * <p>
 	 * Description:查询所有的商品信息
 	 * <p>
+	 * @param i 
 	 
 	 */
 
-	public List<CustomGoods> selectAllGoodsInfo();
+	public List<GGoods> selectAllGoodsInfo(GGoods goods);
 	
 	/**
 	 * insert goods info
@@ -44,5 +45,19 @@ public interface CustomGoodsMapper {
 	 
 	 */
 	public void insert(Files files);
+	
+	/**
+	 * 查询商品的总数量
+	 * 
+	 * @return
+	 */
+	public double selectGoodsTotalNum();
+	
+	/**
+	 * 根据地区查询商品的总数量
+	 * @param region
+	 * @return
+	 */
+	public double selectGoodsTotalNumByRegion(Double region);
 	
 }

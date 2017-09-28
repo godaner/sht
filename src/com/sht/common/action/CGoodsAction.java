@@ -20,8 +20,8 @@ import com.sht.common.service.CGoodsServiceI;
  * @date 2017年9月26日 上午11:06:13
  * @version 1.0
  */
-@Scope("prototype")
 @Controller
+@Scope("prototype")
 public class CGoodsAction extends BaseAction<CGoods, CGoodsServiceI> {
 
 	/**
@@ -37,8 +37,10 @@ public class CGoodsAction extends BaseAction<CGoods, CGoodsServiceI> {
 	 * @throws Exception
 	 */
 	public void getGoodsImg() throws Exception {
+		
 		String size = po.getSize();
 		String imgName = po.getImgName();
+		
 		try {
 
 			eject(size == null || size.trim().isEmpty(), "商品图片size没有指定");

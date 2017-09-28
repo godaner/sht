@@ -391,15 +391,16 @@ section{
 }
 
 
-.trading_item_info>ul li{
+.trading_item_info>ul>li{
     position: relative;
     display: inline-block;
+    /* height:423px; */
     border: 1px solid lightgrey;
     background-color: white;
-    /*margin-left: 10px;*/
-    margin-right: 22px;
+    margin-right: 10px;
     border-radius: 5px;
     margin-top: 20px;
+    
 }
 
 .trading_info_title{
@@ -408,22 +409,18 @@ section{
     line-height: 30px;
     margin-left: 10px;
     margin-top: 10px;
-    /*border: 1px solid black;*/
 }
 .trading_info_title>img{
     display: inline-block;
     cursor: pointer;
-    /*border: 1px solid red;*/
 }
 .trading_info_title>a{
     position: absolute;
     top: 10px;
     margin-left: 10px;
     display: inline-block;
-    /*border: 1px solid red;*/
     color:black;
     text-decoration: none;
-    /*margin-top: -20px;*/
     font-size: 14px;
 }
 .trading_info_title>a:hover{
@@ -433,7 +430,8 @@ section{
 
 .trading_item_info>ul li>a>img{
     border: 1px solid grey;
-    margin: 10px;
+
+    margin:10px;
     cursor: pointer;
 }
 
@@ -458,6 +456,7 @@ section{
     position: absolute;
     display: inline-block;
     right: 10px;
+    font-size:13px;
 }
 
 .trading_item_info>ul li>hr{
@@ -485,18 +484,23 @@ section{
     padding-left: 10px;
     line-height: 40px;
     background-color: lightgray;
-    font-size: 15px;
 }
 
 
 section>footer{
-    /*border: 1px solid red;*/
-    margin: 0 auto;
-    width: 500px;
+	display:block;
+	positive:relative;
+}
+
+section>footer>div{
+	display:inline-block;
+	positive:relative;
+	margin-left:40%;
+	
 }
 
 .pre,.next{
-    display: inline-block;
+    display: none;
     position: relative;
     width: 100px;
     height: 40px;
@@ -527,4 +531,6 @@ section>footer{
     background-color: #ffcc00;
 }
 
-
+.allPage{
+	margin-left:10px;
+}

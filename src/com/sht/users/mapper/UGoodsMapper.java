@@ -23,4 +23,8 @@ public interface UGoodsMapper {
 
 	UGoods getGoodsDetailById(String id);
 
+	void deleteGoodsByid(String id);
+
+	void UpdateUGoodsById(UGoods po);
+
 }

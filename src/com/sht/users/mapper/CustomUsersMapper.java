@@ -1,6 +1,7 @@
 package com.sht.users.mapper;
 
 import com.sht.users.po.CustomAddrs;
+
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -67,6 +68,7 @@ public interface CustomUsersMapper {
 	 * @param id
 	 */
 	public void updatePersonalInfo(CustomUsers po);
+
 	
 	
 	/**
@@ -75,5 +77,15 @@ public interface CustomUsersMapper {
 	 **/
 	public CustomAddrs addAddress(CustomAddrs po);
 
+
 	
+	/**
+	 * 
+	 * 上传用户头像
+	 * @param fileName
+	 * @param id
+	 */
+
+	public void personalImgUpload(CustomUsers po);
+
 }
