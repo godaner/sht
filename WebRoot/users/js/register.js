@@ -38,7 +38,7 @@ function closeregister(){
 /* 打印错误信息 */
 function RegisterErrorMsg(msg){
 	$(".register_msg").css("background-color","rgb(254,242,242)");
-	$(".register_msg").html("<img src='../img/login-msg.png' style='float:left'/> "+msg+" !  ^-^");
+	$(".register_msg").html(msg+" !  ^-^");
 }
 /*输入框发光效果(错误提示)*/
 function showStar(id){
