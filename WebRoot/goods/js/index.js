@@ -125,29 +125,43 @@ $(function(){
 
 	var baseUrl = $('#baseUrl').val();
 
-	console.log(baseUrl);
-	$.ajax({
-		type : "post",  //请求方式,get,post等
-	    dataType:'json',//response返回数据的格式
-	    async : true,  //同步请求  
-	    url : baseUrl+"/goods/showInfo.action",  //需要访问的地址
-		success:function(data){
-			console.log("访问成功!");
-			setData(data);
-		},
-		error:function(data){
-			console.log("失败");
-		}
-	});
+//	console.log(baseUrl);
+	
+	getTotalNum();
+	var isFirstAcsse = true;
+	function getData(min){
+//		alert("getData获取页面数据");
+		$('.trading_item_info>ul').empty();//清除容器中的所有数据
+		
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : true,  //同步请求  
+		    url : baseUrl+"/goods/showInfo.action?minLine="+min,  //需要访问的地址
+			success:function(data){
+				console.log("访问成功!");
+				//显示商品数据
+				setData(data);
+				
+				if(isFirstAcsse){
+					setPage(data);
+					isFirstAcsse = false;//设置其不再重复生成分页链接
+				}
+				
+			},
+			error:function(data){
+//				console.log(data);
+				$('.trading_item_info>ul').append("<center>查询出错<center>");
+			}
+		});
+	}
 	
 	function setData(data){
-		console.log();
+//		alert("setData设置数据");
 		var container = $('.trading_item_info>ul');
 		$.each(data,function(index,item){
-			console.log(item['title']);
-			console.log(item['headImg']);
-			console.log(item['addr']);
-			console.log(item['path']);
+//			console.log(item);
+			
 			var title = item['title'];
 			var headImg = item['headImg'];
 			var time =item['createtime'].split("-"); 
@@ -159,6 +173,7 @@ $(function(){
 				headImg = "http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
 			}
 			var li =	$("<li ></li>");
+			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
@@ -169,7 +184,7 @@ $(function(){
 			var content = $("<a href='#'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?t="+new Date().getTime()+"&size=200&imgName="+item['path']+"'/></a>");
 			content.find("img").attr("width","210px");
 			content.find("img").attr("height","210px");
-			content.find("img").attr("margin","10px 20px 10px 20px");
+			content.find("img").attr("margin","14px");
 			//添加价格
 			var priceContent = $("<div></div>");
 			priceContent.addClass("trading_price");
@@ -180,7 +195,7 @@ $(function(){
 			
 		
 			var footer = $("<p>"+item['description']+"</p> <span class='time'>"+hour[1]+"前</span> <span class='come'>来自"
-					+"	SHT</span> <span>留言0</span>");
+					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);
 			li.append(content);
@@ -192,4 +207,78 @@ $(function(){
 		});
 		
 	}
+	
+	
+	/**
+	 * 分页
+	 */
+	var totalNum ;
+	function setPage(data){
+		
+		console.log("totalNum="+totalNum);
+//		alert("setPage设置分页");
+		
+		var pageLine = 4;//每页显示10条数据
+//		console.log("数据总量"+data[0]['rn']);
+		
+//		var rowCount = data[data.length-1]['rownum'];
+		
+		var pageNum = (totalNum + pageLine -1)/pageLine;//总共多少页
+		
+//		console.log("页数"+pageNum);
+		
+		$('.allPage').html("共"+pageNum+"页");
+		
+		var container = $('.page').empty();
+		
+		if(pageNum != 1){
+			$('.pre').show();
+			$('.next').show();
+		}
+		
+		console.log("zk pageNum="+pageNum);
+		
+		for(var i = 1;i <= pageNum ; i++){
+			console.info(i);
+			console.info(i <= pageNum);
+			var li = $("<li name="+i+">"+i+"</li>");
+			container.append(li);
+			li.on("click",pageClickFun);
+		}
+		
+	}
+	
+	
+	
+	//点击某一页查询相应的数据
+	function pageClickFun(){
+		var min = num - 1;
+		getData(min);
+	}
+	
+	//获取商品总数
+	function getTotalNum(){
+
+		var region = 0.0;
+		
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/goods/selectGoodsAllNum.action?region="+region,  //需要访问的地址
+			success:function(data){
+				console.log("访问成功!");
+				//显示商品数据
+				console.log("total num data="+data);
+				totalNum = data;
+				console.log("totalNum1="+totalNum);
+				//获取商品信息
+				getData(0);
+			},
+			error:function(data){
+				console.log(data);
+			}
+		});
+	}
+	
 })

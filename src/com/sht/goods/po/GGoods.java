@@ -2,6 +2,7 @@ package com.sht.goods.po;
 
 import java.io.File;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sht.po.Goods;
@@ -16,6 +17,7 @@ import com.sht.po.Goods;
  * @version 1.0
  */
 @Component
+@Scope("prototype")
 public class GGoods extends Goods {
 	private File[] files;
 	
@@ -29,6 +31,12 @@ public class GGoods extends Goods {
 	
 	
 	private String msgNum;
+	
+	private int minLine;
+	
+	private int maxLine;
+	
+	private int rownum;
 	
 	public File[] getFiles() {
 		return files;
@@ -81,6 +89,32 @@ public class GGoods extends Goods {
 	public void setMsgNum(String msgNum) {
 		this.msgNum = msgNum;
 	}
+
+	public int getMinLine() {
+		return minLine;
+	}
+
+	public void setMinLine(int minLine) {
+		this.minLine = minLine;
+	}
+
+	public int getMaxLine() {
+		return maxLine;
+	}
+
+	public void setMaxLine(int maxLine) {
+		this.maxLine = maxLine;
+	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
+	
 	
 	
 	

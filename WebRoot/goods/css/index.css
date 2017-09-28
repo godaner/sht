@@ -397,7 +397,7 @@ section{
     /* height:423px; */
     border: 1px solid lightgrey;
     background-color: white;
-    margin-right: 27px;
+    margin-right: 10px;
     border-radius: 5px;
     margin-top: 20px;
     
@@ -488,13 +488,19 @@ section{
 
 
 section>footer{
-    /*border: 1px solid red;*/
-    margin: 0 auto;
-    width: 500px;
+	display:block;
+	positive:relative;
+}
+
+section>footer>div{
+	display:inline-block;
+	positive:relative;
+	margin-left:40%;
+	
 }
 
 .pre,.next{
-    display: inline-block;
+    display: none;
     position: relative;
     width: 100px;
     height: 40px;
@@ -525,4 +531,6 @@ section>footer{
     background-color: #ffcc00;
 }
 
-
+.allPage{
+	margin-left:10px;
+}
