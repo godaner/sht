@@ -47,9 +47,9 @@
             <a href=""><li>我的信息</li></a>
             <a href="./personalIssue.jsp"><li>我的发布</li></a>
             <a href=""><li>我的购买</li></a>
-            <a href=""><li>地址管理</li></a>
-            <a href=""><li>密码找回</li></a>
-            <a href=""><li>充值</li></a>
+            <a href="./addressmanage.jsp"><li>地址管理</li></a>
+            <a href="./findpassword.jsp"><li>密码找回</li></a>
+            <a href="./recharge.jsp"><li>充值</li></a>
         </ul>
     </div> 
     <div id="body_right">
