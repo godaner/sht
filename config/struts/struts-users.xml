@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+	<package namespace="/users" name="users-package" extends="base-package">
+		<!-- 全局result配置 -->
+		<global-results>
+			<result name="rIndex" type="redirect">/users/view/index.jsp</result>
+			<result name="fIndex">/users/view/index.jsp</result>
+			
+			<result name="rLogin" type="redirect">/users/view/login.jsp</result>
+			<result name="fLogin">/users/view/login.jsp</result>
+			
+			<result name="fRegist">/users/view/regist.jsp</result><result name="rLogin" type="redirect">/users/view/login.jsp</result>
+			<result name="rRegist" type="redirect">/users/view/regist.jsp</result>
+			
+			<result name="rException" type="redirect">/users/view/exception.jsp</result>
+			<result name="fException">/users/view/exception.jsp</result>
+		</global-results>
+		<!-- 全局异常配置 -->
+		<global-exception-mappings>
+			<exception-mapping result="fException" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		<!-- 配置action -->
+		
+		<action name="U_*" class="UGoodsAction" method="{1}">
+		</action>
+		<action name="*" class="usersAction" method="{1}">
+		</action>
+		
+	</package>    
+	
+</struts>
