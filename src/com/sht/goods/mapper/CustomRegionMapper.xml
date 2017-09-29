@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.goods.mapper.CustomRegionMapper">
+	<select id="selectAllProvices"  resultType="com.sht.goods.po.GRegion">
+		select id,name from region where  pid=1 order by id
+	</select>
+
+	
+	
+</mapper>

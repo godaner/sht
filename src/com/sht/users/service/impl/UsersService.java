@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sht.mapper.UsersMapper;
-import com.sht.po.Goods;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
@@ -36,7 +35,7 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
-		
+		  
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		logger.info("UserService");

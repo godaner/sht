@@ -1,6 +1,6 @@
 package com.sht.users.mapper;
 
-import org.apache.ibatis.annotations.Param;
+import com.sht.users.po.CustomAddrs;
 
 import com.sht.users.po.CustomUsers;
 
@@ -68,6 +68,16 @@ public interface CustomUsersMapper {
 	 * @param id
 	 */
 	public void updatePersonalInfo(CustomUsers po);
+
+	
+	
+	/**
+	 * 新增收货地址
+	 *
+	 **/
+	public CustomAddrs addAddress(CustomAddrs po);
+
+
 	
 	/**
 	 * 

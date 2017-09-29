@@ -6,10 +6,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.common.action.CGoodsAction;
-import com.sht.common.po.CGoods;
-import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.service.GoodsServiceI;
+import com.sht.util.Static;
 
 
 
@@ -27,6 +26,8 @@ import com.sht.goods.service.GoodsServiceI;
 public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	
 	private CGoodsAction cGoodsAction;
+	
+	
 	/**
 	 * Title:showInfo
 	 * <p>
@@ -38,12 +39,17 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		logger.info("GoodsAction-showInfo");
 
 		List<GGoods> goodsList = null;
+	
+		po.setMaxLine(po.getMinLine()+Static.GOODS.FILED_PAGE_SIZE);
+		info("--minLine---"+po.getMinLine());
+		info("--maxLine---"+po.getMaxLine());
 		try {
-			goodsList = service.dispalyGoodsInfo();
-		
+			goodsList = service.dispalyGoodsInfo(po);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			//setSessionAttr(name, value)
 		}
 		
 		//返回一个json的数据
@@ -51,12 +57,40 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 
 	}
 	
+	/**
+	 * Title:selectGoodsAllNum
+	 * <p>
+	 * Description:查询商品总数量
+	 * <p>
+	 * 
+	 */
+	public void selectGoodsAllNum() throws Exception{
+		info("select goods total num [by region]");
+		double totalNum =0;
+		try {
+			totalNum = service.selectGoodsAllNum(po.getRegion());
+			 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		writeJSON(totalNum);
+	}
+	
+	
+	/**
+	 * Title:createGoods
+	 * <p>
+	 * Description:发布商品
+	 * <p>
+	 * 
+	 */
 	public String createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
 		
 		try {
 			 service.createGoodsInfo(po);
-			setSessionAttr("isCreate", "true");
+			 setSessionAttr("isCreate", "true");
 		} catch (Exception e) {
 			e.printStackTrace();
 			setSessionAttr("isCreate", "false");
@@ -65,6 +99,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		return "fCreateGodos";
 		
 	}
+	
 	
 	
 	
