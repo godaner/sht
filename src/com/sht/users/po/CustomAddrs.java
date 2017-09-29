@@ -1,6 +1,6 @@
 package com.sht.users.po;
 
-import com.sht.goods.po.Addrs;
+import com.sht.po.Addrs;
 
 public class CustomAddrs extends Addrs {
 	
