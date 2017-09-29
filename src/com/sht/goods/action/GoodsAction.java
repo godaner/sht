@@ -6,11 +6,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.sht.common.action.CGoodsAction;
-import com.sht.common.po.CGoods;
-import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.service.GoodsServiceI;
-import com.sht.po.Goods;
 import com.sht.util.Static;
 
 
@@ -44,7 +41,8 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		List<GGoods> goodsList = null;
 	
 		po.setMaxLine(po.getMinLine()+Static.GOODS.FILED_PAGE_SIZE);
-		
+		info("--minLine---"+po.getMinLine());
+		info("--maxLine---"+po.getMaxLine());
 		try {
 			goodsList = service.dispalyGoodsInfo(po);
 			
@@ -101,6 +99,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		return "fCreateGodos";
 		
 	}
+	
 	
 	
 	

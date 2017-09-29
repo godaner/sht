@@ -394,7 +394,6 @@ section{
 .trading_item_info>ul>li{
     position: relative;
     display: inline-block;
-    /* height:423px; */
     border: 1px solid lightgrey;
     background-color: white;
     margin-right: 10px;
@@ -495,18 +494,27 @@ section>footer{
 section>footer>div{
 	display:inline-block;
 	positive:relative;
-	margin-left:40%;
+	margin-left:30%;
 	
 }
 
 .pre,.next{
-    display: none;
+    display:none;
+    /* visibility:hidden; */
     position: relative;
     width: 100px;
     height: 40px;
     line-height: 40px;
     background-color: white;
     cursor: pointer;
+}
+
+.pre>img{
+	margin-left:10px;
+}
+
+.next>span{
+	margin-left:20px;
 }
 
 .page{

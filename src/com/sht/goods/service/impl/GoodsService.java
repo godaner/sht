@@ -1,8 +1,5 @@
 package com.sht.goods.service.impl;
 
-
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -30,115 +27,112 @@ import com.sht.goods.service.GoodsServiceI;
 import com.sht.mapper.FilesMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
-
+import com.sht.po.Clazzs;
 
 /**
  * Title:UsersService
  * <p>
  * Description:用户业务接口实现
  * <p>
+ * 
  * @author Kor_Zhang
  * @date 2017年9月12日 上午11:24:50
  * @version 1.0
  */
 @Service
-public class GoodsService extends GBaseService implements GoodsServiceI{
+public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
 	private CustomGoodsMapper customGoodsMapper;
 
 	@Autowired
 	private GoodsMapper goodsMapper;
-	
+
 	@Autowired
 	private GoodsImgsMapper goodsImgsMapper;
-	
+
 	@Autowired
 	private FilesMapper filesMapper;
-	
-	
+
 	/**
-	 * 	显示商品主页面商品信息
+	 * 显示商品主页面商品信息
 	 */
 	@Override
 
 	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception {
-		
+
 		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo(goods);
 		info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
-		
+
 		return dbGoods;
 
 	}
 
-	
 	/**
-	 * 	显示所有商品的数量
+	 * 显示所有商品的数量
 	 */
 	@Override
 	public double selectGoodsAllNum(Double region) throws Exception {
 		// TODO Auto-generated method stub
-		
-		if (0 == region ) {
+
+		if (0 == region) {
 			return customGoodsMapper.selectGoodsTotalNum();
-		}else{
+		} else {
 			return customGoodsMapper.selectGoodsTotalNumByRegion(region);
 		}
-		
+
 	}
-	
-	
+
 	/**
 	 * 发布商品信息
 	 */
 	@Override
 	public String createGoodsInfo(GGoods goods) throws Exception {
-		
-		
-		//商品信息
+
+		// 商品信息
 		String goodsId = uuid();
-		
+
 		goods.setId(goodsId);
-		
+
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		
+
 		goods.setCreatetime(timestamp);
-		
+
 		goods.setLastupdatetime(timestamp);
-		
+
 		goods.setBrowsenumber(0.0);
-		
+
 		goods.setOwner("1");
-		
+
 		short a = 0;
 		goods.setStatus(a);
-		
+
 		goodsMapper.insert(goods);
-		
-		//向文件写入图片
-		
+
+		// 向文件写入图片
+
 		File[] file = goods.getFiles();
-		for(int i = 0 ;i < file.length ;i++){
-			String fileId =uuid();
-			writeFileWithCompress(file[i], getValue(CONFIG.FILED_GOODS_IMGS_SIZES).toString(), 
-					getValue(CONFIG.FILED_SRC_GOODS_IMGS).toString(), fileId+".png");
-			
-			//向文件表插入图片信息
-			GFiles files =new GFiles();
-			
+		for (int i = 0; i < file.length; i++) {
+			String fileId = uuid();
+			writeFileWithCompress(file[i], getValue(CONFIG.FILED_GOODS_IMGS_SIZES).toString(),
+					getValue(CONFIG.FILED_SRC_GOODS_IMGS).toString(), fileId + ".png");
+
+			// 向文件表插入图片信息
+			GFiles files = new GFiles();
+
 			files.setId(fileId);
-			files.setPath(fileId+".png");
+			files.setPath(fileId + ".png");
 			files.setName(file[i].getName());
-			
+
 			createGoodsFileInfo(files);
-			//向图片表中插入信息
+			// 向图片表中插入信息
 			GGoodsImgs imgs = new GGoodsImgs();
 			imgs.setId(uuid());
 			imgs.setOwner(goodsId);
 			imgs.setImg(fileId);
-			if(i == 0)
-			   imgs.setMain(1.0);
-			else 
+			if (i == 0)
+				imgs.setMain(1.0);
+			else
 				imgs.setMain(0.0);
 			createGoodsImagsInfo(imgs);
 		}
@@ -151,32 +145,26 @@ public class GoodsService extends GBaseService implements GoodsServiceI{
 	@Override
 	public String createGoodsImagsInfo(GGoodsImgs goodsImgs) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 		goodsImgsMapper.insert(goodsImgs);
-		
+
 		return "";
-		
+
 	}
 
+	/**
+	 * 查询商品总类别
+	 */
 	@Override
 	public String createGoodsFileInfo(GFiles files) throws Exception {
 		// TODO Auto-generated method stub
-	
-		filesMapper.insert(files);	
-		
+
+		filesMapper.insert(files);
+
 		return "";
-		
+
 	}
 
+	
 
-
-
-	
-	
-	
-	
-	
-	
-	
-	
 }
