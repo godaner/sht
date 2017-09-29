@@ -47,15 +47,15 @@
         </ul>
         <ul >
             <a href="./personalInfo.jsp"><li>我的信息</li></a>
-            <a href=""><li>我的发布</li></a>
-            <a href=""><li>我的购买</li></a>
+            <a href="./personalIssue_right_showGoods.jsp" target="userinfoiframe"><li>我的发布</li></a>
+            <a href="./personalIssue_right_showBuyed.jsp" target="userinfoiframe"><li>我的购买</li></a>
             <a href=""><li>地址管理</li></a>
             <a href=""><li>密码找回</li></a>
             <a href=""><li>充值</li></a>
         </ul>
     </div> 
     <div id="show_issueGoods">
-    <iframe src="./personalIssue_right_showGoods.jsp" width="980px" height="1560px" scrolling="no" frameborder=no></iframe>
+    <iframe name="userinfoiframe"  src="./personalIssue_right_showGoods.jsp" width="980px" height="1560px" scrolling="no" frameborder=no></iframe>
 				
     </div>
 
@@ -68,7 +68,7 @@
   	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/personalInfo.js"></script>
    <script type="text/javascript">
-   
+   //显示头像
    $(function(){
 	  	 var headimg = $("#headimg").val();
 	  	 if(headimg!=""&&headimg!=null){

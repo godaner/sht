@@ -30,5 +30,4 @@ public interface UsersMapper {
 
     int updateByPrimaryKey(Users record);
 
-	
 }

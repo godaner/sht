@@ -60,6 +60,45 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 	 }
 	 
 	 /**
+	  * 
+	  * 根据id获取购买信息
+	  * 
+	  */
+	 public void getBuyGoodsById() throws Exception{
+		 
+		 String PageToStr = getRequestParam("PageTo");
+		 
+		 eject(PageToStr==null, "指定的跳转页不存在");
+		 
+		 int PageTo = Integer.parseInt(PageToStr);
+		 
+		 CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 List<UGoods> Goodlist = null;
+		 
+		 String pageStar = (PageTo-1)*PageNum + "";
+		 
+		 String pageEnd = (PageTo-1)*PageNum+PageNum + "";
+		 
+		 try {
+			 Goodlist  = service.getBuyGoodsById(customUsers.getId(),pageStar,pageEnd);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			//po.setMsg(e.getMessage());
+			
+		}finally{
+			
+			writeJSON(Goodlist);
+		}
+		 
+	 }
+	 
+	 
+	 
+	 /**
 	  * 通过id 获取商品总数
 	  * 
 	  * @throws Exception
@@ -88,6 +127,33 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 	 }
 	 
 	 /**
+	  * 通过id获取已购买的商品数量
+	  * 
+	  */
+	 
+	 public void getBuyGoodsCountById() throws Exception{
+		 CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 int Goodscount = 0;//获取商品数据条数
+		
+		 try {
+			 
+			 Goodscount  = service.getBuyGoodsCountById(customUsers.getId());
+			 
+			 Page = (Goodscount+PageNum-1)/PageNum;
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			
+		}finally{
+			
+			writeJSON(Page);
+		}
+	 }
+	 
+	 /**
 	  * 根据title查找商品
 	 * @throws Exception 
 	  * 
@@ -101,6 +167,8 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		 eject(PageToStr==null, "指定的跳转页不存在");
 		 
 		 String title = getRequestParam("title");
+		 
+		 logger.info("title:"+title);
 		 
 		 int PageTo = Integer.parseInt(PageToStr);
 		 
@@ -186,4 +254,142 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 			
 		}
 	 }
+	 
+	 /**
+	  * 根据id和status 获取商品信息
+	  * 
+	  */
+	 public void getGoodsByIdAndStatus() throws Exception{
+	
+		 String status = getRequestParam("status");
+		 
+		 String PageToStr = getRequestParam("PageTo");
+		 
+		 eject(PageToStr==null, "指定的跳转页不存在");
+		 
+		 int PageTo = Integer.parseInt(PageToStr);
+		 
+		 CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 List<UGoods> Goodlist = null;
+		 
+		 String pageStar = (PageTo-1)*PageNum + "";
+		 
+		 String pageEnd = (PageTo-1)*PageNum+PageNum + "";
+		 
+		 logger.info("getGoods");
+		 try {
+			 Goodlist  = service.getGoodsByIdAndStatus(customUsers.getId(),status,pageStar,pageEnd);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			//po.setMsg(e.getMessage());
+			
+		}finally{
+			
+			writeJSON(Goodlist);
+		}
+		 
+	 }
+	 /**
+	  * 根据id和status获取购买信息
+	  * 
+	  */
+	 
+	 public void getBuyGoodsByIdAndStatus() throws Exception{
+			
+		 String status = getRequestParam("status");
+		 
+		 String PageToStr = getRequestParam("PageTo");
+		 
+		 eject(PageToStr==null, "指定的跳转页不存在");
+		 
+		 int PageTo = Integer.parseInt(PageToStr);
+		 
+		 CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 List<UGoods> Goodlist = null;
+		 
+		 String pageStar = (PageTo-1)*PageNum + "";
+		 
+		 String pageEnd = (PageTo-1)*PageNum+PageNum + "";
+		 
+		 try {
+			 Goodlist  = service.getBuyGoodsByIdAndStatus(customUsers.getId(),status,pageStar,pageEnd);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			//po.setMsg(e.getMessage());
+			
+		}finally{
+			
+			writeJSON(Goodlist);
+		}
+		 
+	 }
+	 
+	 /**
+	  * 根据title 获取已购买商品
+	  * 
+	  */
+	 
+ public void searchBuyUGoodsBuyBytitle() throws Exception{
+		 
+		 PageNum = 6; //分页显示，每一页的数据数量
+		 
+		 String PageToStr = getRequestParam("searchTo");
+		 
+		 eject(PageToStr==null, "指定的跳转页不存在");
+		 
+		 String title = getRequestParam("title");
+		 
+		 logger.info("title:"+title);
+		 
+		 int PageTo = Integer.parseInt(PageToStr);
+		 
+		// CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);
+		 
+		 List<UGoods> Goodlist = null;
+		 
+		 String pageStar = (PageTo-1)*PageNum + "";
+		 
+		 String pageEnd = (PageTo-1)*PageNum+PageNum + "";
+		 
+		 try {
+			 Goodlist  = service.searchBuyUGoodsBuyBytitle(title,pageStar,pageEnd);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			//po.setMsg(e.getMessage());
+			
+		}finally{
+			
+			writeJSON(Goodlist);
+		}
+	 }
+ 
+ 	/**
+ 	 * 通过id取消订单
+ 	 * 
+ 	 */
+ 
+ public void deleteBuyGoodsByid() throws Exception{
+	 
+	 eject(po==null, "商品不存在");
+	 
+	 try {
+		 service.deleteBuyGoodsByid(po.getId());
+		
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+		
+	}
+ }
 }

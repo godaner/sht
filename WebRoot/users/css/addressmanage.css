@@ -3,7 +3,7 @@
 	width: 850px;
 	height: 30px;
 	color: #014d7f;
-	background-color: #F3F8FE;
+	background-color: #8080ff;
 	line-height: 30px;
 }
 
@@ -346,6 +346,18 @@ option {
 	height: 13px;
 }
 
+.iteamsubmit{
+	width:530px;
+	height:38px;
+}
+.save{
+	width:70px;
+	height:30px;
+	background-color:#ff4001;
+	font-size:14px;
+	color:white;
+	margin-left:110px;
+}
 .tsl {
 	font-size: 13px;
 }

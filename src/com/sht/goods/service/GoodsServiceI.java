@@ -3,9 +3,11 @@ package com.sht.goods.service;
 
 import java.util.List;
 
+import com.sht.goods.po.GClazzs;
 import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.po.GGoodsImgs;
+import com.sht.po.Clazzs;
 
 /**
  * Title:GoodsServiceI
@@ -25,7 +27,16 @@ public interface GoodsServiceI {
 	 * Description:Display the goods' first page information
 	 
 	 */
-	public List<GGoods> dispalyGoodsInfo() throws Exception;
+	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception;
+	
+	/**
+	 * 
+	 * Title:selectGoodsAllNum
+	 * <p>
+	 * Description:query the total number of all goods
+	 
+	 */
+	public double selectGoodsAllNum(Double region) throws Exception;
 	
 	/**
 	 * 
@@ -50,4 +61,6 @@ public interface GoodsServiceI {
 	 * Description:insert imags  info into file
 	 */
 	public String createGoodsFileInfo(GFiles files) throws Exception;
+
+	
 }

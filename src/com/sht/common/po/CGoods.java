@@ -1,5 +1,6 @@
 package com.sht.common.po;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sht.po.Goods;
@@ -14,6 +15,7 @@ import com.sht.po.Goods;
  * @version 1.0
  */
 @Component
+@Scope("prototype")
 public class CGoods extends Goods {
 	//請求的圖片規格(大小)
 	private String size;
