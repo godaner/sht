@@ -68,7 +68,7 @@
   	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/personalInfo.js"></script>
    <script type="text/javascript">
-   
+   //显示头像
    $(function(){
 	  	 var headimg = $("#headimg").val();
 	  	 if(headimg!=""&&headimg!=null){

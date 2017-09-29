@@ -33,7 +33,13 @@ $(function () {
 
     //根据点击事件切换价格上下箭头的颜色
     var direction = 1;
+    $('.select>li:nth-of-type(1)').click(function(){
+    	$('.select li').css("background-color","#f9fbff");
+    	$(this).css("background-color","#e6fdff");
+    })
     $('.select>li:nth-of-type(2)').click(function(){
+    	 $('.select li').css("background-color","#f9fbff");
+    	 $(this).css("background-color","#e6fdff");
         restoreDefaults();
         if(1 == direction){
             $('#price>img:nth-of-type(1)').attr('src',"goods/img/price_top_yellow.png");
@@ -59,6 +65,7 @@ $(function () {
 
     //显示城市列表
     $('.city>div>ul').click(function(){
+    	getRegionData();
         var height = $(document).scrollTop();
         $('.city_info').css({
             'top':height+'px'
@@ -70,6 +77,23 @@ $(function () {
         $('.city_info').slideUp();
     });
 
+    function getRegionData(){
+    	$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/regions/selectAllProvices.action",  //需要访问的地址
+			success:function(data){
+				console.log("访问地区成功!");
+				//显示商品类别
+				console.log(data);
+			},
+			error:function(data){
+				console.log("访问地区失败!");
+				console.log(data);
+			}
+		});
+    }
 
     //显示城市信息二级菜单
     var site = '{ "sites" : [' +
@@ -124,7 +148,28 @@ $(function () {
 $(function(){
 
 	var baseUrl = $('#baseUrl').val();
-
+	
+	generalCatogaryGoods();
+	//获取商品所有类别
+	function generalCatogaryGoods(){
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/clazzs/selectCategoryGoods.action",  //需要访问的地址
+			success:function(data){
+				console.log("访问类别成功!");
+				//显示商品类别
+				console.log(data);
+			},
+			error:function(data){
+				console.log("访问类别失败!");
+				console.log(data);
+			}
+		});
+	}
+	
+	
 //	console.log(baseUrl);
 	
 	getTotalNum();
@@ -182,9 +227,9 @@ $(function(){
 					+"	href='#'>"+item['title']+"</a>");
 			//图片
 			var content = $("<a href='#'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?t="+new Date().getTime()+"&size=200&imgName="+item['path']+"'/></a>");
-			content.find("img").attr("width","210px");
-			content.find("img").attr("height","210px");
-			content.find("img").attr("margin","14px");
+			content.find("img").css("width","200px");
+			content.find("img").css("height","200px");
+			content.find("img").css("margin","13px");
 			//添加价格
 			var priceContent = $("<div></div>");
 			priceContent.addClass("trading_price");
@@ -212,47 +257,79 @@ $(function(){
 	/**
 	 * 分页
 	 */
-	var totalNum ;
+	var totalNum , currentPage=1,pageNum;
 	function setPage(data){
 		
-		console.log("totalNum="+totalNum);
-//		alert("setPage设置分页");
+//		console.log("totalNum="+totalNum);
 		
 		var pageLine = 4;//每页显示10条数据
-//		console.log("数据总量"+data[0]['rn']);
 		
-//		var rowCount = data[data.length-1]['rownum'];
 		
-		var pageNum = (totalNum + pageLine -1)/pageLine;//总共多少页
+		pageNum = (totalNum + pageLine -1)/pageLine;//总共多少页
 		
-//		console.log("页数"+pageNum);
 		
 		$('.allPage').html("共"+pageNum+"页");
 		
 		var container = $('.page').empty();
-		
-		if(pageNum != 1){
-			$('.pre').show();
-			$('.next').show();
+
+		if(pageNum > 1){
+			$('.pre').css("display","inline-block");
+			$('.next').css("display","inline-block");
 		}
 		
-		console.log("zk pageNum="+pageNum);
-		
+//		console.log("zk pageNum="+pageNum);
+		var flag = true;
 		for(var i = 1;i <= pageNum ; i++){
-			console.info(i);
-			console.info(i <= pageNum);
-			var li = $("<li name="+i+">"+i+"</li>");
+			var li;
+//			if(i < pageNum - 1 && i > 1){
+//				alert(1);
+//				if(flag){
+//					li = $("<li >...</li>");
+//				}
+//				flag = false;
+//			}else{
+				li = $("<li name="+i+">"+i+"</li>");
+//			}
+			
 			container.append(li);
 			li.on("click",pageClickFun);
 		}
 		
 	}
 	
+	$('.pre').click(function(){
+		if(currentPage > 1){
+			currentPage -=1;
+			pageCommonFun();
+		}else{
+			alert("已经到了第一页");
+		}
+		
+	});
 	
+	$('.next').click(function(){
+		if(currentPage < pageNum){
+			currentPage +=1;
+			pageCommonFun();
+		}else{
+			alert("已经到了最后一页");
+		}
+	});
 	
 	//点击某一页查询相应的数据
 	function pageClickFun(){
-		var min = num - 1;
+		currentPage = $(this).attr('name');
+		pageCommonFun();
+	}
+	
+	function pageCommonFun(){
+		var num = 4;//每页显示4条数据
+		var min = (currentPage - 1) * num;
+		
+		$('.page li').css("background-color","white");
+		$('.page li:eq('+(currentPage-1)+')').css("background-color","#ffcc00");
+		
+		console.log("最小"+min);
 		getData(min);
 	}
 	

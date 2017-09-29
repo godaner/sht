@@ -171,33 +171,28 @@
 
 		<div class="trading_item_info">
 			<ul>
-				
+
 
 			</ul>
 		</div>
 	</div>
 	<br>
 	<br>
-	<footer> 
+	<footer>
 	<div>
-	<a href="">
 		<div class="pre">
 			<img src="goods/img/pre_page.png" /> <span>上一页</span>
 		</div>
-	</a>
-	<ul class="page">
-		
-	</ul>
-	<a href="">
+
+		<ul class="page">
+
+		</ul>
 		<div class="next">
 			<span>下一页</span> <img src="goods/img/next_page.png" />
 		</div>
-	</a> 
-	<span class="allPage"></span>
-	</div> 
-	</footer> 
-	</section> 
-	</article>
+		<span class="allPage"></span>
+	</div>
+	</footer> </section> </article>
 
 	<%@ include file="commonFooter.jsp"%>
 </body>
