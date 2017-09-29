@@ -8,16 +8,31 @@
 <title>发布商品展示</title>
 </head>
 <body>
-<!-- 搜索框 -->
+
+			<!-- 导航选择栏 -->
+			<div class="choose_status">
+			
+			<a href="#">所有订单</a>/
+			<a href="#">再出售</a>/
+			<a href="#">待发货</a>/
+			<a href="#">已发货</a>/
+			<a href="#">申请退货</a>/
+			<a href="#">退货</a>/
+			<a href="#">已完成订单</a>/
+			<a href="#">待审核</a>/
+			<a href="#">未通过审核</a>
+			<hr/>
+			</div>
+			<!-- 搜索框 -->
 			<div class="search">
 			<input type="text" placeholder="请输入商品标题" onchange="searchUGoods();" id="search_input"/> <button onclick="searchUGoods();">搜索</button>
 			</div>
 			<!-- 顶部标题栏 -->
 			<div class="title">
 			<table class="title_table">
-			<tr>
+			<tr id="title_table_tr">
 			<td></td>
-			<td>宝贝标题</td>
+			<td>宝贝</td>
 			<td>介绍</td>
 			<td>价格</td>
 			<td>状态</td>
@@ -30,27 +45,32 @@
 		<!-- 已发布列表 -->
 	
 		<div class="list">
-	<!-- 	
-		<div class='issue'>
-		<div class='issue_title'><p>创建时间 :&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div>
-		<div class='issue_body'>
-	   <table class="title_table">
-	   <tr>
-	    <td><img  src='../img/content_icon.png'>
-	    <a href="#"></a></td>
-	    <td><p>介绍<p></td>
-	    <td><p>价格<p></td>
-	    <td><p>状态<p></td>
-	    <td><a href="#">取消</a>&nbsp;|&nbsp;<a href="#">详情</a></td>
-	    </tr>
-	    </table>
-	    </div>
-	    </div>
-		
-		 -->
+		<!-- <div class="issue">
+		<div class="issue_title"><p>创建时间 :2017-5-09&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div>
+		<div class="issue_body">
+	    <table class="title_table"><tr><td><img  src="../img/content_icon.png"></td>
+	    <td><a href="#">刚刚开封，七成新的辣条</a></td>
+	    <td><p>这是一条测试数据，此处填写的是商品介绍<p></td>
+	    <td><p>现价：50</p><p class="outprice">原价：100<p></td>
+	    <td><p>状态：已出售<p></td>
+	    <td><a href="#">取消</a>&nbsp;&nbsp;<a href="#">详情</a></td>
+	    </tr></table></div></div>  -->
 		</div>
 		
-		<div class="detail"></div>
+		<div class="detail">
+		
+<!-- 		标题<input type="text" value="" id='title'/>
+		介绍<input type="text" value="" id='description'/><br/>
+		现价<input type="text" value="" id='sprice'/>
+		原价<input type="text" value="" id='price'/><br/>
+		成色<input type="text" value="" id='condition'/>
+	   	地区<input type="text" value="" id='region'/><br/>
+	   	<i>状态</i><br/>
+	   	<i>创建时间</i><br/>
+	   	<i>浏览次数</i><br/><i>最后更新时间</i><br/> -->
+		
+		
+		</div>
 		<div class="UpdateUGoods"></div>
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 		<input type="hidden" value="${onlineUser.id}" id="userid"/>
@@ -68,13 +88,18 @@
     background-color:rgb(241,241,241);
 }
 .issue{
-	margin-top:2%;
-    height: 120px;
+	margin-top:2%; 
+    height: 100px;
     width:900px;
-    border: solid 1px grey;
+    border: solid 1px #EDEDED;
+    
 }
 
-
+ .title table tr td{
+	position:relative;
+	left:-35px;
+	border:none;
+} 
 .issue_title{
 	margin-top:-2%;
 	background-color:rgb(241,241,241);
@@ -83,11 +108,29 @@
 }
 .title_table tr td{
 	width:80px;
-	padding-left:60px;
+	padding-left:65px;
 	position:relative;
-	left:-30px;
+	text-align:center;
+	border-left:solid 1px #F2F2F2;
+	top:-20px;
+	left:-2px;
+}
+#title_table_tr td{
+	width:80px;
+	padding-left:65px;
+	position:relative;
+	text-align:center;
+	border-left:solid 1px #F2F2F2;
+	top:5px;
 }
 
+.title_table tr td p,a{
+	position:relative;
+	left:-35px;
+}
+.issue_body table{
+	height:100px;
+}
 .title_table img{
 	border:solid 1px black;
 	width:40px;
@@ -97,6 +140,7 @@
 }
 .list{
 	margin-top:8%;
+	font-size:13px;
 }
 .turnPage button{
 	float:right;
@@ -109,7 +153,26 @@
 .outprice{
 text-decoration:line-through;
 }	
+.detail input{
+	 border-style:none;
+	 border:solid 1px black;
+	 border-radius:5px;
+	 /* margin-left:40px; */
+	 margin:10px 20px;
+}
+.UpdateUGoods button{
+	border-style:none; 
+	border-radius:5px;
+	background-color: #EEEED1;
+	margin-left:100px;
+	height:30px;
+	width:70px;
+	cursor:pointer;
+}	
+
+.choose_status{
 	
+}
 </style>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
@@ -198,11 +261,11 @@ function showGoodsdetail(id){
 	    	$(".turnPage").empty();
 	    	var h = "";
 	    	h+="标题<input type='text' value='"+data['title']+"' id='title'/>介绍<input type='text' value='"+data['description']+"' id='description'/><br/>现价<input type='text' value='"+data['sprice']+"' id='sprice'/>原价<input type='text' value='"+data['price']+"' id='price'/><br/>成色<input type='text' value='"+data['condition']+"' id='condition'/>";
-	    	h+="地区<input type='text' value='"+data['region']+"' id='region' /><p>状态"+data['status']+"</p><p>创建时间"+data['createtime']+"</p><p>浏览次数"+data['browse_number']+"</p><p>最后更新时间"+data['last_update_time']+"</p>";
+	    	h+="地区<input type='text' value='"+data['region']+"' id='region' /><p>状态:"+data['status']+"</p><p>创建时间:"+data['createtime']+"</p><p>浏览次数:"+data['browsenumber']+"</p><p>最后更新时间:"+data['lastupdatetime']+"</p>";
 	    	$(".detail").html(h);
 	    	h="";
 	    	h+="<button type='button' onclick=UpdateUGoodsById('"+id+"')>修改</button>";
-			h+="<button type='button' onclick=''>返回</button>";
+			h+="<button type='button' onclick='window.history.go(0)'>返回</button>";
 			$(".UpdateUGoods").html(h);
     		h="";
 	    },error:function(){
@@ -251,10 +314,10 @@ function showList(){
 	    		h+="<div class='issue'><div class='issue_title'><p>创建时间 :"+goods['createtime']+"&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div><div class='issue_body'>";
 	    		h+="<table class='title_table'><tr><td><img  src='../img/content_icon.png'></td>";
 	    		h+="<td><a href=javascript:showGoodsdetail('"+id+"');>"+goods['title']+"</a></td>";
-	    		h+="<td><p>介绍"+goods['description']+"<p></td>";
-	    		h+="<td><p>"+goods['sprice']+"</p><p class='outprice'> "+goods['price']+"<p></td>";
-	    		h+="<td><p>状态"+goods['status']+"<p></td>";
-	    		h+="<td><a href=javascript:deleteGoodsByid('"+id+"');>取消</a>&nbsp;|&nbsp;<a href=javascript:showGoodsdetail('"+id+"');>详情</a></td></tr></table></div></div>";
+	    		h+="<td><p>"+goods['description']+"<p></td>";
+	    		h+="<td><p>现价："+goods['sprice']+"</p><p class='outprice'>原价： "+goods['price']+"<p></td>";
+	    		h+="<td><p>"+goods['status']+"<p></td>";
+	    		h+="<td><a href=javascript:deleteGoodsByid('"+id+"');>取消</a>&nbsp;&nbsp;<a href=javascript:showGoodsdetail('"+id+"');>详情</a></td></tr></table></div></div>";
 	    		}
 	    		$(".list").html(h);
 	    		h="";

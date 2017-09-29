@@ -102,6 +102,8 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		 
 		 String title = getRequestParam("title");
 		 
+		 logger.info("title:"+title);
+		 
 		 int PageTo = Integer.parseInt(PageToStr);
 		 
 		// CustomUsers customUsers  = getSessionAttr(FILED_ONLINE_USER);

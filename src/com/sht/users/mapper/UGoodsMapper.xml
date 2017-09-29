@@ -8,7 +8,7 @@
 	
 	<select id="searchUGoodsBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE #{title}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%') G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="getGoodsCountById" parameterType="string" resultType="int">
