@@ -68,7 +68,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		info("select goods total num [by region]");
 		double totalNum =0;
 		try {
-			totalNum = service.selectGoodsAllNum(po.getRegion());
+			totalNum = service.selectGoodsAllNum(po);
 			 
 		} catch (Exception e) {
 			// TODO: handle exception

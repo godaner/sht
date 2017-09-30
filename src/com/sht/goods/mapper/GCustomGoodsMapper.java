@@ -51,7 +51,7 @@ public interface GCustomGoodsMapper {
 	 * 
 	 * @return
 	 */
-	public Double selectGoodsTotalNum(String r);
+	public Double selectGoodsTotalNum(GGoods goods);
 	
 	
 	

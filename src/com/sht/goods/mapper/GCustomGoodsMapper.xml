@@ -20,6 +20,9 @@
               )
 			)
 		</if>
+		<if test="minPrice !=0 or maxPrice != 0">
+			and sprice between #{minPrice} and #{maxPrice}
+		</if>
 		<if test="3 != orderByTime">
 			order by createtime desc
 		</if>
@@ -31,6 +34,8 @@
 				order by sprice asc
 			</if>
 		</if>
+		
+	
 		) A
 		WHERE ROWNUM <![CDATA[<=]]>#{maxLine}
 		)
@@ -38,17 +43,31 @@
 		
 	</select>
 
-	<select id="selectGoodsTotalNum" resultType="double" parameterType="string">
+	<select id="selectGoodsTotalNum" resultType="double" parameterType="com.sht.goods.po.GGoods">
 		select count(*) from
 		goods
-		<if test="value != null">
+		
+		<if test="sregion != 0 and sregion != null">
 			<where>
 					  region in (
 					 	select region.id from region where pid in(
-		              		select region.id from region where pid=#{value}
+		              		select region.id from region where pid=#{sregion}
 		              	)
 					)
 			</where>
+		</if>
+		
+		<if test="minPrice != 0 or maxPrice != 0">
+			<choose>
+				<when test="sregion != 0 and sregion != null">
+					and sprice between #{minPrice} and #{maxPrice}
+				</when>
+				<otherwise>
+					<where>
+						sprice between #{minPrice} and #{maxPrice}
+					</where>
+				</otherwise>
+			</choose>
 		</if>
 		
 	</select>

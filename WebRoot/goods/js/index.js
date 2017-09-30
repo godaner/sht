@@ -6,6 +6,8 @@
 
 $(function () {
 	var baseUrl = $('#baseUrl').val();
+	$('#minPrice').html('');
+	$('#maxPrice').html('');
     //展开或收起闲置列表
     var flag = false;
     $('#show').click(function () {
@@ -31,21 +33,24 @@ $(function () {
 
 
     var globalRegion=0,globalData = null,isOrderByTime = 3,isOrderByPrice = 3;
+    var minPrice = 0,maxPrice = 0;
     
     //根据点击事件切换价格上下箭头的颜色
     var direction = 1;
     $('.select>li:nth-of-type(1)').click(function(){
+    	restorePrice();
     	$('.select li').css("background-color","#f9fbff");
     	$(this).css("background-color","#e6fdff");
     	isOrderByTime = 1;//按照时间降序排列
     	isOrderByPrice = 3;//3表示不为查询条件
-    	getData(0,globalRegion,isOrderByTime,isOrderByPrice);
+    	getData(0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice);
     })
     
     
     $('.select>li:nth-of-type(2)').click(function(){
-    	 $('.select li').css("background-color","#f9fbff");
-    	 $(this).css("background-color","#e6fdff");
+    	restorePrice();
+    	$('.select li').css("background-color","#f9fbff");
+    	$(this).css("background-color","#e6fdff");
         restoreDefaults();
         if(1 == direction){
             $('#price>img:nth-of-type(1)').attr('src',"goods/img/price_top_yellow.png");
@@ -60,7 +65,7 @@ $(function () {
         }
         
         
-    	getData(0,globalRegion,isOrderByTime,isOrderByPrice);
+    	getData(0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice);
     })
 
     function restoreDefaults(){
@@ -78,6 +83,7 @@ $(function () {
 
     //显示城市列表
     $('.city>div>ul').click(function(){
+    	restorePrice();
     	getRegionData();
         var height = $(document).scrollTop();
         $('.city_info').css({
@@ -151,9 +157,7 @@ $(function () {
     	//根据省份id查询商品总数量
     	if(region == 1)
     		region = 0;
-    	getTotalNum(region);
-    	//根据省份id查询商品信息
-//    	getData(0,region);
+    	getTotalNum(region,minPrice,maxPrice);
     	
     }
    
@@ -211,6 +215,31 @@ $(function () {
 
 //	var baseUrl = $('#baseUrl').val();
 	
+    
+    $('#sure').click(function(){
+    	minPrice = $('#minPrice').val();
+    	maxPrice = $('#maxPrice').val();
+    	
+    	if(minPrice == null || minPrice == '' || 
+    			maxPrice == null || maxPrice == ''){
+    		alert("请输入价格范围");
+    		return false;
+    	}else if(minPrice <0 || maxPrice < 0){
+    		alert("请输入正确的价格");
+    		return false;
+    	}
+    	console.log("globalRegion:"+globalRegion);
+    	getTotalNum(globalRegion,minPrice,maxPrice);
+    	
+    });
+    
+    function restorePrice(){
+    	$('#minPrice').html('');
+    	$('#maxPrice').html('');
+    	minPrice = 0;
+    	maxPrice = 0;
+    }
+    
 	generalCatogaryGoods();
 	//获取商品所有类别
 	function generalCatogaryGoods(){
@@ -256,11 +285,11 @@ $(function () {
 	
 //	console.log(baseUrl);
 	
-	getTotalNum(0.0);
+	getTotalNum(0.0,0,0);
 //	var isFirstAcsse = true;
-	function getData(min,region,orderByTime,orderByPrice){
-		console.log("orderByTime:"+orderByTime);
-		console.log("orderByPrice:"+orderByPrice);
+	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice){
+		console.log("minPrice:"+minPrice);
+		console.log("maxPrice:"+maxPrice);
 		
 		if(orderByTime != 3 || orderByTime != 3)
 			setPage(region);
@@ -272,7 +301,9 @@ $(function () {
 		var url ="minLine="+min+
 				  "&region="+region +
 				  "&orderByTime="+orderByTime+
-				  "&orderByPrice="+orderByPrice;
+				  "&orderByPrice="+orderByPrice+
+				  "&minPrice="+minPrice+
+				  "&maxPrice="+maxPrice;
 //		console.log("url:"+url);
 		$.ajax({
 			type : "post",  //请求方式,get,post等
@@ -444,7 +475,7 @@ $(function () {
 		
 		console.log("最小"+min);
 		
-		getData(min,globalRegion,isOrderByTime,isOrderByPrice);
+		getData(min,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice);
 	}
 	
 	
@@ -454,14 +485,15 @@ $(function () {
 	}
 	
 	//获取商品总数
-	function getTotalNum(region){
+	function getTotalNum(region,minPrice,maxPrice){
 		console.log("getTotalNum--region="+region);
 		
 		$.ajax({
 			type : "post",  //请求方式,get,post等
 		    dataType:'json',//response返回数据的格式
 		    async : false,  //同步请求  
-		    url : baseUrl+"/goods/selectGoodsAllNum.action?region="+region,  //需要访问的地址
+		    url : baseUrl+"/goods/selectGoodsAllNum.action?sregion="+region+"&minPrice="+minPrice
+		    							+"&maxPrice="+maxPrice,  //需要访问的地址
 			success:function(data){
 
 				//显示商品数据
@@ -469,7 +501,7 @@ $(function () {
 				$('.city>div>span').html("("+data+")");
 				totalNum = data;
 				if(totalNum != 0){
-					getData(0,region,isOrderByTime,isOrderByPrice);//获取商品信息
+					getData(0,region,isOrderByTime,isOrderByPrice,minPrice,maxPrice);//获取商品信息
 					setPage(region);
 				}else{
 					showTipInfo();
