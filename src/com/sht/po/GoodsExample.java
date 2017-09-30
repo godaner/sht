@@ -1435,52 +1435,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillEqualTo(Object value) {
+        public Criteria andRefusereturnmoneybillEqualTo(String value) {
             addCriterion("REFUSERETURNMONEYBILL =", value, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillNotEqualTo(Object value) {
+        public Criteria andRefusereturnmoneybillNotEqualTo(String value) {
             addCriterion("REFUSERETURNMONEYBILL <>", value, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillGreaterThan(Object value) {
+        public Criteria andRefusereturnmoneybillGreaterThan(String value) {
             addCriterion("REFUSERETURNMONEYBILL >", value, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillGreaterThanOrEqualTo(Object value) {
+        public Criteria andRefusereturnmoneybillGreaterThanOrEqualTo(String value) {
             addCriterion("REFUSERETURNMONEYBILL >=", value, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillLessThan(Object value) {
+        public Criteria andRefusereturnmoneybillLessThan(String value) {
             addCriterion("REFUSERETURNMONEYBILL <", value, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillLessThanOrEqualTo(Object value) {
+        public Criteria andRefusereturnmoneybillLessThanOrEqualTo(String value) {
             addCriterion("REFUSERETURNMONEYBILL <=", value, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillIn(List<Object> values) {
+        public Criteria andRefusereturnmoneybillIn(List<String> values) {
             addCriterion("REFUSERETURNMONEYBILL in", values, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillNotIn(List<Object> values) {
+        public Criteria andRefusereturnmoneybillNotIn(List<String> values) {
             addCriterion("REFUSERETURNMONEYBILL not in", values, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillBetween(Object value1, Object value2) {
+        public Criteria andRefusereturnmoneybillBetween(String value1, String value2) {
             addCriterion("REFUSERETURNMONEYBILL between", value1, value2, "refusereturnmoneybill");
             return (Criteria) this;
         }
 
-        public Criteria andRefusereturnmoneybillNotBetween(Object value1, Object value2) {
+        public Criteria andRefusereturnmoneybillNotBetween(String value1, String value2) {
             addCriterion("REFUSERETURNMONEYBILL not between", value1, value2, "refusereturnmoneybill");
             return (Criteria) this;
         }
