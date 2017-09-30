@@ -42,6 +42,13 @@ public class GGoods extends Goods {
 	
 	private String orderByPrice;
 	
+	
+	private String minPrice;
+	
+	private String maxPrice;
+	
+	private String sregion;
+	
 	public File[] getFiles() {
 		return files;
 	}
@@ -133,6 +140,32 @@ public class GGoods extends Goods {
 	public void setOrderByPrice(String orderByPrice) {
 		this.orderByPrice = orderByPrice;
 	}
+
+	public String getMinPrice() {
+		return minPrice;
+	}
+
+	public void setMinPrice(String minPrice) {
+		this.minPrice = minPrice;
+	}
+
+	public String getMaxPrice() {
+		return maxPrice;
+	}
+
+	public void setMaxPrice(String maxPrice) {
+		this.maxPrice = maxPrice;
+	}
+
+	public String getSregion() {
+		return sregion;
+	}
+
+	public void setSregion(String sregion) {
+		this.sregion = sregion;
+	}
+
+	
 
 	
 

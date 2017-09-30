@@ -36,7 +36,7 @@ public interface GoodsServiceI {
 	 * Description:query the total number of all goods
 	 
 	 */
-	public double selectGoodsAllNum(Double region) throws Exception;
+	public double selectGoodsAllNum(GGoods goods) throws Exception;
 	
 	/**
 	 * 

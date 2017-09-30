@@ -17,6 +17,14 @@
     <result column="LASTUPDATETIME" jdbcType="TIMESTAMP" property="lastupdatetime" />
     <result column="BUYTIME" jdbcType="TIMESTAMP" property="buytime" />
     <result column="FINISHTIME" jdbcType="TIMESTAMP" property="finishtime" />
+    <result column="TOPROVINCE" jdbcType="CHAR" property="toprovince" />
+    <result column="TOCITY" jdbcType="CHAR" property="tocity" />
+    <result column="TOCOUNTY" jdbcType="CHAR" property="tocounty" />
+    <result column="TODETAIL" jdbcType="CHAR" property="todetail" />
+    <result column="PHONE" jdbcType="CHAR" property="phone" />
+    <result column="TOREALNAME" jdbcType="CHAR" property="torealname" />
+    <result column="POSTCODE" jdbcType="CHAR" property="postcode" />
+    <result column="REFUSERETURNMONEYBILL" jdbcType="OTHER" property="refusereturnmoneybill" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +86,8 @@
   </sql>
   <sql id="Base_Column_List">
     ID, TITLE, DESCRIPTION, SPRICE, PRICE, CONDITION, REGION, STATUS, CREATETIME, OWNER, 
-    BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME
+    BUYER, BROWSENUMBER, LASTUPDATETIME, BUYTIME, FINISHTIME, TOPROVINCE, TOCITY, TOCOUNTY, 
+    TODETAIL, PHONE, TOREALNAME, POSTCODE, REFUSERETURNMONEYBILL
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.GoodsExample" resultMap="BaseResultMap">
     select
@@ -115,14 +124,18 @@
       SPRICE, PRICE, CONDITION, 
       REGION, STATUS, CREATETIME, 
       OWNER, BUYER, BROWSENUMBER, 
-      LASTUPDATETIME, BUYTIME, FINISHTIME
-      )
+      LASTUPDATETIME, BUYTIME, FINISHTIME, 
+      TOPROVINCE, TOCITY, TOCOUNTY, 
+      TODETAIL, PHONE, TOREALNAME, 
+      POSTCODE, REFUSERETURNMONEYBILL)
     values (#{id,jdbcType=CHAR}, #{title,jdbcType=CHAR}, #{description,jdbcType=CHAR}, 
       #{sprice,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, #{condition,jdbcType=SMALLINT}, 
       #{region,jdbcType=DOUBLE}, #{status,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP}, 
       #{owner,jdbcType=CHAR}, #{buyer,jdbcType=CHAR}, #{browsenumber,jdbcType=DOUBLE}, 
-      #{lastupdatetime,jdbcType=TIMESTAMP}, #{buytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}
-      )
+      #{lastupdatetime,jdbcType=TIMESTAMP}, #{buytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}, 
+      #{toprovince,jdbcType=CHAR}, #{tocity,jdbcType=CHAR}, #{tocounty,jdbcType=CHAR}, 
+      #{todetail,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{torealname,jdbcType=CHAR}, 
+      #{postcode,jdbcType=CHAR}, #{refusereturnmoneybill,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Goods">
     insert into SHT.GOODS
@@ -172,6 +185,30 @@
       <if test="finishtime != null">
         FINISHTIME,
       </if>
+      <if test="toprovince != null">
+        TOPROVINCE,
+      </if>
+      <if test="tocity != null">
+        TOCITY,
+      </if>
+      <if test="tocounty != null">
+        TOCOUNTY,
+      </if>
+      <if test="todetail != null">
+        TODETAIL,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="torealname != null">
+        TOREALNAME,
+      </if>
+      <if test="postcode != null">
+        POSTCODE,
+      </if>
+      <if test="refusereturnmoneybill != null">
+        REFUSERETURNMONEYBILL,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -218,6 +255,30 @@
       </if>
       <if test="finishtime != null">
         #{finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="toprovince != null">
+        #{toprovince,jdbcType=CHAR},
+      </if>
+      <if test="tocity != null">
+        #{tocity,jdbcType=CHAR},
+      </if>
+      <if test="tocounty != null">
+        #{tocounty,jdbcType=CHAR},
+      </if>
+      <if test="todetail != null">
+        #{todetail,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="torealname != null">
+        #{torealname,jdbcType=CHAR},
+      </if>
+      <if test="postcode != null">
+        #{postcode,jdbcType=CHAR},
+      </if>
+      <if test="refusereturnmoneybill != null">
+        #{refusereturnmoneybill,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
@@ -275,6 +336,30 @@
       <if test="record.finishtime != null">
         FINISHTIME = #{record.finishtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.toprovince != null">
+        TOPROVINCE = #{record.toprovince,jdbcType=CHAR},
+      </if>
+      <if test="record.tocity != null">
+        TOCITY = #{record.tocity,jdbcType=CHAR},
+      </if>
+      <if test="record.tocounty != null">
+        TOCOUNTY = #{record.tocounty,jdbcType=CHAR},
+      </if>
+      <if test="record.todetail != null">
+        TODETAIL = #{record.todetail,jdbcType=CHAR},
+      </if>
+      <if test="record.phone != null">
+        PHONE = #{record.phone,jdbcType=CHAR},
+      </if>
+      <if test="record.torealname != null">
+        TOREALNAME = #{record.torealname,jdbcType=CHAR},
+      </if>
+      <if test="record.postcode != null">
+        POSTCODE = #{record.postcode,jdbcType=CHAR},
+      </if>
+      <if test="record.refusereturnmoneybill != null">
+        REFUSERETURNMONEYBILL = #{record.refusereturnmoneybill,jdbcType=OTHER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -296,7 +381,15 @@
       BROWSENUMBER = #{record.browsenumber,jdbcType=DOUBLE},
       LASTUPDATETIME = #{record.lastupdatetime,jdbcType=TIMESTAMP},
       BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
-      FINISHTIME = #{record.finishtime,jdbcType=TIMESTAMP}
+      FINISHTIME = #{record.finishtime,jdbcType=TIMESTAMP},
+      TOPROVINCE = #{record.toprovince,jdbcType=CHAR},
+      TOCITY = #{record.tocity,jdbcType=CHAR},
+      TOCOUNTY = #{record.tocounty,jdbcType=CHAR},
+      TODETAIL = #{record.todetail,jdbcType=CHAR},
+      PHONE = #{record.phone,jdbcType=CHAR},
+      TOREALNAME = #{record.torealname,jdbcType=CHAR},
+      POSTCODE = #{record.postcode,jdbcType=CHAR},
+      REFUSERETURNMONEYBILL = #{record.refusereturnmoneybill,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -346,6 +439,30 @@
       <if test="finishtime != null">
         FINISHTIME = #{finishtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="toprovince != null">
+        TOPROVINCE = #{toprovince,jdbcType=CHAR},
+      </if>
+      <if test="tocity != null">
+        TOCITY = #{tocity,jdbcType=CHAR},
+      </if>
+      <if test="tocounty != null">
+        TOCOUNTY = #{tocounty,jdbcType=CHAR},
+      </if>
+      <if test="todetail != null">
+        TODETAIL = #{todetail,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="torealname != null">
+        TOREALNAME = #{torealname,jdbcType=CHAR},
+      </if>
+      <if test="postcode != null">
+        POSTCODE = #{postcode,jdbcType=CHAR},
+      </if>
+      <if test="refusereturnmoneybill != null">
+        REFUSERETURNMONEYBILL = #{refusereturnmoneybill,jdbcType=OTHER},
+      </if>
     </set>
     where ID = #{id,jdbcType=CHAR}
   </update>
@@ -364,7 +481,15 @@
       BROWSENUMBER = #{browsenumber,jdbcType=DOUBLE},
       LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
       BUYTIME = #{buytime,jdbcType=TIMESTAMP},
-      FINISHTIME = #{finishtime,jdbcType=TIMESTAMP}
+      FINISHTIME = #{finishtime,jdbcType=TIMESTAMP},
+      TOPROVINCE = #{toprovince,jdbcType=CHAR},
+      TOCITY = #{tocity,jdbcType=CHAR},
+      TOCOUNTY = #{tocounty,jdbcType=CHAR},
+      TODETAIL = #{todetail,jdbcType=CHAR},
+      PHONE = #{phone,jdbcType=CHAR},
+      TOREALNAME = #{torealname,jdbcType=CHAR},
+      POSTCODE = #{postcode,jdbcType=CHAR},
+      REFUSERETURNMONEYBILL = #{refusereturnmoneybill,jdbcType=OTHER}
     where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

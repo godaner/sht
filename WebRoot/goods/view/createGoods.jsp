@@ -50,7 +50,7 @@
 					<li title="最多可添加五张图片" class="preview" id="add"><img src="goods/img/add.png" id="img"></li>
 				</ul>
 					<input id="file" type="file" name="files"
-					 multiple="multiple" />
+					 multiple="multiple" style="visibility: hiden;width:0;height:0;"/>
 					
 					<!-- <input id="file" type="file" name="files"
 					 multiple="multiple" />
@@ -78,11 +78,41 @@
 					<br />
 					<li><span>商品原价&nbsp;:&nbsp;</span> <input type="text"
 						name="price" placeholder="商品原价" id="price" /></li>
-					<li><span>商&nbsp;品&nbsp;&nbsp;成&nbsp;色&nbsp;:&nbsp;</span> <input
-						name="condition" type="text" placeholder="商品成色" id="condition" /></li>
+					<li><span>商&nbsp;品&nbsp;&nbsp;成&nbsp;色&nbsp;:&nbsp;</span>
+						<select name="condition" id="condition">
+							<option value="0">--请选择--</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+						</select>
+					</li>
 					<br />
-					<li><span>所&nbsp;&nbsp;在&nbsp;&nbsp;地&nbsp;:&nbsp;</span> <input
-						name="region" type="text" placeholder="所在地" id="region" /></li>
+					<li><span>所&nbsp;&nbsp;在&nbsp;&nbsp;地&nbsp;:&nbsp;</span>
+							<select name="region" id="region">
+								<option value="-1">--请选择--</option>
+							</select>
+						</div>
+					</li>
+					<li><span>商&nbsp;品&nbsp;&nbsp;类&nbsp;别&nbsp;:&nbsp;</span>
+						<select name="clazzs" id="clazzs">
+							<option value="0">--请选择--</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+						</select>
+					</li>
 				</ul>
 				<input type="submit" value="立即发布" id="create">
 			</div>
