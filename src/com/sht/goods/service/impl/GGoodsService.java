@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.sht.goods.mapper.CustomGoodsMapper;
+import com.sht.goods.mapper.GCustomGoodsMapper;
 import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.po.GGoodsImgs;
@@ -28,6 +28,8 @@ import com.sht.mapper.FilesMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
 import com.sht.po.Clazzs;
+
+import oracle.net.aso.r;
 
 /**
  * Title:UsersService
@@ -40,9 +42,9 @@ import com.sht.po.Clazzs;
  * @version 1.0
  */
 @Service
-public class GoodsService extends GBaseService implements GoodsServiceI {
+public class GGoodsService extends GBaseService implements GoodsServiceI {
 	@Autowired
-	private CustomGoodsMapper customGoodsMapper;
+	private GCustomGoodsMapper customGoodsMapper;
 
 	@Autowired
 	private GoodsMapper goodsMapper;
@@ -59,7 +61,7 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	@Override
 
 	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception {
-
+		info("-------display-service----"+goods.getRegion());
 		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo(goods);
 		info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
@@ -73,14 +75,14 @@ public class GoodsService extends GBaseService implements GoodsServiceI {
 	 */
 	@Override
 	public double selectGoodsAllNum(Double region) throws Exception {
-		// TODO Auto-generated method stub
+		//region为0查询所有商品数量，region不为0则查询对应地区的商品总数量
 
-		if (0 == region) {
-			return customGoodsMapper.selectGoodsTotalNum();
-		} else {
-			return customGoodsMapper.selectGoodsTotalNumByRegion(region);
+		String r = null;
+		if(!region.equals(0d)){
+			r = String.valueOf(region.intValue());
 		}
-
+		Double result = customGoodsMapper.selectGoodsTotalNum(r);
+		return result;
 	}
 
 	/**

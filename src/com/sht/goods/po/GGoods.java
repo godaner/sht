@@ -38,6 +38,10 @@ public class GGoods extends Goods {
 	
 	private int rownum;
 	
+	private String orderByTime;
+	
+	private String orderByPrice;
+	
 	public File[] getFiles() {
 		return files;
 	}
@@ -113,6 +117,24 @@ public class GGoods extends Goods {
 	public void setRownum(int rownum) {
 		this.rownum = rownum;
 	}
+
+	public String getOrderByTime() {
+		return orderByTime;
+	}
+
+	public void setOrderByTime(String orderByTime) {
+		this.orderByTime = orderByTime;
+	}
+
+	public String getOrderByPrice() {
+		return orderByPrice;
+	}
+
+	public void setOrderByPrice(String orderByPrice) {
+		this.orderByPrice = orderByPrice;
+	}
+
+	
 
 	
 	

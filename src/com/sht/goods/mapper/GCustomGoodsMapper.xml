@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.goods.mapper.GCustomGoodsMapper">
+	<select id="selectAllGoodsInfo" parameterType="com.sht.goods.po.GGoods"
+		resultType="com.sht.goods.po.GGoods">
+		SELECT *
+		FROM(
+		SELECT A.*,ROWNUM RN
+		FROM (
+		SELECT U0.ID AS USERID,U0.HEADIMG AS
+		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
+		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
+		MSGNUM,rownum
+		FROM USERS U0,GOODS G0
+		WHERE G0.OWNER = U0.ID
+		<if test="0 != region">
+			and region in (
+			 select region.id from region where pid in(
+              select region.id from region where pid=#{region}
+              )
+			)
+		</if>
+		<if test="3 != orderByTime">
+			order by createtime desc
+		</if>
+		<if test="3 != orderByPrice">
+			<if test="1 == orderByPrice">
+				order by sprice desc
+			</if>
+			<if test="2 == orderByPrice">
+				order by sprice asc
+			</if>
+		</if>
+		) A
+		WHERE ROWNUM <![CDATA[<=]]>#{maxLine}
+		)
+		WHERE RN<![CDATA[>]]>#{minLine}
+		
+	</select>
+
+	<select id="selectGoodsTotalNum" resultType="double" parameterType="string">
+		select count(*) from
+		goods
+		<if test="value != null">
+			<where>
+					  region in (
+					 	select region.id from region where pid in(
+		              		select region.id from region where pid=#{value}
+		              	)
+					)
+			</where>
+		</if>
+		
+	</select>
+
+	<select id="selectGoodsTotalNumByRegion" resultType="Double"
+		parameterType="Double">
+		select count(*) from goods where region = #{region}
+	</select>
+
+	<select id="insertGoods" parameterType="com.sht.goods.po.GGoods">
+		
+	</select>
+
+
+</mapper>
