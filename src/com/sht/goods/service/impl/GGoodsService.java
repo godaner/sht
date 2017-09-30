@@ -61,7 +61,8 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 	@Override
 
 	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception {
-		info("-------display-service----"+goods.getRegion());
+		info("-------minPrice----"+goods.getMinPrice());
+		info("-------maxPrice----"+goods.getMaxPrice());
 		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo(goods);
 		info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
@@ -74,14 +75,17 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 	 * 显示所有商品的数量
 	 */
 	@Override
-	public double selectGoodsAllNum(Double region) throws Exception {
+	public double selectGoodsAllNum(GGoods goods) throws Exception {
 		//region为0查询所有商品数量，region不为0则查询对应地区的商品总数量
 
-		String r = null;
-		if(!region.equals(0d)){
-			r = String.valueOf(region.intValue());
-		}
-		Double result = customGoodsMapper.selectGoodsTotalNum(r);
+//		String r = null;
+//		if(!region.equals(0d)){
+//			r = String.valueOf(region.intValue());
+//		}
+		info("-----------sregion="+goods.getSregion());
+		info("-----------minPrice="+goods.getMinPrice());
+		info("-----------maxPrice="+goods.getMaxPrice());
+		Double result = customGoodsMapper.selectGoodsTotalNum(goods);
 		return result;
 	}
 

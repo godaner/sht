@@ -197,7 +197,7 @@ textarea{
 
 }
 
-.detail-info>ul>li>input{
+.detail-info>ul>li>input,.detail-info>ul>li>select{
     height: 30px;
     width: 200px;
 }
