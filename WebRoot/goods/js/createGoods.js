@@ -106,8 +106,8 @@ $(function() {
 		} else if (null == condition || "" == condition || 0 == condition) {
 			alert("请选择商品成色");
 			return false;
-		} else if (null == region || "" == region || -1 == region) {
-			alert("请选择商品销售地");
+		} else if ( -1 == region) {
+			alert("请选择商品销售地(省-市-县)");
 			return false;
 		} else if (null == img || "" == img) {
 			alert("请至少上传一张图片");
@@ -233,11 +233,23 @@ $(function() {
 		URL.revokeObjectURL(url);
 	}
 	
-	$('#region').click(function(){
-		getRegionData(1);
+
+	$('#province').change(function(){
+		var pid = $(this).children('option:selected').val();   
+		getRegionData(pid,$('#city'));
 	})
 	
-	function getRegionData(pid){
+	$('#city').change(function(){
+		var pid = $(this).children('option:selected').val();   
+		getRegionData(pid,$('#county'));
+	})
+	
+//	$('#county').change(function(){
+//		alert($(this).children('option:selected').val());   
+//	})
+	
+	getRegionData(1,$('#province'));
+	function getRegionData(pid,target){
 		$.ajax({
 			type : "post",  //请求方式,get,post等
 		    dataType:'json',//response返回数据的格式
@@ -245,9 +257,9 @@ $(function() {
 		    url : baseUrl+"/regions/selectAllRegions.action?pid="+pid,  //需要访问的地址
 			success:function(data){
 				console.log("访问地区成功!");
-				//显示商品类别
+
 				console.log(data);
-				setRegionData(data);
+				setRegionData(data,target);
 			},
 			error:function(data){
 				console.log("访问地区失败!");
@@ -256,25 +268,54 @@ $(function() {
 		});
 	}
 
-	function setRegionData(data){
-    	var container = $('#region');
+	function setRegionData(data,target){
+    	var container = target;
     	container.find('option:not(:first)').remove();
     	
     	$.each(data,function(index,item){
     		var id = item['id'];
     		var name = item['name'];
     		if(name != '中国'){
-    			var option = $('<option value="'+id+'">'+name+'</option>');
-    			option.on("click",showRegionData);
+    			var option = $('<option value="'+id+'" name="">'+name+'</option>');
     			container.append(option);
     		}
 
 		});
     }
 	
-	function showRegionData(){
-		var city = $(this).val();
-		console.log(city);
+	
+	getClazzs();
+	function getClazzs(){
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/clazzs/selectCategoryGoods.action",  //需要访问的地址
+			success:function(data){
+				console.log("访问成功!");
+				console.log(data);
+				setClazzsData(data);
+			},
+			error:function(data){
+				console.log("访问失败!");
+				console.log(data);
+			}
+		});
+	}
+	
+	function setClazzsData(data){
+		var container = $('#clazzs');
+    	container.find('option:not(:first)').remove();
+    	
+    	$.each(data,function(index,item){
+    		var id = item['id'];
+    		var text = item['text'];
+ 
+    		var option = $('<option value="'+id+'">'+text+'</option>');
+    		container.append(option);
+
+
+		});
 	}
 	
 })

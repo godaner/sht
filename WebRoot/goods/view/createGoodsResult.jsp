@@ -9,11 +9,19 @@
 </head>
 <body>
 
-${sessionScope.isCreate}
-<script>
+<c:set var="result" scope="session" value="${isCreate}">
 
-	alert("商品发布成功");
-	location.href="/sht/goods/view/index.jsp";
+</c:set>
+
+<script>
+	<c:if test="result == true">
+		alert("商品发布成功");
+		location.href="/sht/goods/view/index.jsp";
+	</c:if>
+	<c:if test="result == false">
+		alert("商品发布失败");
+		window.history.go(-1);
+	</c:if>
 </script>
 </body>
 </html>
