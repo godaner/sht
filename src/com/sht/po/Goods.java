@@ -47,7 +47,7 @@ public class Goods {
 
     private String postcode;
 
-    private Object refusereturnmoneybill;
+    private String refusereturnmoneybill;
 
     public String getId() {
         return id;
@@ -225,11 +225,11 @@ public class Goods {
         this.postcode = postcode == null ? null : postcode.trim();
     }
 
-    public Object getRefusereturnmoneybill() {
+    public String getRefusereturnmoneybill() {
         return refusereturnmoneybill;
     }
 
-    public void setRefusereturnmoneybill(Object refusereturnmoneybill) {
-        this.refusereturnmoneybill = refusereturnmoneybill;
+    public void setRefusereturnmoneybill(String refusereturnmoneybill) {
+        this.refusereturnmoneybill = refusereturnmoneybill == null ? null : refusereturnmoneybill.trim();
     }
 }

@@ -22,9 +22,12 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.sht.goods.mapper.GCustomGoodsMapper;
 import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
+import com.sht.goods.po.GGoodsClazzs;
 import com.sht.goods.po.GGoodsImgs;
 import com.sht.goods.service.GoodsServiceI;
+import com.sht.mapper.ClazzsMapper;
 import com.sht.mapper.FilesMapper;
+import com.sht.mapper.GoodsClazzsMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
 import com.sht.po.Clazzs;
@@ -54,6 +57,9 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 
 	@Autowired
 	private FilesMapper filesMapper;
+	
+	@Autowired
+	private GoodsClazzsMapper goodsClazzsMapper;
 
 	/**
 	 * 显示商品主页面商品信息
@@ -115,6 +121,18 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 
 		goodsMapper.insert(goods);
 
+		//向商品类型表写入数据
+		GGoodsClazzs goodsClazzs = new GGoodsClazzs();
+		
+		goodsClazzs.setId(uuid());
+		
+		goodsClazzs.setGoods(goodsId);
+		
+		goodsClazzs.setClazz(goods.getClazz());
+		
+		
+		goodsClazzsMapper.insert(goodsClazzs);
+		
 		// 向文件写入图片
 
 		File[] file = goods.getFiles();
@@ -130,7 +148,7 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 			files.setPath(fileId + ".png");
 			files.setName(file[i].getName());
 
-			createGoodsFileInfo(files);
+			filesMapper.insert(files);
 			// 向图片表中插入信息
 			GGoodsImgs imgs = new GGoodsImgs();
 			imgs.setId(uuid());
@@ -140,37 +158,10 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 				imgs.setMain(1.0);
 			else
 				imgs.setMain(0.0);
-			createGoodsImagsInfo(imgs);
+			goodsImgsMapper.insert(imgs);
 		}
 		return "fCreateGoods";
 	}
 
-	/**
-	 * 发布商品图片信息
-	 */
-	@Override
-	public String createGoodsImagsInfo(GGoodsImgs goodsImgs) throws Exception {
-		// TODO Auto-generated method stub
-
-		goodsImgsMapper.insert(goodsImgs);
-
-		return "";
-
-	}
-
-	/**
-	 * 查询商品总类别
-	 */
-	@Override
-	public String createGoodsFileInfo(GFiles files) throws Exception {
-		// TODO Auto-generated method stub
-
-		filesMapper.insert(files);
-
-		return "";
-
-	}
-
-	
 
 }

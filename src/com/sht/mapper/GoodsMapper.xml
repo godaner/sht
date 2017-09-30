@@ -24,7 +24,7 @@
     <result column="PHONE" jdbcType="CHAR" property="phone" />
     <result column="TOREALNAME" jdbcType="CHAR" property="torealname" />
     <result column="POSTCODE" jdbcType="CHAR" property="postcode" />
-    <result column="REFUSERETURNMONEYBILL" jdbcType="OTHER" property="refusereturnmoneybill" />
+    <result column="REFUSERETURNMONEYBILL" jdbcType="CHAR" property="refusereturnmoneybill" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -135,7 +135,7 @@
       #{lastupdatetime,jdbcType=TIMESTAMP}, #{buytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}, 
       #{toprovince,jdbcType=CHAR}, #{tocity,jdbcType=CHAR}, #{tocounty,jdbcType=CHAR}, 
       #{todetail,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{torealname,jdbcType=CHAR}, 
-      #{postcode,jdbcType=CHAR}, #{refusereturnmoneybill,jdbcType=OTHER})
+      #{postcode,jdbcType=CHAR}, #{refusereturnmoneybill,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Goods">
     insert into SHT.GOODS
@@ -278,7 +278,7 @@
         #{postcode,jdbcType=CHAR},
       </if>
       <if test="refusereturnmoneybill != null">
-        #{refusereturnmoneybill,jdbcType=OTHER},
+        #{refusereturnmoneybill,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -358,7 +358,7 @@
         POSTCODE = #{record.postcode,jdbcType=CHAR},
       </if>
       <if test="record.refusereturnmoneybill != null">
-        REFUSERETURNMONEYBILL = #{record.refusereturnmoneybill,jdbcType=OTHER},
+        REFUSERETURNMONEYBILL = #{record.refusereturnmoneybill,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -389,7 +389,7 @@
       PHONE = #{record.phone,jdbcType=CHAR},
       TOREALNAME = #{record.torealname,jdbcType=CHAR},
       POSTCODE = #{record.postcode,jdbcType=CHAR},
-      REFUSERETURNMONEYBILL = #{record.refusereturnmoneybill,jdbcType=OTHER}
+      REFUSERETURNMONEYBILL = #{record.refusereturnmoneybill,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -461,7 +461,7 @@
         POSTCODE = #{postcode,jdbcType=CHAR},
       </if>
       <if test="refusereturnmoneybill != null">
-        REFUSERETURNMONEYBILL = #{refusereturnmoneybill,jdbcType=OTHER},
+        REFUSERETURNMONEYBILL = #{refusereturnmoneybill,jdbcType=CHAR},
       </if>
     </set>
     where ID = #{id,jdbcType=CHAR}
@@ -489,7 +489,7 @@
       PHONE = #{phone,jdbcType=CHAR},
       TOREALNAME = #{torealname,jdbcType=CHAR},
       POSTCODE = #{postcode,jdbcType=CHAR},
-      REFUSERETURNMONEYBILL = #{refusereturnmoneybill,jdbcType=OTHER}
+      REFUSERETURNMONEYBILL = #{refusereturnmoneybill,jdbcType=CHAR}
     where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

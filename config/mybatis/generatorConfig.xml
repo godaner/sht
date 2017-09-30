@@ -148,6 +148,18 @@
         	<columnOverride column="ENNAME" javaType="java.lang.String"  jdbcType="CHAR"/>
 			<columnOverride column="ENSHORTNAME" javaType="java.lang.String"  jdbcType="CHAR"/>
         </table>
+        
+        <table tableName="addrs">
+			<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="master" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="region" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+			<columnOverride column="detail" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="phone" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="realname" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="isdefault" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+			<columnOverride column="postcode" javaType="java.lang.String" jdbcType="CHAR" />
+		</table>
+        
          -->
           <table schema="sht" tableName="goods">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
@@ -172,19 +184,10 @@
         	<columnOverride column="phone" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="torealname" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="postcode" javaType="java.lang.String"  jdbcType="CHAR"/>
-        	<columnOverride column="returnmoneybill" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="refusereturnmoneybill" javaType="java.lang.String"  jdbcType="CHAR"/>
         </table>
 
-		<table tableName="addrs">
-			<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
-			<columnOverride column="master" javaType="java.lang.String" jdbcType="CHAR" />
-			<columnOverride column="region" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
-			<columnOverride column="detail" javaType="java.lang.String" jdbcType="CHAR" />
-			<columnOverride column="phone" javaType="java.lang.String" jdbcType="CHAR" />
-			<columnOverride column="realname" javaType="java.lang.String" jdbcType="CHAR" />
-			<columnOverride column="isdefault" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
-			<columnOverride column="postcode" javaType="java.lang.String" jdbcType="CHAR" />
-		</table>
+		
         <!-- <table schema="" tableName="sys_user"></table>
         <table schema="" tableName="sys_role"></table>
         <table schema="" tableName="sys_permission"></table>
