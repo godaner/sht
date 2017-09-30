@@ -38,7 +38,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	public void showInfo() throws Exception{
 		logger.info("GoodsAction-showInfo");
 
-		List<GGoods> goodsList = null;
+		List<GGoods> goodsList = getList();
 	
 		po.setMaxLine(po.getMinLine()+Static.GOODS.FILED_PAGE_SIZE);
 		info("--minLine---"+po.getMinLine());
@@ -72,6 +72,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 			 
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		writeJSON(totalNum);
