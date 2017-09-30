@@ -49,6 +49,8 @@ public class GGoods extends Goods {
 	
 	private String sregion;
 	
+	private String clazz;
+	
 	public File[] getFiles() {
 		return files;
 	}
@@ -165,13 +167,12 @@ public class GGoods extends Goods {
 		this.sregion = sregion;
 	}
 
-	
+	public String getClazz() {
+		return clazz;
+	}
 
-	
-
-	
-	
-	
-	
+	public void setClazz(String clazz) {
+		this.clazz = clazz;
+	}
 
 }

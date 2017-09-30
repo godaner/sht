@@ -189,7 +189,6 @@ public interface Static {
 		      -1:买家收货后交易正常结束,
 		      -2:卖家取消了出售本商品,
 			  -3:买家取消购买本商品,
-			  -4:管理员取消购买本商品,
 			  -5:管理员删除本商品,
 		      -8:买家申请退款,
 		      -9:退款成功（失败则保持-1状态）*/
@@ -226,10 +225,6 @@ public interface Static {
 		 * 买家取消购买本商品
 		 */
 		static final Short BUYER_CANCEL = -3;
-		/**
-		 * 管理员取消购买本商品
-		 */
-		static final Short ADMIN_CANCEL = -4;
 		/**
 		 * 管理员删除本的商品
 		 */

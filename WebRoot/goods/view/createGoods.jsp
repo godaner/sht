@@ -4,13 +4,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+	content="no-cache">
 <title></title>
 <base href="${pageContext.request.contextPath }/" />
 <link rel="stylesheet" href="goods/css/createGoods.css" />
 </head>
 <body>
-<input type="hidden" value="${baseUrl}" id="baseUrl"/>
+	<input type="hidden" value="${baseUrl}" id="baseUrl" />
 	<div id="header">
 		<h1>SHT二手交易</h1>
 		<ul>
@@ -44,14 +45,16 @@
 
 		</div>
 		<div class="content-right">
-			<form action="/sht/goods/createGoods.action" method="post" enctype="multipart/form-data">
-			<div class="add-img">
-				<ul>
-					<li title="最多可添加五张图片" class="preview" id="add"><img src="goods/img/add.png" id="img"></li>
-				</ul>
-					<input id="file" type="file" name="files"
-					 multiple="multiple" style="visibility: hiden;width:0;height:0;"/>
-					
+			<form action="/sht/goods/createGoods.action" method="post"
+				enctype="multipart/form-data">
+				<div class="add-img">
+					<ul>
+						<li title="最多可添加五张图片" class="preview" id="add"><img
+							src="goods/img/add.png" id="img"></li>
+					</ul>
+					<input id="file" type="file" name="files" multiple="multiple"
+						style="visibility: hiden; width: 0; height: 0;" />
+
 					<!-- <input id="file" type="file" name="files"
 					 multiple="multiple" />
 					
@@ -63,65 +66,69 @@
 					
 					<input id="file" type="file" name="files"
 					 multiple="multiple" /> -->
-					
+
 					<!-- -->
-			</div>
-			<div class="line"></div>
-			<div class="detail-info">
-				<p>宝贝介绍&nbsp;:&nbsp;</p>
-				<textarea name="description" placeholder="请详细描述你的宝贝..." id="description"></textarea>
-				<ul>
-					<li><span>商品名称&nbsp;:&nbsp;</span> <input type="text"
-						name="title" placeholder="商品名称" id="title" /></li>
-					<li><span>商品转卖价&nbsp;:&nbsp;</span> <input type="text"
-						name="sprice" placeholder="商品转卖价" id="sprice" /></li>
-					<br />
-					<li><span>商品原价&nbsp;:&nbsp;</span> <input type="text"
-						name="price" placeholder="商品原价" id="price" /></li>
-					<li><span>商&nbsp;品&nbsp;&nbsp;成&nbsp;色&nbsp;:&nbsp;</span>
-						<select name="condition" id="condition">
-							<option value="0">--请选择--</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
+				</div>
+				<div class="line"></div>
+				<div class="detail-info">
+					<p>宝贝介绍&nbsp;:&nbsp;</p>
+					<textarea name="description" placeholder="请详细描述你的宝贝..."
+						id="description"></textarea>
+					<ul>
+						<li><span>商品名称&nbsp;:&nbsp;</span> <input type="text"
+							name="title" placeholder="商品名称" id="title" /></li>
+							
+						<li><span>商品转卖价&nbsp;:&nbsp;</span> <input type="text"
+							name="sprice" placeholder="商品转卖价" id="sprice" /></li>
+							
+						<br />
+						<li><span>商品原价&nbsp;:&nbsp;</span> <input type="text"
+							name="price" placeholder="商品原价" id="price" /></li>
+							
+						<li><span>商&nbsp;品&nbsp;&nbsp;成&nbsp;色&nbsp;:&nbsp;</span> 
+						<select
+							name="condition" id="condition">
+								<option value="0">--请选择--</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
 						</select>
-					</li>
-					<br />
-					<li><span>所&nbsp;&nbsp;在&nbsp;&nbsp;地&nbsp;:&nbsp;</span>
-							<select name="region" id="region">
-								<option value="-1">--请选择--</option>
+						</li>
+						
+						<br />
+
+						<li><span>所&nbsp;&nbsp;在&nbsp;&nbsp;地&nbsp;:&nbsp;</span> 
+							<select name=province id="province">
+								<option value="-1">--省份--</option>
 							</select>
-						</div>
-					</li>
-					<li><span>商&nbsp;品&nbsp;&nbsp;类&nbsp;别&nbsp;:&nbsp;</span>
-						<select name="clazzs" id="clazzs">
-							<option value="0">--请选择--</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-						</select>
-					</li>
+							<select name="city" id="city">
+								<option value="-1">--市--</option>
+							</select>
+							<select name="county" id="county">
+								<option value="-1">--县--</option>
+							</select>
+				        </li>
+
+				<li><span>商&nbsp;品&nbsp;&nbsp;类&nbsp;别&nbsp;:&nbsp;</span> <select
+					name="clazzs" id="clazzs">
+						<option value="0">--请选择--</option>
+				</select></li>
 				</ul>
 				<input type="submit" value="立即发布" id="create">
-			</div>
-			</form>
 		</div>
-		<div class="clearFloat"></div>
+		</form>
+	</div>
+	<div class="clearFloat"></div>
 	</div>
 	<script src="goods/js/jquery-1.11.3.js" type="text/javascript"></script>
-	<script src="goods/plugin/jquery.uploadify.min.js" type="text/javascript"></script>
+	<script src="goods/plugin/jquery.uploadify.min.js"
+		type="text/javascript"></script>
 	<script src="goods/js/createGoods.js" type="text/javascript"></script>
 </body>
 </html>
