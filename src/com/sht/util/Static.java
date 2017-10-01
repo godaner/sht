@@ -18,6 +18,11 @@ public interface Static {
 	 * request中存放在线用户的信息的字段
 	 */
 	public static final String FILED_ONLINE_USER = "onlineUser";
+	/**
+	 * request中存放收货地址信息
+	 * 
+	 */
+	public static final String FILED_USER_ADDRESS = "userAddress";
 
 	
 	
