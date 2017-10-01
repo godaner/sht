@@ -6,14 +6,15 @@
 	
 	<package namespace="/goods" name="goods-package" extends="base-package">
 		<!-- 全局result配置 -->
-		<global-results>
-			<result name="fCreateGoods">/goods/view/createGoodsResult.jsp</result>
-		</global-results>
+		<!-- <global-results>
+			
+		</global-results> -->
 		<!-- 全局异常配置 -->
 		<!-- <global-exception-mappings>
 		</global-exception-mappings> -->
 		<!-- 配置action -->
 		<action name="*" class="goodsAction" method="{1}">
+			<result type="dispatcher" name="fCreateGoods">/goods/view/createGoodsResult.jsp</result>
 		</action>
 		
 		
