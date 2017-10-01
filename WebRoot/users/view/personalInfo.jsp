@@ -44,23 +44,23 @@
 
         </ul>
         <ul >
-            <a href=""><li>我的信息</li></a>
-            <a href="./personalIssue.jsp"><li>我的发布</li></a>
-            <a href=""><li>我的购买</li></a>
+            <a href="javascript:void(0);" onclick="show_body_right();"><li>我的信息</li></a>
+            <a href="javascript:void(0);" onclick="show_issueGoods(0);"><li>我的发布</li></a>
+            <a href="javascript:void(0);" onclick="show_issueGoods(1);"><li>我的购买</li></a>
             <a href="./addressmanage.jsp"><li>地址管理</li></a>
-            <a href="./findpassword.jsp"><li>密码找回</li></a>
+            <a href="javascript:void(0);" onclick="show_issueGoods(2);"><li>密码找回</li></a>
             <a href="./recharge.jsp"><li>充值</li></a>
         </ul>
     </div> 
-    <div id="body_right">
-    <iframe src="./personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
+    <div id="body_right" >
+    <iframe  src="./personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
     
     </iframe>
-       <%--  <div>
-            <span id="email">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;:&nbsp;</span>&nbsp;&nbsp;<input type="email" value="${onlineUser.email}"><br>
-            <span id="introduce">用户介绍&nbsp;&nbsp;:&nbsp;&nbsp;</span><textarea>${onlineUser.description}</textarea>
-            <div class="clearFloat"></div>
-        </div> --%>
+    </div>
+    
+    <div id="show_issueGoods" style="display:none;">
+    <iframe name="userinfoiframe"  src="" width="980px" height="1560px" scrolling="no" frameborder=no></iframe>
+				
     </div>
 
     <div class="clearFloat"></div>
@@ -90,5 +90,29 @@
 	  	 }
 	  	 
 	   });
+   //显示子页面 
+   function show_issueGoods(a){
+	   var src="";
+	   if(a==0){
+		   src="./personalIssue_right_showGoods.jsp";
+	   }else if(a==1){
+		   src="./personalIssue_right_showBuyed.jsp";
+	   }else if(a==2){
+		   src="./findpassword.jsp";
+	   }
+	   $("#body_right").hide();	
+	   $("#show_issueGoods").show();
+	   $("#show_issueGoods iframe").attr({
+		   "src":src,
+			   "target":"userinfoiframe"
+	   });
+	   
+   }
+   
+   //显示我的信息子页面 
+   function show_body_right(){
+	   $("#body_right").show();	
+	   $("#show_issueGoods").hide();
+   }
     </script>
 </html>

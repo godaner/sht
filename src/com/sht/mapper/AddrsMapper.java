@@ -10,7 +10,7 @@ public interface AddrsMapper {
 
     int deleteByExample(AddrsExample example);
 
-    int deleteByPrimaryKey(Object id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Addrs record);
 
@@ -18,7 +18,7 @@ public interface AddrsMapper {
 
     List<Addrs> selectByExample(AddrsExample example);
 
-    Addrs selectByPrimaryKey(Object id);
+    Addrs selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Addrs record, @Param("example") AddrsExample example);
 

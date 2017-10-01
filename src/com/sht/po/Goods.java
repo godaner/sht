@@ -33,6 +33,22 @@ public class Goods {
 
     private Timestamp finishtime;
 
+    private String toprovince;
+
+    private String tocity;
+
+    private String tocounty;
+
+    private String todetail;
+
+    private String phone;
+
+    private String torealname;
+
+    private String postcode;
+
+    private String refusereturnmoneybill;
+
     public String getId() {
         return id;
     }
@@ -151,5 +167,69 @@ public class Goods {
 
     public void setFinishtime(Timestamp finishtime) {
         this.finishtime = finishtime;
+    }
+
+    public String getToprovince() {
+        return toprovince;
+    }
+
+    public void setToprovince(String toprovince) {
+        this.toprovince = toprovince == null ? null : toprovince.trim();
+    }
+
+    public String getTocity() {
+        return tocity;
+    }
+
+    public void setTocity(String tocity) {
+        this.tocity = tocity == null ? null : tocity.trim();
+    }
+
+    public String getTocounty() {
+        return tocounty;
+    }
+
+    public void setTocounty(String tocounty) {
+        this.tocounty = tocounty == null ? null : tocounty.trim();
+    }
+
+    public String getTodetail() {
+        return todetail;
+    }
+
+    public void setTodetail(String todetail) {
+        this.todetail = todetail == null ? null : todetail.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getTorealname() {
+        return torealname;
+    }
+
+    public void setTorealname(String torealname) {
+        this.torealname = torealname == null ? null : torealname.trim();
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode == null ? null : postcode.trim();
+    }
+
+    public String getRefusereturnmoneybill() {
+        return refusereturnmoneybill;
+    }
+
+    public void setRefusereturnmoneybill(String refusereturnmoneybill) {
+        this.refusereturnmoneybill = refusereturnmoneybill == null ? null : refusereturnmoneybill.trim();
     }
 }

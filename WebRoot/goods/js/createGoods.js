@@ -16,13 +16,13 @@ $(function() {
 				var title = $('#title').val();
 				var sprice = $('#sprice').val();
 				var price = $('#price').val();
-				var condition = $('#condition').val();
-				var region = $('#region').val();
+				var condition = $('#condition>option:selected').val();
+				var region = $('#region>option:selected').val();
 				var img = $('#file').val();
-
+				var clazzs = $('#clazzs>option:selected').val();
 				// 判断是否为空
 				var isEmpty = judgementEmpty(description, title, sprice, price,
-						condition, region, img);
+						condition, region, img ,clazzs);
 
 				if (!isEmpty) {
 					return false;
@@ -90,7 +90,7 @@ $(function() {
 	 * 判断商品信息输入字段是否为空
 	 */
 	function judgementEmpty(description, title, sprice, price, condition,
-			region, img) {
+			region, img ,clazzs) {
 		if (null == description || "" == description) {
 			alert("请描述你的商品");
 			return false;
@@ -103,14 +103,17 @@ $(function() {
 		} else if (null == price || "" == price) {
 			alert("请填写商品原价");
 			return false;
-		} else if (null == condition || "" == condition) {
-			alert("请填写商品成色");
+		} else if (null == condition || "" == condition || 0 == condition) {
+			alert("请选择商品成色");
 			return false;
-		} else if (null == region || "" == region) {
-			alert("请填写商品销售地");
+		} else if ( -1 == region) {
+			alert("请选择商品销售地(省-市-县)");
 			return false;
 		} else if (null == img || "" == img) {
 			alert("请至少上传一张图片");
+			return false;
+		} else if (null == clazzs || "" == clazzs || 0 == clazzs) {
+			alert("请为你的商品选择一个所属类别");
 			return false;
 		}
 		return true;
@@ -229,5 +232,90 @@ $(function() {
 		li.empty().append(img);
 		URL.revokeObjectURL(url);
 	}
+	
 
+	$('#province').change(function(){
+		var pid = $(this).children('option:selected').val();   
+		getRegionData(pid,$('#city'));
+	})
+	
+	$('#city').change(function(){
+		var pid = $(this).children('option:selected').val();   
+		getRegionData(pid,$('#county'));
+	})
+	
+//	$('#county').change(function(){
+//		alert($(this).children('option:selected').val());   
+//	})
+	
+	getRegionData(1.0,$('#province'));
+	function getRegionData(pid,target){
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/regions/selectAllRegions.action?pid="+pid,  //需要访问的地址
+			success:function(data){
+				console.log("访问地区成功!");
+
+				console.log(data);
+				setRegionData(data,target);
+			},
+			error:function(data){
+				console.log("访问地区失败!");
+				console.log(data);
+			}
+		});
+	}
+
+	function setRegionData(data,target){
+    	var container = target;
+    	container.find('option:not(:first)').remove();
+    	
+    	$.each(data,function(index,item){
+    		var id = item['id'];
+    		var name = item['name'];
+    		if(name != '中国'){
+    			var option = $('<option value="'+id+'" name="">'+name+'</option>');
+    			container.append(option);
+    		}
+
+		});
+    }
+	
+	
+	getClazzs();
+	function getClazzs(){
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/clazzs/selectCategoryGoods.action",  //需要访问的地址
+			success:function(data){
+				console.log("访问成功!");
+				console.log(data);
+				setClazzsData(data);
+			},
+			error:function(data){
+				console.log("访问失败!");
+				console.log(data);
+			}
+		});
+	}
+	
+	function setClazzsData(data){
+		var container = $('#clazzs');
+    	container.find('option:not(:first)').remove();
+    	
+    	$.each(data,function(index,item){
+    		var id = item['id'];
+    		var text = item['text'];
+ 
+    		var option = $('<option value="'+id+'">'+text+'</option>');
+    		container.append(option);
+
+
+		});
+	}
+	
 })

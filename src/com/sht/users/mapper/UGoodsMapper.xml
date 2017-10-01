@@ -3,30 +3,61 @@
 <mapper namespace="com.sht.users.mapper.UGoodsMapper">
 	<select id="getGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+	</select>
+	
+	<select id="getBuyGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
+		
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="searchUGoodsBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%') G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+	</select>
+	
+	<select id="searchBuyUGoodsBuyBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
+		
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="getGoodsCountById" parameterType="string" resultType="int">
 		
-		SELECT count(*) FROM GOODS WHERE OWNER=#{id} 
+		SELECT count(*) FROM GOODS WHERE OWNER=#{id} AND STATUS NOT IN (-2,-5)
 		
 	</select>
+	
+		<select id="getBuyGoodsCountById" parameterType="string" resultType="int">
+		
+		SELECT count(*) FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-8,-9)
+		
+	</select>
+	
 	
 	<select id="getGoodsDetailById" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM GOODS WHERE id=#{id}
+		SELECT * FROM GOODS WHERE id=#{id} AND STATUS NOT IN (-2,-5)
 	</select>
 	
 	<delete id="deleteGoodsByid" parameterType="string">
-		DELETE FROM GOODS WHERE ID = #{id}
+		UPDATE GOODS SET STATUS=-2 WHERE ID = #{id}
+	</delete>
+	
+	<delete id="udateBuyGoodsByidAndStatus" parameterType="com.sht.users.po.UGoods">
+		UPDATE GOODS SET STATUS=#{status} WHERE ID = #{id}
 	</delete>
 	
 	<update id="UpdateUGoodsById" parameterType="com.sht.users.po.UGoods">
 		UPDATE GOODS SET TITLE=#{title},DESCRIPTION=#{description},PRICE=#{price},SPRICE=#{sprice},CONDITION=#{condition},REGION=#{region} WHERE ID=#{id}	
 	</update>
+	
+	<select id="getGoodsByIdAndStatus" parameterType="string" resultType="com.sht.users.po.UGoods">
+		
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+	</select>
+	
+	<select id="getBuyGoodsByIdAndStatus" parameterType="string" resultType="com.sht.users.po.UGoods">
+		
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+	</select>
 </mapper>

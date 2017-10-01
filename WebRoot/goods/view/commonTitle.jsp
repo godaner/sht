@@ -42,7 +42,7 @@
             </div>
         </li>
         <li >
-            <a href="" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" >注册</a>
+            <a href="users/view/index.jsp" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="users/view/index.jsp" >注册</a>
         </li>
 
     </ul>
