@@ -39,6 +39,6 @@ public interface UGoodsMapper {
 
 	List<UGoods> searchBuyUGoodsBuyBytitle(@Param("title")String title, @Param("pageStar")String pageStar, @Param("pageEnd")String pageEnd);
 
-	void deleteBuyGoodsByid(String id);
+	void udateBuyGoodsByidAndStatus(UGoods po);
 
 }
