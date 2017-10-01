@@ -49,17 +49,41 @@
 		
 	</select>
 	
-
-	<insert id="addAddress" parameterType="com.sht.users.po.CustomAddrs">
-	
-		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,POHNE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{pohne},#{realname},#{isdefault},#{postcode})
-	
-	</insert>
-
 	<update id="personalImgUpload" parameterType="com.sht.users.po.CustomUsers">
 	
 		UPDATE USERS SET HEADIMG = #{headimg} WHERE ID=#{id}
 		
 	</update>
+	
+	<insert id="addAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,POHNE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{pohne},#{realname},#{isdefault},#{postcode})
+	
+	</insert>
+	
+	<update id="updateAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		UPDATE ADDRS SET REGION=#{region},DETAIL=#{detail},POHNE=#{pohne},REALNAME=#{realname},ISDEFAULT=#{isdefault},POSTCODE=#{postcode} WHERE ID=#{id} AND MASTER=#{master}
+	
+	</update>
+	
+	<delete id="deleteAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		DELETE FROM ADDRS WHERE ID=#{id} AND MASTER=#{master}
+	
+	</delete>
+	
+	<select id="selectAllAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		SELECT * FROM ADDRS WHERE MASTER=#{master}
+	
+	</select>
+	
+	<select id="selectAddrsByID" parameterType="com.sht.users.po.CustomAddrs">
+	
+		SELECT * FROM ADDRS WHERE MASTER=#{master} AND ID=#{id}
+	
+	</select>
+	
 
 </mapper>

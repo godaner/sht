@@ -24,7 +24,10 @@
 			<exception-mapping result="fException" exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
 		<!-- 配置action -->
-		
+		<action name="D_*" class="addressAction" method="{1}">
+		</action>
+		<action name="R_*" class="URegionAction" method="{1}">
+		</action>
 		<action name="U_*" class="UGoodsAction" method="{1}">
 		</action>
 		<action name="*" class="usersAction" method="{1}">

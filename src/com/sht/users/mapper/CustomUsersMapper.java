@@ -1,7 +1,8 @@
 package com.sht.users.mapper;
 
-import com.sht.users.po.CustomAddrs;
+import java.util.List;
 
+import com.sht.users.po.CustomAddrs;
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -68,16 +69,6 @@ public interface CustomUsersMapper {
 	 * @param id
 	 */
 	public void updatePersonalInfo(CustomUsers po);
-
-	
-	
-	/**
-	 * 新增收货地址
-	 *
-	 **/
-	public CustomAddrs addAddress(CustomAddrs po);
-
-
 	
 	/**
 	 * 
@@ -87,5 +78,34 @@ public interface CustomUsersMapper {
 	 */
 
 	public void personalImgUpload(CustomUsers po);
+	
+	/**
+	 * 新增收货地址
+	 *
+	 **/
+	public CustomAddrs addAddress(CustomAddrs po);
+
+	/**
+	 * 修改收货地址
+	 */
+	public void updateAddress(CustomAddrs po);
+
+	/**
+	 * 
+	 * 删除收货地址
+	 */
+	public void deleteAddress(CustomAddrs po);
+	
+	/**
+	 * 
+	 * 显示收货地址
+	 */
+	public List<CustomAddrs> selectAllAddress(CustomAddrs po);
+
+	/**
+	 * 根据ID查询收货地址
+	 *
+	 */
+	public CustomAddrs selectAddrsByID(CustomAddrs po);
 
 }
