@@ -127,10 +127,9 @@ public List<UGoods> searchBuyUGoodsBuyBytitle(String title, String pageStar,
 }
 
 @Override
-public void deleteBuyGoodsByid(String id) {
-
-	UGoodsMapper.deleteBuyGoodsByid(id);
+public void udateBuyGoodsByidAndStatus(UGoods po) {
 	
+	UGoodsMapper.udateBuyGoodsByidAndStatus(po);
 }
 
 

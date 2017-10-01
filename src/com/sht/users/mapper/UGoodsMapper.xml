@@ -8,7 +8,7 @@
 	
 	<select id="getBuyGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-3)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="searchUGoodsBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
@@ -18,7 +18,7 @@
 	
 	<select id="searchBuyUGoodsBuyBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS IN (1,2,-1,-3)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="getGoodsCountById" parameterType="string" resultType="int">
@@ -29,7 +29,7 @@
 	
 		<select id="getBuyGoodsCountById" parameterType="string" resultType="int">
 		
-		SELECT count(*) FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-3)
+		SELECT count(*) FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-8,-9)
 		
 	</select>
 	
@@ -43,8 +43,8 @@
 		UPDATE GOODS SET STATUS=-2 WHERE ID = #{id}
 	</delete>
 	
-	<delete id="deleteBuyGoodsByid" parameterType="string">
-		UPDATE GOODS SET STATUS=-3 WHERE ID = #{id}
+	<delete id="udateBuyGoodsByidAndStatus" parameterType="com.sht.users.po.UGoods">
+		UPDATE GOODS SET STATUS=#{status} WHERE ID = #{id}
 	</delete>
 	
 	<update id="UpdateUGoodsById" parameterType="com.sht.users.po.UGoods">

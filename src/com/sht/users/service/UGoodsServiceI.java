@@ -127,9 +127,8 @@ public interface UGoodsServiceI {
 			String pageStar, String pageEnd) throws Exception;
 	/**
 	 * 
-	 *根据id取消订单 
+	 *根据id和status对购买商品进行相应操作
 	 * @param id
 	 */
-
-	public void deleteBuyGoodsByid(String id);
+	public void udateBuyGoodsByidAndStatus(UGoods po);
 }

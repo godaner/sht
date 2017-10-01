@@ -1,3 +1,19 @@
+.sc{
+	width:150px;
+}
+
+/* 注册错误信息 */
+.register_msg{
+	width:80%;
+	height:5%;
+	margin-left:10%;
+	margin-bottom:2%;
+	text-align:center;
+	float:left;
+	color:red;
+	font-size:15px;
+	border-radius:5px;
+}
 .head {
 	font-size: 14px;
 	width: 850px;

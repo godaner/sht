@@ -248,7 +248,7 @@ $(function() {
 //		alert($(this).children('option:selected').val());   
 //	})
 	
-	getRegionData(1,$('#province'));
+	getRegionData(1.0,$('#province'));
 	function getRegionData(pid,target){
 		$.ajax({
 			type : "post",  //请求方式,get,post等
