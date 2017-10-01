@@ -23,6 +23,9 @@
 		<if test="minPrice !=0 or maxPrice != 0">
 			and sprice between #{minPrice} and #{maxPrice}
 		</if>
+		<if test="clazz != 0">
+			and g0.id in (select goods from goods_clazzs where clazz=#{clazz})
+		</if>
 		<if test="3 != orderByTime">
 			order by createtime desc
 		</if>
@@ -70,16 +73,29 @@
 			</choose>
 		</if>
 		
+		<if test="clazz != 0">
+			<choose>
+				<when test="sregion != 0 and sregion != null and (minPrice != 0 or maxPrice != 0)">
+					and goods.id in (select goods from goods_clazzs where clazz=#{clazz})
+				</when>
+				<otherwise>
+					<where>
+						goods.id in (select goods from goods_clazzs where clazz=#{clazz})
+					</where>
+				</otherwise>
+			</choose>
+		</if>
+		
 	</select>
 
-	<select id="selectGoodsTotalNumByRegion" resultType="Double"
+	<!-- <select id="selectGoodsTotalNumByRegion" resultType="Double"
 		parameterType="Double">
 		select count(*) from goods where region = #{region}
 	</select>
 
 	<select id="insertGoods" parameterType="com.sht.goods.po.GGoods">
 		
-	</select>
+	</select> -->
 
 
 </mapper>

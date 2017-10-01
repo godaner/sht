@@ -87,7 +87,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	 */
 	public String createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
-		
+		String result = null;
 		try {
 			 
 			 String region = getRequest().getParameter("county");
@@ -97,14 +97,14 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 			 po.setCondition(Short.valueOf(condition));
 			 po.setClazz(getRequest().getParameter("clazzs"));
 			 
-			 service.createGoodsInfo(po);
-			 setSessionAttr("isCreate", "true");
+			 result = service.createGoodsInfo(po);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			setSessionAttr("isCreate", "false");
+			result = "createError";
 		}
 		
-		return "fCreateGoods";
+		return result;
 		
 	}
 	
