@@ -379,12 +379,12 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
  	 * 
  	 */
  
- public void deleteBuyGoodsByid() throws Exception{
+ public void udateBuyGoodsByidAndStatus() throws Exception{
 	 
 	 eject(po==null, "商品不存在");
 	 
 	 try {
-		 service.deleteBuyGoodsByid(po.getId());
+		 service.udateBuyGoodsByidAndStatus(po);
 		
 	} catch (Exception e) {
 		

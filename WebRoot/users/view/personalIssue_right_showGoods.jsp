@@ -353,7 +353,11 @@ function showList(status){
 	    		h+="<td><p>"+goods['description']+"<p></td>";
 	    		h+="<td><p>现价："+goods['sprice']+"</p><p class='outprice'>原价： "+goods['price']+"<p></td>";
 	    		h+="<td><p>"+status+"<p></td>";
+	    		if(status=="已完成订单"){
+	    			h+="<td><a href='#'>查看评价</a>";
+	    		}else{
 	    		h+="<td><a href=javascript:deleteGoodsByid('"+id+"');>取消</a>&nbsp;&nbsp;<a href=javascript:showGoodsdetail('"+id+"');>详情</a></td></tr></table></div></div>";
+	    		}
 	    		}
 	    		$(".list").html(h);
 	    		h="";

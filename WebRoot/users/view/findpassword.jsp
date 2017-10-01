@@ -11,45 +11,53 @@
 </head>
 
 <body>
-<%@include file="../../goods/view/commonTitle.jsp" %>
+<%-- <%@include file="../../goods/view/commonTitle.jsp" %> --%>
 		<div id="content">
 			<div class="content-layout">
 				<div class="maincenter">
 
 					<div class="maincenter-tip">
-						<p class="">
-							<i class=""></i> 请输入你需要找回登录密码的用户名及绑定邮箱
+						<p class="" style="margin-left:200px;">
+							找回密码
 						</p>
 					</div>
-
-					<form class="ui-form" method="post">
+					<br/>
+					<div class="check_username">
 						<div class="ui-form-item">
 							<label class="ui-label">用户名：</label>
 							<input type="text" class="ui-input" placeholder="请输入用户名" />
-							<!--<span class="ui-form-other">忘记会员名？可使用邮箱</span>-->
-							<!--<div class="ui-form-explain">
-								请输入邮箱
-							</div>-->
+							<a href="javascript:void(0)" onclick="show_check_email();" style="color:grey;font-size:12px;text-decoration: none;">忘记用户名？邮箱寻回</a>
 						</div>
+					</div>
+					<div class="check_email" style="display:none">
 						<div class="ui-form-item">
 							<label class="ui-label">邮箱地址：</label>
 							<input type="text" class="ui-input" placeholder="请输入邮箱" />
-							<!--<span class="ui-form-other">忘记会员名？可使用邮箱</span>-->
-							<!--<div class="ui-form-explain">
-								请输入邮箱
-							</div>-->
 						</div>
-
+					</div>
+					
 						<div class="ui-form-item">
 							<input id="submitBtn" class="ui-button" value="确定" type="submit" />
 						</div>
-					</form>
+					
 
 				</div>
 			</div>
 
 		</div>
-		<%@include file="../../goods/view/commonFooter.jsp"%>
+		<%-- <%@include file="../../goods/view/commonFooter.jsp"%> --%>
 	</body>
-<%@include file="../../common/view/visit.jsp"%>
+		<%@include file="../../common/view/visit.jsp"%>
+		
+		
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		
+		<script type="text/javascript">
+		
+		function show_check_email(){
+			$(".check_username").hide();
+			$(".check_email").show();
+		}
+		
+		</script>
 </html>

@@ -15,7 +15,8 @@
 			<a href="javascript:void(0)" onclick="showList()">所有订单 &nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('1')">待发货&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('2')">已发货&nbsp;&nbsp;|</a>
-			<a href="javascript:void(0)" onclick="showList('-3')">申请退款&nbsp;&nbsp;|</a>
+			<a href="javascript:void(0)" onclick="showList('-8')">申请退款&nbsp;&nbsp;|</a>
+			<a href="javascript:void(0)" onclick="showList('-9')">退款成功&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('-1')">已完成订单&nbsp;&nbsp;|</a>
 			</div>
 			<hr/>
@@ -234,16 +235,15 @@ function getGoodscount(){
 	    }
 	})
 } */
-//取消购买
- function deleteGoodsByid(id){
-	if(confirm("确定要清除此数据吗？")){
-
+//根据操作改变相应的状态
+ function udateBuyGoodsByidAndStatus(id,statu){
+	if(confirm("确定要进行此操作吗？")){
 		$.ajax({
 			type : 'post',  //请求方式,get,post等
 		    dataType:'json',//response返回数据的格式
 		    async : true,  //同步请求  
-		    url : baseUrl+"/users/U_deleteBuyGoodsByid.action",  //需要访问的地址
-		    data :'id='+id,  //传递到后台的参数
+		    url : baseUrl+"/users/U_udateBuyGoodsByidAndStatus.action",  //需要访问的地址
+		    data :'id='+id+'&status='+statu,  //传递到后台的参数
 		    success:function(data){
 		    	showList();
 		    },error:function(){
@@ -264,14 +264,12 @@ function showStatus(status){
 		status="待发货";
 	}else if(status==2){
 		status="已发货";
-	}else if(status==-3){
+	}else if(status==-8){
 		status="申请退款";
 	}else if(status==-1){
 		status="已完成订单";
-	}else if(status==-6){
-		status="待审核";
-	}else if(status==-7){
-		status="未通过审核";
+	}else if(status==-9){
+		status="退款成功";
 	}
 	return status;
 }
@@ -304,7 +302,13 @@ function showList(status){
 	    		h+="<td><p>"+goods['description']+"<p></td>";
 	    		h+="<td><p>现价："+goods['sprice']+"</p><p class='outprice'>原价： "+goods['price']+"<p></td>";
 	    		h+="<td><p>"+status+"<p></td>";
-	    		h+="<td><a href=javascript:deleteGoodsByid('"+id+"');>取消</a>&nbsp;&nbsp;<a href=javascript:showGoodsdetail('"+id+"');>详情</a></td></tr></table></div></div>";
+	    		if(status=="待发货"){
+	    			h+="<td><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-3');>取消购买</a></td></tr></table></div></div>";
+	    		}else if(status=="已发货"){
+	    			h+="<td><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-1');>确认收货</a></td></tr></table></div></div>";	
+	    		}else{
+	    			h+="<td><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-8');>申请退款</a></td></tr></table></div></div>";
+	    		}
 	    		}
 	    		$(".list").html(h);
 	    		h="";
