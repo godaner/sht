@@ -356,7 +356,7 @@ $(function () {
 			infoTitle.addClass("trading_info_title");
 			
 			infoTitle.append("<img src='"+headImg+"'/> <a"
-					+"	href='#'>"+item['title']+"</a>");
+					+"	href='/sht/goods/showGoodsDetailInfo.action?"+item['id']+"'>"+item['title']+"</a>");
 			//图片
 			var content = $("<a href='#'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?t="+new Date().getTime()+"&size=200&imgName="+item['path']+"'/></a>");
 			content.find("img").css("width","200px");

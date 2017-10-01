@@ -88,14 +88,12 @@
 		
 	</select>
 
-	<!-- <select id="selectGoodsTotalNumByRegion" resultType="Double"
-		parameterType="Double">
-		select count(*) from goods where region = #{region}
+	<select id="selectGoodsDetailInfo" resultType="com.sht.goods.po.GGoods"
+		parameterType="string">
+		
 	</select>
 
-	<select id="insertGoods" parameterType="com.sht.goods.po.GGoods">
-		
-	</select> -->
+	
 
 
 </mapper>

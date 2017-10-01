@@ -109,6 +109,19 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	}
 	
 	
+	public void showGoodsDetailInfo() throws Exception{
+		info("GoodsAction--showGoodsDetailInfo");
+		
+		try {
+			GGoods goods = service.selectGoodsDetailInfo(po.getId());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	
 	

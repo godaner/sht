@@ -47,8 +47,13 @@ public interface GoodsServiceI {
 	public String createGoodsInfo(GGoods goods) throws Exception;
 	
 	
-	
-
+	/**
+	 * 
+	 * selectGoodsDetailInfo
+	 * <p>
+	 * Description:select goods detail info
+	 */
+	public GGoods selectGoodsDetailInfo(String id) throws Exception;
 
 	
 }

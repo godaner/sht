@@ -160,5 +160,12 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 		return "createSuccess";
 	}
 
+	@Override
+	public GGoods selectGoodsDetailInfo(String id) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+
 
 }
