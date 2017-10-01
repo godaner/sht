@@ -110,6 +110,10 @@ public interface Static {
 		 * 商品類別最大數量字段
 		 */
 		static final String FILED_GOODS_CLAZZS_MAXNUMBER = "config.goods.clazzs.maxNumber";
+		/**
+		 * 卖家提交的凭证的保存位置
+		 */
+		static final String FILED_SRC_RETURN_MONEY_BILL = "config.src.users.returnmoneybill";
 		
 	}
 	
