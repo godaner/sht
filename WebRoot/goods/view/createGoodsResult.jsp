@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>create result</title>
 </head>
 <body>
 
 <c:set var="result" scope="session" value="${isCreate}">
 
 </c:set>
-
+${sessionScope.isCreate }
 <script>
 	<c:if test="result == true">
 		alert("商品发布成功");
