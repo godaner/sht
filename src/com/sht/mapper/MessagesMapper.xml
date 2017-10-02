@@ -2,11 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.MessagesMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Messages">
-    <id column="ID" jdbcType="OTHER" property="id" />
-    <result column="LAUNCHER" jdbcType="OTHER" property="launcher" />
-    <result column="RECEIVER" jdbcType="OTHER" property="receiver" />
-    <result column="TEXT" jdbcType="VARCHAR" property="text" />
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="TEXT" jdbcType="CHAR" property="text" />
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="STATUS" jdbcType="SMALLINT" property="status" />
+    <result column="USERS" jdbcType="CHAR" property="users" />
+    <result column="MESSAGE" jdbcType="CHAR" property="message" />
+    <result column="GOODS" jdbcType="CHAR" property="goods" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, LAUNCHER, RECEIVER, TEXT, CREATETIME
+    ID, TEXT, CREATETIME, STATUS, USERS, MESSAGE, GOODS
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.MessagesExample" resultMap="BaseResultMap">
     select
@@ -83,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from MESSAGES
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from MESSAGES
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.MessagesExample">
     delete from MESSAGES
@@ -100,10 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sht.po.Messages">
-    insert into MESSAGES (ID, LAUNCHER, RECEIVER, 
-      TEXT, CREATETIME)
-    values (#{id,jdbcType=OTHER}, #{launcher,jdbcType=OTHER}, #{receiver,jdbcType=OTHER}, 
-      #{text,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+    insert into MESSAGES (ID, TEXT, CREATETIME, 
+      STATUS, USERS, MESSAGE, 
+      GOODS)
+    values (#{id,jdbcType=CHAR}, #{text,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT}, #{users,jdbcType=CHAR}, #{message,jdbcType=CHAR}, 
+      #{goods,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Messages">
     insert into MESSAGES
@@ -111,34 +115,46 @@
       <if test="id != null">
         ID,
       </if>
-      <if test="launcher != null">
-        LAUNCHER,
-      </if>
-      <if test="receiver != null">
-        RECEIVER,
-      </if>
       <if test="text != null">
         TEXT,
       </if>
       <if test="createtime != null">
         CREATETIME,
       </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="users != null">
+        USERS,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="goods != null">
+        GOODS,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=OTHER},
-      </if>
-      <if test="launcher != null">
-        #{launcher,jdbcType=OTHER},
-      </if>
-      <if test="receiver != null">
-        #{receiver,jdbcType=OTHER},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="text != null">
-        #{text,jdbcType=VARCHAR},
+        #{text,jdbcType=CHAR},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="users != null">
+        #{users,jdbcType=CHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=CHAR},
+      </if>
+      <if test="goods != null">
+        #{goods,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -152,19 +168,25 @@
     update MESSAGES
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=OTHER},
-      </if>
-      <if test="record.launcher != null">
-        LAUNCHER = #{record.launcher,jdbcType=OTHER},
-      </if>
-      <if test="record.receiver != null">
-        RECEIVER = #{record.receiver,jdbcType=OTHER},
+        ID = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.text != null">
-        TEXT = #{record.text,jdbcType=VARCHAR},
+        TEXT = #{record.text,jdbcType=CHAR},
       </if>
       <if test="record.createtime != null">
         CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=SMALLINT},
+      </if>
+      <if test="record.users != null">
+        USERS = #{record.users,jdbcType=CHAR},
+      </if>
+      <if test="record.message != null">
+        MESSAGE = #{record.message,jdbcType=CHAR},
+      </if>
+      <if test="record.goods != null">
+        GOODS = #{record.goods,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -173,11 +195,13 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update MESSAGES
-    set ID = #{record.id,jdbcType=OTHER},
-      LAUNCHER = #{record.launcher,jdbcType=OTHER},
-      RECEIVER = #{record.receiver,jdbcType=OTHER},
-      TEXT = #{record.text,jdbcType=VARCHAR},
-      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP}
+    set ID = #{record.id,jdbcType=CHAR},
+      TEXT = #{record.text,jdbcType=CHAR},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      STATUS = #{record.status,jdbcType=SMALLINT},
+      USERS = #{record.users,jdbcType=CHAR},
+      MESSAGE = #{record.message,jdbcType=CHAR},
+      GOODS = #{record.goods,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -185,27 +209,35 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Messages">
     update MESSAGES
     <set>
-      <if test="launcher != null">
-        LAUNCHER = #{launcher,jdbcType=OTHER},
-      </if>
-      <if test="receiver != null">
-        RECEIVER = #{receiver,jdbcType=OTHER},
-      </if>
       <if test="text != null">
-        TEXT = #{text,jdbcType=VARCHAR},
+        TEXT = #{text,jdbcType=CHAR},
       </if>
       <if test="createtime != null">
         CREATETIME = #{createtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="users != null">
+        USERS = #{users,jdbcType=CHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=CHAR},
+      </if>
+      <if test="goods != null">
+        GOODS = #{goods,jdbcType=CHAR},
+      </if>
     </set>
-    where ID = #{id,jdbcType=OTHER}
+    where ID = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Messages">
     update MESSAGES
-    set LAUNCHER = #{launcher,jdbcType=OTHER},
-      RECEIVER = #{receiver,jdbcType=OTHER},
-      TEXT = #{text,jdbcType=VARCHAR},
-      CREATETIME = #{createtime,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=OTHER}
+    set TEXT = #{text,jdbcType=CHAR},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=SMALLINT},
+      USERS = #{users,jdbcType=CHAR},
+      MESSAGE = #{message,jdbcType=CHAR},
+      GOODS = #{goods,jdbcType=CHAR}
+    where ID = #{id,jdbcType=CHAR}
   </update>
 </mapper>

@@ -1,5 +1,6 @@
 package com.sht.users.service.impl;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,29 @@ public class AddrsService extends UBaseService implements AddrsServiceI {
 		customUsersMapper.addAddress(po);
 		
 
+	}
+
+	@Override
+	public void updateAddress(CustomAddrs po) {
+		customUsersMapper.updateAddress(po);
+	}
+
+	@Override
+	public void deleteAddress(CustomAddrs po) {
+		customUsersMapper.deleteAddress(po);
+		
+	}
+
+	@Override
+	public List<CustomAddrs> displayAddrs(CustomAddrs po) {
+		List<CustomAddrs> addrsList=customUsersMapper.selectAllAddress(po);
+		return addrsList;
+	}
+
+	@Override
+	public CustomAddrs selectAddrsByID(CustomAddrs po) {
+		CustomAddrs addrs=customUsersMapper.selectAddrsByID(po);
+		return addrs;
 	}
 
 }

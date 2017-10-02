@@ -5298,7 +5298,7 @@ jQuery.fn.extend({
 });
 
 
-function createSafeFragment( document ) {
+function createSafeFragment(document) {
 	var list = nodeNames.split( "|" ),
 		safeFrag = document.createDocumentFragment();
 

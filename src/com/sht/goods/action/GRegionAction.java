@@ -12,12 +12,13 @@ import com.sht.goods.service.RegionServiceI;
 @Scope("prototype")
 public class GRegionAction extends GBaseAction<GRegion, RegionServiceI> {
 
-	public void selectAllProvices() throws Exception{
-		info("GRegionAction-selectAllProvices");
-		List<GRegion> regionList = null;
+	public void selectAllRegions() throws Exception{
+		info("GRegionAction-selectAllRegions");
+		List<GRegion> regionList = getList();
 		try {
-			regionList = service.selectAllProvices();
+			regionList = service.selectAllRegions(po);
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
 		

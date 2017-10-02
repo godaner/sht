@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.goods.mapper.GCustomGoodsMapper">
+	<select id="selectAllGoodsInfo" parameterType="com.sht.goods.po.GGoods"
+		resultType="com.sht.goods.po.GGoods">
+		SELECT *
+		FROM(
+		SELECT A.*,ROWNUM RN
+		FROM (
+		SELECT U0.ID AS USERID,U0.HEADIMG AS
+		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
+		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
+		MSGNUM,rownum
+		FROM USERS U0,GOODS G0
+		WHERE G0.OWNER = U0.ID
+		<if test="0 != region">
+			and region in (
+			 select region.id from region where pid in(
+              select region.id from region where pid=#{region}
+              )
+			)
+		</if>
+		<if test="minPrice !=0 or maxPrice != 0">
+			and sprice between #{minPrice} and #{maxPrice}
+		</if>
+		<if test="clazz != 0">
+			and g0.id in (select goods from goods_clazzs where clazz=#{clazz})
+		</if>
+		<if test="3 != orderByTime">
+			order by createtime desc
+		</if>
+		<if test="3 != orderByPrice">
+			<if test="1 == orderByPrice">
+				order by sprice desc
+			</if>
+			<if test="2 == orderByPrice">
+				order by sprice asc
+			</if>
+		</if>
+		
+	
+		) A
+		WHERE ROWNUM <![CDATA[<=]]>#{maxLine}
+		)
+		WHERE RN<![CDATA[>]]>#{minLine}
+		
+	</select>
+
+	<select id="selectGoodsTotalNum" resultType="double" parameterType="com.sht.goods.po.GGoods">
+		select count(*) from
+		goods
+		
+		<if test="sregion != 0 and sregion != null">
+			<where>
+					  region in (
+					 	select region.id from region where pid in(
+		              		select region.id from region where pid=#{sregion}
+		              	)
+					)
+			</where>
+		</if>
+		
+		<if test="minPrice != 0 or maxPrice != 0">
+			<choose>
+				<when test="sregion != 0 and sregion != null">
+					and sprice between #{minPrice} and #{maxPrice}
+				</when>
+				<otherwise>
+					<where>
+						sprice between #{minPrice} and #{maxPrice}
+					</where>
+				</otherwise>
+			</choose>
+		</if>
+		
+		<if test="clazz != 0">
+			<choose>
+				<when test="sregion != 0 and sregion != null and (minPrice != 0 or maxPrice != 0)">
+					and goods.id in (select goods from goods_clazzs where clazz=#{clazz})
+				</when>
+				<otherwise>
+					<where>
+						goods.id in (select goods from goods_clazzs where clazz=#{clazz})
+					</where>
+				</otherwise>
+			</choose>
+		</if>
+		
+	</select>
+
+	<select id="selectGoodsDetailInfo" resultType="com.sht.goods.po.GGoods"
+		parameterType="string">
+		SELECT U0.ID AS USERID,U0.HEADIMG AS
+		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
+		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
+		MSGNUM,rownum
+		FROM USERS U0,GOODS G0
+		WHERE G0.OWNER = U0.ID and g0.id =#{value}
+	</select>
+	
+	<select id="selectGoodsImgs" resultType="com.sht.goods.po.GGoods" parameterType="string">
+		select getimgspathbygoodsid(goods.id) as
+		from goods
+		where goods.id=#{value}	
+	</select>
+
+	
+
+
+</mapper>

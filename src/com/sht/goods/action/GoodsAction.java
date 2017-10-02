@@ -38,11 +38,10 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	public void showInfo() throws Exception{
 		logger.info("GoodsAction-showInfo");
 
-		List<GGoods> goodsList = null;
+		List<GGoods> goodsList = getList();
 	
 		po.setMaxLine(po.getMinLine()+Static.GOODS.FILED_PAGE_SIZE);
-		info("--minLine---"+po.getMinLine());
-		info("--maxLine---"+po.getMaxLine());
+
 		try {
 			goodsList = service.dispalyGoodsInfo(po);
 			
@@ -68,10 +67,11 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		info("select goods total num [by region]");
 		double totalNum =0;
 		try {
-			totalNum = service.selectGoodsAllNum(po.getRegion());
+			totalNum = service.selectGoodsAllNum(po);
 			 
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		writeJSON(totalNum);
@@ -87,17 +87,41 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	 */
 	public String createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
-		
+		String result = null;
 		try {
-			 service.createGoodsInfo(po);
-			 setSessionAttr("isCreate", "true");
+			 
+			 String region = getRequest().getParameter("county");
+			 String condition = getRequest().getParameter("condition");
+			 
+			 po.setRegion(Double.valueOf(region));
+			 po.setCondition(Short.valueOf(condition));
+			 po.setClazz(getRequest().getParameter("clazzs"));
+			 
+			 result = service.createGoodsInfo(po);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			setSessionAttr("isCreate", "false");
+			result = "createError";
 		}
 		
-		return "fCreateGodos";
+		return result;
 		
+	}
+	
+	
+	public String showGoodsDetailInfo() throws Exception{
+		info("GoodsAction--showGoodsDetailInfo");
+		
+		try {
+			GGoods goods = service.selectGoodsDetailInfo(po.getId());
+			setSessionAttr("goodsDetailInfo", goods);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			setSessionAttr("goodsDetailInfo", "error");
+		}
+		
+		return "showDetailInfo";
 	}
 	
 	

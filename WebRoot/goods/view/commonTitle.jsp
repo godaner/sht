@@ -8,7 +8,7 @@
     <title></title>
     <base href="${pageContext.request.contextPath }/">
     <link  href="goods/css/commonTitle.css" rel="stylesheet"/>
-    <script src="goods/js/jquery-1.11.3.js" type="text/javascript"></script>
+   <script type="text/javascript" src="goods/js/jquery-1.11.3.js"></script>
     <script src="goods/js/commonTitle.js" type="text/javascript"></script>
 </head>
 <body>
@@ -42,7 +42,7 @@
             </div>
         </li>
         <li >
-            <a href="" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" >注册</a>
+            <a href="users/view/index.jsp" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="users/view/index.jsp" >注册</a>
         </li>
 
     </ul>

@@ -188,7 +188,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			 service.updateByPrimaryKeySelective(cs);
 			 
 			 setSessionAttr(FILED_ONLINE_USER, cs);
-			
+			 
 		} catch (Exception e) {
 			
 			e.printStackTrace();
