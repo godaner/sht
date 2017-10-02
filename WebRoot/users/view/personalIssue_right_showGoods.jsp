@@ -16,7 +16,9 @@
 			<a href="javascript:void(0)" onclick="showList('0')">出售中&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('1')">待发货&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('2')">已发货&nbsp;&nbsp;|</a>
-			<a href="javascript:void(0)" onclick="showList('-3')">申请退款&nbsp;&nbsp;|</a>
+			<a href="javascript:void(0)" onclick="showList('-3')">待上架&nbsp;&nbsp;|</a>
+			<a href="javascript:void(0)" onclick="showList('-8')">申请退款&nbsp;&nbsp;|</a>
+			<a href="javascript:void(0)" onclick="showList('-9')">退款成功&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('-1')">已完成订单&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('-6')">待审核&nbsp;&nbsp;|</a>
 			<a href="javascript:void(0)" onclick="showList('-7')">未通过审核</a> 
@@ -284,15 +286,15 @@ function showGoodsdetail(id){
 	})
 }
 //删除单件商品
-function deleteGoodsByid(id){
-	if(confirm("确定要清除此数据吗？")){
+function updateGoodsByidAndStatus(id,statu){
+	if(confirm("确定要进行此操作吗？")){
 
 		$.ajax({
 			type : 'post',  //请求方式,get,post等
 		    dataType:'json',//response返回数据的格式
 		    async : true,  //同步请求  
-		    url : baseUrl+"/users/U_deleteGoodsByid.action",  //需要访问的地址
-		    data :'id='+id,  //传递到后台的参数
+		    url : baseUrl+"/users/U_updateGoodsByidAndStatus.action",  //需要访问的地址
+		    data :'id='+id+'&status='+statu,  //传递到后台的参数
 		    success:function(data){
 		    	showList();
 		    },error:function(){
@@ -313,7 +315,7 @@ function showStatus(status){
 		status="待发货";
 	}else if(status==2){
 		status="已发货";
-	}else if(status==-3){
+	}else if(status==-8){
 		status="申请退款";
 	}else if(status==-1){
 		status="已完成订单";
@@ -321,6 +323,10 @@ function showStatus(status){
 		status="待审核";
 	}else if(status==-7){
 		status="未通过审核";
+	}else if(status==-3){
+		status="待上架";
+	}else if(status==-9){
+		status="退款成功";
 	}
 	return status;
 }
@@ -355,8 +361,20 @@ function showList(status){
 	    		h+="<td><p>"+status+"<p></td>";
 	    		if(status=="已完成订单"){
 	    			h+="<td><a href='#'>查看评价</a>";
+	    		}else if(status=="出售中"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','-2');>取消出售</a></td></tr></table></div></div>";
+	    		}else if(status=="待上架"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>上架</a></td></tr></table></div></div>";
+	    		}else if(status=="待发货"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','2');>发货</a></td></tr></table></div></div>";
+	    		}else if(status=="申请退款"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></table></div></div>";
+	    		}else if(status=="退款成功"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>重新上架</a></td></tr></table></div></div>";
+	    		}else if(status=="已发货"){
+	    			h+="<td><a href='#');>等待买家确认收货</a></td></tr></table></div></div>";
 	    		}else{
-	    		h+="<td><a href=javascript:deleteGoodsByid('"+id+"');>取消</a>&nbsp;&nbsp;<a href=javascript:showGoodsdetail('"+id+"');>详情</a></td></tr></table></div></div>";
+	    			h+="<td><a href='#'>商品审核中无法操作</a></td></tr></table></div></div>";
 	    		}
 	    		}
 	    		$(".list").html(h);
@@ -367,7 +385,7 @@ function showList(status){
 	    		h="";
 	    		status="";
 	    },error:function(data){
-	    	alert("失败");
+	    	alert("请先登入");
 	    }
 	});
 }
@@ -388,23 +406,41 @@ function searchUGoods(){
 		    success:function(data){
 		    	console.info(data);
 		    	
-		    		var h = "";
-		    		for(var i =0;i<data.length;i++){
-		    			var goods = data[i];
-		    			id = goods['id'];
-		    			status = showStatus(goods['status']);
-		    			h+="<div class='issue'><div class='issue_title'><p>创建时间 :"+goods['createtime']+"&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div><div class='issue_body'>";
-			    		h+="<table class='title_table'><tr><td><img  src='../img/content_icon.png'></td>";
-			    		h+="<td><a href=javascript:showGoodsdetail('"+id+"');>"+goods['title']+"</a></td>";
-			    		h+="<td><p>介绍"+goods['description']+"<p></td>";
-			    		h+="<td><p>"+goods['sprice']+"</p><p class='outprice'> "+goods['price']+"<p></td>";
-			    		h+="<td><p>状态"+status+"<p></td>";
-			    		h+="<td><a href=javascript:deleteGoodsByid('"+id+"');>取消</a>&nbsp;|&nbsp;<a href=javascript:showGoodsdetail('"+id+"');>详情</a></td></tr></table></div></div>";
-		    		}
-		    		$(".list").html(h);
-		    		h=""; 
-		    	 
-		    	
+		    	var h = "";
+	    		var id = "";
+	    		for(var i =0;i<data.length;i++){
+	    			var goods = data[i];
+	    			id = goods['id'];
+	    			status = showStatus(goods['status']);
+	    		h+="<div class='issue'><div class='issue_title'><p>创建时间 :"+goods['createtime']+"&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div><div class='issue_body'>";
+	    		h+="<table class='title_table'><tr><td><img  src='../img/content_icon.png'></td>";
+	    		h+="<td><a href=javascript:showGoodsdetail('"+id+"');>"+goods['title']+"</a></td>";
+	    		h+="<td><p>"+goods['description']+"<p></td>";
+	    		h+="<td><p>现价："+goods['sprice']+"</p><p class='outprice'>原价： "+goods['price']+"<p></td>";
+	    		h+="<td><p>"+status+"<p></td>";
+	    		if(status=="已完成订单"){
+	    			h+="<td><a href='#'>查看评价</a>";
+	    		}else if(status=="出售中"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','-2');>下架</a></td></tr></table></div></div>";
+	    		}else if(status=="待上架"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>上架</a></td></tr></table></div></div>";
+	    		}else if(status=="待发货"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','2');>发货</a></td></tr></table></div></div>";
+	    		}else if(status=="申请退款"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></table></div></div>";
+	    		}else if(status=="退款成功"){
+	    			h+="<td><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>重新上架</a></td></tr></table></div></div>";
+	    		}else{
+	    			h+="<td><a href='#'>商品审核中无法操作</a></td></tr></table></div></div>";
+	    		}
+	    		}
+	    		$(".list").html(h);
+	    		h="";
+	    		h+="<button type='button' onclick='NextPage();'>下一页</button>";
+				h+="<button type='button' onclick='redPage();'>上一页</button>";
+	    		$(".turnPage").html(h);
+	    		h="";
+	    		status="";
 		    },error:function(data){
 		    	alert("失败");
 		    }
