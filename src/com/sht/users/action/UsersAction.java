@@ -210,5 +210,13 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		 
 		 service.personalImgUpload(cs);
 	 }
+	 /**
+	  * 用户充值
+	  * 
+	  */
+	 
+	 public void addMoney(){
+		 
+	 }
 	 
 }

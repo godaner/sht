@@ -193,15 +193,15 @@ h2 {
 </head>
 <body text=#000000 bgColor="#ffffff" leftMargin=0 topMargin=4>
 	<header class="am-header">
-	<h1>支付宝电脑网站支付体验入口页</h1>
+	<h1>支付宝电脑网站支付入口页</h1>
 	</header>
 	<div id="main">
 		<div id="tabhead" class="tab-head">
 			<h2 id="tab1" class="selected" name="tab">付 款</h2>
-			<h2 id="tab2" name="tab">交 易 查 询</h2>
+			<!-- <h2 id="tab2" name="tab">交 易 查 询</h2>
 			<h2 id="tab3" name="tab">退 款</h2>
 			<h2 id="tab4" name="tab">退 款 查 询</h2>
-			<h2 id="tab5" name="tab">交 易 关 闭</h2>
+			<h2 id="tab5" name="tab">交 易 关 闭</h2> -->
 		</div>
 		<form name=alipayment action=alipay.trade.page.pay.jsp method=post
 			target="_blank">
@@ -237,7 +237,7 @@ h2 {
 				</dl>
 			</div>
 		</form>
-		<form name=tradequery action=alipay.trade.query.jsp method=post
+		<!-- <form name=tradequery action=alipay.trade.query.jsp method=post
 			target="_blank">
 			<div id="body2" class="tab-content" name="divcontent">
 				<dl class="content">
@@ -353,7 +353,7 @@ h2 {
 					</dd>
 				</dl>
 			</div>
-		</form>
+		</form> -->
 		<div id="foot">
 			<ul class="foot-ul">
 				<li>支付宝版权所有 2015-2018 ALIPAY.COM</li>
