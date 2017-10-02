@@ -33,7 +33,7 @@ $(function () {
 
 
     var globalRegion=0,globalData = null,isOrderByTime = 3,isOrderByPrice = 3;
-    var minPrice = 0,maxPrice = 0;
+    var minPrice = 0,maxPrice = 0,globalClazz = 0;
     
     //根据点击事件切换价格上下箭头的颜色
     var direction = 1;
@@ -43,7 +43,7 @@ $(function () {
     	$(this).css("background-color","#e6fdff");
     	isOrderByTime = 1;//按照时间降序排列
     	isOrderByPrice = 3;//3表示不为查询条件
-    	getData(0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice);
+    	getData(0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice,globalClazz);
     })
     
     
@@ -65,7 +65,7 @@ $(function () {
         }
         
         
-    	getData(0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice);
+    	getData(0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice,globalClazz);
     })
 
     function restoreDefaults(){
@@ -134,12 +134,11 @@ $(function () {
 			
 			if(name == '中国')
 				name = '全国';
-			var td = $('<td name='+item['id']+'> '+name+'</td>>');
+			var td = $('<td name='+item['id']+'> '+name+'</td>');
 			
 			td.on('click',selectGoodsByRegion)
 			
 			tr.append(td);
-//			alert(( index  % 5 ) == 0);
 			if(( index  % 5 ) == 0 ){
 				table.append(tr);
 			}
@@ -157,7 +156,7 @@ $(function () {
     	//根据省份id查询商品总数量
     	if(region == 1)
     		region = 0;
-    	getTotalNum(region,minPrice,maxPrice);
+    	getTotalNum(region,minPrice,maxPrice,globalClazz);
     	
     }
    
@@ -229,7 +228,7 @@ $(function () {
     		return false;
     	}
     	console.log("globalRegion:"+globalRegion);
-    	getTotalNum(globalRegion,minPrice,maxPrice);
+    	getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
     	
     });
     
@@ -271,7 +270,9 @@ $(function () {
 				tr = $('<tr></tr>')
 			}
 			console.log(typeof tr);
-			var td = $('<td><a href="#" title="'+item['text']+'">'+item['text']+'</a> <span>('+item['num']+')</span></td>');
+			var td = $('<td title="'+item['text']+'" name="'+item['id']+'">'+item['text']+' <span>('+item['num']+')</span></td>');
+			
+			td.on('click',getDataByCategory);
 			tr.append(td);
 			
 			if(( index % 5 ) == 0 && index != 0){
@@ -283,27 +284,31 @@ $(function () {
 		
 	}
 	
+	function getDataByCategory(){
+		isOrderByTime = 3;
+		isOrderByPrice = 3;
+	    minPrice = 0;
+	    maxPrice = 0;
+	    globalClazz = $(this).attr('name');
+	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    //getData(0.0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice,globalClazz);
+	}
 //	console.log(baseUrl);
 	
-	getTotalNum(0.0,0,0);
+	getTotalNum(0.0,0,0,0);
 //	var isFirstAcsse = true;
-	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice){
+	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice,clazzs){
 		console.log("minPrice:"+minPrice);
 		console.log("maxPrice:"+maxPrice);
 		
-		if(orderByTime != 3 || orderByTime != 3)
-			setPage(region);
-		
-//		console.log("getData");
-		
-//		alert("getData获取页面数据");
 		$('.trading_item_info>ul').empty();//清除容器中的所有数据
 		var url ="minLine="+min+
 				  "&region="+region +
 				  "&orderByTime="+orderByTime+
 				  "&orderByPrice="+orderByPrice+
 				  "&minPrice="+minPrice+
-				  "&maxPrice="+maxPrice;
+				  "&maxPrice="+maxPrice+
+				  "&clazz="+clazzs;
 //		console.log("url:"+url);
 		$.ajax({
 			type : "post",  //请求方式,get,post等
@@ -311,7 +316,7 @@ $(function () {
 		    async : false,  //同步请求  
 		    url : baseUrl+"/goods/showInfo.action?"+url,  //需要访问的地址
 			success:function(data){
-				console.log("访问成功!");
+				console.log("访问商品数据成功!");
 				console.log(data);
 				globalData = data;
 				//显示商品数据
@@ -328,11 +333,11 @@ $(function () {
 	}
 	
 	function setData(data){
-		console.log("setData");
+//		alert(1);
 		var container = $('.trading_item_info>ul');
 		$.each(data,function(index,item){
-//			console.log(item);
-			
+			console.log(item);
+//			alert("-----"+item['id']);
 			var title = item['title'];
 			var headImg = item['headImg'];
 			var time =item['createtime'].split("-"); 
@@ -341,7 +346,7 @@ $(function () {
 			if(headImg == null){
 				headImg = baseUrl+"/goods/img/default_icon.png";
 			}else{
-				headImg = "http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
+				headImg = ""+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
 			}
 			var li =	$("<li ></li>");
 			li.attr("margint-left","30px");
@@ -351,8 +356,11 @@ $(function () {
 			
 			infoTitle.append("<img src='"+headImg+"'/> <a"
 					+"	href='#'>"+item['title']+"</a>");
+			
+			
+			
 			//图片
-			var content = $("<a href='#'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?t="+new Date().getTime()+"&size=200&imgName="+item['path']+"'/></a>");
+			var content = $("<a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+item['id']+"'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+item['path']+"'/></a>");
 			content.find("img").css("width","200px");
 			content.find("img").css("height","200px");
 			content.find("img").css("margin","13px");
@@ -475,7 +483,7 @@ $(function () {
 		
 		console.log("最小"+min);
 		
-		getData(min,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice);
+		getData(min,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice,globalClazz);
 	}
 	
 	
@@ -485,15 +493,15 @@ $(function () {
 	}
 	
 	//获取商品总数
-	function getTotalNum(region,minPrice,maxPrice){
+	function getTotalNum(region,minPrice,maxPrice,clazz){
 		console.log("getTotalNum--region="+region);
-		
+		console.log(clazz);
 		$.ajax({
 			type : "post",  //请求方式,get,post等
 		    dataType:'json',//response返回数据的格式
 		    async : false,  //同步请求  
 		    url : baseUrl+"/goods/selectGoodsAllNum.action?sregion="+region+"&minPrice="+minPrice
-		    							+"&maxPrice="+maxPrice,  //需要访问的地址
+		    							+"&maxPrice="+maxPrice+"&clazz="+clazz,  //需要访问的地址
 			success:function(data){
 
 				//显示商品数据
@@ -501,7 +509,7 @@ $(function () {
 				$('.city>div>span').html("("+data+")");
 				totalNum = data;
 				if(totalNum != 0){
-					getData(0,region,isOrderByTime,isOrderByPrice,minPrice,maxPrice);//获取商品信息
+					getData(0,region,isOrderByTime,isOrderByPrice,minPrice,maxPrice,clazz);//获取商品信息
 					setPage(region);
 				}else{
 					showTipInfo();

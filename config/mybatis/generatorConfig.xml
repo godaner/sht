@@ -56,7 +56,7 @@
         <table tableName="goods"></table>
         <table tableName="goods_clazzs"></table>
         <table tableName="goods_imgs"></table>
-        <table tableName="messages"></table>
+        
         <table tableName="permissions"></table>
         
         <table tableName="roles"></table>
@@ -160,7 +160,7 @@
 			<columnOverride column="postcode" javaType="java.lang.String" jdbcType="CHAR" />
 		</table>
         
-         -->
+        
           <table schema="sht" tableName="goods">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="title" javaType="java.lang.String"  jdbcType="CHAR"/>
@@ -186,7 +186,17 @@
         	<columnOverride column="postcode" javaType="java.lang.String"  jdbcType="CHAR"/>
         	<columnOverride column="refusereturnmoneybill" javaType="java.lang.String"  jdbcType="CHAR"/>
         </table>
-
+ 			-->
+ 			
+		<table tableName="messages">
+			<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="text" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="createtime" javaType="java.sql.Timestamp"  jdbcType="TIMESTAMP"/>
+        	<columnOverride column="status" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+        	<columnOverride column="users" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="message" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="goods" javaType="java.lang.String" jdbcType="CHAR" />
+		</table>
 		
         <!-- <table schema="" tableName="sys_user"></table>
         <table schema="" tableName="sys_role"></table>
