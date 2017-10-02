@@ -134,12 +134,11 @@ $(function () {
 			
 			if(name == '中国')
 				name = '全国';
-			var td = $('<td name='+item['id']+'> '+name+'</td>>');
+			var td = $('<td name='+item['id']+'> '+name+'</td>');
 			
 			td.on('click',selectGoodsByRegion)
 			
 			tr.append(td);
-//			alert(( index  % 5 ) == 0);
 			if(( index  % 5 ) == 0 ){
 				table.append(tr);
 			}
@@ -317,7 +316,7 @@ $(function () {
 		    async : false,  //同步请求  
 		    url : baseUrl+"/goods/showInfo.action?"+url,  //需要访问的地址
 			success:function(data){
-				console.log("访问成功!");
+				console.log("访问商品数据成功!");
 				console.log(data);
 				globalData = data;
 				//显示商品数据
@@ -334,11 +333,11 @@ $(function () {
 	}
 	
 	function setData(data){
-		console.log("setData");
+//		alert(1);
 		var container = $('.trading_item_info>ul');
 		$.each(data,function(index,item){
-//			console.log(item);
-			
+			console.log(item);
+//			alert("-----"+item['id']);
 			var title = item['title'];
 			var headImg = item['headImg'];
 			var time =item['createtime'].split("-"); 
@@ -347,7 +346,7 @@ $(function () {
 			if(headImg == null){
 				headImg = baseUrl+"/goods/img/default_icon.png";
 			}else{
-				headImg = "http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
+				headImg = ""+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
 			}
 			var li =	$("<li ></li>");
 			li.attr("margint-left","30px");
@@ -356,9 +355,12 @@ $(function () {
 			infoTitle.addClass("trading_info_title");
 			
 			infoTitle.append("<img src='"+headImg+"'/> <a"
-					+"	href='/sht/goods/showGoodsDetailInfo.action?"+item['id']+"'>"+item['title']+"</a>");
+					+"	href='#'>"+item['title']+"</a>");
+			
+			
+			
 			//图片
-			var content = $("<a href='#'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?t="+new Date().getTime()+"&size=200&imgName="+item['path']+"'/></a>");
+			var content = $("<a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+item['id']+"'><img src='"+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+item['path']+"'/></a>");
 			content.find("img").css("width","200px");
 			content.find("img").css("height","200px");
 			content.find("img").css("margin","13px");

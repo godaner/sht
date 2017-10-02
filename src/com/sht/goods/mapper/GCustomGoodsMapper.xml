@@ -90,7 +90,18 @@
 
 	<select id="selectGoodsDetailInfo" resultType="com.sht.goods.po.GGoods"
 		parameterType="string">
-		
+		SELECT U0.ID AS USERID,U0.HEADIMG AS
+		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
+		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
+		MSGNUM,rownum
+		FROM USERS U0,GOODS G0
+		WHERE G0.OWNER = U0.ID and g0.id =#{value}
+	</select>
+	
+	<select id="selectGoodsImgs" resultType="com.sht.goods.po.GGoods" parameterType="string">
+		select getimgspathbygoodsid(goods.id) as
+		from goods
+		where goods.id=#{value}	
 	</select>
 
 	

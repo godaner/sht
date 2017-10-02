@@ -20,6 +20,7 @@ import com.sht.mapper.GoodsClazzsMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
 import com.sht.po.Clazzs;
+import com.sht.po.Goods;
 
 /**
  * Title:UsersService
@@ -163,8 +164,19 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 	@Override
 	public GGoods selectGoodsDetailInfo(String id) throws Exception {
 		// TODO Auto-generated method stub
+		//更细腻浏览次数
+		Goods  goods = goodsMapper.selectByPrimaryKey(id);
 		
-		return null;
+		Double browseNum = goods.getBrowsenumber() + 1;
+
+		goods.setBrowsenumber(browseNum);
+		
+		goodsMapper.updateByPrimaryKey(goods);
+		
+		//查询商品详细信息
+		GGoods ggoods = customGoodsMapper.selectGoodsDetailInfo(id);
+		
+		return ggoods;
 	}
 
 

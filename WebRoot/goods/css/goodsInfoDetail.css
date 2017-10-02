@@ -331,7 +331,7 @@ article{
     width: 450px;
     height: 280px;
     position: absolute;
-    left: 50%;
+    left: 30%;
     margin-left:-225px;
     margin-top:-200px;
     background-color: white;
@@ -391,17 +391,15 @@ article{
     box-shadow:0px 0px  1px 1px #aaa;
 }
 
-.secondary_menu tr{
-    /*height: 30px;*/
-    /*line-height: 30px;*/
-}
 
 .secondary_menu tr td{
-    width: 200px;
-    /*padding-left: 10px;*/
-    /*border: 1px solid red;*/
     font-size: 14px;
 }
+
+.secondary_menu tr td:hover{
+    background-color: darkorange;
+}
+
 
 
 /*comment*/

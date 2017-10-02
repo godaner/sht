@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <%--   <base href="${pageContext.request.contextPath }/"/> --%>
-<script src="${baseUrl}/goods/js/jquery-1.11.3.js"
+<script src="${baseUrl}/goods/js/jquery-3.2.1.js"
 	type="text/javascript"></script>
 <script src="${baseUrl}/goods/js/index.js"></script>
 <link rel="stylesheet" href="${baseUrl}/goods/css/index.css" />

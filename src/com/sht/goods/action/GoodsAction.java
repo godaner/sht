@@ -109,16 +109,19 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	}
 	
 	
-	public void showGoodsDetailInfo() throws Exception{
+	public String showGoodsDetailInfo() throws Exception{
 		info("GoodsAction--showGoodsDetailInfo");
 		
 		try {
 			GGoods goods = service.selectGoodsDetailInfo(po.getId());
-			
+			setSessionAttr("goodsDetailInfo", goods);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			setSessionAttr("goodsDetailInfo", "error");
 		}
+		
+		return "showDetailInfo";
 	}
 	
 	
