@@ -13,6 +13,7 @@ import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.po.GGoodsClazzs;
 import com.sht.goods.po.GGoodsImgs;
+import com.sht.goods.po.GMessages;
 import com.sht.goods.service.GoodsServiceI;
 import com.sht.mapper.ClazzsMapper;
 import com.sht.mapper.FilesMapper;
@@ -179,5 +180,14 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 		return ggoods;
 	}
 
+	@Override
+	public String selectGoodsImgs(String id) throws Exception {
+		
+		String path = customGoodsMapper.selectGoodsImgs(id);
+		
+		return path;
+	}
+
+	
 
 }

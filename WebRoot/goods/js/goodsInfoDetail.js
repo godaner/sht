@@ -61,23 +61,71 @@ $(function() {
 
 	// 图片轮播
 
+	var id = $('#goodsId').val(),baseUrl = $('#baseUrl').val();
+	
+	var imgSrc;
+	var url_200 = baseUrl + "/common/goods_getGoodsImg.action?size=200&imgName=";
+	var url_30 = baseUrl + "/common/goods_getGoodsImg.action?size=30&imgName=";
+	$.ajax({
+		type : "post", // 请求方式,get,post等
+		dataType : 'json',// response返回数据的格式
+		async : false, // 同步请求
+		url : baseUrl + "/goods/selectGoodsImgs.action?id=" + id, // 需要访问的地址
+		success : function(data) {
+			// 显示商品类别
+			imgSrc = data.split('.png-');
+			splitData(imgSrc);
+		},
+		error : function(data) {
+			console.log("访问失败!");
+			console.log(data);
+		}
+	});
+
+	
+	function splitData(imgSrc){
+		for(var i = 0 ; i < imgSrc.length ; i ++){
+			
+			if(i != imgSrc.length - 1)
+				imgSrc[i] = imgSrc[i] + ".png";
+			
+			var li = $("<li><img src=''/></li>");
+			
+			
+			li.find('img').attr('src', url_30 + imgSrc[i]);
+			
+			if(imgSrc.length > 1){
+				
+				li.hover(function(){
+					mouseEntered($(this));
+				},function(){
+					mouseLeaved($(this));
+				});
+			}
+			
+			$('#rotation-item').append(li);
+		}
+		
+	}
 	var rotationEvent;
 	var rotationIndex = 0;
-
-	var imgSrc = [ 'goods/img/content.png', 'goods/img/rotation.png',
-			'goods/img/content.png', 'goods/img/rotation.png' ];
-	$('#rotation-item>li').hover(function() {
+	
+	
+	
+	function mouseEntered(target){
 		clearTimeout(rotationEvent);
-		var index = $(this).index();
+		var index = target.index();
 		restoreBorder();
-		$(this).css('border-color', 'orangered');
-		var target = $('.content-left>img');
-		target.attr('src', imgSrc[index]);
-	}, function() {
+		target.css('border-color', 'orangered');
+		
+		var targetParent = $('.content-left>img');
+		targetParent.attr('src', url_200+imgSrc[index]);
+	}
+	function mouseLeaved(target) {
 		restoreBorder();
-		rotationIndex = $(this).index();
+		rotationIndex = target.index();
 		rotation();
-	});
+	}
 
 	$('.content-left>img').hover(function() {
 		clearTimeout(rotationEvent);
@@ -87,14 +135,14 @@ $(function() {
 
 	function rotation() {
 		rotationIndex++;
-		if (rotationIndex >= 4) {
+		if (rotationIndex >= imgSrc.length) {
 			rotationIndex = 0;
 		}
 		restoreBorder();
 
 		$('.content-left>ul>li:eq(' + rotationIndex + ')').css('border-color',
 				'orangered');
-		$('.content-left>img').attr('src', imgSrc[rotationIndex]);
+		$('.content-left>img').attr('src',url_200 + imgSrc[rotationIndex]);
 
 		rotationEvent = setTimeout(rotation, 2000);
 	}
@@ -105,7 +153,7 @@ $(function() {
 		});
 	}
 
-	var baseUrl = $('#baseUrl').val();
+	
 
 	// 显示城市列表
 	$('#location').click(function() {
@@ -129,7 +177,7 @@ $(function() {
 			success : function(data) {
 				console.log("访问地区成功!");
 				// 显示商品类别
-				console.log(data);
+//				console.log(data);
 
 				if (target.attr('class') == 'secondary_menu')
 					setSecondMenuData(data, target);
@@ -167,7 +215,6 @@ $(function() {
 			})
 
 			if ((index % 5) == 0) {
-
 				table.append(tr);
 				tr = $('<tr></tr>');
 			}
@@ -180,17 +227,20 @@ $(function() {
 		var table = target.empty();
 
 		var tr = $("<tr></tr>");
-		
+
 		$.each(data, function(index, item) {
 			var name = item['name'];
-			name = name.substring(0, 3);
-			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
-			tr.append(td);
-
-			td.on('click', setCityInfo);
 			
-			if ((index % 4) == 0 && index != 0) {
-
+			name = name.substring(0, 3);
+			
+			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
+			
+			tr.append(td);
+			
+			td.on('click', setCityInfo);
+	
+			if (((1+index) % 5) == 0 && index != 0) {
+				
 				table.append(tr);
 				tr = $('<tr></tr>');
 			}
@@ -202,7 +252,7 @@ $(function() {
 		
 		if(data.length >= 5){
 			table.css('width','400px');
-//			table.find('tr').find('td').css('width',"100px");
+
 		}
 	}
 
@@ -226,17 +276,73 @@ $(function() {
 		table.empty().hide();
 		
 	}
+	
+	//显示三级城市列表
+	function setCountyInfo(data){
+		var table = $('#county').empty();
+		var tr = $("<tr></tr>");
+		$.each(data,function(index,item){
+			
+			var name = item['name'];
+			name = name.substring(0, 3);
+			
+			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
+			
+			td.on('click',showCountyInfo);
+			
+			tr.append(td);
+			
+			if((index % 5) == 0 && index != 0){
+				
+				table.append(tr);
+				tr = $('<tr></tr>');
+			}
+		})
+		if(data.length > 0)
+			table.show();
 
+	}
+
+	function getBasedRegionData(pid,target) {
+		$.ajax({
+			type : "post", // 请求方式,get,post等
+			dataType : 'json',// response返回数据的格式
+			async : false, // 同步请求
+			url : baseUrl + "/regions/selectAllRegions.action?pid=" + pid, // 需要访问的地址
+			success : function(data) {
+				console.log("访问地区成功!");
+				// 显示商品类别
+//				console.log(data);
+
+				setCountyInfo(data);
+			
+			},
+			error : function(data) {
+				console.log("访问地区失败!");
+				console.log(data);
+			}
+		});
+	}
+	
 	function setCityInfo() {
 		var city = $(this).text();
+		
 		table.find('tr').remove();
 		table.empty().hide();
 		$('.city_info table').find('tr').remove();
+		
 		$('.city_info').toggle('slow');
+		
 		$('#location>span').text(city);
-
+		var pid = $(this).attr('name');
+		getBasedRegionData(pid,$(this));
 	}
-	;
+	
+	function showCountyInfo(){
+		var county = $(this).text();
+		$("#county").empty().hide();
+		$('#express>span').html(county);
+	}
 
 	// 隐藏城市列表
 	$('.city_info>div img').click(function() {
@@ -248,5 +354,126 @@ $(function() {
 	}, function() {
 		$('.city_info>div img').attr('src', 'goods/img/close_grey.png');
 	});
+	
+	
+	//
+	
+	var msgnum = $("#msgnum").val();
+	if(msgnum != 0)
+		getMsgData(id);
+	
+	function getMsgData(id){
+		$('.reply').html("");
+		$('.reply').removeAttr('name');
+		$('.comment-content>textarea').html("");
+		$.ajax({
+			type : "post", // 请求方式,get,post等
+			dataType : 'json',// response返回数据的格式
+			async : false, // 同步请求
+			url : baseUrl + "/messages/selectAllMessages.action?id=" + id, // 需要访问的地址
+			success : function(data) {
+				console.log("访问留言成功!");
+	
+				console.log(data);
+				setMsgData(data);
+				
+			},
+			error : function(data) {
+				console.log("访问留言失败!");
+				console.log(data);
+			}
+		});
+	}
+	
+	
+	function setMsgData(data){
+		
+		var container = $('.comment-container').empty();
+		
+		$.each(data,function(index,item){
+			
+			var headImg = item['headImg'];
+			
+			if(headImg == null || headImg == "")
+				headImg = baseUrl + '/goods/img/default_icon.png';
+			else 
+				headImg = baseUrl + '/common/goods_getGoodsImg.action?size=30&imgName='+headImg;
+			
+			var li = $("<li></li>");
+			var img = $("<img src='"+headImg+"'/>");
+			var reply = "";
+//			console.log("message:"+item['message']);
+			if(item['message'] != "" && item['message'] != null)
+				reply = "回复"+item['username']+":";
+			else
+				reply = "评论内容:";
+			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+			var a = $('<a href="javascript:void(0)" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
+			a.on('click',addComments);
+			
+			li.append(img);
+			
+			li.append(div);
+			
+			li.append(a);
+			
+			container.append(li);
+			
+		})
+	}
+	
+	function addComments(){
+		var messageId = $(this).attr('name');
+		var username = $(this).attr('value');
+		$('.reply').html("回复:"+username);
+		$('.reply').attr('name',messageId);
+		$('.comment-content>textarea').focus();
+		
+	}
+	
+	$('.submit').click(function(){
+		var text = $('#comment-content').val();
+		var users = $('#onlineUser').val();
+		var message = $('.reply').attr('name');
+//		alert(message);
+		if(message == null)
+			message = "";
+		
+		if(users == null || users == ""){
+			alert("请先登陆，登陆后才可评论!");
+			return false;
+		}else if(text == "" || text == null){
+			alert("请输入评论内容");
+			return false;
+		}
+			
+		insertMsgData(text,users,message,id);
+	});
+	function insertMsgData(text,users,message,id){
+		url = "text="+text+
+			  "&users="+users+
+			  "&message="+message+
+			  "&goods="+id;
+		$.ajax({
+			type : "post", // 请求方式,get,post等
+			dataType : 'json',// response返回数据的格式
+			async : false, // 同步请求
+			url : baseUrl + "/messages/insertMessages.action?" +url , // 需要访问的地址
+			success : function(data) {
+				console.log(data);
+				if(data == 1)
+					alert("提交留言成功!");
+				else
+					alert("提交留言失败!");
+				
+				getMsgData(id);
+				
+			},
+			error : function(data) {
+				alert("提交留言失败!");
+				console.log(data);
+			}
+		});
+	}
 
 })

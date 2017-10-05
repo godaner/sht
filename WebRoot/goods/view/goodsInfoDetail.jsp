@@ -13,15 +13,18 @@
 <body>
 <%@ include file="commonTitle.jsp"  %>
 <input type="hidden" value="${baseUrl}" id="baseUrl" />
+<input type="hidden" value="${sessionScope.goodsDetailInfo.id}" id="goodsId" />
+<input type="hidden" value="${sessionScope.goodsDetailInfo.msgNum}" id="msgnum" />
+<input type="hidden" value="${sessionScope.onlineUser.id} " id="onlineUser"/>
 <article>
     <div class="head">
         <ul>
             <li>
-            	<c:if test="${sessionScope.goodsDetailInfo.headImg == null }">
+            	<c:if test="${empty sessionScope.goodsDetailInfo.headImg  }">
             		<img src="goods/img/default_icon.png"/>
             	</c:if>
             	
-                <c:if test="${sessionScope.goodsDetailInfo.headImg != null }">
+                <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
             		<img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
             	</c:if>
                 <a href="#">${sessionScope.goodsDetailInfo.title }</a>
@@ -56,10 +59,7 @@
         	
             <img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.path}"/>
             <ul id="rotation-item">
-                <li><img src="goods/img/content_icon.png"></li>
-                <li><img src="goods/img/rotation_icon.png"></li>
-                <li><img src="goods/img/content_icon.png"></li>
-                <li><img src="goods/img/rotation_icon.png"></li>
+            
             </ul>
         </div>
 
@@ -88,15 +88,15 @@
                     <span id="location">&nbsp;至&nbsp;<span>江苏南通</span>&nbsp;<img src="goods/img/down_grey.png"/>&nbsp;&nbsp;</span>
                 </div>
 
-                <span class="state" id="express">快递&nbsp;:&nbsp;￥&nbsp;8.00</span>
-
+                <span class="state" id="express"><span>江苏南通</span>&nbsp;<img src="goods/img/down_grey.png"/>&nbsp;&nbsp;</span>
+				<table id="county"></table>
                 <div class="clear"></div>
             </div>
 
             <input type="button" value="立&nbsp;即&nbsp;购&nbsp;买"/>
             <br/>
-            <input type="button" value="分享(0)"/>
-            <input type="button" value="赞(4)"/>
+            <!-- <input type="button" value="分享(0)"/>
+            <input type="button" value="赞(4)"/> -->
 
             <div class="city_info">
                 <div>
@@ -120,16 +120,24 @@
             </div>
             <hr/>
             <div class="comment-content">
-                <ul>
-                    <li>
-                        <img src="goods/img/content_icon.png"/>
-                        <div>
-                            <span>xxxxxxxxxx</span>
-                            <!--<br/>-->
-                            <span>2017-10-10 23:23:23</span>
-                        </div>
-                    </li>
+            	<c:if test="${sessionScope.goodsDetailInfo.msgNum == 0}">
+            		该商品暂时无人评价!
+            	</c:if>
+            	<c:if test="${sessionScope.goodsDetailInfo.msgNum != 0}">
+            		
+            	
+                <ul class="comment-container">
+                    
                 </ul>
+                </c:if>
+                <br/>
+                <br/>
+                <br/>
+                <p>欢迎填写评价：</p><sapn class="reply"></sapn>
+                <br/>
+                <textarea rows="3" cols="100" placeholder="请填写..." id="comment-content"></textarea>
+                <br>
+                <input type="button" id="submit" value="提交评论" class="submit"/>
             </div>
         </div>
 

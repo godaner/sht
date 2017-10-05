@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,10 +41,17 @@
                 </ul>
             </div>
         </li>
+        <c:if test="${empty sessionScope.onlineUser.username}">
         <li >
             <a href="users/view/index.jsp" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="users/view/index.jsp" >注册</a>
         </li>
-
+		</c:if>
+		
+		 <c:if test="${not empty sessionScope.onlineUser.username}">
+		 	<li>
+		 		欢迎登陆:&nbsp;&nbsp;${sessionScope.onlineUser.username}
+		 	</li>
+		 </c:if>
     </ul>
 </nav>
 </body>

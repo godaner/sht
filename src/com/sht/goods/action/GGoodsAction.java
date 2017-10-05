@@ -23,7 +23,7 @@ import com.sht.util.Static;
  */
 @Controller
 @Scope("prototype")
-public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
+public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	
 	private CGoodsAction cGoodsAction;
 	
@@ -125,6 +125,19 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	}
 	
 	
+	public void selectGoodsImgs() throws Exception{
+		info("GoodsAction--selectGoodsImgs");
+		
+		String path = "default";
+		try {
+			String id = getRequest().getParameter("id");
+			path = service.selectGoodsImgs(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		writeJSON(path);
+	}
 	
 	
 	
