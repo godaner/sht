@@ -18,6 +18,9 @@
 			
 			<result name="rException" type="redirect">/users/view/exception.jsp</result>
 			<result name="fException">/users/view/exception.jsp</result>
+			
+			<result name="rAddrs" type="redirect">/users/view/addressmanage.jsp</result>
+			<result name="fAddrs">/users/view/addressmanage.jsp</result>
 		</global-results>
 		<!-- 全局异常配置 -->
 		<global-exception-mappings>

@@ -3,10 +3,11 @@
  */
 //$(document).ready(function(){
 //$('#setdefalut').click(function(){
+//	var op;
 //	if($(this).prop("checked")){
-//		$(this).val(1);
+//		op = 1;
 //	}else{
-//		$(this).val(0);
+//		op = 0;
 //	}
 //});
 //})
@@ -36,50 +37,120 @@ $(function(){
 		$(".register_msg").empty();
 		$(".register_msg").css("background-color","white")
 	});
-	//加载省份
-	loadProvince();
 	
+	selectcity();
+	selectcounty();
+	
+	loadProvince(function(){
+		loadcity(function(){
+			loadcounty();
+		});
+	});
+	
+//	点击a标签后跳转
+//	$("del").click(function(){
+//        location.href='/sht/users/view/addressmanage.jsp';
+//    })
 	
 });
 
+function selectcity(){
+	$("#province").change(function(){
+		//清空县，区，点击市后才显示
+		$("#county").val("");
+		$("#county").html("");
+		loadcity();
+		
+	});
+}
+
+function selectcounty(){
+	$("#city").change(function(){
+		loadcounty();
+	});
+}
+
 //加载省份
-function loadProvince(){
+function loadProvince(callfun){
 	$.ajax({
 	    url : baseUrl+"/users/R_getRegionByPid.action?pid="+countryId,  //需要访问的地址
 	    success:function(data){
-	    	console.info(data)
+	    	var str = "";
+//	    	console.info(data);
+	    	$.each(data.childs, function(index,item){
+	    		str += "<option id='s"+index+"' class='"+item.id+"'>"+item.name+"</option>";
+	    	});
+	    	$("#province").html(str);
+	    	callfun();
 	    },error:function(data){
 	    	
 	    }
 	});
 }
 
-/*新增地址*/
-function addAddrs(){
-	$('#setdefalut').click(function(){
-		if($(this).prop("checked")){
-			$(this).val(1);
-		}else{
-			$(this).val(0);
+//加载城市
+function loadcity(callfun){
+	var cityid = $("#province :selected").attr("class");
+//	console.info(111);
+//	console.info(cityid);
+	$.ajax({
+		url : baseUrl+"/users/R_getRegionByPid.action?pid="+cityid,
+		success:function(data){
+			var str = "";
+//			console.info(data);
+			$.each(data.childs,function(index,item){
+				str += "<option id='s"+index+"' class='"+item.id+"'>"+item.name+"</option>"
+			});
+			$("#city").html(str);
+			callfun();
+		},error:function(data){
+			
 		}
 	});
+}
+
+//加载县，区
+function loadcounty(){
+	var countyid = $("#city :selected").attr("class");
+	$.ajax({
+		url : baseUrl+"/users/R_getRegionByPid.action?pid="+countyid,
+		success:function(data){
+			var str = "";
+//			console.info(data);
+			$.each(data.childs,function(index,item){
+				str += "<option id='s"+index+"' class='"+item.id+"'>"+item.name+"</option>"
+			});
+			$("#county").html(str);
+		},error:function(data){
+			
+		}
+	})
+}
+
+
+
+/*新增地址*/
+function addAddrs(){
 	
-	var region=$("#city-picker3").val();
+	var setdefalut;
+	if($('#setdefalut').prop('checked')){
+		setdefalut = 1;
+	}else{
+		setdefalut = 0;
+	}
+	
+	var region=$("#county :selected").attr("class");
 	var detail=$("#detail").val().trim();
 	var postcode=$("#postcode").val().trim();
 	var realname=$("#realname").val().trim();
 	var pohne=$("#pohne").val().trim();
-	var setdefalut=$("#setdefalut").val().trim();
 	
 	
-	if(region!=""&&region!=null&&detail!=""&&detail!=null&&realname!=""&&realname!=null&&pohne!=""&&pohne!=null){
+	if(detail!=""&&detail!=null&&realname!=""&&realname!=null&&pohne!=""&&pohne!=null){
 		CanSub=true;
 	}
 	
-	if(region==""||region==null){
-		msg="所在地区不能为空";
-		RegisterErrorMsg(msg);
-	}else if(detail==""||detail==null){
+	if(detail==""||detail==null){
 		msg="详细地址不能为空";
 		RegisterErrorMsg(msg);
 	}else if(realname==""||realname==null){
@@ -96,7 +167,6 @@ function addAddrs(){
 		    url : baseUrl+"/users/D_addAddress.action",  //需要访问的地址
 		    data : "region="+region+"&detail="+detail+"&postcode="+postcode+"&realname="+realname+"&pohne="+pohne+"&isdefault="+setdefalut,  //传递到后台的参数
 		    success:function(data){
-		    	alert(data)
 		    	if(data['msg']){
 		    		msg = data['msg'];
 		    		RegisterErrorMsg(msg);
@@ -110,4 +180,144 @@ function addAddrs(){
 		});
 		msg="";
 	}
+}
+
+
+//显示已添加的收货地址列表
+var cAddrs;
+$(function(){
+//	var baseUrl="";
+	$.ajax({
+		type:type,
+		async:async,
+		url:baseUrl+"/users/D_showAddrs.action",
+		dataType:dataType,
+		data:{},
+		success:function(data){
+//			console.info(data);
+			var h="";
+			cAddrs = data['addrs'];
+			for(var i=1;i<=data['addrs'].length;i++){
+				var addrs= data['addrs'][i-1];
+				if(addrs["isdefault"]==1){
+					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["region"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["pohne"]+"</th><th><a href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><input type='text' value='默认地址' style='width:48px;height:18px;background-color:#f7f7f7;'></th></tr></tbody>";
+					$("#listshow").append(h);
+					h="";
+				}else{
+					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["region"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["pohne"]+"</th><th><a href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><a href=javascript:editDefault('"+addrs['id']+"')>设为默认</a></th></tr></tbody>";
+					$("#listshow").append(h);
+					h="";
+				}
+			}
+			h="";
+		}
+	})
+}) 
+
+
+function oneditAddr(index){
+	var addr = cAddrs[index];
+	console.info(addr);
+//	console.info(addr.region);
+	var countyid=addr.region;
+//	loadcounty1(function(countyid){
+//		loadcity1(function(){
+//			loadProvince1();
+//		});
+//	});
+	$("#id").val(addr.id);
+	$("#master").val(addr.master);
+	$("#detail").val(addr.detail);
+	$("#postcode").val(addr.postcode);
+	$("#realname").val(addr.realname);
+	$("#pohne").val(addr.pohne);
+	
+	var checkvalue=addr.isdefault;
+	if(checkvalue==1){
+//		$('#setdefalut').prop('checked');
+		$("#setdefalut").attr("checked","checked");
+		$("#setdefalut").attr("checked","true");
+		$("#setdefalut").prop("checked","checked");
+		$("#setdefalut").prop("checked","true");
+		
+//		$('#setdefalut:eq(0)').attr("checked");
+//		$('#setdefalut:eq(0)').attr("checked",false);
+	}else{
+
+		$("#setdefalut").removeAttr("checked");
+//		$('#setdefalut:eq(0)').attr("checked",false);
+//		$('#setdefalut:eq(0)').attr("checked",true);
+	}
+	
+	
+}
+
+
+function editAddrs(){
+	var setdefalut;
+	if($('#setdefalut').prop('checked')||$('#setdefalut').attr('checked')){
+		setdefalut = 1;
+	}else{
+		setdefalut = 0;
+	}
+	var id=$("#id").val().trim();
+	
+	var master=$("#master").val().trim();
+//	alert(id);
+//	alert(master);
+//	var region=$("#county :selected").attr("class");
+	var detail=$("#detail").val().trim();
+	var postcode=$("#postcode").val().trim();
+	var realname=$("#realname").val().trim();
+	var pohne=$("#pohne").val().trim();
+	
+	if(detail!=""&&detail!=null&&realname!=""&&realname!=null&&pohne!=""&&pohne!=null){
+		CanSub=true;
+	}
+	
+	if(detail==""||detail==null){
+		msg="详细地址不能为空";
+		RegisterErrorMsg(msg);
+	}else if(realname==""||realname==null){
+		msg="收货人不能为空";
+		RegisterErrorMsg(msg);
+	}else if(pohne==""||pohne==null){
+		msg="手机号码不能为空";
+		RegisterErrorMsg(msg);
+	}else if(CanSub){
+		$.ajax({
+			type : type,  //请求方式,get,post等
+		    dataType:dataType,//response返回数据的格式
+		    async : async,  //同步请求  
+		    url : baseUrl+"/users/D_updateAddress.action",  //需要访问的地址
+		    data : "id="+id+"&master="+master+"&detail="+detail+"&postcode="+postcode+"&realname="+realname+"&pohne="+pohne+"&isdefault="+setdefalut,  //传递到后台的参数
+		    success:function(data){
+		    	if(data['msg']){
+		    		msg = data['msg'];
+		    		RegisterErrorMsg(msg);
+		    	}else{
+		    		alert("修改成功");
+		    		window.location.href='/sht/users/view/addressmanage.jsp';
+		    	}
+		    },error:function(data){
+		    	alert("修改失败");
+		    }
+		});
+		msg="";
+	}
+}
+
+//设置默认收货地址
+function editDefault(addrId){
+	$.ajax({
+		type:type,
+		dataType:dataType,
+		async:async,
+	    url : baseUrl+"/users/D_updateDefault.action",
+	    data:"id="+addrId,
+	    success:function(data){
+//    		alert("设置成功");
+//    		window.location.href='/sht/users/view/addressmanage.jsp';
+	    }
+	})
 }

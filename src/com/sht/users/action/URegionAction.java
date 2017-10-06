@@ -16,12 +16,10 @@ import com.sht.users.service.URegionServiceI;
 @Scope("prototype")
 public class URegionAction extends BaseAction<URegion, URegionServiceI> {
 	public void getRegionByPid(){
-		
 		try{
 			
 			po = service.getRegionByPid(po.getPid());
 			
-			setSessionAttr(FILED_ONLINE_USER, po);
 			
 		}catch(Exception e){
 			
@@ -30,8 +28,26 @@ public class URegionAction extends BaseAction<URegion, URegionServiceI> {
 			po.setMsg(e.getMessage());
 			
 		}
+		po.setMsg(null);
 		//返回一个json的数据
 		writeJSON(po);
-		po.setMsg(null);
 	}
+	
+	public void getRegionById(){
+		try{
+			po = service.getRegionById(po.getId());
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+			po.setMsg(e.getMessage());
+			
+		}
+		po.setMsg(null);
+		//返回一个json的数据
+		writeJSON(po);
+		
+	
+	}
+	
 }

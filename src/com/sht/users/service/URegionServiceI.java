@@ -16,4 +16,6 @@ public interface URegionServiceI {
 	 */
 	URegion getRegionByPid(Integer pid) throws Exception;
 
+	URegion getRegionById(Integer id) throws Exception;
+
 }

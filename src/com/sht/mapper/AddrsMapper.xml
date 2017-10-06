@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.mapper.AddrsMapper">
   <resultMap id="BaseResultMap" type="com.sht.po.Addrs">
-    <id column="ID" jdbcType="CHAR" property="id" />
-    <result column="MASTER" jdbcType="CHAR" property="master" />
-    <result column="REGION" jdbcType="DOUBLE" property="region" />
-    <result column="DETAIL" jdbcType="CHAR" property="detail" />
-    <result column="PHONE" jdbcType="CHAR" property="phone" />
-    <result column="REALNAME" jdbcType="CHAR" property="realname" />
-    <result column="ISDEFAULT" jdbcType="SMALLINT" property="isdefault" />
-    <result column="POSTCODE" jdbcType="CHAR" property="postcode" />
+    <id column="ID" jdbcType="OTHER" property="id" />
+    <result column="MASTER" jdbcType="OTHER" property="master" />
+    <result column="REGION" jdbcType="DECIMAL" property="region" />
+    <result column="DETAIL" jdbcType="OTHER" property="detail" />
+    <result column="POHNE" jdbcType="OTHER" property="pohne" />
+    <result column="REALNAME" jdbcType="OTHER" property="realname" />
+    <result column="ISDEFAULT" jdbcType="DECIMAL" property="isdefault" />
+    <result column="POSTCODE" jdbcType="VARCHAR" property="postcode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, MASTER, REGION, DETAIL, PHONE, REALNAME, ISDEFAULT, POSTCODE
+    ID, MASTER, REGION, DETAIL, POHNE, REALNAME, ISDEFAULT, POSTCODE
   </sql>
   <select id="selectByExample" parameterType="com.sht.po.AddrsExample" resultMap="BaseResultMap">
     select
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Object" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from ADDRS
-    where ID = #{id,jdbcType=CHAR}
+    where ID = #{id,jdbcType=OTHER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object">
     delete from ADDRS
-    where ID = #{id,jdbcType=CHAR}
+    where ID = #{id,jdbcType=OTHER}
   </delete>
   <delete id="deleteByExample" parameterType="com.sht.po.AddrsExample">
     delete from ADDRS
@@ -104,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.sht.po.Addrs">
     insert into ADDRS (ID, MASTER, REGION, 
-      DETAIL, PHONE, REALNAME, ISDEFAULT, 
-      POSTCODE)
-    values (#{id,jdbcType=CHAR}, #{master,jdbcType=CHAR}, #{region,jdbcType=DOUBLE}, 
-      #{detail,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{realname,jdbcType=CHAR}, #{isdefault,jdbcType=SMALLINT}, 
-      #{postcode,jdbcType=CHAR})
+      DETAIL, POHNE, REALNAME, 
+      ISDEFAULT, POSTCODE)
+    values (#{id,jdbcType=OTHER}, #{master,jdbcType=OTHER}, #{region,jdbcType=DECIMAL}, 
+      #{detail,jdbcType=OTHER}, #{pohne,jdbcType=OTHER}, #{realname,jdbcType=OTHER}, 
+      #{isdefault,jdbcType=DECIMAL}, #{postcode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sht.po.Addrs">
     insert into ADDRS
@@ -125,8 +125,8 @@
       <if test="detail != null">
         DETAIL,
       </if>
-      <if test="phone != null">
-        PHONE,
+      <if test="pohne != null">
+        POHNE,
       </if>
       <if test="realname != null">
         REALNAME,
@@ -140,28 +140,28 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=CHAR},
+        #{id,jdbcType=OTHER},
       </if>
       <if test="master != null">
-        #{master,jdbcType=CHAR},
+        #{master,jdbcType=OTHER},
       </if>
       <if test="region != null">
-        #{region,jdbcType=DOUBLE},
+        #{region,jdbcType=DECIMAL},
       </if>
       <if test="detail != null">
-        #{detail,jdbcType=CHAR},
+        #{detail,jdbcType=OTHER},
       </if>
-      <if test="phone != null">
-        #{phone,jdbcType=CHAR},
+      <if test="pohne != null">
+        #{pohne,jdbcType=OTHER},
       </if>
       <if test="realname != null">
-        #{realname,jdbcType=CHAR},
+        #{realname,jdbcType=OTHER},
       </if>
       <if test="isdefault != null">
-        #{isdefault,jdbcType=SMALLINT},
+        #{isdefault,jdbcType=DECIMAL},
       </if>
       <if test="postcode != null">
-        #{postcode,jdbcType=CHAR},
+        #{postcode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -175,28 +175,28 @@
     update ADDRS
     <set>
       <if test="record.id != null">
-        ID = #{record.id,jdbcType=CHAR},
+        ID = #{record.id,jdbcType=OTHER},
       </if>
       <if test="record.master != null">
-        MASTER = #{record.master,jdbcType=CHAR},
+        MASTER = #{record.master,jdbcType=OTHER},
       </if>
       <if test="record.region != null">
-        REGION = #{record.region,jdbcType=DOUBLE},
+        REGION = #{record.region,jdbcType=DECIMAL},
       </if>
       <if test="record.detail != null">
-        DETAIL = #{record.detail,jdbcType=CHAR},
+        DETAIL = #{record.detail,jdbcType=OTHER},
       </if>
-      <if test="record.phone != null">
-        PHONE = #{record.phone,jdbcType=CHAR},
+      <if test="record.pohne != null">
+        POHNE = #{record.pohne,jdbcType=OTHER},
       </if>
       <if test="record.realname != null">
-        REALNAME = #{record.realname,jdbcType=CHAR},
+        REALNAME = #{record.realname,jdbcType=OTHER},
       </if>
       <if test="record.isdefault != null">
-        ISDEFAULT = #{record.isdefault,jdbcType=SMALLINT},
+        ISDEFAULT = #{record.isdefault,jdbcType=DECIMAL},
       </if>
       <if test="record.postcode != null">
-        POSTCODE = #{record.postcode,jdbcType=CHAR},
+        POSTCODE = #{record.postcode,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -205,14 +205,14 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update ADDRS
-    set ID = #{record.id,jdbcType=CHAR},
-      MASTER = #{record.master,jdbcType=CHAR},
-      REGION = #{record.region,jdbcType=DOUBLE},
-      DETAIL = #{record.detail,jdbcType=CHAR},
-      PHONE = #{record.phone,jdbcType=CHAR},
-      REALNAME = #{record.realname,jdbcType=CHAR},
-      ISDEFAULT = #{record.isdefault,jdbcType=SMALLINT},
-      POSTCODE = #{record.postcode,jdbcType=CHAR}
+    set ID = #{record.id,jdbcType=OTHER},
+      MASTER = #{record.master,jdbcType=OTHER},
+      REGION = #{record.region,jdbcType=DECIMAL},
+      DETAIL = #{record.detail,jdbcType=OTHER},
+      POHNE = #{record.pohne,jdbcType=OTHER},
+      REALNAME = #{record.realname,jdbcType=OTHER},
+      ISDEFAULT = #{record.isdefault,jdbcType=DECIMAL},
+      POSTCODE = #{record.postcode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -221,38 +221,39 @@
     update ADDRS
     <set>
       <if test="master != null">
-        MASTER = #{master,jdbcType=CHAR},
+        MASTER = #{master,jdbcType=OTHER},
       </if>
       <if test="region != null">
-        REGION = #{region,jdbcType=DOUBLE},
+        REGION = #{region,jdbcType=DECIMAL},
       </if>
       <if test="detail != null">
-        DETAIL = #{detail,jdbcType=CHAR},
+        DETAIL = #{detail,jdbcType=OTHER},
       </if>
-      <if test="phone != null">
-        PHONE = #{phone,jdbcType=CHAR},
-      </if>
+      
       <if test="realname != null">
-        REALNAME = #{realname,jdbcType=CHAR},
+        REALNAME = #{realname,jdbcType=OTHER},
       </if>
       <if test="isdefault != null">
-        ISDEFAULT = #{isdefault,jdbcType=SMALLINT},
+        ISDEFAULT = #{isdefault,jdbcType=DECIMAL},
       </if>
       <if test="postcode != null">
-        POSTCODE = #{postcode,jdbcType=CHAR},
+        POSTCODE = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pohne != null">
+        POHNE = #{pohne,jdbcType=OTHER},
       </if>
     </set>
-    where ID = #{id,jdbcType=CHAR}
+    where ID = #{id,jdbcType=OTHER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sht.po.Addrs">
     update ADDRS
-    set MASTER = #{master,jdbcType=CHAR},
-      REGION = #{region,jdbcType=DOUBLE},
-      DETAIL = #{detail,jdbcType=CHAR},
-      PHONE = #{phone,jdbcType=CHAR},
-      REALNAME = #{realname,jdbcType=CHAR},
-      ISDEFAULT = #{isdefault,jdbcType=SMALLINT},
-      POSTCODE = #{postcode,jdbcType=CHAR}
-    where ID = #{id,jdbcType=CHAR}
+    set MASTER = #{master,jdbcType=OTHER},
+      REGION = #{region,jdbcType=DECIMAL},
+      DETAIL = #{detail,jdbcType=OTHER},
+      POHNE = #{pohne,jdbcType=OTHER},
+      REALNAME = #{realname,jdbcType=OTHER},
+      ISDEFAULT = #{isdefault,jdbcType=DECIMAL},
+      POSTCODE = #{postcode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=OTHER}
   </update>
 </mapper>
