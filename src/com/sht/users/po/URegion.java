@@ -34,5 +34,17 @@ public class URegion extends Region {
 	public void setChilds(List<Region> childs) {
 		this.childs = childs;
 	}
+	/**
+	 * 当前节点的父节点
+	 */
+	private List<Region> parents;
+
+	public List<Region> getParents() {
+		return parents;
+	}
+
+	public void setParents(List<Region> parents) {
+		this.parents = parents;
+	}
 	
 }

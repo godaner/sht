@@ -1,6 +1,9 @@
 .sc{
 	width:150px;
 }
+.ot{
+	width:150px
+}
 
 /* 注册错误信息 */
 .register_msg{
@@ -351,13 +354,14 @@ option {
 }
 
 .iteamdefault {
+	margin-left: 100px;
 	width: 530px;
 	height: 36px;
 	line-height: 26px;
 }
 
 #setdefalut {
-	margin-left: 110px;
+	margin-left: 10px;
 	width: 13px;
 	height: 13px;
 }
@@ -402,8 +406,19 @@ option {
 	width: 97%;
 	table-layout: fixed;
 	border: 1px solid #e7e7e7;
-	font-size: 12px;
+	/* font-size: 12px; */
 }
+.tbl-main1 {
+	width: 97%;
+	table-layout: fixed;
+	border: 1px solid #e7e7e7;
+	font-size: 12px;
+	font-weight:normal;
+}
+.tbl-main tr{
+	border-bottom: 1px solid #e7e7e7;
+}
+
 
 .thead {
 	width: 800px;
