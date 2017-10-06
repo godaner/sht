@@ -1,40 +1,28 @@
 package com.sht.po;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Messages {
     private String id;
 
-    private String launcher;
-
-    private String receiver;
-
     private String text;
 
-    private Date createtime;
+    private Timestamp createtime;
+
+    private Short status;
+
+    private String users;
+
+    private String message;
+
+    private String goods;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLauncher() {
-        return launcher;
-    }
-
-    public void setLauncher(String launcher) {
-        this.launcher = launcher;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getText() {
@@ -45,11 +33,43 @@ public class Messages {
         this.text = text == null ? null : text.trim();
     }
 
-    public Date getCreatetime() {
+    public Timestamp getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public String getUsers() {
+        return users;
+    }
+
+    public void setUsers(String users) {
+        this.users = users == null ? null : users.trim();
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message == null ? null : message.trim();
+    }
+
+    public String getGoods() {
+        return goods;
+    }
+
+    public void setGoods(String goods) {
+        this.goods = goods == null ? null : goods.trim();
     }
 }

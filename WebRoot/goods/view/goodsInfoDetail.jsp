@@ -6,26 +6,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
-    <script src="${baseUrl }/goods/js/jquery-1.11.3.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${baseUrl}/goods/js/jquery-1.11.3.js"></script>
     <script src="${baseUrl }/goods/js/goodsInfoDetail.js"></script>
     <link href="${baseUrl }/goods/css/goodsInfoDetail.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="commonTitle.jsp"  %>
-
+<input type="hidden" value="${baseUrl}" id="baseUrl" />
+<input type="hidden" value="${sessionScope.goodsDetailInfo.id}" id="goodsId" />
+<input type="hidden" value="${sessionScope.goodsDetailInfo.msgNum}" id="msgnum" />
+<input type="hidden" value="${sessionScope.onlineUser.id} " id="onlineUser"/>
 <article>
     <div class="head">
         <ul>
             <li>
-                <img src="goods/img/content_icon.png"/>
-                <a href="#">xxxxxxxx</a>
+            	<c:if test="${empty sessionScope.goodsDetailInfo.headImg  }">
+            		<img src="goods/img/default_icon.png"/>
+            	</c:if>
+            	
+                <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
+            		<img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
+            	</c:if>
+                <a href="#">${sessionScope.goodsDetailInfo.title }</a>
             </li>
 
             <li>
                 <div class="dividing_line"></div>
             </li>
             <li class="browse">
-                <span>宝贝浏览次数&nbsp;:&nbsp;80</span>
+                <span>宝贝浏览次数&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.browsenumber }</span>
                 <!--<br>-->
                 <!--<span>80</span>-->
             </li>
@@ -33,7 +42,7 @@
                 <div class="dividing_line"></div>
             </li>
             <li class="edit">
-                <span>最近编辑&nbsp;:&nbsp;2017-09-09</span>
+                <span>最近编辑&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.lastupdatetime}</span>
                 <!--<br>-->
                 <!--<span>2017-09-09</span>-->
             </li>
@@ -42,33 +51,31 @@
                 <div class="dividing_line"></div>
             </li>
         </ul>
-        <!--<a href="#">举报该宝贝</a>-->
+
     </div>
 
     <div class="content">
         <div class="content-left">
-            <img src="goods/img/content.png"/>
+        	
+            <img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.path}"/>
             <ul id="rotation-item">
-                <li><img src="goods/img/content_icon.png"></li>
-                <li><img src="goods/img/rotation_icon.png"></li>
-                <li><img src="goods/img/content_icon.png"></li>
-                <li><img src="goods/img/rotation_icon.png"></li>
+            
             </ul>
         </div>
 
         <div class="content-right">
-            <p class="content-right-title">短裤短裤短裤短裤短裤</p>
+            <p class="content-right-title">${sessionScope.goodsDetailInfo.description}</p>
 
             <p class="new-price">
-                转卖价&nbsp;:&nbsp;￥<span>430.00</span>
+                转卖价&nbsp;:&nbsp;￥<span>${sessionScope.goodsDetailInfo.sprice }</span>
                 <span><img src="goods/img/tip.png">&nbsp;该商品拒绝讲价!</span>
             </p>
 
-            <p class="old-price">原&nbsp;&nbsp;&nbsp;&nbsp;价&nbsp;:&nbsp;&nbsp;￥480.00</p>
+            <p class="old-price">原&nbsp;&nbsp;&nbsp;&nbsp;价&nbsp;:&nbsp;&nbsp;￥${sessionScope.goodsDetailInfo.price}</p>
             <hr/>
-            <p class="state">成色&nbsp;:&nbsp;非全新</p>
+            <p class="state">成色&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.condition}成新</p>
 
-            <p class="state">所在地&nbsp;:&nbsp;江苏南通</p>
+            <p class="state">所在地&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.addr}</p>
             <span class="state">联系方式&nbsp;:&nbsp;</span><span id="link-way"><img
                 src="goods/img/link.png"/>&nbsp;与他对话</span>
             <br/>
@@ -81,15 +88,15 @@
                     <span id="location">&nbsp;至&nbsp;<span>江苏南通</span>&nbsp;<img src="goods/img/down_grey.png"/>&nbsp;&nbsp;</span>
                 </div>
 
-                <span class="state" id="express">快递&nbsp;:&nbsp;￥&nbsp;8.00</span>
-
+                <span class="state" id="express"><span>江苏南通</span>&nbsp;<img src="goods/img/down_grey.png"/>&nbsp;&nbsp;</span>
+				<table id="county"></table>
                 <div class="clear"></div>
             </div>
 
             <input type="button" value="立&nbsp;即&nbsp;购&nbsp;买"/>
             <br/>
-            <input type="button" value="分享(0)"/>
-            <input type="button" value="赞(4)"/>
+            <!-- <input type="button" value="分享(0)"/>
+            <input type="button" value="赞(4)"/> -->
 
             <div class="city_info">
                 <div>
@@ -98,52 +105,7 @@
                 </div>
 
                 <table>
-                    <tr>
-                        <td>直辖市</td>
-                        <td>河北</td>
-                        <td>山西</td>
-                        <td>内蒙古</td>
-                        <td>辽宁</td>
-                    </tr>
-                    <tr>
-                        <td>吉林</td>
-                        <td>黑龙江</td>
-                        <td>江苏</td>
-                        <td>浙江</td>
-                        <td>安徽</td>
-                    </tr>
-                    <tr>
-                        <td>福建</td>
-                        <td>江西</td>
-                        <td>山东</td>
-                        <td>河南</td>
-                        <td>湖北</td>
-                    </tr>
-                    <tr>
-                        <td>湖南</td>
-                        <td>广东</td>
-                        <td>广西</td>
-                        <td>海南</td>
-                        <td>四川</td>
-                    </tr>
-                    <tr>
-                        <td>贵州</td>
-                        <td>云南</td>
-                        <td>西藏</td>
-                        <td>陕西</td>
-                        <td>甘肃</td>
-                    </tr>
-                    <tr>
-                        <td>青海</td>
-                        <td>宁夏</td>
-                        <td>新疆</td>
-                        <td>台湾</td>
-                        <td>香港</td>
-                    </tr>
-                    <tr>
-                        <td>澳门</td>
-                        <td>海外</td>
-                    </tr>
+                    
                 </table>
 
             </div>
@@ -158,16 +120,24 @@
             </div>
             <hr/>
             <div class="comment-content">
-                <ul>
-                    <li>
-                        <img src="goods/img/content_icon.png"/>
-                        <div>
-                            <span>xxxxxxxxxx</span>
-                            <!--<br/>-->
-                            <span>2017-10-10 23:23:23</span>
-                        </div>
-                    </li>
+            	<c:if test="${sessionScope.goodsDetailInfo.msgNum == 0}">
+            		该商品暂时无人评价!
+            	</c:if>
+            	<c:if test="${sessionScope.goodsDetailInfo.msgNum != 0}">
+            		
+            	
+                <ul class="comment-container">
+                    
                 </ul>
+                </c:if>
+                <br/>
+                <br/>
+                <br/>
+                <p>欢迎填写评价：</p><sapn class="reply"></sapn>
+                <br/>
+                <textarea rows="3" cols="100" placeholder="请填写..." id="comment-content"></textarea>
+                <br>
+                <input type="button" id="submit" value="提交评论" class="submit"/>
             </div>
         </div>
 
@@ -181,6 +151,7 @@
 
     </div>
 </article>
+
 <%@ include file="commonFooter.jsp"  %>
 </body>
 </html>

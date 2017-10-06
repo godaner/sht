@@ -44,14 +44,12 @@ article>div>table{
 #option>table tr td{
     text-align: left;
     padding-left: 40px;
-}
-#option>table tr td a{
-    text-decoration: none;
-    cursor: pointer;
+      cursor: pointer;
 }
 
-#option>table tr td a:hover{
-   text-decoration: none;
+
+#option>table tr td:hover{
+
    color: orangered;
 }
 

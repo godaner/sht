@@ -7,10 +7,14 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.sht.po.Goods;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
@@ -205,6 +209,14 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		 cs.setFiile(po.getFiile());
 		 
 		 service.personalImgUpload(cs);
+	 }
+	 /**
+	  * 用户充值
+	  * 
+	  */
+	 
+	 public void addMoney(){
+		 
 	 }
 	 
 }

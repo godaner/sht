@@ -58,7 +58,7 @@ public interface UGoodsServiceI {
 	 * 根据id删除商品信息
 	 * @param id
 	 */
-	public void deleteGoodsByid(String id);
+	public void updateGoodsByidAndStatus(UGoods po);
 
 	/**
 	 * 
@@ -131,4 +131,7 @@ public interface UGoodsServiceI {
 	 * @param id
 	 */
 	public void udateBuyGoodsByidAndStatus(UGoods po);
+
+
+	
 }
