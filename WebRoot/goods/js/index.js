@@ -159,60 +159,7 @@ $(function () {
     	getTotalNum(region,minPrice,maxPrice,globalClazz);
     	
     }
-   
-  //显示城市信息二级菜单
-//    var site = '{ "sites" : [' +
-//        '{ "name":"全国" , "city":"" },' +
-//        '{ "name":"直辖市" , "city":"北京,重庆,天津,上海" },' +
-//        '{ "name":"河北" , "city":"承德,石家庄,唐山" },'+
-//        '{ "name":"山西" , "city":"太原,长治" } ]}' ;
-//    var citys =JSON.parse(site);
-//    var table = $("<table class='secondary_menu'>"+"</table>");
-//    $('.city_info>table tr td').hover(function(e){
-//
-//        $(this).append(table);
-//
-//        var ld = $(this).index();//这个前面得到的是td的序号，从0开始，要得到第几行，+1即可
-//        var lh = $(this).parent().index();
-//        var content = $(this).text();
-//        var sum = (lh+1)*(ld+1);
-//        if(sum > citys.sites.length){
-//            return false;
-//        }else if(content != citys.sites[sum-1].name || "全国" == citys.sites[sum-1].name){
-//                return false;
-//        }
-//
-//        var info = citys.sites[sum-1].city.split(",");
-//
-//        var i;
-//
-//        var row = $("<tr></tr>");
-//        table.append(row);
-//        for(i = 0 ; i < info.length ; i ++){
-//            console.log(info[i]);
-//            var col = $("<td>"+info[i]+"</td>");
-//            row.append(col);
-//        }
-//
-//        if(info.length < 5){
-//            var j;
-//            for(j = 0 ; j < 5-info.length ; j++)
-//                row.append("<td></td>");
-//        }
-//
-//        table.show();
-//    },function(){
-//        table.empty().hide();
-//    });
 
-
-//});
-//
-//
-//
-//$(function(){
-
-//	var baseUrl = $('#baseUrl').val();
 	
     
     $('#sure').click(function(){

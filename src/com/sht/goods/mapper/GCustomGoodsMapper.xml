@@ -98,7 +98,7 @@
 		WHERE G0.OWNER = U0.ID and g0.id =#{value}
 	</select>
 	
-	<select id="selectGoodsImgs" resultType="com.sht.goods.po.GGoods" parameterType="string">
+	<select id="selectGoodsImgs" resultType="string" parameterType="string">
 		select getimgspathbygoodsid(goods.id) as
 		from goods
 		where goods.id=#{value}	
