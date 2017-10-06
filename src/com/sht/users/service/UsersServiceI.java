@@ -66,5 +66,22 @@ public interface UsersServiceI {
 	 * 
 	 */
 	public void personalImgUpload(CustomUsers po);
+	
+	/**
+	 * 支付宝充值成功后的回调
+	 * 
+	 * @param po
+	 */
+
+	public void addMoney(CustomUsers po);
+
+	
+	/**
+	 * 
+	 * 获取用户余额
+	 * @param po
+	 * @return 
+	 */
+	public CustomUsers getMoneyById(CustomUsers po);
 
 }

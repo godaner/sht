@@ -16,7 +16,6 @@
 </head>
 <body>
 <%@include file="../../goods/view/commonTitle.jsp" %>
-	${onlineUser.username}
 	<a href="./users/view/personalInfo.jsp">个人信息页面</a>
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>

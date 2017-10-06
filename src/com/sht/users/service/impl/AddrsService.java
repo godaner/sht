@@ -31,7 +31,7 @@ public class AddrsService extends UBaseService implements AddrsServiceI {
 		
 		po.setDetail(po.getDetail());
 		
-		po.setPohne(po.getPohne());
+		po.setPhone(po.getPhone());
 		
 		po.setPostcode(po.getPostcode());
 		

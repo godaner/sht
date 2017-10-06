@@ -126,4 +126,21 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		 
 		 customUsersMapper.personalImgUpload(po);
 	}
+
+	@Override
+	public void addMoney(CustomUsers po) {
+
+		customUsersMapper.addMoney(po);
+		
+	}
+
+	@Override
+	public CustomUsers getMoneyById(CustomUsers po) {
+		
+		po = customUsersMapper.getMoneyById(po);
+		
+		return po;
+		
+	}
+
 }

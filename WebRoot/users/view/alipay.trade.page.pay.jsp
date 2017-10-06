@@ -8,6 +8,7 @@
 <%@ page import="com.sht.alipay.config.*"%>
 <%@ page import="com.alipay.api.*"%>
 <%@ page import="com.alipay.api.request.*"%>
+<%@ page import="java.util.UUID"%>
 <%
 	//获得初始化的AlipayClient
 	AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
@@ -25,7 +26,6 @@
 	String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
 	//商品描述，可空
 	String body = new String(request.getParameter("WIDbody").getBytes("ISO-8859-1"),"UTF-8");
-	
 	
 	alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\"," 
 			+ "\"total_amount\":\""+ total_amount +"\"," 
