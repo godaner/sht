@@ -28,7 +28,6 @@ public class URegionService extends BaseService implements URegionServiceI {
 	
 	@Override
 	public URegion getRegionByPid(Integer pid) throws Exception {
-		
 		/**
 		 * 放置查询条件
 		 */
@@ -37,17 +36,41 @@ public class URegionService extends BaseService implements URegionServiceI {
 		Criteria criteria = example.createCriteria();
 		
 		criteria.andPidEqualTo(pid);
-		
 		/**
 		 * 查询
 		 */
 		List<Region> childs = regionMapper.selectByExample(example);
 		
+		URegion ur = new URegion();
+		
+		ur.setChilds(childs);
+		
+		return ur;
+	}
+
+
+	@Override
+	public URegion getRegionById(Integer id) throws Exception {
+		/**
+		 * 放置查询条件
+		 */
+		RegionExample example = new RegionExample();
+		
+		Criteria criteria = example.createCriteria();
+		
+		criteria.andPidEqualTo(id);
+		/**
+		 * 查询
+		 */
+//		List<Region> selectByExample(RegionExample example);
+//
+//	    Region selectByPrimaryKey(Integer id);
+		
+		List<Region> parents = regionMapper.selectByExample(example);
 		
 		URegion ur = new URegion();
 		
-		
-		ur.setChilds(childs);
+		ur.setParents(parents);
 		
 		return ur;
 	}

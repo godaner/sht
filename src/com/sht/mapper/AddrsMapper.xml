@@ -229,9 +229,7 @@
       <if test="detail != null">
         DETAIL = #{detail,jdbcType=OTHER},
       </if>
-      <if test="pohne != null">
-        POHNE = #{pohne,jdbcType=OTHER},
-      </if>
+      
       <if test="realname != null">
         REALNAME = #{realname,jdbcType=OTHER},
       </if>
@@ -240,6 +238,9 @@
       </if>
       <if test="postcode != null">
         POSTCODE = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pohne != null">
+        POHNE = #{pohne,jdbcType=OTHER},
       </if>
     </set>
     where ID = #{id,jdbcType=OTHER}
