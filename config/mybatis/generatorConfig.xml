@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+  "http://www.mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
     <context id="testTables" targetRuntime="MyBatis3">
@@ -49,7 +49,8 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <!-- <table tableName="addrs"></table>
+        
+        <!-- 
         
         <table tableName="files"></table>
         <table tableName="goods"></table>
@@ -67,6 +68,7 @@
         <table tableName="admins_login_log"></table> 
         <table tableName="clazzs"></table>
         <table tableName="wander_log"></table>-->
+        
 		<!-- <table schema="sht" tableName="users">
         	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
         	<columnOverride column="username" javaType="java.lang.String"  jdbcType="CHAR"/>
@@ -133,7 +135,7 @@
         	<columnOverride column="buytime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
         	<columnOverride column="finishtime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
         </table>
-        -->
+        
         
 
        <table schema="sht" tableName="region">
@@ -146,8 +148,46 @@
         	<columnOverride column="ENNAME" javaType="java.lang.String"  jdbcType="CHAR"/>
 			<columnOverride column="ENSHORTNAME" javaType="java.lang.String"  jdbcType="CHAR"/>
         </table>
-         
+        
+        <table tableName="addrs">
+			<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="master" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="region" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+			<columnOverride column="detail" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="phone" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="realname" javaType="java.lang.String" jdbcType="CHAR" />
+			<columnOverride column="isdefault" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+			<columnOverride column="postcode" javaType="java.lang.String" jdbcType="CHAR" />
+		</table>
+        
+         -->
+          <table schema="sht" tableName="goods">
+        	<columnOverride column="id" javaType="java.lang.String" jdbcType="CHAR" />
+        	<columnOverride column="title" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="description" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="sprice" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+        	<columnOverride column="price" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+        	<columnOverride column="condition" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+        	<columnOverride column="region" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+			<columnOverride column="status" javaType="java.lang.Short"  jdbcType="SMALLINT"/>
+        	<columnOverride column="createtime" javaType="java.sql.Timestamp"  jdbcType="TIMESTAMP"/>
+        	<columnOverride column="owner" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="buyer" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="browsenumber" javaType="java.lang.Double"  jdbcType="DOUBLE"/>
+        	<columnOverride column="lastupdatetime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+        	<columnOverride column="buytime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+        	<columnOverride column="finishtime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+        	<columnOverride column="toprovince" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="tocity" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="tocounty" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="todetail" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="phone" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="torealname" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="postcode" javaType="java.lang.String"  jdbcType="CHAR"/>
+        	<columnOverride column="refusereturnmoneybill" javaType="java.lang.String"  jdbcType="CHAR"/>
+        </table>
 
+		
         <!-- <table schema="" tableName="sys_user"></table>
         <table schema="" tableName="sys_role"></table>
         <table schema="" tableName="sys_permission"></table>

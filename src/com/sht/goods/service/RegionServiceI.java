@@ -11,6 +11,6 @@ public interface RegionServiceI {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<GRegion> selectAllProvices() throws Exception;
+	public List<GRegion> selectAllRegions(GRegion region) throws Exception;
 
 }

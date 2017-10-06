@@ -1,6 +1,5 @@
 package com.sht.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,52 +114,52 @@ public class AddrsExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Object value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Object value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Object value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Object value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Object value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Object value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Object> values) {
+        public Criteria andIdIn(List<String> values) {
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Object> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Object value1, Object value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Object value1, Object value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -175,52 +174,52 @@ public class AddrsExample {
             return (Criteria) this;
         }
 
-        public Criteria andMasterEqualTo(Object value) {
+        public Criteria andMasterEqualTo(String value) {
             addCriterion("MASTER =", value, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterNotEqualTo(Object value) {
+        public Criteria andMasterNotEqualTo(String value) {
             addCriterion("MASTER <>", value, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterGreaterThan(Object value) {
+        public Criteria andMasterGreaterThan(String value) {
             addCriterion("MASTER >", value, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterGreaterThanOrEqualTo(Object value) {
+        public Criteria andMasterGreaterThanOrEqualTo(String value) {
             addCriterion("MASTER >=", value, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterLessThan(Object value) {
+        public Criteria andMasterLessThan(String value) {
             addCriterion("MASTER <", value, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterLessThanOrEqualTo(Object value) {
+        public Criteria andMasterLessThanOrEqualTo(String value) {
             addCriterion("MASTER <=", value, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterIn(List<Object> values) {
+        public Criteria andMasterIn(List<String> values) {
             addCriterion("MASTER in", values, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterNotIn(List<Object> values) {
+        public Criteria andMasterNotIn(List<String> values) {
             addCriterion("MASTER not in", values, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterBetween(Object value1, Object value2) {
+        public Criteria andMasterBetween(String value1, String value2) {
             addCriterion("MASTER between", value1, value2, "master");
             return (Criteria) this;
         }
 
-        public Criteria andMasterNotBetween(Object value1, Object value2) {
+        public Criteria andMasterNotBetween(String value1, String value2) {
             addCriterion("MASTER not between", value1, value2, "master");
             return (Criteria) this;
         }
@@ -235,52 +234,52 @@ public class AddrsExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegionEqualTo(BigDecimal value) {
+        public Criteria andRegionEqualTo(Double value) {
             addCriterion("REGION =", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNotEqualTo(BigDecimal value) {
+        public Criteria andRegionNotEqualTo(Double value) {
             addCriterion("REGION <>", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionGreaterThan(BigDecimal value) {
+        public Criteria andRegionGreaterThan(Double value) {
             addCriterion("REGION >", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andRegionGreaterThanOrEqualTo(Double value) {
             addCriterion("REGION >=", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLessThan(BigDecimal value) {
+        public Criteria andRegionLessThan(Double value) {
             addCriterion("REGION <", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andRegionLessThanOrEqualTo(Double value) {
             addCriterion("REGION <=", value, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionIn(List<BigDecimal> values) {
+        public Criteria andRegionIn(List<Double> values) {
             addCriterion("REGION in", values, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNotIn(List<BigDecimal> values) {
+        public Criteria andRegionNotIn(List<Double> values) {
             addCriterion("REGION not in", values, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andRegionBetween(Double value1, Double value2) {
             addCriterion("REGION between", value1, value2, "region");
             return (Criteria) this;
         }
 
-        public Criteria andRegionNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andRegionNotBetween(Double value1, Double value2) {
             addCriterion("REGION not between", value1, value2, "region");
             return (Criteria) this;
         }
@@ -295,113 +294,113 @@ public class AddrsExample {
             return (Criteria) this;
         }
 
-        public Criteria andDetailEqualTo(Object value) {
+        public Criteria andDetailEqualTo(String value) {
             addCriterion("DETAIL =", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailNotEqualTo(Object value) {
+        public Criteria andDetailNotEqualTo(String value) {
             addCriterion("DETAIL <>", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailGreaterThan(Object value) {
+        public Criteria andDetailGreaterThan(String value) {
             addCriterion("DETAIL >", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailGreaterThanOrEqualTo(Object value) {
+        public Criteria andDetailGreaterThanOrEqualTo(String value) {
             addCriterion("DETAIL >=", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailLessThan(Object value) {
+        public Criteria andDetailLessThan(String value) {
             addCriterion("DETAIL <", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailLessThanOrEqualTo(Object value) {
+        public Criteria andDetailLessThanOrEqualTo(String value) {
             addCriterion("DETAIL <=", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailIn(List<Object> values) {
+        public Criteria andDetailIn(List<String> values) {
             addCriterion("DETAIL in", values, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailNotIn(List<Object> values) {
+        public Criteria andDetailNotIn(List<String> values) {
             addCriterion("DETAIL not in", values, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailBetween(Object value1, Object value2) {
+        public Criteria andDetailBetween(String value1, String value2) {
             addCriterion("DETAIL between", value1, value2, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDetailNotBetween(Object value1, Object value2) {
+        public Criteria andDetailNotBetween(String value1, String value2) {
             addCriterion("DETAIL not between", value1, value2, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andPohneIsNull() {
-            addCriterion("POHNE is null");
+        public Criteria andPhoneIsNull() {
+            addCriterion("PHONE is null");
             return (Criteria) this;
         }
 
-        public Criteria andPohneIsNotNull() {
-            addCriterion("POHNE is not null");
+        public Criteria andPhoneIsNotNull() {
+            addCriterion("PHONE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPohneEqualTo(Object value) {
-            addCriterion("POHNE =", value, "pohne");
+        public Criteria andPhoneEqualTo(String value) {
+            addCriterion("PHONE =", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneNotEqualTo(Object value) {
-            addCriterion("POHNE <>", value, "pohne");
+        public Criteria andPhoneNotEqualTo(String value) {
+            addCriterion("PHONE <>", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneGreaterThan(Object value) {
-            addCriterion("POHNE >", value, "pohne");
+        public Criteria andPhoneGreaterThan(String value) {
+            addCriterion("PHONE >", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneGreaterThanOrEqualTo(Object value) {
-            addCriterion("POHNE >=", value, "pohne");
+        public Criteria andPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("PHONE >=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneLessThan(Object value) {
-            addCriterion("POHNE <", value, "pohne");
+        public Criteria andPhoneLessThan(String value) {
+            addCriterion("PHONE <", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneLessThanOrEqualTo(Object value) {
-            addCriterion("POHNE <=", value, "pohne");
+        public Criteria andPhoneLessThanOrEqualTo(String value) {
+            addCriterion("PHONE <=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneIn(List<Object> values) {
-            addCriterion("POHNE in", values, "pohne");
+        public Criteria andPhoneIn(List<String> values) {
+            addCriterion("PHONE in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneNotIn(List<Object> values) {
-            addCriterion("POHNE not in", values, "pohne");
+        public Criteria andPhoneNotIn(List<String> values) {
+            addCriterion("PHONE not in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneBetween(Object value1, Object value2) {
-            addCriterion("POHNE between", value1, value2, "pohne");
+        public Criteria andPhoneBetween(String value1, String value2) {
+            addCriterion("PHONE between", value1, value2, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPohneNotBetween(Object value1, Object value2) {
-            addCriterion("POHNE not between", value1, value2, "pohne");
+        public Criteria andPhoneNotBetween(String value1, String value2) {
+            addCriterion("PHONE not between", value1, value2, "phone");
             return (Criteria) this;
         }
 
@@ -415,52 +414,52 @@ public class AddrsExample {
             return (Criteria) this;
         }
 
-        public Criteria andRealnameEqualTo(Object value) {
+        public Criteria andRealnameEqualTo(String value) {
             addCriterion("REALNAME =", value, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameNotEqualTo(Object value) {
+        public Criteria andRealnameNotEqualTo(String value) {
             addCriterion("REALNAME <>", value, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameGreaterThan(Object value) {
+        public Criteria andRealnameGreaterThan(String value) {
             addCriterion("REALNAME >", value, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameGreaterThanOrEqualTo(Object value) {
+        public Criteria andRealnameGreaterThanOrEqualTo(String value) {
             addCriterion("REALNAME >=", value, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameLessThan(Object value) {
+        public Criteria andRealnameLessThan(String value) {
             addCriterion("REALNAME <", value, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameLessThanOrEqualTo(Object value) {
+        public Criteria andRealnameLessThanOrEqualTo(String value) {
             addCriterion("REALNAME <=", value, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameIn(List<Object> values) {
+        public Criteria andRealnameIn(List<String> values) {
             addCriterion("REALNAME in", values, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameNotIn(List<Object> values) {
+        public Criteria andRealnameNotIn(List<String> values) {
             addCriterion("REALNAME not in", values, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameBetween(Object value1, Object value2) {
+        public Criteria andRealnameBetween(String value1, String value2) {
             addCriterion("REALNAME between", value1, value2, "realname");
             return (Criteria) this;
         }
 
-        public Criteria andRealnameNotBetween(Object value1, Object value2) {
+        public Criteria andRealnameNotBetween(String value1, String value2) {
             addCriterion("REALNAME not between", value1, value2, "realname");
             return (Criteria) this;
         }

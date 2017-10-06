@@ -38,11 +38,10 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	public void showInfo() throws Exception{
 		logger.info("GoodsAction-showInfo");
 
-		List<GGoods> goodsList = null;
+		List<GGoods> goodsList = getList();
 	
 		po.setMaxLine(po.getMinLine()+Static.GOODS.FILED_PAGE_SIZE);
-		info("--minLine---"+po.getMinLine());
-		info("--maxLine---"+po.getMaxLine());
+
 		try {
 			goodsList = service.dispalyGoodsInfo(po);
 			
@@ -68,10 +67,11 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		info("select goods total num [by region]");
 		double totalNum =0;
 		try {
-			totalNum = service.selectGoodsAllNum(po.getRegion());
+			totalNum = service.selectGoodsAllNum(po);
 			 
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		writeJSON(totalNum);
@@ -89,6 +89,14 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		logger.info("GoodsAction-createGoods");
 		
 		try {
+			 
+			 String region = getRequest().getParameter("county");
+			 String condition = getRequest().getParameter("condition");
+			 
+			 po.setRegion(Double.valueOf(region));
+			 po.setCondition(Short.valueOf(condition));
+			 po.setClazz(getRequest().getParameter("clazzs"));
+			 
 			 service.createGoodsInfo(po);
 			 setSessionAttr("isCreate", "true");
 		} catch (Exception e) {
@@ -96,7 +104,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 			setSessionAttr("isCreate", "false");
 		}
 		
-		return "fCreateGodos";
+		return "fCreateGoods";
 		
 	}
 	

@@ -36,7 +36,7 @@ public interface GoodsServiceI {
 	 * Description:query the total number of all goods
 	 
 	 */
-	public double selectGoodsAllNum(Double region) throws Exception;
+	public double selectGoodsAllNum(GGoods goods) throws Exception;
 	
 	/**
 	 * 
@@ -46,21 +46,9 @@ public interface GoodsServiceI {
 	 */
 	public String createGoodsInfo(GGoods goods) throws Exception;
 	
-	/**
-	 * 
-	 * createGoodsImagsInfo
-	 * <p>
-	 * Description:insert goodsImags info
-	 */
-	public String createGoodsImagsInfo(GGoodsImgs goodsImgs) throws Exception;
 	
-	/**
-	 * 
-	 * createGoodsFileInfo
-	 * <p>
-	 * Description:insert imags  info into file
-	 */
-	public String createGoodsFileInfo(GFiles files) throws Exception;
+	
+
 
 	
 }

@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sht.goods.mapper.CustomClazzsMapper;
+import com.sht.goods.mapper.GCustomClazzsMapper;
 import com.sht.goods.po.GClazzs;
 import com.sht.goods.service.ClazzsServiceI;
 
 @Service
-public class ClazzsService extends GBaseService implements ClazzsServiceI {
+public class GClazzsService extends GBaseService implements ClazzsServiceI {
 
 	@Autowired
-	private CustomClazzsMapper customClazzsMapper;
+	private GCustomClazzsMapper customClazzsMapper;
 	
 	@Override
 	public List<GClazzs> selectAllClazzs(GClazzs clazzs) throws Exception {

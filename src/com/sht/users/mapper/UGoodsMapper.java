@@ -27,4 +27,18 @@ public interface UGoodsMapper {
 
 	void UpdateUGoodsById(UGoods po);
 
+	List<UGoods> getGoodsByIdAndStatus(@Param("id")String id, @Param("status")String status,
+			@Param("pageStar")String pageStar, @Param("pageEnd")String pageEnd);
+
+	int getBuyGoodsCountById(String id);
+
+	List<UGoods> getBuyGoodsById(@Param("id")String id, @Param("pageStar")String pageStar, @Param("pageEnd")String pageEnd);
+
+	List<UGoods> getBuyGoodsByIdAndStatus(@Param("id")String id, @Param("status")String status,
+			@Param("pageStar")String pageStar, @Param("pageEnd")String pageEnd);
+
+	List<UGoods> searchBuyUGoodsBuyBytitle(@Param("title")String title, @Param("pageStar")String pageStar, @Param("pageEnd")String pageEnd);
+
+	void udateBuyGoodsByidAndStatus(UGoods po);
+
 }

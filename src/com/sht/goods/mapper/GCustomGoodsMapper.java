@@ -15,7 +15,7 @@ import com.sht.po.Goods;
  * @date 2017年9月12日 上午11:28:36
  * @version 1.0
  */
-public interface CustomGoodsMapper {
+public interface GCustomGoodsMapper {
 
 	/**
 	 * Title:selectAllGoodsInfo
@@ -51,13 +51,8 @@ public interface CustomGoodsMapper {
 	 * 
 	 * @return
 	 */
-	public double selectGoodsTotalNum();
+	public Double selectGoodsTotalNum(GGoods goods);
 	
-	/**
-	 * 根据地区查询商品的总数量
-	 * @param region
-	 * @return
-	 */
-	public double selectGoodsTotalNumByRegion(Double region);
+	
 	
 }

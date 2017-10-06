@@ -9,7 +9,7 @@ public class Addrs {
 
     private String detail;
 
-    private String pohne;
+    private String phone;
 
     private String realname;
 
@@ -22,7 +22,7 @@ public class Addrs {
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getMaster() {
@@ -30,7 +30,7 @@ public class Addrs {
     }
 
     public void setMaster(String master) {
-        this.master = master;
+        this.master = master == null ? null : master.trim();
     }
 
     public Double getRegion() {
@@ -46,15 +46,15 @@ public class Addrs {
     }
 
     public void setDetail(String detail) {
-        this.detail = detail;
+        this.detail = detail == null ? null : detail.trim();
     }
 
-    public String getPohne() {
-        return pohne;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPohne(String pohne) {
-        this.pohne = pohne;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getRealname() {
@@ -62,7 +62,7 @@ public class Addrs {
     }
 
     public void setRealname(String realname) {
-        this.realname = realname;
+        this.realname = realname == null ? null : realname.trim();
     }
 
     public Short getIsdefault() {

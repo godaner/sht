@@ -155,8 +155,6 @@ h1 {
     position: relative;
     display: block;
     width:95%;
-    /*margin-left: 10px;*/
-    /*margin-right: 10px;*/
     border-bottom: 2px dotted lightgrey;
     margin: 0 auto;
 }
@@ -197,9 +195,13 @@ textarea{
 
 }
 
-.detail-info>ul>li>input{
+.detail-info>ul>li>input,.detail-info>ul>li:nth-of-type(4) select,.detail-info>ul>li:nth-of-type(6) select{
     height: 30px;
     width: 200px;
+}
+.detail-info>ul>li:nth-of-type(5) select{
+	 height: 30px;
+    width: 65px;
 }
 
 .detail-info>input{
