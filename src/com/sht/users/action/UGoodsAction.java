@@ -223,12 +223,12 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 	  * 根据id 删除商品信息
 	  * @throws Exception
 	  */
-	 public void deleteGoodsByid() throws Exception{
+	 public void updateGoodsByidAndStatus() throws Exception{
 		 
 		 eject(po==null, "商品不存在");
 		 
 		 try {
-			 service.deleteGoodsByid(po.getId());
+			 service.updateGoodsByidAndStatus(po);
 			
 		} catch (Exception e) {
 			

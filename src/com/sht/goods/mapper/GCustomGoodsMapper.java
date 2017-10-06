@@ -53,6 +53,24 @@ public interface GCustomGoodsMapper {
 	 */
 	public Double selectGoodsTotalNum(GGoods goods);
 	
+	/**
+	 * 查询商品的详情
+	 * 
+	 * @return
+	 */
+	public GGoods selectGoodsDetailInfo(String id);
+	
+	
+	/**
+	 * 查询商品图片
+	 * @param id
+	 * @return
+	 */
+	public String selectGoodsImgs(String id);
+	
+	
+	
+	
 	
 	
 }

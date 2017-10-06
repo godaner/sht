@@ -23,7 +23,7 @@ import com.sht.util.Static;
  */
 @Controller
 @Scope("prototype")
-public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
+public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	
 	private CGoodsAction cGoodsAction;
 	
@@ -87,7 +87,7 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	 */
 	public String createGoods() throws Exception{
 		logger.info("GoodsAction-createGoods");
-		
+		String result = null;
 		try {
 			 
 			 String region = getRequest().getParameter("county");
@@ -97,18 +97,47 @@ public class GoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 			 po.setCondition(Short.valueOf(condition));
 			 po.setClazz(getRequest().getParameter("clazzs"));
 			 
-			 service.createGoodsInfo(po);
-			 setSessionAttr("isCreate", "true");
+			 result = service.createGoodsInfo(po);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			setSessionAttr("isCreate", "false");
+			result = "createError";
 		}
 		
-		return "fCreateGoods";
+		return result;
 		
 	}
 	
 	
+	public String showGoodsDetailInfo() throws Exception{
+		info("GoodsAction--showGoodsDetailInfo");
+		
+		try {
+			GGoods goods = service.selectGoodsDetailInfo(po.getId());
+			setSessionAttr("goodsDetailInfo", goods);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			setSessionAttr("goodsDetailInfo", "error");
+		}
+		
+		return "showDetailInfo";
+	}
+	
+	
+	public void selectGoodsImgs() throws Exception{
+		info("GoodsAction--selectGoodsImgs");
+		
+		String path = "default";
+		try {
+			String id = getRequest().getParameter("id");
+			path = service.selectGoodsImgs(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		writeJSON(path);
+	}
 	
 	
 	

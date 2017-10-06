@@ -8,20 +8,14 @@
 <title>create result</title>
 </head>
 <body>
+		
+		<script type="text/javascript">
+				alert("商品发布成功");
+				location.href="/sht/goods/view/index.jsp";
+			
+		</script>
+	
+		
 
-<c:set var="result" scope="session" value="${isCreate}">
-
-</c:set>
-${sessionScope.isCreate }
-<script>
-	<c:if test="result == true">
-		alert("商品发布成功");
-		location.href="/sht/goods/view/index.jsp";
-	</c:if>
-	<c:if test="result == false">
-		alert("商品发布失败");
-		window.history.go(-1);
-	</c:if>
-</script>
 </body>
 </html>

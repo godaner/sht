@@ -1,29 +1,19 @@
 package com.sht.goods.service.impl;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-import org.omg.PortableServer.POA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.opensymphony.xwork2.ModelDriven;
 import com.sht.goods.mapper.GCustomGoodsMapper;
+
 import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.po.GGoodsClazzs;
 import com.sht.goods.po.GGoodsImgs;
+import com.sht.goods.po.GMessages;
 import com.sht.goods.service.GoodsServiceI;
 import com.sht.mapper.ClazzsMapper;
 import com.sht.mapper.FilesMapper;
@@ -31,8 +21,7 @@ import com.sht.mapper.GoodsClazzsMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
 import com.sht.po.Clazzs;
-
-import oracle.net.aso.r;
+import com.sht.po.Goods;
 
 /**
  * Title:UsersService
@@ -60,6 +49,9 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 	
 	@Autowired
 	private GoodsClazzsMapper goodsClazzsMapper;
+	
+	@Autowired
+	private ClazzsMapper clazzsMapper;
 
 	/**
 	 * 显示商品主页面商品信息
@@ -133,6 +125,13 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 		
 		goodsClazzsMapper.insert(goodsClazzs);
 		
+		//修改总类别数量
+		
+		Clazzs  clazzs  =  clazzsMapper.selectByPrimaryKey(goods.getClazz());
+		Double clazzNum = clazzs.getNum() + 1;
+		clazzs.setNum(clazzNum);
+		clazzsMapper.updateByPrimaryKey(clazzs);
+		
 		// 向文件写入图片
 
 		File[] file = goods.getFiles();
@@ -160,8 +159,35 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 				imgs.setMain(0.0);
 			goodsImgsMapper.insert(imgs);
 		}
-		return "fCreateGoods";
+		return "createSuccess";
 	}
 
+	@Override
+	public GGoods selectGoodsDetailInfo(String id) throws Exception {
+		// TODO Auto-generated method stub
+		//更细腻浏览次数
+		Goods  goods = goodsMapper.selectByPrimaryKey(id);
+		
+		Double browseNum = goods.getBrowsenumber() + 1;
+
+		goods.setBrowsenumber(browseNum);
+		
+		goodsMapper.updateByPrimaryKey(goods);
+		
+		//查询商品详细信息
+		GGoods ggoods = customGoodsMapper.selectGoodsDetailInfo(id);
+		
+		return ggoods;
+	}
+
+	@Override
+	public String selectGoodsImgs(String id) throws Exception {
+		
+		String path = customGoodsMapper.selectGoodsImgs(id);
+		
+		return path;
+	}
+
+	
 
 }

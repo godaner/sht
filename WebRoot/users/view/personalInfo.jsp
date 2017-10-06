@@ -45,11 +45,11 @@
         </ul>
         <ul >
             <a href="javascript:void(0);" onclick="show_body_right();"><li>我的信息</li></a>
-            <a href="javascript:void(0);" onclick="show_issueGoods(0);"><li>我的发布</li></a>
-            <a href="javascript:void(0);" onclick="show_issueGoods(1);"><li>我的购买</li></a>
+            <a href="javascript:void(0);" onclick="show_sonPage(0);"><li>我的发布</li></a>
+            <a href="javascript:void(0);" onclick="show_sonPage(1);"><li>我的购买</li></a>
             <a href="./addressmanage.jsp"><li>地址管理</li></a>
-            <a href="javascript:void(0);" onclick="show_issueGoods(2);"><li>密码找回</li></a>
-            <a href="./recharge.jsp"><li>充值</li></a>
+            <a href="javascript:void(0);" onclick="show_sonPage(2);"><li>密码找回</li></a>
+            <a href="javascript:void(0);" onclick="show_sonPage(4);"><li>充值</li></a>
         </ul>
     </div> 
     <div id="body_right" >
@@ -91,7 +91,7 @@
 	  	 
 	   });
    //显示子页面 
-   function show_issueGoods(a){
+   function show_sonPage(a){
 	   var src="";
 	   if(a==0){
 		   src="./personalIssue_right_showGoods.jsp";
@@ -99,6 +99,8 @@
 		   src="./personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
 		   src="./findpassword.jsp";
+	   }else if(a==4){
+		   src="./recharge.jsp";
 	   }
 	   $("#body_right").hide();	
 	   $("#show_issueGoods").show();

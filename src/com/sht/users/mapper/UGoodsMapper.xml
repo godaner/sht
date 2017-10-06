@@ -39,8 +39,8 @@
 		SELECT * FROM GOODS WHERE id=#{id} AND STATUS NOT IN (-2,-5)
 	</select>
 	
-	<delete id="deleteGoodsByid" parameterType="string">
-		UPDATE GOODS SET STATUS=-2 WHERE ID = #{id}
+	<delete id="updateGoodsByidAndStatus" parameterType="com.sht.users.po.UGoods">
+		UPDATE GOODS SET STATUS=#{status} WHERE ID = #{id}
 	</delete>
 	
 	<delete id="udateBuyGoodsByidAndStatus" parameterType="com.sht.users.po.UGoods">

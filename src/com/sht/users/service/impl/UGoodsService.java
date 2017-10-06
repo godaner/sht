@@ -60,11 +60,12 @@ public UGoods getGoodsDetailById(String id) throws Exception {
 }
 
 @Override
-public void deleteGoodsByid(String id) {
+public void updateGoodsByidAndStatus(UGoods po) {
 
-	UGoodsMapper.deleteGoodsByid(id);
+	UGoodsMapper.updateGoodsByidAndStatus(po);
 	
 }
+
 
 @Override
 public void UpdateUGoodsById(UGoods po) {
@@ -131,6 +132,7 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 	
 	UGoodsMapper.udateBuyGoodsByidAndStatus(po);
 }
+
 
 
 
