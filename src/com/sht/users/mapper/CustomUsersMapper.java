@@ -107,6 +107,39 @@ public interface CustomUsersMapper {
 	 *
 	 */
 	public CustomAddrs selectAddrsByID(CustomAddrs po);
+	
+	/**
+	 * 支付宝充值成功后的回调
+	 * 
+	 * @param po
+	 */
+
+	public void addMoney(CustomUsers po);
+
+	
+	/**
+	 * 
+	 * 获取用户余额
+	 * @param po
+	 * @return 
+	 */
+	public CustomUsers getMoneyById(CustomUsers po);
+
+	
+	/**
+	 * 根据email更改密码
+	 * 
+	 * @param po
+	 */
+	public void changePasswordByEmail(CustomUsers po);
+	
+	/**
+	 * 根据username更改密码
+	 * 
+	 * @param po
+	 */
+
+	public void changePasswordByUsername(CustomUsers po);
 
 	/**
 	 * 设置默认收货地址

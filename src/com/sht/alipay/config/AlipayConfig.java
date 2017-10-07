@@ -16,7 +16,7 @@ import java.io.IOException;
 public class AlipayConfig {
 	
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
+	private static String url = "http://ei7zij.natappfree.cc";
 	// 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
 	public static String app_id = "2016081500253717";
 	
@@ -27,10 +27,11 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsShDfOubngp9latQu2Rq0lRYIrDPR4IzDUJbDlKQ/+zXEfnABuz9eLwKDHNQWPYht5Os4VOuI8mZBGS8erjeVQzPM9ziZ+pYwvoQTOi4PI1m1b/CvSau/eQMVSrRY+ICQZzDjHJngRaKWiYigvy/s8V/3QxacKLuIBjyVdAterXaTcIgPlwUCRMXVPZ+I6Fb4LeMO3pG2gl3HUUgIoUZg7NZQBV2AcZoSVtc+OuA0tAZWwKfq7xIsNSYahA1F87WB3b2zId/bbcogdecmdmJSLFxhklGlPSJ2+3AuVWCW3/6V7/f7io9XSLhDIaukb3CBxKc1ZK8Y3GkHXXWrJGa9wIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://4mkrva.natappfree.cc/sht/users/view/index.jsp";
+	public static String notify_url = url+"/sht/users/addMoney.action";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://4mkrva.natappfree.cc/sht/users/view/index.jsp";
+//	public static String return_url = url+"/sht/users/view/index.jsp";
+	public static String return_url = "";
 
 	// 签名方式
 	public static String sign_type = "RSA2";

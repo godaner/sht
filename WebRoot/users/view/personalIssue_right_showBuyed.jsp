@@ -46,6 +46,7 @@
 		<div class="UpdateUGoods"></div>
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 		<input type="hidden" value="${onlineUser.id}" id="userid"/>
+		<input type="hidden" value="${onlineUser.password}" id="userpassword"/>
 </body>
 <style type="text/css">
 
@@ -168,10 +169,10 @@ var status = "";
 
 var userid = $("#userid").val();
 var baseUrl =$("#baseUrl").val();
+var userpassword =$("#userpassword").val();
 $(function(){
 	getGoodscount();
 	NextPage();
-	
 });
 
 function NextPage(){
@@ -252,9 +253,37 @@ function getGoodscount(){
 		});
 		
 	}
-
-	
 } 
+
+
+//收货密码确认
+function prom(id,statu)
+{
+    var pas=prompt("请输入支付密码","");
+    
+    if(pas){
+    	$.ajax({
+    		type : 'post',  //请求方式,get,post等
+    	    dataType:'json',//response返回数据的格式
+    	    async : true,  //同步请求  
+    	    url : baseUrl+"/users/checkPassword.action",//需要访问的地址
+    	    data :'password='+pas,  //传递到后台的参数
+    	    success:function(data){
+    	    	console.info(data);
+    	    	if(data['msg']){
+    	    		alert(data['msg']);
+    	    	}else{
+    	    		udateBuyGoodsByidAndStatus(id,statu);
+    	    	}
+    	    	}
+        });    
+    }
+    
+    
+    
+
+}
+
 
 
 function showStatus(status){
@@ -305,11 +334,13 @@ function showList(status){
 	    		if(status=="待发货"){
 	    			h+="<td><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-3');>取消购买</a></td></tr></table></div></div>";
 	    		}else if(status=="已发货"){
-	    			h+="<td><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-1');>确认收货</a></td></tr></table></div></div>";	
+	    			h+="<td><a href=javascript:prom('"+id+"','-1');>确认收货</a></td></tr></table></div></div>";	
 	    		}else if(status=="已完成订单"){
 	    			h+="<td><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-8');>申请退款</a></td></tr></table></div></div>";
 	    		}else if(status=="申请退款"){
 	    			h+="<td><a hreef='#'>上传凭证</a></td></tr></table></div></div>";
+	    		}else{
+	    			h+="<td><a hreef='#'>操作已完成</a></td></tr></table></div></div>";
 	    		}
 	    		}
 	    		$(".list").html(h);

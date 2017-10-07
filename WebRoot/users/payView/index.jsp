@@ -214,7 +214,7 @@ h2 {
 					<hr class="one_line">
 					<dt>订单名称 ：</dt>
 					<dd>
-						<input id="WIDsubject" name="WIDsubject" />
+						<input id="WIDsubject" name="WIDsubject"/>
 					</dd>
 					<hr class="one_line">
 					<dt>付款金额 ：</dt>
@@ -360,12 +360,16 @@ h2 {
 			</ul>
 		</div>
 	</div>
+	
+	<input type="hidden" value="${param.addmoney}" name="addmoney" id="addmoney">
+	<input type="hidden" value="${param.username}" name="username">
 </body>
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script language="javascript">
 	var tabs = document.getElementsByName('tab');
 	var contents = document.getElementsByName('divcontent');
 	
-	(function changeTab(tab) {
+	 (function changeTab(tab) {
 	    for(var i = 0, len = tabs.length; i < len; i++) {
 	        tabs[i].onmouseover = showTab;
 	    }
@@ -394,9 +398,9 @@ h2 {
 		sNow += String(vNow.getSeconds());
 		sNow += String(vNow.getMilliseconds());
 		document.getElementById("WIDout_trade_no").value =  sNow;
-		document.getElementById("WIDsubject").value = "测试";
-		document.getElementById("WIDtotal_amount").value = "0.01";
+		document.getElementById("WIDsubject").value = "SHT";
+		document.getElementById("WIDtotal_amount").value = $("#addmoney").val();
 	}
-	GetDateNow();
+	GetDateNow(); 
 </script>
 </html>

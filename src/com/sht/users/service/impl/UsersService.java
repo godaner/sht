@@ -126,4 +126,44 @@ public class UsersService extends UBaseService implements UsersServiceI {
 		 
 		 customUsersMapper.personalImgUpload(po);
 	}
+
+	@Override
+	public void addMoney(CustomUsers po) {
+
+		customUsersMapper.addMoney(po);
+		
+	}
+
+	@Override
+	public CustomUsers getMoneyById(CustomUsers po) {
+		
+		po = customUsersMapper.getMoneyById(po);
+		
+		return po;
+		
+	}
+
+	@Override
+	public void changePasswordByObj(CustomUsers po) throws Exception {
+		
+		if(po.getEmail()!=null){
+			
+			po.setPassword(md5(po.getPassword() + po.getEmail()));
+			
+			customUsersMapper.changePasswordByEmail(po);
+			
+		}else{
+			
+			CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
+			
+			po.setPassword(md5(po.getPassword() + dbUser.getSalt()));
+			
+			eject(po.getPassword().equals(dbUser.getPassword()), "修改密码不能与原密码一致");
+			
+			customUsersMapper.changePasswordByUsername(po);
+			
+		}
+		
+	}
+
 }
