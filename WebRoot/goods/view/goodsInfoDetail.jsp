@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="./base.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,11 +13,12 @@
     <link href="${baseUrl }/goods/css/goodsInfoDetail.css" rel="stylesheet">
 </head>
 <body>
-<%@ include file="commonTitle.jsp"  %>
+<jsp:include page="commonTitle.jsp" flush="false" />
 <input type="hidden" value="${baseUrl}" id="baseUrl" />
 <input type="hidden" value="${sessionScope.goodsDetailInfo.id}" id="goodsId" />
 <input type="hidden" value="${sessionScope.goodsDetailInfo.msgNum}" id="msgnum" />
-<input type="hidden" value="${sessionScope.onlineUser.id} " id="onlineUser"/>
+
+
 <article>
     <div class="head">
         <ul>
@@ -34,7 +37,10 @@
                 <div class="dividing_line"></div>
             </li>
             <li class="browse">
-                <span>宝贝浏览次数&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.browsenumber }</span>
+           
+       		 <fmt:formatNumber var="c" value="${sessionScope.goodsDetailInfo.browsenumber}" pattern="#"/>
+                <span>宝贝浏览次数&nbsp;:&nbsp;${c }</span>
+            
                 <!--<br>-->
                 <!--<span>80</span>-->
             </li>
@@ -42,7 +48,8 @@
                 <div class="dividing_line"></div>
             </li>
             <li class="edit">
-                <span>最近编辑&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.lastupdatetime}</span>
+            	
+                <span>最近编辑&nbsp;:&nbsp;<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${sessionScope.goodsDetailInfo.lastupdatetime}" /></span>
                 <!--<br>-->
                 <!--<span>2017-09-09</span>-->
             </li>
@@ -67,7 +74,7 @@
             <p class="content-right-title">${sessionScope.goodsDetailInfo.description}</p>
 
             <p class="new-price">
-                转卖价&nbsp;:&nbsp;￥<span>${sessionScope.goodsDetailInfo.sprice }</span>
+                转卖价&nbsp;:&nbsp;￥<span id="price" name="${sessionScope.goodsDetailInfo.sprice }">${sessionScope.goodsDetailInfo.sprice }</span>
                 <span><img src="goods/img/tip.png">&nbsp;该商品拒绝讲价!</span>
             </p>
 
@@ -76,39 +83,26 @@
             <p class="state">成色&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.condition}成新</p>
 
             <p class="state">所在地&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.addr}</p>
-            <span class="state">联系方式&nbsp;:&nbsp;</span><span id="link-way"><img
-                src="goods/img/link.png"/>&nbsp;与他对话</span>
-            <br/>
+         
 
             <div id="pay-info">
                 <span class="state" id="pay-way">交易方式&nbsp;:&nbsp;</span>
-
+				
                 <div class="state" id="online-pay">
-                    <span>在线交易</span>
-                    <span id="location">&nbsp;至&nbsp;<span>江苏南通</span>&nbsp;<img src="goods/img/down_grey.png"/>&nbsp;&nbsp;</span>
+                    
+                    
+               		<span id="location"></span>
+               		<select name="addr" id="addr">
+               			<option value="0">--请选择--</option>
+               		</select>
+               		<a href="users/view/personalInfo.jsp">详情&nbsp;/&nbsp;修改</a>
                 </div>
-
-                <span class="state" id="express"><span>江苏南通</span>&nbsp;<img src="goods/img/down_grey.png"/>&nbsp;&nbsp;</span>
-				<table id="county"></table>
                 <div class="clear"></div>
             </div>
 
-            <input type="button" value="立&nbsp;即&nbsp;购&nbsp;买"/>
+            <input type="button" value="立&nbsp;即&nbsp;购&nbsp;买" id="buy"/>
             <br/>
-            <!-- <input type="button" value="分享(0)"/>
-            <input type="button" value="赞(4)"/> -->
-
-            <div class="city_info">
-                <div>
-                    <span>选择期望交易的城市</span>
-                    <img src="goods/img/close_grey.png">
-                </div>
-
-                <table>
-                    
-                </table>
-
-            </div>
+           
         </div>
         <div class="clear"></div>
 
@@ -120,16 +114,16 @@
             </div>
             <hr/>
             <div class="comment-content">
-            	<c:if test="${sessionScope.goodsDetailInfo.msgNum == 0}">
-            		该商品暂时无人评价!
-            	</c:if>
-            	<c:if test="${sessionScope.goodsDetailInfo.msgNum != 0}">
+            	
             		
             	
                 <ul class="comment-container">
-                    
+                    <c:if test="${sessionScope.goodsDetailInfo.msgNum == 0}">
+            			该商品暂时无人评价!
+            		</c:if>
+            		
                 </ul>
-                </c:if>
+               
                 <br/>
                 <br/>
                 <br/>

@@ -5,6 +5,12 @@
 		select * from clazzs order by id asc
 	</select>
 
+	<select id="selectGoodsClazz" parameterType="string" resultType="string">
+		select clazz from goods_clazzs where goods=#{value}
+	</select>
 	
+	<update id="updateClazzNum" parameterType="string">
+		update clazzs set num=num-1 where id=#{id}
+	</update>
 	
 </mapper>

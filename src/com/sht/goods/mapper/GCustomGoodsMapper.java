@@ -69,8 +69,12 @@ public interface GCustomGoodsMapper {
 	public String selectGoodsImgs(String id);
 	
 	
-	
-	
+	/**
+	 * 修改商品购买信息
+	 * @param goods
+	 * @return
+	 */
+	public int updateGoodsPurchaseInfo(GGoods goods);
 	
 	
 }
