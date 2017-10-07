@@ -69,7 +69,7 @@
 	
 	<insert id="addAddress" parameterType="com.sht.users.po.CustomAddrs">
 	
-		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,POHNE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{pohne},#{realname},#{isdefault},#{postcode})
+		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,PHONE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{phone},#{realname},#{isdefault},#{postcode})
 	
 	</insert>
 	
