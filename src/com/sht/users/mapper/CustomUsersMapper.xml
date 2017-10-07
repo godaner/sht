@@ -49,15 +49,27 @@
 		
 	</select>
 	
+	<select id="getMoneyById" parameterType="com.sht.users.po.CustomUsers"  resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE ID=#{id} 
+		
+	</select>
+	
 	<update id="personalImgUpload" parameterType="com.sht.users.po.CustomUsers">
 	
 		UPDATE USERS SET HEADIMG = #{headimg} WHERE ID=#{id}
 		
 	</update>
 	
+	<update id="addMoney" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET MONEY=MONEY+#{money} WHERE ID = #{id}
+	
+	</update>
+	
 	<insert id="addAddress" parameterType="com.sht.users.po.CustomAddrs">
 	
-		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,POHNE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{pohne},#{realname},#{isdefault},#{postcode})
+		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,PHONE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{phone},#{realname},#{isdefault},#{postcode})
 	
 	</insert>
 	
@@ -91,5 +103,16 @@
 	
 	</select>
 	
+	<update id="changePasswordByUsername" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET PASSWORD = #{password} WHERE USERNAME = #{username}
+	
+	</update>
+	
+	<update id="changePasswordByEmail" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET PASSWORD = #{password} WHERE EMAIL = #{email}
+	
+	</update>
 
 </mapper>

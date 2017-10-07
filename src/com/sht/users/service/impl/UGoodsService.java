@@ -129,6 +129,29 @@ public List<UGoods> searchBuyUGoodsBuyBytitle(String title, String pageStar,
 
 @Override
 public void udateBuyGoodsByidAndStatus(UGoods po) {
+	//收货时
+	if(po.getStatus()==-1){
+		
+		UGoods dbGoods = UGoodsMapper.getGoodsDetailById(po.getId());
+		
+		//给卖家打款
+		
+		UGoodsMapper.solderAddMoney(dbGoods);
+		
+		//给买家加积分
+		UGoodsMapper.buyerAddScore(dbGoods);
+		
+		
+		//申请退款   取消购买
+	}else if(po.getStatus()==-9||po.getStatus()==-3){
+		
+		UGoods dbGoods = UGoodsMapper.getGoodsDetailById(po.getId());
+		
+		//给买家打款
+		
+		UGoodsMapper.buyerAddMoney(dbGoods);
+		
+	}
 	
 	UGoodsMapper.udateBuyGoodsByidAndStatus(po);
 }

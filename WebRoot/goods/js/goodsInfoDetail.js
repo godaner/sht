@@ -465,12 +465,12 @@ $(function() {
 			var reply = "";
 
 			if(item['message'] != "" && item['message'] != null)
-				reply = "回复"+recieveUser+":";
+				reply = "回复"+item['recivername']+":";
 			else
 				reply = "评论内容:";
-			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+			
+			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
 			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
-			console.log("username="+item['username']);
 
 			a.on('click',addComments);
 			
@@ -491,14 +491,11 @@ $(function() {
 		//用户名
 		var username = $(this).attr('value');
 		//评论的用户id
-		var usersId = $(this).attr('title');
+		var users = $(this).attr('title');
 		//此时登录的用户id
-		var users = $('#onlineUser').val();
+		var usersId = $('#onlineUser').val();
 		
-		console.log("usersId="+usersId+"/users="+users);
-		
-		alert(users == usersId);
-		if(users == usersId){
+		if(users.trim() == usersId.trim()){
 			alert("不能回复自己的评论！");
 			return false;
 		}
