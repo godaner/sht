@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	
+	<package namespace="/goods" name="goods-package" extends="base-package">
+		<!-- 全局result配置 -->
+		<global-results>
+			<result type="redirect" name="createSuccess">/goods/view/createSuccess.jsp</result>
+			<result type="redirect" name="createError">/goods/view/createError.jsp</result>
+			<result type="dispatcher" name="showDetailInfo">/goods/view/goodsInfoDetail.jsp</result>
+		</global-results>
+		<!-- 全局异常配置 -->
+		<!-- <global-exception-mappings>
+		</global-exception-mappings> -->
+		<!-- 配置action -->
+		<action name="*" class="GGoodsAction" method="{1}">
+			
+		</action>
+		
+		
+	</package>
+	
+	<package namespace="/clazzs" name="clazzs-package" extends="base-package">
+		<action name="*" class="GClazzsAction" method="{1}">
+		</action>
+	</package>
+	
+	<package namespace="/regions" name="regions-package" extends="base-package">
+		<action name="*" class="GRegionAction" method="{1}">
+		</action>
+	</package>
+	
+	<package namespace="/messages" name="messages-package" extends="base-package">
+		<action name="*" class="GMessagesAction" method="{1}">
+		</action>
+	</package>
+	
+
+	 
+</struts>

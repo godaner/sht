@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.AddrsMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.Addrs">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="MASTER" jdbcType="CHAR" property="master" />
+    <result column="REGION" jdbcType="DOUBLE" property="region" />
+    <result column="DETAIL" jdbcType="CHAR" property="detail" />
+    <result column="PHONE" jdbcType="CHAR" property="phone" />
+    <result column="REALNAME" jdbcType="CHAR" property="realname" />
+    <result column="ISDEFAULT" jdbcType="SMALLINT" property="isdefault" />
+    <result column="POSTCODE" jdbcType="CHAR" property="postcode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, MASTER, REGION, DETAIL, PHONE, REALNAME, ISDEFAULT, POSTCODE
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.AddrsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ADDRS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ADDRS
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ADDRS
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.AddrsExample">
+    delete from ADDRS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.Addrs">
+    insert into ADDRS (ID, MASTER, REGION, 
+      DETAIL, PHONE, REALNAME, ISDEFAULT, 
+      POSTCODE)
+    values (#{id,jdbcType=CHAR}, #{master,jdbcType=CHAR}, #{region,jdbcType=DOUBLE}, 
+      #{detail,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{realname,jdbcType=CHAR}, #{isdefault,jdbcType=SMALLINT}, 
+      #{postcode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.Addrs">
+    insert into ADDRS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="master != null">
+        MASTER,
+      </if>
+      <if test="region != null">
+        REGION,
+      </if>
+      <if test="detail != null">
+        DETAIL,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="realname != null">
+        REALNAME,
+      </if>
+      <if test="isdefault != null">
+        ISDEFAULT,
+      </if>
+      <if test="postcode != null">
+        POSTCODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="master != null">
+        #{master,jdbcType=CHAR},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=DOUBLE},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=CHAR},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=SMALLINT},
+      </if>
+      <if test="postcode != null">
+        #{postcode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.AddrsExample" resultType="java.lang.Long">
+    select count(*) from ADDRS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ADDRS
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.master != null">
+        MASTER = #{record.master,jdbcType=CHAR},
+      </if>
+      <if test="record.region != null">
+        REGION = #{record.region,jdbcType=DOUBLE},
+      </if>
+      <if test="record.detail != null">
+        DETAIL = #{record.detail,jdbcType=CHAR},
+      </if>
+      <if test="record.phone != null">
+        PHONE = #{record.phone,jdbcType=CHAR},
+      </if>
+      <if test="record.realname != null">
+        REALNAME = #{record.realname,jdbcType=CHAR},
+      </if>
+      <if test="record.isdefault != null">
+        ISDEFAULT = #{record.isdefault,jdbcType=SMALLINT},
+      </if>
+      <if test="record.postcode != null">
+        POSTCODE = #{record.postcode,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ADDRS
+    set ID = #{record.id,jdbcType=CHAR},
+      MASTER = #{record.master,jdbcType=CHAR},
+      REGION = #{record.region,jdbcType=DOUBLE},
+      DETAIL = #{record.detail,jdbcType=CHAR},
+      PHONE = #{record.phone,jdbcType=CHAR},
+      REALNAME = #{record.realname,jdbcType=CHAR},
+      ISDEFAULT = #{record.isdefault,jdbcType=SMALLINT},
+      POSTCODE = #{record.postcode,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Addrs">
+    update ADDRS
+    <set>
+      <if test="master != null">
+        MASTER = #{master,jdbcType=CHAR},
+      </if>
+      <if test="region != null">
+        REGION = #{region,jdbcType=DOUBLE},
+      </if>
+      <if test="detail != null">
+        DETAIL = #{detail,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="realname != null">
+        REALNAME = #{realname,jdbcType=CHAR},
+      </if>
+      <if test="isdefault != null">
+        ISDEFAULT = #{isdefault,jdbcType=SMALLINT},
+      </if>
+      <if test="postcode != null">
+        POSTCODE = #{postcode,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.Addrs">
+    update ADDRS
+    set MASTER = #{master,jdbcType=CHAR},
+      REGION = #{region,jdbcType=DOUBLE},
+      DETAIL = #{detail,jdbcType=CHAR},
+      PHONE = #{phone,jdbcType=CHAR},
+      REALNAME = #{realname,jdbcType=CHAR},
+      ISDEFAULT = #{isdefault,jdbcType=SMALLINT},
+      POSTCODE = #{postcode,jdbcType=CHAR}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
