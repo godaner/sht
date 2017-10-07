@@ -26,4 +26,20 @@ public interface GCustomClazzsMapper {
 	 */
 	public List<GClazzs> selectAllClazzs() throws Exception;
 	
+	/**
+	 * 查询商品类别
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public String selectGoodsClazz(String id) throws Exception;
+	
+	/**
+	 * 修改商品总类别数量
+	 * @param clazzs
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateClazzNum(String id)throws Exception;
+	
 }

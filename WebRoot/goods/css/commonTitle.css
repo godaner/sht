@@ -37,7 +37,15 @@ nav>ul>li{
 nav>ul>li>a{
 	color:black;
 	text-decoration:none;
+	
 }
+
+nav>ul>a{
+	display: inline-block;
+	text-decoration:none;
+	margin-left:20px;
+}
+
 nav>ul>li:first-of-type{
     font-size: 50px;
     font-weight: bold;

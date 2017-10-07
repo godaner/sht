@@ -214,6 +214,8 @@ article{
     line-height: 30px;
 }
 
+
+
 .content-right>hr{
     height: 1px;
     background-color: lightgrey;
@@ -243,17 +245,41 @@ article{
 }
 #online-pay>span{
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     border: 1px solid grey;
     cursor: pointer;
-}
-#online-pay>span:first-of-type{
-    background-color: white;
-}
-#online-pay>span:last-of-type{
+    float:left;
+	width:auto;
     margin-top: 10px;
     background-color: #f7f7f7;
+    padding-left:5px;
+    padding-right:5px;
+    
+}
+
+#online-pay>select{
+	float:left;
+	width:200px;
+	height:30px;
+	background-color: #f7f7f7;
+	border:1px solid grey;
+	margin-top:10px;
+	text-align:center;
+	margin-left:10px;
+}
+#online-pay>a{
+	margin-left:20px;
+	margin-top:10px;
+	font-size:14px;
+	display:inline-block;
+	position:relative;
+	height:30px;
+	text-align:vertical;
+	color:red;
+}
+#online-pay select>option{
+	text-align:left;
 }
 #online-pay>span>img,.state>img{
     vertical-align: middle;

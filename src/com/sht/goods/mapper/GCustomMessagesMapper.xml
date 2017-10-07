@@ -6,7 +6,10 @@
 		from messages,users
 		where messages.users = users.id and goods=#{value}
 		order by messages.createtime asc
+		
+		
 	</select>
+
 
 	
 	

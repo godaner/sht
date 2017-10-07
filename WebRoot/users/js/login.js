@@ -1,6 +1,7 @@
 /* 全局变量 */
 var msg = "";/* 错误信息 */
 var baseUrl = "";/*项目地址*/
+
 $(function(){
 baseUrl = $("#baseUrl").val();
 /* 当点击登陆框时 清空错误信息 */
@@ -12,11 +13,13 @@ baseUrl = $("#baseUrl").val();
 
 /* 显示登陆窗口 */
 function showlogin(){
+	
 	$(".login_box").fadeIn("slow");
 }
 /* 关闭登陆窗口 */
 function closelogin(){
 	$(".login_box").hide();
+	window.location.reload(true);
 }
 /* 打印错误信息 */
 function showErrorMsg(msg){
@@ -26,6 +29,7 @@ function showErrorMsg(msg){
 function login(){
 	var username = $("#username").val().trim();
 	var password = $("#password").val().trim();
+	
 	/* 登陆非空验证 */
 	if(username==""||username==null){
 		msg = "用户名不能为空";
@@ -47,7 +51,9 @@ function login(){
 		    		showErrorMsg(msg);
 		    	}else{
 		    	/* 成功登陆 */
-		    	closelogin();
+		    		
+		    		closelogin();
+		    		
 		    	}
 		    },error:function(data){
 		    	msg = "登陆失败";
