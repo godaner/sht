@@ -35,7 +35,7 @@ public class UsersService extends UBaseService implements UsersServiceI {
 	
 	@Override
 	public CustomUsers login(CustomUsers po) throws Exception {
-		
+		  
 		
 		CustomUsers dbUser = customUsersMapper.selectUserByUsername((String) po.getUsername());
 		logger.info("UserService");

@@ -54,4 +54,42 @@
 		UPDATE USERS SET HEADIMG = #{headimg} WHERE ID=#{id}
 		
 	</update>
+	
+	<insert id="addAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,POHNE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{pohne},#{realname},#{isdefault},#{postcode})
+	
+	</insert>
+	
+	<update id="updateDefault" parameterType="com.sht.users.po.CustomAddrs">
+	
+		UPDATE ADDRS SET ISDEFAULT=0 WHERE MASTER=#{master}
+	
+	</update>
+	
+	<update id="updateDefaults" parameterType="com.sht.users.po.CustomAddrs">
+	
+		UPDATE ADDRS SET ISDEFAULT=1 WHERE ID =#{id}
+	
+	</update>
+	
+	<delete id="deleteAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		DELETE FROM ADDRS WHERE ID=#{id} AND MASTER=#{master}
+	
+	</delete>
+	
+	<select id="selectAllAddress" parameterType="com.sht.users.po.CustomAddrs" resultType="com.sht.users.po.CustomAddrs">
+	
+		SELECT * FROM ADDRS WHERE MASTER=#{master}
+	
+	</select>
+	
+	<select id="selectAddrsByID" parameterType="com.sht.users.po.CustomAddrs">
+	
+		SELECT * FROM ADDRS WHERE MASTER=#{master} AND ID=#{id}
+	
+	</select>
+	
+
 </mapper>

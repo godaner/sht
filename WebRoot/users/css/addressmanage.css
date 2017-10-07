@@ -1,9 +1,28 @@
+.sc{
+	width:150px;
+}
+.ot{
+	width:150px
+}
+
+/* 注册错误信息 */
+.register_msg{
+	width:80%;
+	height:5%;
+	margin-left:10%;
+	margin-bottom:2%;
+	text-align:center;
+	float:left;
+	color:red;
+	font-size:15px;
+	border-radius:5px;
+}
 .head {
 	font-size: 14px;
 	width: 850px;
 	height: 30px;
 	color: #014d7f;
-	background-color: #F3F8FE;
+	background-color: #8080ff;
 	line-height: 30px;
 }
 
@@ -335,17 +354,30 @@ option {
 }
 
 .iteamdefault {
+	margin-left: 100px;
 	width: 530px;
 	height: 36px;
 	line-height: 26px;
 }
 
 #setdefalut {
-	margin-left: 110px;
+	margin-left: 10px;
 	width: 13px;
 	height: 13px;
 }
 
+.iteamsubmit{
+	width:530px;
+	height:38px;
+}
+.save{
+	width:70px;
+	height:30px;
+	background-color:#ff4001;
+	font-size:14px;
+	color:white;
+	margin-left:110px;
+}
 .tsl {
 	font-size: 13px;
 }
@@ -374,8 +406,19 @@ option {
 	width: 97%;
 	table-layout: fixed;
 	border: 1px solid #e7e7e7;
-	font-size: 12px;
+	/* font-size: 12px; */
 }
+.tbl-main1 {
+	width: 97%;
+	table-layout: fixed;
+	border: 1px solid #e7e7e7;
+	font-size: 12px;
+	font-weight:normal;
+}
+.tbl-main tr{
+	border-bottom: 1px solid #e7e7e7;
+}
+
 
 .thead {
 	width: 800px;

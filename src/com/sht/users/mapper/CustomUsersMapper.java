@@ -1,7 +1,8 @@
 package com.sht.users.mapper;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
+import com.sht.users.po.CustomAddrs;
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -77,5 +78,42 @@ public interface CustomUsersMapper {
 	 */
 
 	public void personalImgUpload(CustomUsers po);
+	
+	/**
+	 * 新增收货地址
+	 *
+	 **/
+	public void addAddress(CustomAddrs po);
+
+	/**
+	 * 修改收货地址
+	 */
+	public void updateAddress(CustomAddrs po);
+
+	/**
+	 * 
+	 * 删除收货地址
+	 */
+	public void deleteAddress(CustomAddrs po);
+	
+	/**
+	 * 
+	 * 显示收货地址
+	 */
+	public List<CustomAddrs> selectAllAddress(CustomAddrs po);
+
+	/**
+	 * 根据ID查询收货地址
+	 *
+	 */
+	public CustomAddrs selectAddrsByID(CustomAddrs po);
+
+	/**
+	 * 设置默认收货地址
+	 * 
+	 **/
+	public void updateDefault(CustomAddrs po);
+
+	public void updateDefaults(CustomAddrs po);
 
 }
