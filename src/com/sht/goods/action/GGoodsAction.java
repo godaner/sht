@@ -25,7 +25,6 @@ import com.sht.util.Static;
 @Scope("prototype")
 public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 	
-	private CGoodsAction cGoodsAction;
 	
 	
 	/**
@@ -138,6 +137,8 @@ public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		
 		writeJSON(path);
 	}
+	
+	
 	
 	
 	

@@ -18,9 +18,9 @@
 					<div class="maincenter-box">
 						<form class="ui-form">
 							<div class="ui-form-item">
-								<label class="ui-label">账户名</label>
+								<label class="ui-label">邮箱</label>
 								<p class="ui-form-text">
-									<span class="ui-text-amount">${onlineUser.username}</span>
+									<input class="ui-input" type="text" id="email"/>
 								</p>
 							</div>
 
@@ -53,7 +53,6 @@
 			</div>
 		</div>
 		
-		<input type="hidden" value="${onlineUser.username}" id="username">
 		<input type="hidden" value="${baseUrl}" id="baseUrl">
 		<%-- <%@include file="../../goods/view/commonFooter.jsp"%> --%>
 	</body>
@@ -64,7 +63,7 @@
 <script type="text/javascript">
 var baseUrl = $("#baseUrl").val();
 function changePassword(){
-var username = $("#username").val();
+var email = $("#email").val();
 var password = $("#password").val();
 var repassword = $("#repassword").val();
 
@@ -78,12 +77,12 @@ if(password!=repassword){
 	    dataType:'json',//response返回数据的格式
 	    async : true,  //同步请求  
 	    url : baseUrl+"/users/changePasswordByObj.action",  //需要访问的地址
-	    data :'username='+username+'&password='+password,  //传递到后台的参数
+	    data :'email='+email+'&password='+password,  //传递到后台的参数
 	    success:function(data){
 	    	if(data['msg']){
 	    	alert(data['msg']);
 	    	}else{
-	    		alert("修改成功，请重新登陆");
+	    		alert("修改成功，前往登陆");
 	    		window.parent.location.href="./index.jsp";
 	    	}
 	    },error:function(){

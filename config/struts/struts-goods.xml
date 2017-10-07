@@ -37,6 +37,14 @@
 		</action>
 	</package>
 	
-
+	<package namespace="/user" name="user-package" extends="base-package">
+		<action name="*" class="GUserAction" method="{1}">
+		</action>
+	</package>
+	
+	<package namespace="/addrs" name="addrs-package" extends="base-package">
+		<action name="*" class="GAddrAction" method="{1}">
+		</action>
+	</package>
 	 
 </struts>

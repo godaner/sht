@@ -154,206 +154,266 @@ $(function() {
 	}
 
 	
-
-	// 显示城市列表
-	$('#location').click(function() {
-
-		var height = $(this).offset().top - 50;
-		$('.city_info').css({
-			'top' : height + 'px',
-			
-		});
-		//获取省份信息
-		getRegionData(1, $('.city_info table'));
-		$('.city_info').slideDown();
-	});
-
-	function getRegionData(pid, target) {
-		$.ajax({
-			type : "post", // 请求方式,get,post等
-			dataType : 'json',// response返回数据的格式
-			async : false, // 同步请求
-			url : baseUrl + "/regions/selectAllRegions.action?pid=" + pid, // 需要访问的地址
-			success : function(data) {
-				console.log("访问地区成功!");
-				// 显示商品类别
+//
+//	// 显示城市列表
+//	$('#location').click(function() {
+//
+//		var height = $(this).offset().top - 50;
+//		$('.city_info').css({
+//			'top' : height + 'px',
+//			
+//		});
+//		//获取省份信息
+//		getRegionData(1, $('.city_info table'));
+//		$('.city_info').slideDown();
+//	});
+//
+//	function getRegionData(pid, target) {
+//		$.ajax({
+//			type : "post", // 请求方式,get,post等
+//			dataType : 'json',// response返回数据的格式
+//			async : false, // 同步请求
+//			url : baseUrl + "/regions/selectAllRegions.action?pid=" + pid, // 需要访问的地址
+//			success : function(data) {
+//				console.log("访问地区成功!");
+//				// 显示商品类别
+////				console.log(data);
+//
+//				if (target.attr('class') == 'secondary_menu')
+//					setSecondMenuData(data, target);
+//				else
+//					setRegionData(data, target);
+//			},
+//			error : function(data) {
+//				console.log("访问地区失败!");
 //				console.log(data);
-
-				if (target.attr('class') == 'secondary_menu')
-					setSecondMenuData(data, target);
-				else
-					setRegionData(data, target);
-			},
-			error : function(data) {
-				console.log("访问地区失败!");
-				console.log(data);
-			}
-		});
-	}
-
-	function setRegionData(data, target) {
-		var table = target.empty();
-
-		var tr = $("<tr></tr>");
-		$.each(data, function(index, item) {
-			var name = item['name'];
-			if (index == 0)
-				return true;
-			if (name.indexOf('省') != -1 || name.indexOf('市') != -1)
-				name = name.substring(0, 3);
-			else
-				name = name.substring(0, 2);
-
-			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
-			tr.append(td);
-
-			td.hover(function() {
-				showSecondMenu(td);
-
-			}, function() {
-				hideSecondMenu();
-			})
-
-			if ((index % 5) == 0) {
-				table.append(tr);
-				tr = $('<tr></tr>');
-			}
-
-		});
-	}
-
-	function setSecondMenuData(data, target) {
-
-		var table = target.empty();
-
-		var tr = $("<tr></tr>");
-
-		$.each(data, function(index, item) {
-			var name = item['name'];
-			
-			name = name.substring(0, 3);
-			
-			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
-			
-			tr.append(td);
-			
-			td.on('click', setCityInfo);
+//			}
+//		});
+//	}
+//
+//	function setRegionData(data, target) {
+//		var table = target.empty();
+//
+//		var tr = $("<tr></tr>");
+//		$.each(data, function(index, item) {
+//			var name = item['name'];
+//			if (index == 0)
+//				return true;
+//			if (name.indexOf('省') != -1 || name.indexOf('市') != -1)
+//				name = name.substring(0, 3);
+//			else
+//				name = name.substring(0, 2);
+//
+//			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
+//			tr.append(td);
+//
+//			td.hover(function() {
+//				showSecondMenu(td);
+//
+//			}, function() {
+//				hideSecondMenu();
+//			})
+//
+//			if ((index % 5) == 0) {
+//				table.append(tr);
+//				tr = $('<tr></tr>');
+//			}
+//
+//		});
+//	}
+//
+//	function setSecondMenuData(data, target) {
+//
+//		var table = target.empty();
+//
+//		var tr = $("<tr></tr>");
+//
+//		$.each(data, function(index, item) {
+//			var name = item['name'];
+//			
+//			name = name.substring(0, 3);
+//			
+//			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
+//			
+//			tr.append(td);
+//			
+//			td.on('click', setCityInfo);
+//	
+//			if (((1+index) % 5) == 0 && index != 0) {
+//				
+//				table.append(tr);
+//				tr = $('<tr></tr>');
+//			}
+//			
+//			if(data.length <= 5)
+//				table.append(tr);
+//
+//		});
+//		
+//		if(data.length >= 5){
+//			table.css('width','400px');
+//
+//		}
+//	}
+//
+//	// 显示城市信息二级菜单
+//
+//	var table = $("<table class='secondary_menu'></table>");
+//	var province;
+//	function showSecondMenu(target) {
+//		province = target.text();
+//		target.append(table);
+//
+//		var pid = target.attr('name');
+//
+//		getRegionData(pid, table);
+//
+//		table.show();
+//		
+//	}
+//
+//	function hideSecondMenu() {
+//		table.empty().hide();
+//		
+//	}
+//	
+//	//显示三级城市列表
+//	function setCountyInfo(data){
+//		var table = $('#county').empty();
+//		var tr = $("<tr></tr>");
+//		$.each(data,function(index,item){
+//			
+//			var name = item['name'];
+//			name = name.substring(0, 3);
+//			
+//			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
+//			
+//			td.on('click',showCountyInfo);
+//			
+//			tr.append(td);
+//			
+//			if((index % 5) == 0 && index != 0){
+//				
+//				table.append(tr);
+//				tr = $('<tr></tr>');
+//			}
+//		})
+//		if(data.length > 0)
+//			table.show();
+//
+//	}
+//
+//	function getBasedRegionData(pid,target) {
+//		$.ajax({
+//			type : "post", // 请求方式,get,post等
+//			dataType : 'json',// response返回数据的格式
+//			async : false, // 同步请求
+//			url : baseUrl + "/regions/selectAllRegions.action?pid=" + pid, // 需要访问的地址
+//			success : function(data) {
+//				console.log("访问地区成功!");
+//				// 显示商品类别
+////				console.log(data);
+//
+//				setCountyInfo(data);
+//			
+//			},
+//			error : function(data) {
+//				console.log("访问地区失败!");
+//				console.log(data);
+//			}
+//		});
+//	}
+//	
+//	function setCityInfo() {
+//		var city = province + "-" + $(this).text();
+//		
+//		table.find('tr').remove();
+//		table.empty().hide();
+//		$('.city_info table').find('tr').remove();
+//		
+//		$('.city_info').toggle('slow');
+//		
+//		$('#location>span').text(city);
+//		var pid = $(this).attr('name');
+//		getBasedRegionData(pid,$(this));
+//	}
+//	
+//	function showCountyInfo(){
+//		var county = $(this).text();
+//		$("#county").empty().hide();
+//		$('#express>span').html(county);
+//	}
+//
+//	// 隐藏城市列表
+//	$('.city_info>div img').click(function() {
+//		$('.city_info').slideUp();
+//	});
+//	$('.city_info>div img').hover(function() {
+//
+//		$('.city_info>div img').attr('src', 'goods/img/close_yellow.png');
+//	}, function() {
+//		$('.city_info>div img').attr('src', 'goods/img/close_grey.png');
+//	});
 	
-			if (((1+index) % 5) == 0 && index != 0) {
-				
-				table.append(tr);
-				tr = $('<tr></tr>');
-			}
-			
-			if(data.length <= 5)
-				table.append(tr);
-
-		});
+	//读取默认地址
+	getAddr();
+	function getAddr(){
+		var userId = $("#onlineUser").attr('value');
 		
-		if(data.length >= 5){
-			table.css('width','400px');
-
+		if(userId == " " || userId == null){
+			$('#location').html("登录后才能获取默认收货地址").css("color","red");
+			
+		}else{
+			$.ajax({
+				type : "post", // 请求方式,get,post等
+				dataType : 'json',// response返回数据的格式
+				async : false, // 同步请求
+				url : baseUrl + "/addrs/selectAddrs.action?master=" + userId, // 需要访问的地址
+				success : function(data) {
+					console.log(data);
+					setAddrData(data);
+				},
+				error : function(data) {
+					console.log(data);
+				}
+			});
 		}
+
 	}
-
-	// 显示城市信息二级菜单
-
-	var table = $("<table class='secondary_menu'></table>");
-
-	function showSecondMenu(target) {
-
-		target.append(table);
-
-		var pid = target.attr('name');
-
-		getRegionData(pid, table);
-
-		table.show();
-		
-	}
-
-	function hideSecondMenu() {
-		table.empty().hide();
-		
-	}
-	
-	//显示三级城市列表
-	function setCountyInfo(data){
-		var table = $('#county').empty();
-		var tr = $("<tr></tr>");
+	var userData;
+	function setAddrData(data){
+		userData = data[0];
+		if(data.length == 0){
+			if(confirm("您还没有设置收货地址，请前往个人中心填写!") == true)
+				location.href=baseUrl + "/users/view/personalInfo.jsp";
+			else{
+				$('#location').html("暂无收货地址");
+			}
+		}
+			
+		var section = $('#addr');
 		$.each(data,function(index,item){
-			
-			var name = item['name'];
-			name = name.substring(0, 3);
-			
-			var td = $('<td name=' + item['id'] + '> ' + name + '</td>');
-			
-			td.on('click',showCountyInfo);
-			
-			tr.append(td);
-			
-			if((index % 5) == 0 && index != 0){
-				
-				table.append(tr);
-				tr = $('<tr></tr>');
+			if(item['isdefault'] == 1){
+				$('#location').html(item['addr']).css("color","black");
 			}
-		})
-		if(data.length > 0)
-			table.show();
-
-	}
-
-	function getBasedRegionData(pid,target) {
-		$.ajax({
-			type : "post", // 请求方式,get,post等
-			dataType : 'json',// response返回数据的格式
-			async : false, // 同步请求
-			url : baseUrl + "/regions/selectAllRegions.action?pid=" + pid, // 需要访问的地址
-			success : function(data) {
-				console.log("访问地区成功!");
-				// 显示商品类别
-//				console.log(data);
-
-				setCountyInfo(data);
 			
-			},
-			error : function(data) {
-				console.log("访问地区失败!");
-				console.log(data);
-			}
+			var option = $('<option >'+item['addr']+'</option>');
+			
+			section.append(option);
+			
 		});
+		
+		
 	}
 	
-	function setCityInfo() {
-		var city = $(this).text();
-		
-		table.find('tr').remove();
-		table.empty().hide();
-		$('.city_info table').find('tr').remove();
-		
-		$('.city_info').toggle('slow');
-		
-		$('#location>span').text(city);
-		var pid = $(this).attr('name');
-		getBasedRegionData(pid,$(this));
-	}
 	
-	function showCountyInfo(){
-		var county = $(this).text();
-		$("#county").empty().hide();
-		$('#express>span').html(county);
-	}
-
-	// 隐藏城市列表
-	$('.city_info>div img').click(function() {
-		$('.city_info').slideUp();
-	});
-	$('.city_info>div img').hover(function() {
-
-		$('.city_info>div img').attr('src', 'goods/img/close_yellow.png');
-	}, function() {
-		$('.city_info>div img').attr('src', 'goods/img/close_grey.png');
-	});
+	
+	$('#addr').change(function(){
+		var city = $(this).children('option:selected').val();   
+		if(city == 0)
+			return false;
+		$('#location').html(city).css("color","black");
+	})
 	
 	
 	//
@@ -365,7 +425,8 @@ $(function() {
 	function getMsgData(id){
 		$('.reply').html("");
 		$('.reply').removeAttr('name');
-		$('.comment-content>textarea').html("");
+		$('#comment-content').val("");
+
 		$.ajax({
 			type : "post", // 请求方式,get,post等
 			dataType : 'json',// response返回数据的格式
@@ -385,7 +446,7 @@ $(function() {
 		});
 	}
 	
-	
+	var recieveUser;
 	function setMsgData(data){
 		
 		var container = $('.comment-container').empty();
@@ -402,13 +463,15 @@ $(function() {
 			var li = $("<li></li>");
 			var img = $("<img src='"+headImg+"'/>");
 			var reply = "";
-//			console.log("message:"+item['message']);
+
 			if(item['message'] != "" && item['message'] != null)
-				reply = "回复"+item['username']+":";
+				reply = "回复"+item['recivername']+":";
 			else
 				reply = "评论内容:";
-			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
-			var a = $('<a href="javascript:void(0)" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
+			
+			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
+
 			a.on('click',addComments);
 			
 			li.append(img);
@@ -423,9 +486,22 @@ $(function() {
 	}
 	
 	function addComments(){
+		//留言id
 		var messageId = $(this).attr('name');
+		//用户名
 		var username = $(this).attr('value');
+		//评论的用户id
+		var users = $(this).attr('title');
+		//此时登录的用户id
+		var usersId = $('#onlineUser').val();
+		
+		if(users.trim() == usersId.trim()){
+			alert("不能回复自己的评论！");
+			return false;
+		}
+			
 		$('.reply').html("回复:"+username);
+		
 		$('.reply').attr('name',messageId);
 		$('.comment-content>textarea').focus();
 		
@@ -435,11 +511,11 @@ $(function() {
 		var text = $('#comment-content').val();
 		var users = $('#onlineUser').val();
 		var message = $('.reply').attr('name');
-//		alert(message);
+
 		if(message == null)
 			message = "";
 		
-		if(users == null || users == ""){
+		if(users == null || users == " "){
 			alert("请先登陆，登陆后才可评论!");
 			return false;
 		}else if(text == "" || text == null){
@@ -461,12 +537,13 @@ $(function() {
 			url : baseUrl + "/messages/insertMessages.action?" +url , // 需要访问的地址
 			success : function(data) {
 				console.log(data);
-				if(data == 1)
+				if(data == 1){
 					alert("提交留言成功!");
-				else
+					getMsgData(id);
+				}else
 					alert("提交留言失败!");
 				
-				getMsgData(id);
+				
 				
 			},
 			error : function(data) {
@@ -475,5 +552,58 @@ $(function() {
 			}
 		});
 	}
+	
+	
+	$('#buy').click(function(){
+		
+		if(confirm("确定购买?") == false)
+			return false;
+		var users = $('#onlineUser').val();
+		var price = $('#price').attr('name');
+		var addr = $("#location").html();
+		
+		if(users == " " || users == null){
+			alert("请先登录!");
+			return false;
+		}else if(addr == null || addr == ""){
+			alert("请选择收获地址!");
+			return false;
+		}
+		
+		var phone = userData['phone'];
+		
+		var realName = userData['realname'];
+		
+		var detail = userData['detail'];
+		
+		var goodsId = $('#goodsId').attr('value');
+		
+		var url =   "id="+users+
+					"&price="+price+
+					"&addr="+addr +
+					"&phone="+ phone +
+					"&torealname="+ realName +
+					"&todetail="+ detail +
+					"&goodsId="+goodsId;
+		$.ajax({
+			type : "post", // 请求方式,get,post等
+			dataType : 'json',// response返回数据的格式
+			async : false, // 同步请求
+			url : baseUrl + "/user/updateUsersMoney.action?"+url, // 需要访问的地址
+			success : function(data) {
+				console.log(data);
+				if(data == -1)
+					alert("购买失败");
+				else if(data == 3)
+					alert("余额不足,请先充值");
+				else 
+					alert("购买成功!");
+			},
+			error : function(data) {
+				console.log(data);
+				alert("购买失败");
+			}
+		})
+	})
 
 })

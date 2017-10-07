@@ -2,11 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sht.goods.mapper.GCustomMessagesMapper">
 	<select id="selectAllMessages" parameterType="string" resultType="com.sht.goods.po.GMessages">
-		select messages.*,users.username,headimg
-		from messages,users
-		where messages.users = users.id and goods=#{value}
-		order by messages.createtime asc
+		 select a.*,getMsgReciverName(a.reciverid)as recivername
+ 		from  (
+ 			select messages.*,users.username,headimg,getMsgReciverId(messages.message) as reciverid
+			from messages,users
+			where messages.users = users.id and goods=#{value}
+			order by messages.createtime asc) a
+		
 	</select>
+
 
 	
 	

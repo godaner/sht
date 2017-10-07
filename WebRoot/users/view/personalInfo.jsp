@@ -29,9 +29,9 @@
 <div id="body">
     <div class="body_left">
     <div class="body_left_img">
-    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="" title="" id="personalImg">
+    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="" title="" id="personalImg" onclick="to_editImg();">
     
-    	<p onmouseover="showedit();">编辑头像</p>	
+    	<p onmouseover="showedit();" onclick="to_editImg();">编辑头像</p>	
     </div>
 
         <p>${onlineUser.username}</p>
@@ -76,6 +76,7 @@
     <%@include file="../../common/view/visit.jsp"%>
     
     <script type="text/javascript">
+    //获取头像
     $(function(){
 	  	 var headimg = $("#headimg").val();
 	  	 if(headimg!=""&&headimg!=null){
@@ -91,6 +92,19 @@
 	  	 }
 	  	 
 	   });
+    
+    
+    //点击头像跳转
+    function to_editImg(){
+     	$("#body_right").show();	
+ 	   $("#show_issueGoods").hide();
+ 	  $("#body_right iframe").attr({
+		   "src":'./personalInfo_right_editImg.jsp',
+			//"target":"userinfoiframe"
+	   }); 
+	  
+    }
+    
    //显示子页面 
    function show_sonPage(a){
 	   var src="";
@@ -99,9 +113,9 @@
 	   }else if(a==1){
 		   src="./personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
-		   src="./findpassword.jsp";
-	   }else if(a==3){
-		   src="./addressmanage.jsp"
+
+		   src="./resetpassword.jsp";
+
 	   }else if(a==4){
 		   src="./recharge.jsp";
 	   }
@@ -109,7 +123,7 @@
 	   $("#show_issueGoods").show();
 	   $("#show_issueGoods iframe").attr({
 		   "src":src,
-			   "target":"userinfoiframe"
+			"target":"userinfoiframe"
 	   });
 	   
    }

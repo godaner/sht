@@ -60,4 +60,16 @@
 		
 		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
 	</select>
+	
+	<update id="solderAddMoney" parameterType="com.sht.users.po.UGoods">
+		UPDATE USERS SET MONEY=MONEY+#{sprice} WHERE ID=#{owner}	
+	</update>
+	
+	<update id="buyerAddMoney" parameterType="com.sht.users.po.UGoods">
+		UPDATE USERS SET MONEY=MONEY+#{sprice} WHERE ID=#{buyer}	
+	</update>
+	
+	<update id="buyerAddScore" parameterType="com.sht.users.po.UGoods">
+		UPDATE USERS SET SCORE=SCORE+#{sprice} WHERE ID=#{buyer}	
+	</update>
 </mapper>

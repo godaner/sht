@@ -13,6 +13,10 @@ public class GMessages extends Messages {
 	
 	private String headImg;
 
+	private String reciverid;
+	
+	private String recivername;
+	
 	public String getHeadImg() {
 		return headImg;
 	}
@@ -28,6 +32,23 @@ public class GMessages extends Messages {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public String getReciverid() {
+		return reciverid;
+	}
+
+	public void setReciverid(String reciverid) {
+		this.reciverid = reciverid;
+	}
+
+	public String getRecivername() {
+		return recivername;
+	}
+
+	public void setRecivername(String recivername) {
+		this.recivername = recivername;
+	}
 	
 
+	
 }
