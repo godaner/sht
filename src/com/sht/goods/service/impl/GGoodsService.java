@@ -13,14 +13,18 @@ import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.po.GGoodsClazzs;
 import com.sht.goods.po.GGoodsImgs;
+import com.sht.goods.po.GMessages;
+import com.sht.goods.po.GUser;
 import com.sht.goods.service.GoodsServiceI;
 import com.sht.mapper.ClazzsMapper;
 import com.sht.mapper.FilesMapper;
 import com.sht.mapper.GoodsClazzsMapper;
 import com.sht.mapper.GoodsImgsMapper;
 import com.sht.mapper.GoodsMapper;
+import com.sht.mapper.UsersMapper;
 import com.sht.po.Clazzs;
 import com.sht.po.Goods;
+import com.sht.po.Users;
 
 /**
  * Title:UsersService
@@ -51,6 +55,8 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 	
 	@Autowired
 	private ClazzsMapper clazzsMapper;
+	
+
 
 	/**
 	 * 显示商品主页面商品信息
@@ -58,8 +64,8 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 	@Override
 
 	public List<GGoods> dispalyGoodsInfo(GGoods goods) throws Exception {
-		info("-------minPrice----"+goods.getMinPrice());
-		info("-------maxPrice----"+goods.getMaxPrice());
+//		info("-------minPrice----"+goods.getMinPrice());
+//		info("-------maxPrice----"+goods.getMaxPrice());
 		List<GGoods> dbGoods = customGoodsMapper.selectAllGoodsInfo(goods);
 		info("GoodsService");
 		eject(dbGoods == null || dbGoods.size() == 0, "无商品信息");
@@ -79,9 +85,9 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 //		if(!region.equals(0d)){
 //			r = String.valueOf(region.intValue());
 //		}
-		info("-----------sregion="+goods.getSregion());
-		info("-----------minPrice="+goods.getMinPrice());
-		info("-----------maxPrice="+goods.getMaxPrice());
+//		info("-----------sregion="+goods.getSregion());
+//		info("-----------minPrice="+goods.getMinPrice());
+//		info("-----------maxPrice="+goods.getMaxPrice());
 		Double result = customGoodsMapper.selectGoodsTotalNum(goods);
 		return result;
 	}
@@ -179,5 +185,16 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 		return ggoods;
 	}
 
+	@Override
+	public String selectGoodsImgs(String id) throws Exception {
+		
+		String path = customGoodsMapper.selectGoodsImgs(id);
+		
+		return path;
+	}
+
+	
+
+	
 
 }

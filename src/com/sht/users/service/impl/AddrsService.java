@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sht.mapper.AddrsMapper;
 import com.sht.mapper.UsersMapper;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomAddrs;
@@ -19,9 +20,13 @@ public class AddrsService extends UBaseService implements AddrsServiceI {
 	
 	@Autowired
 	private UsersMapper usersMapper;
+	@Autowired
+	private AddrsMapper addrsMapper;
 
 	@Override
 	public void addAddress(CustomAddrs po) throws Exception {
+		
+			
 		
 		po.setId(UUID.randomUUID().toString());
 		
@@ -38,7 +43,9 @@ public class AddrsService extends UBaseService implements AddrsServiceI {
 		po.setRealname(po.getRealname());
 		
 		po.setIsdefault(po.getIsdefault());
-		
+		if(po.getIsdefault()==1){
+		customUsersMapper.updateDefault(po);
+		}
 		customUsersMapper.addAddress(po);
 		
 
@@ -46,7 +53,11 @@ public class AddrsService extends UBaseService implements AddrsServiceI {
 
 	@Override
 	public void updateAddress(CustomAddrs po) {
-		customUsersMapper.updateAddress(po);
+		if(po.getIsdefault()==1){
+			customUsersMapper.updateDefault(po);
+		}
+		addrsMapper.updateByPrimaryKeySelective(po);
+//		customUsersMapper.updateAddress(po);
 	}
 
 	@Override
@@ -65,6 +76,12 @@ public class AddrsService extends UBaseService implements AddrsServiceI {
 	public CustomAddrs selectAddrsByID(CustomAddrs po) {
 		CustomAddrs addrs=customUsersMapper.selectAddrsByID(po);
 		return addrs;
+	}
+
+	@Override
+	public void updateDefault(CustomAddrs po) {
+		customUsersMapper.updateDefault(po);
+		customUsersMapper.updateDefaults(po);
 	}
 
 }

@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="${baseUrl}/users/css/addressmanage.css" rel="stylesheet">
 	<link href="${baseUrl}/users/css/bootstrap.css" rel="stylesheet">
-	
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 
 <body>
@@ -19,8 +19,8 @@
 	<div>
 		<h2 class="head"><span class="enticy">收货地址</span></h2>
 		
-		<input type="hidden" name="id" value="id"  />
-		<input type="hidden" name="master" value="用户id"  />
+		<input type="hidden" id="id" name="id" value="id"  />
+		<input type="hidden" id="master" name="master" value="用户id"  />
 
 		<div class="form-box">
 			<!--概要提示-->
@@ -64,10 +64,13 @@
 						</form>
 					</div> -->
 					
-					<select class="sc" id="county"></select>
+					<select class="sc" id="country">
+						<option class="ot">中国</option>
+					</select>
 					<select class="sc" id="province"></select>
 					<select class="sc" id="city"></select>
-
+					<select class="sc" id="county"></select>
+					
 				</div>
 
 			</div>
@@ -119,24 +122,30 @@
 
 			<!--默认地址勾选项-->
 			<div class="iteamdefault">
-				<input id="setdefalut" name="isdefault" type="checkbox" />
-				<label class="tsl">设置为默认收货地址</label>
+				<label class="tsl">设置为默认收货地址
+					<input id="setdefalut" name="isdefault" type="checkbox" />
+				</label>
 			</div>
 			
 			</div>
 			
 			<div class="register_msg"></div>
 			
-			<!-- 保存按钮 -->
-			<div class="iteamsubmit">
-				<input type="submit" onclick="addAddrs();" class="save" value="保存" /> 
+			
+			<div class="iteamsubmit" style>
+				<!-- 新增按钮 -->
+				<input type="button" onclick="addAddrs();" class="save" value="新增" />
+				<!-- 保存按钮  -->
+				<input type="button" onclick="editAddrs();" class="save" value="修改保存" /> 
 			</div>
+			
+			
 
 		</div>
 
 		<div class="tbl-address">
-			<div class="caption">已保存value条地址，还能保存10-value条地址</div>
-			<table border="0" cellpadding="0" cellspacing="0" class="tbl-main" method="post">
+			<!-- <div class="caption">已保存value条地址，还能保存10-value条地址</div> -->
+			<table border="0" cellpadding="0" cellspacing="0" class="tbl-main">
 				<tbody>
 					<tr class="thead">
 						<th>收货人</th>
@@ -149,7 +158,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<table id="listshow" border="0" cellpadding="0" cellspacing="0" class="tbl-main" method="post">
+			<table id="listshow" border="0" cellpadding="0" cellspacing="0" class="tbl-main1" method="post">
 				
 			</table>
 		</div>
@@ -158,7 +167,7 @@
 	
 	<!-- 获取项目地址 -->
 	<input type="hidden" value="${baseUrl}" id="baseUrl"/>
-
+	
 	<script src="${baseUrl}/users/js/jquery.js"></script>
 	<script src="${baseUrl}/users/js/bootstrap.js"></script>
 	<script src="${baseUrl}/users/js/city-picker.data.js"></script>
@@ -169,33 +178,6 @@
 	
 	<%@include file="../../goods/view/commonFooter.jsp"%>
 	
-	
-	
-	<script type="text/javascript">
-/* 		$(function(){
-			var baseUrl="";
-			$.ajax({
-				type:"post",
-				async:true,
-				baseUrl:baseUrl,
-				dataType:'json',
-				data:{},
-				success:function(data){
-					var h="";
-					for(var i=1;i<=data['addrsList'].length;i++){
-						var title= data['addrsList'][i-1];
-						h+="<th>"+username+"<tbody><tr></th><th>"+title["region"]+"</th><th>"+title["detail"]+"</th><th>"+title["postcode"]+"</th><th>"+title["pohne"]+"</th><th><a href=''>修改</a>|<a href='/onlineVote/VoteServlet?flag=invote&voteid="+title["voteid"]+"'>删除</a></th></tr></tbody>";
-						$("#listshow").html(h);
-					}
-					h="";
-				}
-			})
-		}) */
-	
-	
-	
-	
-	</script>
 </body>
 <%@include file="../../common/view/visit.jsp"%>
 </html>

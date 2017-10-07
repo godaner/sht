@@ -12,6 +12,7 @@ $(function() {
 	var fd = new FormData();
 	$("#create").click(
 			function() {
+				var onlineUser = $('#onlineUser').val();
 				var description = $("#description").val();
 				var title = $('#title').val();
 				var sprice = $('#sprice').val();
@@ -21,7 +22,7 @@ $(function() {
 				var img = $('#file').val();
 				var clazzs = $('#clazzs>option:selected').val();
 				// 判断是否为空
-				var isEmpty = judgementEmpty(description, title, sprice, price,
+				var isEmpty = judgementEmpty(onlineUser,description, title, sprice, price,
 						condition, region, img ,clazzs);
 
 				if (!isEmpty) {
@@ -89,9 +90,12 @@ $(function() {
 	/**
 	 * 判断商品信息输入字段是否为空
 	 */
-	function judgementEmpty(description, title, sprice, price, condition,
+	function judgementEmpty(onlineUser,description, title, sprice, price, condition,
 			region, img ,clazzs) {
-		if (null == description || "" == description) {
+		if(onlineUser == null || onlineUser == " "){
+			alert("登录后才可发布商品");
+			return false;
+		}else if (null == description || "" == description) {
 			alert("请描述你的商品");
 			return false;
 		} else if (null == title || "" == title) {

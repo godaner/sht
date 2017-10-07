@@ -83,7 +83,7 @@ public interface CustomUsersMapper {
 	 * 新增收货地址
 	 *
 	 **/
-	public CustomAddrs addAddress(CustomAddrs po);
+	public void addAddress(CustomAddrs po);
 
 	/**
 	 * 修改收货地址
@@ -140,5 +140,13 @@ public interface CustomUsersMapper {
 	 */
 
 	public void changePasswordByUsername(CustomUsers po);
+
+	/**
+	 * 设置默认收货地址
+	 * 
+	 **/
+	public void updateDefault(CustomAddrs po);
+
+	public void updateDefaults(CustomAddrs po);
 
 }

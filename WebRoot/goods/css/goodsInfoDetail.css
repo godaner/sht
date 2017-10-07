@@ -158,9 +158,10 @@ article{
     display: inline-block;
     left: 50%;
     top:50%;
-    margin-left:-180px;
+    margin-left:-150px;
     margin-top:30px;
     margin-bottom: 30px;
+   /*  border:1px solid red; */
 }
 .content-left>ul>li{
     position: relative;
@@ -209,9 +210,11 @@ article{
 }
 
 .old-price,.state{
-    font-size: 16px;
+    font-size: 12px;
     line-height: 30px;
 }
+
+
 
 .content-right>hr{
     height: 1px;
@@ -242,21 +245,77 @@ article{
 }
 #online-pay>span{
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     border: 1px solid grey;
     cursor: pointer;
-}
-#online-pay>span:first-of-type{
-    background-color: white;
-}
-#online-pay>span:last-of-type{
+    float:left;
+	width:auto;
     margin-top: 10px;
     background-color: #f7f7f7;
+    padding-left:5px;
+    padding-right:5px;
+    
 }
-#online-pay>span>img{
+
+#online-pay>select{
+	float:left;
+	width:200px;
+	height:30px;
+	background-color: #f7f7f7;
+	border:1px solid grey;
+	margin-top:10px;
+	text-align:center;
+	margin-left:10px;
+}
+#online-pay>a{
+	margin-left:20px;
+	margin-top:10px;
+	font-size:14px;
+	display:inline-block;
+	position:relative;
+	height:30px;
+	text-align:vertical;
+	color:red;
+}
+#online-pay select>option{
+	text-align:left;
+}
+#online-pay>span>img,.state>img{
     vertical-align: middle;
 }
+.state>img{
+	width:10px;
+	height:10px;
+}
+
+#express:hover{
+	cursor:pointer;
+}
+
+#county{
+	
+    display: none;
+    width: 500px;
+    /* height: 80px; */
+    border:1px dotted grey;
+    position: absolute;
+    left: 65%;
+    top:280px;
+    margin-left:-225px;
+    margin-top:-200px;
+    background-color: #f7f7f7;
+    z-index: 2;
+}
+#county tr td{
+	height:30px;
+}
+#county tr td:hover{
+	 background-color: darkorange;
+	 cursor:pointer;
+}
+
+
 .clear{
     clear: both;
 }
@@ -287,6 +346,7 @@ article{
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin-bottom:30px;
 }
 
 .content-right>input:not(:first-of-type){
@@ -459,18 +519,40 @@ article{
     margin-top: 5px;
 }
 .comment-content>ul>li>div>span{
-    display: block;
+    display: inline-block;
     position: relative;
 }
-
+.comment-content>ul>li>div>span:nth-of-type(2){
+	margin-left:40px;
+}
 .comment-content>ul>li>div>span:last-of-type{
+	display:block;
     color: grey;
     font-size: 13px;
 }
+.comment-content>p,.reply{
+	display:inline-block;
+}
+.reply{
+	color:grey;
+	margin-left:20px;
+	font-size:13px;
+}
+.comment-content>textarea{
+	margin-top:10px;
+}
+#submit{
+	width:100px;
+	height:30px;
+	cursor:pointer;
+	margin-top:20px;
+	background-color: gold;
+	border-radius:5px;
+}
 
-
-
-
+.comment-container>li>a{
+	margin-left:10px;
+}
 /*footer css*/
 body>footer{
     position: relative;

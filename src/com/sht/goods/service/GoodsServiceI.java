@@ -3,10 +3,14 @@ package com.sht.goods.service;
 
 import java.util.List;
 
+import org.apache.catalina.User;
+
 import com.sht.goods.po.GClazzs;
 import com.sht.goods.po.GFiles;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.po.GGoodsImgs;
+import com.sht.goods.po.GMessages;
+import com.sht.goods.po.GUser;
 import com.sht.po.Clazzs;
 
 /**
@@ -54,6 +58,14 @@ public interface GoodsServiceI {
 	 * Description:select goods detail info
 	 */
 	public GGoods selectGoodsDetailInfo(String id) throws Exception;
+
+	/**
+	 * 
+	 * selectGoodsImgs
+	 * <p>
+	 * Description:select goods imgs
+	 */
+	public String selectGoodsImgs(String id)throws Exception;
 
 	
 }

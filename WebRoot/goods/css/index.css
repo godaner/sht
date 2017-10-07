@@ -489,12 +489,20 @@ section{
 section>footer{
 	display:block;
 	positive:relative;
+/* 	border:1px solid red; */
+	height:40px;
+	width:900px;
+	text-align:center;
+	margin:0 auto;
 }
 
 section>footer>div{
 	display:inline-block;
 	positive:relative;
-	margin-left:30%;
+	width:auto;
+	height:40px;
+	text-align:center;
+	/* border:1px solid green; */
 	
 }
 

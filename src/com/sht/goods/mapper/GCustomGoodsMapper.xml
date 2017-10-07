@@ -12,7 +12,7 @@
 		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
 		MSGNUM,rownum
 		FROM USERS U0,GOODS G0
-		WHERE G0.OWNER = U0.ID
+		WHERE G0.OWNER = U0.ID AND G0.STATUS=0
 		<if test="0 != region">
 			and region in (
 			 select region.id from region where pid in(
@@ -48,42 +48,27 @@
 
 	<select id="selectGoodsTotalNum" resultType="double" parameterType="com.sht.goods.po.GGoods">
 		select count(*) from
-		goods
+		goods 
+		where status=0
 		
 		<if test="sregion != 0 and sregion != null">
-			<where>
-					  region in (
+			and region in (
 					 	select region.id from region where pid in(
 		              		select region.id from region where pid=#{sregion}
 		              	)
 					)
-			</where>
+			
 		</if>
 		
 		<if test="minPrice != 0 or maxPrice != 0">
-			<choose>
-				<when test="sregion != 0 and sregion != null">
-					and sprice between #{minPrice} and #{maxPrice}
-				</when>
-				<otherwise>
-					<where>
-						sprice between #{minPrice} and #{maxPrice}
-					</where>
-				</otherwise>
-			</choose>
+			and sprice between #{minPrice} and #{maxPrice}
+					
 		</if>
 		
 		<if test="clazz != 0">
-			<choose>
-				<when test="sregion != 0 and sregion != null and (minPrice != 0 or maxPrice != 0)">
-					and goods.id in (select goods from goods_clazzs where clazz=#{clazz})
-				</when>
-				<otherwise>
-					<where>
-						goods.id in (select goods from goods_clazzs where clazz=#{clazz})
-					</where>
-				</otherwise>
-			</choose>
+			
+				and	goods.id in (select goods from goods_clazzs where clazz=#{clazz})
+					
 		</if>
 		
 	</select>
@@ -98,11 +83,16 @@
 		WHERE G0.OWNER = U0.ID and g0.id =#{value}
 	</select>
 	
-	<select id="selectGoodsImgs" resultType="com.sht.goods.po.GGoods" parameterType="string">
+	<select id="selectGoodsImgs" resultType="string" parameterType="string">
 		select getimgspathbygoodsid(goods.id) as
 		from goods
 		where goods.id=#{value}	
 	</select>
+	
+	<update id="updateGoodsPurchaseInfo" parameterType="com.sht.goods.po.GGoods">
+		update goods set buyer=#{buyer},buytime=#{buytime},toprovince=#{toprovince},tocity=#{tocity},tocounty=#{tocounty},todetail=#{todetail},phone=#{phone},
+		torealname=#{torealname},status=#{status}  where id=#{id}
+	</update>
 
 	
 

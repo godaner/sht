@@ -73,9 +73,15 @@
 	
 	</insert>
 	
-	<update id="updateAddress" parameterType="com.sht.users.po.CustomAddrs">
+	<update id="updateDefault" parameterType="com.sht.users.po.CustomAddrs">
 	
-		UPDATE ADDRS SET REGION=#{region},DETAIL=#{detail},POHNE=#{pohne},REALNAME=#{realname},ISDEFAULT=#{isdefault},POSTCODE=#{postcode} WHERE ID=#{id} AND MASTER=#{master}
+		UPDATE ADDRS SET ISDEFAULT=0 WHERE MASTER=#{master}
+	
+	</update>
+	
+	<update id="updateDefaults" parameterType="com.sht.users.po.CustomAddrs">
+	
+		UPDATE ADDRS SET ISDEFAULT=1 WHERE ID =#{id}
 	
 	</update>
 	
@@ -85,7 +91,7 @@
 	
 	</delete>
 	
-	<select id="selectAllAddress" parameterType="com.sht.users.po.CustomAddrs">
+	<select id="selectAllAddress" parameterType="com.sht.users.po.CustomAddrs" resultType="com.sht.users.po.CustomAddrs">
 	
 		SELECT * FROM ADDRS WHERE MASTER=#{master}
 	
