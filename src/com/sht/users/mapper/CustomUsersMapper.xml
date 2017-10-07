@@ -97,6 +97,16 @@
 	
 	</select>
 	
-
+	<update id="changePasswordByUsername" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET PASSWORD = #{password} WHERE USERNAME = #{username}
+	
+	</update>
+	
+	<update id="changePasswordByEmail" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET PASSWORD = #{password} WHERE EMAIL = #{email}
+	
+	</update>
 
 </mapper>

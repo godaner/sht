@@ -96,7 +96,12 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 	 */
 	public void regist() throws Exception{
 		try{
-			eject(!po.getCode().equals(getSessionAttr("vc")), "验证码错误");
+			
+			String code1 = getSessionAttr("vc");
+			
+			String code2 = po.getCode();
+			
+			eject(!code2.toLowerCase().equals(code1.toLowerCase()), "验证码错误");
 			
 			service.regist(po);
 			
@@ -105,7 +110,8 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			//http://localhost:80/sht
 			String webaddr = getWebAddr();
 			
-			String conetnt = "<a href='"+webaddr+"/users/verifyEmail.action?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
+			//String conetnt = "<a href='"+webaddr+"/users/verifyEmail.action?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
+			String conetnt = "<a href='"+webaddr+"/users/view/backtoindex.jsp?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
 			
 			email.sendMessage(po.getEmail(), "二手交易市场邮箱验证", conetnt);
 			
@@ -345,10 +351,35 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 				po = service.getMoneyById(po);
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 
 		writeJSON(po);
 	}
+	/**
+	 * 根据email或者用户名修改密码
+	 * 
+	 */
+	public void changePasswordByObj(){
+		
+		try {
+			
+			service.changePasswordByObj(po);
+			
+			removeSessionAttr(FILED_ONLINE_USER);
+			
+			getSession().invalidate();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			
+			po.setMsg(e.getMessage());
+		}
+		
+		writeJSON(po);
+		po.setMsg(null);
+	}
+	
 }

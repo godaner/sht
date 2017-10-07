@@ -84,4 +84,12 @@ public interface UsersServiceI {
 	 */
 	public CustomUsers getMoneyById(CustomUsers po);
 
+	/**
+	 * 根据用户名或者email 更改密码
+	 * 
+	 * @param po
+	 * @throws Exception 
+	 */
+	public void changePasswordByObj(CustomUsers po) throws Exception;
+
 }

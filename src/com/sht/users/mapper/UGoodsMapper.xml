@@ -65,11 +65,11 @@
 		UPDATE USERS SET MONEY=MONEY+#{sprice} WHERE ID=#{owner}	
 	</update>
 	
-	<update id="PublicUserRedMoney" parameterType="com.sht.users.po.UGoods">
-		UPDATE USERS SET MONEY=MONEY-#{sprice} WHERE ID='1'	
-	</update>
-	
 	<update id="buyerAddMoney" parameterType="com.sht.users.po.UGoods">
 		UPDATE USERS SET MONEY=MONEY+#{sprice} WHERE ID=#{buyer}	
+	</update>
+	
+	<update id="buyerAddScore" parameterType="com.sht.users.po.UGoods">
+		UPDATE USERS SET SCORE=SCORE+#{sprice} WHERE ID=#{buyer}	
 	</update>
 </mapper>

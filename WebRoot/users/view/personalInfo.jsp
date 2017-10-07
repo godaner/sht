@@ -112,7 +112,7 @@
 	   }else if(a==1){
 		   src="./personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
-		   src="./findpassword.jsp";
+		   src="./resetpassword.jsp";
 	   }else if(a==4){
 		   src="./recharge.jsp";
 	   }

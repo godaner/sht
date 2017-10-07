@@ -36,7 +36,7 @@
 				<input type="button" onclick="login();" class="login_button" value="登陆二手交易市场"></input>
 			</div><br />
 			<div class="">
-				<a href="#" class="forgive_a">忘记密码?</a>
+				<a href="${baseUrl}/users/view/setpassword.jsp" class="forgive_a">忘记密码?</a>
 			</div>
 			<br />
 			<div class="register_a">

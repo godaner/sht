@@ -43,9 +43,8 @@ public interface UGoodsMapper {
 
 	void solderAddMoney(UGoods dbGoods);
 
-	void PublicUserRedMoney(UGoods dbGoods);
-
 	void buyerAddMoney(UGoods dbGoods);
 
+	void buyerAddScore(UGoods dbGoods);
 
 }

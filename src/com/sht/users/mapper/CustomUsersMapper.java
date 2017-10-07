@@ -125,4 +125,20 @@ public interface CustomUsersMapper {
 	 */
 	public CustomUsers getMoneyById(CustomUsers po);
 
+	
+	/**
+	 * 根据email更改密码
+	 * 
+	 * @param po
+	 */
+	public void changePasswordByEmail(CustomUsers po);
+	
+	/**
+	 * 根据username更改密码
+	 * 
+	 * @param po
+	 */
+
+	public void changePasswordByUsername(CustomUsers po);
+
 }

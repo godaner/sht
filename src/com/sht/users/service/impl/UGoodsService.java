@@ -138,9 +138,9 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 		
 		UGoodsMapper.solderAddMoney(dbGoods);
 		
-		//管理账户扣款
+		//给买家加积分
+		UGoodsMapper.buyerAddScore(dbGoods);
 		
-		UGoodsMapper.PublicUserRedMoney(dbGoods);
 		
 		//申请退款   取消购买
 	}else if(po.getStatus()==-9||po.getStatus()==-3){
@@ -151,9 +151,6 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 		
 		UGoodsMapper.buyerAddMoney(dbGoods);
 		
-		//管理账户扣款
-		
-		UGoodsMapper.PublicUserRedMoney(dbGoods);
 	}
 	
 	UGoodsMapper.udateBuyGoodsByidAndStatus(po);
