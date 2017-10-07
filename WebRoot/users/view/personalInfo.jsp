@@ -116,6 +116,8 @@
 
 		   src="./resetpassword.jsp";
 
+	   }else if(a==3){
+		   src="./addressmanage.jsp"
 	   }else if(a==4){
 		   src="./recharge.jsp";
 	   }

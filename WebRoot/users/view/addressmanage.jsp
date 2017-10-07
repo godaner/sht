@@ -12,12 +12,12 @@
 <link href="${baseUrl}/users/css/addressmanage.css" rel="stylesheet">
 <link href="${baseUrl}/users/css/bootstrap.css" rel="stylesheet">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="${baseUrl}/users/css/personalInfo.css" />
+<%-- <link rel="stylesheet" href="${baseUrl}/users/css/personalInfo.css" /> --%>
 
 <script src="${baseUrl}/users/js/jquery.js"></script>
 <script src="${baseUrl}/users/js/bootstrap.js"></script>
-<%-- <script src="${baseUrl}/users/js/city-picker.data.js"></script>
-<script src="${baseUrl}/users/js/city-picker.js"></script> --%>
+<script src="${baseUrl}/users/js/city-picker.data.js"></script>
+<script src="${baseUrl}/users/js/city-picker.js"></script>
 <script src="${baseUrl}/users/js/main.js"></script>
 </head>
 
