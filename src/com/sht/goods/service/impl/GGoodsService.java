@@ -25,6 +25,7 @@ import com.sht.mapper.UsersMapper;
 import com.sht.po.Clazzs;
 import com.sht.po.Goods;
 import com.sht.po.Users;
+import com.sht.util.Static;
 
 /**
  * Title:UsersService
@@ -111,10 +112,8 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 
 		goods.setBrowsenumber(0.0);
 
-		goods.setOwner("1");
 
-		short a = 0;
-		goods.setStatus(a);
+		goods.setStatus(Static.GOODS_STAUS.WAIT_TO_PASS);
 
 		goodsMapper.insert(goods);
 

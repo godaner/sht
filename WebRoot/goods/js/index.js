@@ -210,24 +210,53 @@ $(function () {
 	//填充商品类别数据
 	function setCategory(data){
 		var table = $('#option table').empty();
-		var tr = null;
+		var tr =  $('<tr></tr>');
+		
+		var tdAll ;
+
+		var line =Math.ceil( data.length/5 );
+
+		var sum = 0,i=1,temp=3;
+
 		$.each(data,function(index,item){
-			
-			if((index % 5) == 0){
-				tr = $('<tr></tr>')
+
+			sum = sum + item['num'];
+			if(index  == 0){
+				tdAll = $("<td title='全部' name='0'>全部<span></span></td>");
+				tdAll.on('click',getDataByCategory);
+				tr.append(tdAll);
+				
 			}
-			console.log(typeof tr);
+
+				
+
+			if(temp == index){
+				table.append(tr);
+			}
+			
+			
+			
 			var td = $('<td title="'+item['text']+'" name="'+item['id']+'">'+item['text']+' <span>('+item['num']+')</span></td>');
 			
 			td.on('click',getDataByCategory);
 			tr.append(td);
 			
-			if(( index % 5 ) == 0 && index != 0){
-				table.append(tr);
+			if(temp == index){
+
+				tr = $('<tr></tr>');
+				i++;
+
+				temp +=5;
 			}
 			
 			
 		});
+
+		
+		if( i < line)
+			table.append(tr);
+		
+		tdAll.find('span').text("("+sum+")");
 		
 	}
 	
@@ -260,6 +289,8 @@ $(function () {
 		    async : false,  //同步请求  
 		    url : baseUrl+"/goods/showInfo.action?"+url,  //需要访问的地址
 			success:function(data){
+				
+				console.log(data);
 				globalData = data;
 				//显示商品数据
 				setData(data);
@@ -279,22 +310,20 @@ $(function () {
 		$.each(data,function(index,item){
 			var title = item['title'];
 			var headImg = item['headImg'];
-//			console.log("time="+item['createtime']);
+
 			var time =item['createtime'].split(" "); 
-//			var hour = time[2].split(" ");
-			//console.log(hour[1]);
-			if(headImg == null){
-				headImg = baseUrl+"/goods/img/default_icon.png";
-			}else{
-				headImg = ""+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
-			}
-			var li =	$("<li ></li>");
+
+			var description = item['description'];
+			
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
+			
+			var li =$("<li ></li>");
 			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
 			
-			infoTitle.append("<img src='"+headImg+"'/> <a"
+			infoTitle.append("<img style='width:30px' src='"+headImg+"'/> <a"
 					+"	href='#'>"+item['title']+"</a>");
 			
 			
@@ -312,8 +341,11 @@ $(function () {
 			
 			priceContent.append(price);
 			
-		
-			var footer = $("<p>"+item['description']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
+			if(description.length >10)
+				description = description.substring(10,description.length-1) + "...";
+			
+				
+			var footer = $("<p class='description' title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);

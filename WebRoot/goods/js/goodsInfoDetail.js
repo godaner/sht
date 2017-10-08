@@ -455,10 +455,7 @@ $(function() {
 			
 			var headImg = item['headImg'];
 			
-			if(headImg == null || headImg == "")
-				headImg = baseUrl + '/goods/img/default_icon.png';
-			else 
-				headImg = baseUrl + '/common/goods_getGoodsImg.action?size=30&imgName='+headImg;
+			headImg = baseUrl + '/common/users_getUsersHeadImg.action?size=30&imgName='+headImg;
 			
 			var li = $("<li></li>");
 			var img = $("<img src='"+headImg+"'/>");
@@ -609,4 +606,16 @@ $(function() {
 		})
 	})
 
-})
+});
+
+function judgmentLogin(){
+	var onlineUser = $('#onlineUser').attr('value');
+	var baseUrl = $("#baseUrl").attr('value');
+
+	if(onlineUser == " "){
+		alert("请登录");
+	}else{
+		location.href=baseUrl+"/users/view/personalInfo.jsp";
+	}
+	
+}
