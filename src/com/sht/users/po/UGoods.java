@@ -26,4 +26,15 @@ public class UGoods extends Goods implements Serializable{
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+	//主图path,如:a.jpg
+	private String mainImgPath;
+
+	public String getMainImgPath() {
+		return mainImgPath;
+	}
+
+	public void setMainImgPath(String mainImgPath) {
+		this.mainImgPath = mainImgPath;
+	}
+	
 }

@@ -25,6 +25,7 @@ public class GClazzsAction extends GBaseAction<GClazzs, ClazzsServiceI> {
 			goodsClazzs = service.selectAllClazzs(po);
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		writeJSON(goodsClazzs);

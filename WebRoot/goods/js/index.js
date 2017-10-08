@@ -236,7 +236,7 @@ $(function () {
 		});
 		if(i!=0){
 
-			for(var j = i;j++;j<5){
+			for(var j = i;j<5;j++){
 				tr.append("<td><td/>");
 			}
 			table.append(tr);
