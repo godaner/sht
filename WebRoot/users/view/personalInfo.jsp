@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@include file="./base.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +9,8 @@
     <link rel="stylesheet" href="../css/personalInfo.css"/>
 </head>
 <body>
-<div id="header">
+<jsp:include page="../../goods/view/commonTitle.jsp" flush="false" />
+<!-- <div id="header">
     <h1>SHT二手交易</h1>
     <ul>
         <a href="index.jsp">
@@ -23,8 +25,8 @@
     </ul>
     <a id="a_header_left" href="#">登录</a>&nbsp;|&nbsp;
     <a href="#">注册</a>
-    <!--<div class="clearFloat"></div>-->
-</div>
+    <div class="clearFloat"></div>
+</div> -->
 
 <div id="body">
     <div class="body_left">
@@ -36,11 +38,11 @@
 
         <p>${onlineUser.username}</p>
         <ul >
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/vip.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/vip.png"></li>
 
         </ul>
         <ul >
@@ -54,7 +56,7 @@
         </ul>
     </div> 
     <div id="body_right" >
-    <iframe  src="./personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
+    <iframe  src="${baseUrl}/users/view/personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
     
     </iframe>
     </div>
@@ -69,6 +71,7 @@
 
 
 <input type="hidden" value="${onlineUser.headimg}" id="headimg"/>
+<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 
 </body>
   	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
@@ -76,6 +79,7 @@
     <%@include file="../../common/view/visit.jsp"%>
     
     <script type="text/javascript">
+    var baseUrl = $("#baseUrl").val();
     //获取头像
     $(function(){
 	  	 var headimg = $("#headimg").val();
@@ -86,7 +90,7 @@
 	  		 });
 	  	 }else{
 	  		$("#personalImg").attr({
-	  			 "src":"../img/default_img.png",
+	  			 "src":baseUrl+"/users/img/default_img.png",
 	  			 "title":"编辑资料"
 	  		 });
 	  	 }
@@ -99,7 +103,7 @@
      	$("#body_right").show();	
  	   $("#show_issueGoods").hide();
  	  $("#body_right iframe").attr({
-		   "src":'./personalInfo_right_editImg.jsp',
+		   "src":baseUrl+'/users/view/personalInfo_right_editImg.jsp',
 			//"target":"userinfoiframe"
 	   }); 
 	  
@@ -109,17 +113,17 @@
    function show_sonPage(a){
 	   var src="";
 	   if(a==0){
-		   src="./personalIssue_right_showGoods.jsp";
+		   src=baseUrl+"/users/view/personalIssue_right_showGoods.jsp";
 	   }else if(a==1){
-		   src="./personalIssue_right_showBuyed.jsp";
+		   src=baseUrl+"/users/view/personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
+		   src=baseUrl+"/users/view/resetpassword.jsp";
 
-		   src="./resetpassword.jsp";
 
 	   }else if(a==3){
 		   src="./addressmanage.jsp"
 	   }else if(a==4){
-		   src="./recharge.jsp";
+		   src=baseUrl+"/users/view/recharge.jsp";
 	   }
 	   $("#body_right").hide();	
 	   $("#show_issueGoods").show();
