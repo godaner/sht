@@ -29,9 +29,9 @@
 <div id="body">
     <div class="body_left">
     <div class="body_left_img">
-    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="" title="" id="personalImg">
+    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="" title="" id="personalImg" onclick="to_editImg();">
     
-    	<p onmouseover="showedit();">编辑头像</p>	
+    	<p onmouseover="showedit();" onclick="to_editImg();">编辑头像</p>	
     </div>
 
         <p>${onlineUser.username}</p>
@@ -47,7 +47,8 @@
             <a href="javascript:void(0);" onclick="show_body_right();"><li>我的信息</li></a>
             <a href="javascript:void(0);" onclick="show_sonPage(0);"><li>我的发布</li></a>
             <a href="javascript:void(0);" onclick="show_sonPage(1);"><li>我的购买</li></a>
-            <a href="./addressmanage.jsp"><li>地址管理</li></a>
+            <a href="javascript:void(0);" onclick="show_sonPage(3);"><li>地址管理</li></a>
+            <!-- <a href="./addressmanage.jsp"><li>地址管理</li></a> -->
             <a href="javascript:void(0);" onclick="show_sonPage(2);"><li>密码找回</li></a>
             <a href="javascript:void(0);" onclick="show_sonPage(4);"><li>充值</li></a>
         </ul>
@@ -75,6 +76,7 @@
     <%@include file="../../common/view/visit.jsp"%>
     
     <script type="text/javascript">
+    //获取头像
     $(function(){
 	  	 var headimg = $("#headimg").val();
 	  	 if(headimg!=""&&headimg!=null){
@@ -90,6 +92,19 @@
 	  	 }
 	  	 
 	   });
+    
+    
+    //点击头像跳转
+    function to_editImg(){
+     	$("#body_right").show();	
+ 	   $("#show_issueGoods").hide();
+ 	  $("#body_right iframe").attr({
+		   "src":'./personalInfo_right_editImg.jsp',
+			//"target":"userinfoiframe"
+	   }); 
+	  
+    }
+    
    //显示子页面 
    function show_sonPage(a){
 	   var src="";
@@ -98,7 +113,11 @@
 	   }else if(a==1){
 		   src="./personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
-		   src="./findpassword.jsp";
+
+		   src="./resetpassword.jsp";
+
+	   }else if(a==3){
+		   src="./addressmanage.jsp"
 	   }else if(a==4){
 		   src="./recharge.jsp";
 	   }
@@ -106,7 +125,7 @@
 	   $("#show_issueGoods").show();
 	   $("#show_issueGoods iframe").attr({
 		   "src":src,
-			   "target":"userinfoiframe"
+			"target":"userinfoiframe"
 	   });
 	   
    }

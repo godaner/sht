@@ -26,7 +26,7 @@ public class AddressAction extends UBaseAction<CustomAddrs, AddrsServiceI> {
 		po.setMaster(cs.getId());
 //		System.out.println(po);
 		try {
-			String uuid = UUID.randomUUID().toString();
+//			String uuid = uuid();
 			service.addAddress(po);
 		} catch (Exception e) {
 			e.printStackTrace();
