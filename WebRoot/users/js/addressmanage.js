@@ -353,7 +353,7 @@ function editDefault(addrId){
 //	    	userInfoIframe.attr("src",);  
 	    	
 //    		alert("设置成功");
-//    		window.location.href='/sht/users/view/addressmanage.jsp';
+    		window.location.href='/sht/users/view/addressmanage.jsp';
 	    }
 	})
 }
