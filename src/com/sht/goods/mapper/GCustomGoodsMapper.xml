@@ -10,7 +10,7 @@
 		SELECT U0.ID AS USERID,U0.HEADIMG AS
 		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
 		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
-		MSGNUM,rownum
+		MSGNUM,getclazzsbygoodsid(g0.id) as clazz
 		FROM USERS U0,GOODS G0
 		WHERE G0.OWNER = U0.ID AND G0.STATUS=0
 		<if test="0 != region">
