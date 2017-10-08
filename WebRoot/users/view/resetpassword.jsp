@@ -84,7 +84,7 @@ if(password!=repassword){
 	    	alert(data['msg']);
 	    	}else{
 	    		alert("修改成功，请重新登陆");
-	    		window.parent.location.href="./index.jsp";
+	    		window.parent.location.href=baseUrl+"/goods/view/index.jsp";
 	    	}
 	    },error:function(){
 	    	alert("修改失败");

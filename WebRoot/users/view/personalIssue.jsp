@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../css/personalIssue.css"/>
 </head>
 <body>
-<div id="header">
+<jsp:include page="../../goods/view/commonTitle.jsp" flush="false" />
+<!-- <div id="header">
     <h1>SHT二手交易</h1>
     <ul>
         <a href="index.jsp">
@@ -25,8 +26,7 @@
     </ul>
     <a id="a_header_left" href="#">登录</a>&nbsp;|&nbsp;
     <a href="#">注册</a>
-    <!--<div class="clearFloat"></div>-->
-</div>
+</div> -->
 
 <div id="body">
     <div class="body_left">
@@ -38,17 +38,17 @@
 
         <p>${onlineUser.username}</p>
         <ul >
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/heart.png"></li>
-            <li><img src="../img/vip.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/heart.png"></li>
+            <li><img src="${baseUrl}/users/img/vip.png"></li>
 
         </ul>
         <ul >
-            <a href="./personalInfo.jsp"><li>我的信息</li></a>
-            <a href="./personalIssue_right_showGoods.jsp" target="userinfoiframe"><li>我的发布</li></a>
-            <a href="./personalIssue_right_showBuyed.jsp" target="userinfoiframe"><li>我的购买</li></a>
+            <a href="${baseUrl}/users/view/personalInfo.jsp"><li>我的信息</li></a>
+            <a href="${baseUrl}/users/view/personalIssue_right_showGoods.jsp" target="userinfoiframe"><li>我的发布</li></a>
+            <a href="${baseUrl}/users/view/personalIssue_right_showBuyed.jsp" target="userinfoiframe"><li>我的购买</li></a>
             <a href=""><li>地址管理</li></a>
             <a href=""><li>密码找回</li></a>
             <a href=""><li>充值</li></a>
