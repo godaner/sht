@@ -27,8 +27,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;|
         <li><a href="goods/view/createGoods.jsp" target="_blank">发布闲置</a></li>
         <li class="idle">
-            个人中心
-            <img src="goods/img/down_black.png"/>
+         <a href="${baseUrl}/users/view/personalInfo.jsp">   个人中心</a>
+           <!--  <img src="goods/img/down_black.png"/>
 
             <div class="idle_down">
                 <ul>
@@ -45,7 +45,7 @@
                         地址管理:&nbsp;&nbsp;<span>0</span>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </li>
         <c:if test="${empty sessionScope.onlineUser.username}">
         <li >
