@@ -209,10 +209,13 @@ $(function () {
 	
 	//填充商品类别数据
 	function setCategory(data){
-		var table = $('#option table').empty();
+		var table = $('#option table');
+		table.empty();
+		console.info(table);
 		var tr = null;
+		var i = 0;
 		$.each(data,function(index,item){
-			
+			i = index;
 			if((index % 5) == 0){
 				tr = $('<tr></tr>')
 			}
@@ -222,13 +225,22 @@ $(function () {
 			td.on('click',getDataByCategory);
 			tr.append(td);
 			
+//			table.append(tr);
+			
+			//一行填满,添加到dom
 			if(( index % 5 ) == 0 && index != 0){
 				table.append(tr);
 			}
 			
 			
 		});
-		
+		if(i!=0){
+			for(var j = i;j++;j<5){
+				tr.append("<td><td/>");
+			}
+			table.append(tr);
+		}
+			
 	}
 	
 	function getDataByCategory(){

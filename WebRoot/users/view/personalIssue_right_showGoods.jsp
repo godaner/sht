@@ -46,144 +46,18 @@
 		<!-- 已发布列表 -->
 	
 		<div class="list">
-		<!-- <div class="issue">
-		<div class="issue_title"><p>创建时间 :2017-5-09&nbsp;&nbsp;&nbsp;&nbsp;商品号：</p></div>
-		<div class="issue_body">
-	    <table class="title_table"><tr><td><img  src="../img/content_icon.png"></td>
-	    <td><a href="#">刚刚开封，七成新的辣条</a></td>
-	    <td><p>这是一条测试数据，此处填写的是商品介绍<p></td>
-	    <td><p>现价：50</p><p class="outprice">原价：100<p></td>
-	    <td><p>状态：已出售<p></td>
-	    <td><a href="#">取消</a>&nbsp;&nbsp;<a href="#">详情</a></td>
-	    </tr></table></div></div>  -->
+		
+		
 		</div>
-		
+		<!-- 详情修改 -->
 		<div class="detail">
-		
-<!-- 		标题<input type="text" value="" id='title'/>
-		介绍<input type="text" value="" id='description'/><br/>
-		现价<input type="text" value="" id='sprice'/>
-		原价<input type="text" value="" id='price'/><br/>
-		成色<input type="text" value="" id='condition'/>
-	   	地区<input type="text" value="" id='region'/><br/>
-	   	<i>状态</i><br/>
-	   	<i>创建时间</i><br/>
-	   	<i>浏览次数</i><br/><i>最后更新时间</i><br/> -->
-		
 		
 		</div>
 		<div class="UpdateUGoods"></div>
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 		<input type="hidden" value="${onlineUser.id}" id="userid"/>
 </body>
-<style type="text/css">
 
-		
-.title{
-	float: left;
-    position: relative;
-    display: block;
-    height: 40px;
-    width:900px;
-    border: solid 1px grey;
-    background-color:rgb(241,241,241);
-}
-.issue{
-	margin-top:2%; 
-    height: 100px;
-    width:900px;
-    border: solid 1px #EDEDED;
-    
-}
-
- .title table tr td{
-	position:relative;
-	left:-35px;
-	border:none;
-} 
-.issue_title{
-	margin-top:-2%;
-	background-color:rgb(241,241,241);
-	width:100%;
-	height:30%;
-}
-.title_table tr td{
-	width:80px;
-	padding-left:65px;
-	position:relative;
-	text-align:center;
-	border-left:solid 1px #F2F2F2;
-	top:-20px;
-	left:-2px;
-}
-#title_table_tr td{
-	width:80px;
-	padding-left:65px;
-	position:relative;
-	text-align:center;
-	border-left:solid 1px #F2F2F2;
-	top:5px;
-}
-
-.title_table tr td p,a{
-	position:relative;
-	left:-35px;
-}
-.issue_body table{
-	height:100px;
-}
-.title_table img{
-	border:solid 1px black;
-	width:40px;
-	height:40px;
-	position:relative;
-	left:-30px;
-}
-.list{
-	margin-top:8%;
-	font-size:13px;
-}
-.turnPage button{
-	float:right;
-	background-color:white;
-	border:solid 1px grey;
-	border-radius:5px;
-	margin-left:5%;
-	cursor:pointer;
-}
-.outprice{
-text-decoration:line-through;
-}	
-.detail input{
-	 border-style:none;
-	 border:solid 1px black;
-	 border-radius:5px;
-	 /* margin-left:40px; */
-	 margin:10px 20px;
-}
-.UpdateUGoods button{
-	border-style:none; 
-	border-radius:5px;
-	background-color: #EEEED1;
-	margin-left:100px;
-	height:30px;
-	width:70px;
-	cursor:pointer;
-}	
-
-.choose_status{
-	position:relative;
-	left:80px;
-}
-a{
-	font-size:14px;
-	color:grey;
-	text-decoration: none; 
-}
-a:HOVER {
-	color:red;
-}
-</style>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
