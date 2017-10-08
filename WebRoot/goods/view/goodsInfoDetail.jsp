@@ -24,11 +24,12 @@
         <ul>
             <li>
             	<c:if test="${empty sessionScope.goodsDetailInfo.headImg  }">
-            		<img src="goods/img/default_icon.png"/>
+            		
+            		<img  src="${baseUrl }/common/users_getUsersHeadImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
             	</c:if>
             	
                 <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
-            		<img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
+            		<img src="${baseUrl }/common/users_getUsersHeadImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
             	</c:if>
                 <a href="#">${sessionScope.goodsDetailInfo.title }</a>
             </li>
@@ -64,7 +65,7 @@
     <div class="content">
         <div class="content-left">
         	
-            <img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.path}"/>
+            <img src="${baseUrl }/common/goods_getGoodsImg.action?size=30&imgName=${sessionScope.goodsDetailInfo.path}"/>
             <ul id="rotation-item">
             
             </ul>
@@ -95,7 +96,7 @@
                		<select name="addr" id="addr">
                			<option value="0">--请选择--</option>
                		</select>
-               		<a href="users/view/personalInfo.jsp">详情&nbsp;/&nbsp;修改</a>
+               		<a href="javascript:judgmentLogin();">详情&nbsp;/&nbsp;修改</a>
                 </div>
                 <div class="clear"></div>
             </div>

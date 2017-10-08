@@ -11,7 +11,7 @@ import com.sht.goods.service.UsersServiceI;
 public class GUserAction extends GBaseAction<GUser, UsersServiceI> {
 
 	public void updateUsersMoney() throws Exception{
-		info("GoodsAction--buyGoods");
+		info("GUserAction--updateUsersMoney");
 		int result = -1;
 		try {
 			
@@ -22,5 +22,18 @@ public class GUserAction extends GBaseAction<GUser, UsersServiceI> {
 		}
 		
 		writeJSON(result);
+	}
+	
+	public void selectUsersInfo()throws Exception{
+		info("GUserAction--selectUsersInfo");
+		GUser user = new GUser();
+		try {
+			user = service.selectUsersInfo(po.getId());
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		writeJSON(user);
 	}
 }

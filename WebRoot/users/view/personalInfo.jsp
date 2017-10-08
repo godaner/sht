@@ -56,7 +56,7 @@
         </ul>
     </div> 
     <div id="body_right" >
-    <iframe  src="${baseUrl}/users/view/personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
+    <iframe name="iframe0"  src="${baseUrl}/users/view/personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
     
     </iframe>
     </div>

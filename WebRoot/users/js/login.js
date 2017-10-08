@@ -19,7 +19,6 @@ function showlogin(){
 /* 关闭登陆窗口 */
 function closelogin(){
 	$(".login_box").hide();
-	window.location.reload(true);
 }
 /* 打印错误信息 */
 function showErrorMsg(msg){
@@ -53,6 +52,8 @@ function login(){
 		    	/* 成功登陆 */
 		    		
 		    		closelogin();
+		    		window.location.reload(true);
+		    		
 		    		
 		    	}
 		    },error:function(data){

@@ -70,6 +70,7 @@ public class AddressAction extends UBaseAction<CustomAddrs, AddrsServiceI> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		writeJSON(new Object());
 
 	}
 
