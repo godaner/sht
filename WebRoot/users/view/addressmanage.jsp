@@ -15,10 +15,10 @@
 <%-- <link rel="stylesheet" href="${baseUrl}/users/css/personalInfo.css" /> --%>
 
 <script src="${baseUrl}/users/js/jquery.js"></script>
-<script src="${baseUrl}/users/js/bootstrap.js"></script>
+<%-- <script src="${baseUrl}/users/js/bootstrap.js"></script>
 <script src="${baseUrl}/users/js/city-picker.data.js"></script>
 <script src="${baseUrl}/users/js/city-picker.js"></script>
-<script src="${baseUrl}/users/js/main.js"></script>
+<script src="${baseUrl}/users/js/main.js"></script> --%>
 </head>
 
 <body>
