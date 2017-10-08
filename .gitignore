@@ -1,4 +1,3 @@
-# Compiled class file
 /.settings/
 /bin/
 /target/
@@ -25,3 +24,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 src/com/sht/users/action/UsersAction.java
+.classpath
+WebRoot/users/view/findpassword.jsp
+WebRoot/users/view/findpassword.jsp
