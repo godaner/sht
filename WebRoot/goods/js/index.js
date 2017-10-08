@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/14.
  */
 
@@ -235,12 +235,14 @@ $(function () {
 			
 		});
 		if(i!=0){
+
 			for(var j = i;j++;j<5){
 				tr.append("<td><td/>");
 			}
 			table.append(tr);
 		}
 			
+
 	}
 	
 	function getDataByCategory(){
@@ -295,18 +297,14 @@ $(function () {
 			var time =item['createtime'].split(" "); 
 //			var hour = time[2].split(" ");
 			//console.log(hour[1]);
-			if(headImg == null){
-				headImg = baseUrl+"/goods/img/default_icon.png";
-			}else{
-				headImg = ""+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
-			}
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
 			var li =	$("<li ></li>");
 			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
 			
-			infoTitle.append("<img src='"+headImg+"'/> <a"
+			infoTitle.append("<img style='width:30px;' src='"+headImg+"'/> <a"
 					+"	href='#'>"+item['title']+"</a>");
 			
 			

@@ -22,7 +22,7 @@
 </head>
 <body>
 	<input type="hidden" value="${baseUrl}" id="baseUrl" />
-	<div id="header">
+	<%-- <div id="header">
 		<h1>SHT二手交易</h1>
 		<ul>
 			<a href="goods/view/index.jsp">
@@ -51,9 +51,10 @@
 		 	
 		 	<input type="hidden" value="${sessionScope.onlineUser.id} " id="onlineUser"/>
 		 </c:if>
-	</div>
+	</div> --%>
 
-
+	<jsp:include page="commonTitle.jsp" flush="false" />
+	
 	<div class="content">
 		<div class="content-left">
 			<img src="goods/img/content.png">

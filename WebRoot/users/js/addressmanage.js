@@ -316,6 +316,11 @@ function editDefault(addrId){
 	    url : baseUrl+"/users/D_updateDefault.action",
 	    data:"id="+addrId,
 	    success:function(data){
+	    	
+	    	var userInfoIframe = parent.document.getElementsByName("iframe0")[0];
+	    	userInfoIframe.src = baseUrl+"/users/view/addressmanage.jsp";
+//	    	userInfoIframe.attr("src",);  
+	    	
 //    		alert("设置成功");
 //    		window.location.href='/sht/users/view/addressmanage.jsp';
 	    }
