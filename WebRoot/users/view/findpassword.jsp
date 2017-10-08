@@ -35,11 +35,12 @@
 							<input type="text" class="ui-input" placeholder="请输入邮箱" id="email" />
 						</div>
 					</div>
+
 					
 						<div class="ui-form-item">
 							<input id="submitBtn" class="ui-button" value="确定" type="button" onclick="changePassword();" />
 						</div>
-					
+
 
 				</div>
 			</div>

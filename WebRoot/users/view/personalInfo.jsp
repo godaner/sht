@@ -49,7 +49,8 @@
             <a href="javascript:void(0);" onclick="show_body_right();"><li>我的信息</li></a>
             <a href="javascript:void(0);" onclick="show_sonPage(0);"><li>我的发布</li></a>
             <a href="javascript:void(0);" onclick="show_sonPage(1);"><li>我的购买</li></a>
-            <a href="./addressmanage.jsp"><li>地址管理</li></a>
+            <a href="javascript:void(0);" onclick="show_sonPage(3);"><li>地址管理</li></a>
+            <!-- <a href="./addressmanage.jsp"><li>地址管理</li></a> -->
             <a href="javascript:void(0);" onclick="show_sonPage(2);"><li>密码找回</li></a>
             <a href="javascript:void(0);" onclick="show_sonPage(4);"><li>充值</li></a>
         </ul>
@@ -117,6 +118,10 @@
 		   src=baseUrl+"/users/view/personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
 		   src=baseUrl+"/users/view/resetpassword.jsp";
+
+
+	   }else if(a==3){
+		   src="./addressmanage.jsp"
 	   }else if(a==4){
 		   src=baseUrl+"/users/view/recharge.jsp";
 	   }
