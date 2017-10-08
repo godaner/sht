@@ -210,6 +210,7 @@ $(function () {
 	//填充商品类别数据
 	function setCategory(data){
 		var table = $('#option table').empty();
+
 		var tr =  $('<tr></tr>');
 		
 		var tdAll ;
@@ -232,6 +233,7 @@ $(function () {
 
 			if(temp == index){
 				table.append(tr);
+
 			}
 			
 			
@@ -252,11 +254,13 @@ $(function () {
 			
 		});
 
+
 		
 		if( i < line)
 			table.append(tr);
 		
 		tdAll.find('span').text("("+sum+")");
+
 		
 	}
 	
@@ -313,17 +317,21 @@ $(function () {
 
 			var time =item['createtime'].split(" "); 
 
+
 			var description = item['description'];
 			
 			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
 			
 			var li =$("<li ></li>");
+
 			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
 			
+
 			infoTitle.append("<img style='width:30px' src='"+headImg+"'/> <a"
+
 					+"	href='#'>"+item['title']+"</a>");
 			
 			

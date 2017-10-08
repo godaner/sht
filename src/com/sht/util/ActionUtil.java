@@ -87,11 +87,12 @@ public class ActionUtil extends Util{
 	 */
 	public CustomUsers getOnlineUser(){
 		
-		CustomUsers onlineUser = new CustomUsers();
+		/*CustomUsers onlineUser = new CustomUsers();
 		
 		onlineUser.setId("1");
 		
-		return onlineUser;
+		return onlineUser;*/
+		return getSessionAttr(Static.FILED_ONLINE_USER);
 	};
 	
 	
