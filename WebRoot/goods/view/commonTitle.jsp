@@ -25,10 +25,10 @@
         <a href="goods/view/index.jsp"><li>首页</li></a>
         
         &nbsp;&nbsp;&nbsp;&nbsp;|
-        <li><a href="goods/view/createGoods.jsp" target="_blank">发布闲置</a></li>
+        <li><a href="javascript:judgmentLogin('${baseUrl}/goods/view/createGoods.jsp');" >发布闲置</a></li>
         <li class="idle">
-
-         <a href="${baseUrl}/users/view/personalInfo.jsp">   个人中心</a>
+		
+         <a href="javascript:judgmentLogin('${baseUrl}/users/view/personalInfo.jsp');">   个人中心</a>
            <!--  <img src="goods/img/down_black.png"/>
 
             <a href="${baseUrl}/users/view/personalInfo.jsp">个人中心</a>
@@ -54,7 +54,7 @@
         </li>
         <c:if test="${empty sessionScope.onlineUser.username}">
         <li >
-            <a href="javascript:showlogin();" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:showregister();" >注册</a>
+            <a href="javascript:closeregister();showlogin();" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:closelogin();showregister();" >注册</a>
         	<input type="hidden" value=" " id="onlineUser"/>
         </li>
 		</c:if>

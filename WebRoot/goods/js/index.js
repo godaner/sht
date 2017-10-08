@@ -211,8 +211,9 @@ $(function () {
 	function setCategory(data){
 		var table = $('#option table').empty();
 		var tr = null;
+		var i = 0;
 		$.each(data,function(index,item){
-			
+			i = index;
 			if((index % 5) == 0){
 				tr = $('<tr></tr>')
 			}
@@ -228,6 +229,12 @@ $(function () {
 			
 			
 		});
+		if(i!=0){
+			for(var j = 0;j<5;j++){
+				tr.append("<td></td>");
+			}
+			table.append(tr);
+		}
 		
 	}
 	
@@ -283,18 +290,14 @@ $(function () {
 			var time =item['createtime'].split(" "); 
 //			var hour = time[2].split(" ");
 			//console.log(hour[1]);
-			if(headImg == null){
-				headImg = baseUrl+"/goods/img/default_icon.png";
-			}else{
-				headImg = ""+baseUrl+"/common/goods_getGoodsImg.action?size=200&imgName="+headImg;
-			}
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
 			var li =	$("<li ></li>");
 			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
 			
-			infoTitle.append("<img src='"+headImg+"'/> <a"
+			infoTitle.append("<img style='width:30px;' src='"+headImg+"'/> <a"
 					+"	href='#'>"+item['title']+"</a>");
 			
 			

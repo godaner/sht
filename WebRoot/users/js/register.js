@@ -122,7 +122,7 @@ function register(){
 		    		msg = data['msg'];
 		    		RegisterErrorMsg(msg);
 		    	}else{
-		    		/*alert("成功");*/
+		    		alert("注册成功");
 		    		closeregister();
 		    	}
 		    	
