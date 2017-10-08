@@ -251,12 +251,12 @@ $(function () {
 			
 			
 		});
-
 		
 		if( i < line)
 			table.append(tr);
 		
 		tdAll.find('span').text("("+sum+")");
+
 		
 	}
 	
@@ -318,12 +318,14 @@ $(function () {
 			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
 			
 			var li =$("<li ></li>");
+
 			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
-			
+
 			infoTitle.append("<img style='width:30px' src='"+headImg+"'/> <a"
+
 					+"	href='#'>"+item['title']+"</a>");
 			
 			

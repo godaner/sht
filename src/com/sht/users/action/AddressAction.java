@@ -70,6 +70,7 @@ public class AddressAction extends UBaseAction<CustomAddrs, AddrsServiceI> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		writeJSON(new Object());
 
 	}
 
@@ -100,15 +101,15 @@ public class AddressAction extends UBaseAction<CustomAddrs, AddrsServiceI> {
 		eject(cs == null, "未登入");
 		po.setMaster(cs.getId());
 		List<CustomAddrs> addrsList = null;
-		CustomAddrs c = new CustomAddrs();
+		CustomAddrs addrs = new CustomAddrs();
 		try {
 			addrsList = service.displayAddrs(po);
 			
-			c.setAddrs(addrsList);
+			addrs.setAddrs(addrsList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		writeJSON(c);
+		writeJSON(addrs);
 	}
 
 	/**
