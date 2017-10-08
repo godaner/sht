@@ -66,7 +66,6 @@ function changePassword(){
 var email = $("#email").val();
 var password = $("#password").val();
 var repassword = $("#repassword").val();
-
 if(password!=repassword){
 	alert("两次密码不一致");
 	$("#password").html();
@@ -83,7 +82,7 @@ if(password!=repassword){
 	    	alert(data['msg']);
 	    	}else{
 	    		alert("修改成功，前往登陆");
-	    		window.parent.location.href="./index.jsp";
+	    		window.parent.location.href=baseUrl+"/goods/view/index.jsp";
 	    	}
 	    },error:function(){
 	    	alert("修改失败");

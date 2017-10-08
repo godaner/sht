@@ -27,8 +27,13 @@
         &nbsp;&nbsp;&nbsp;&nbsp;|
         <li><a href="goods/view/createGoods.jsp" target="_blank">发布闲置</a></li>
         <li class="idle">
+
          <a href="${baseUrl}/users/view/personalInfo.jsp">   个人中心</a>
            <!--  <img src="goods/img/down_black.png"/>
+
+            <a href="${baseUrl}/users/view/personalInfo.jsp">个人中心</a>
+            <img src="goods/img/down_black.png"/>
+
 
             <div class="idle_down">
                 <ul>
@@ -80,7 +85,7 @@
 				<input type="button" onclick="login();" class="login_button" value="登陆二手交易市场"></input>
 			</div><br />
 			<div class="">
-				<a href="#" class="forgive_a">忘记密码?</a>
+				<a href="${baseUrl}/users/view/setpassword.jsp" class="forgive_a">忘记密码?</a>
 			</div>
 			<br />
 			<div class="register_a">
