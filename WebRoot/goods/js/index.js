@@ -238,12 +238,9 @@ $(function () {
 	    maxPrice = 0;
 	    globalClazz = $(this).attr('name');
 	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
-	    //getData(0.0,globalRegion,isOrderByTime,isOrderByPrice,minPrice,maxPrice,globalClazz);
 	}
-//	console.log(baseUrl);
 	
 	getTotalNum(0.0,0,0,0);
-//	var isFirstAcsse = true;
 	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice,clazzs){
 		console.log("minPrice:"+minPrice);
 		console.log("maxPrice:"+maxPrice);
@@ -263,8 +260,6 @@ $(function () {
 		    async : false,  //同步请求  
 		    url : baseUrl+"/goods/showInfo.action?"+url,  //需要访问的地址
 			success:function(data){
-				console.log("访问商品数据成功!");
-				console.log(data);
 				globalData = data;
 				//显示商品数据
 				setData(data);
@@ -280,15 +275,13 @@ $(function () {
 	}
 	
 	function setData(data){
-//		alert(1);
 		var container = $('.trading_item_info>ul');
 		$.each(data,function(index,item){
-			console.log(item);
-//			alert("-----"+item['id']);
 			var title = item['title'];
 			var headImg = item['headImg'];
-			var time =item['createtime'].split("-"); 
-			var hour = time[2].split(" ");
+//			console.log("time="+item['createtime']);
+			var time =item['createtime'].split(" "); 
+//			var hour = time[2].split(" ");
 			//console.log(hour[1]);
 			if(headImg == null){
 				headImg = baseUrl+"/goods/img/default_icon.png";
@@ -320,7 +313,7 @@ $(function () {
 			priceContent.append(price);
 			
 		
-			var footer = $("<p>"+item['description']+"</p> <span class='time'>"+hour[1]+"前</span> <span class='come'>来自"
+			var footer = $("<p>"+item['description']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);

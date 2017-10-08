@@ -596,8 +596,11 @@ $(function() {
 					alert("购买失败");
 				else if(data == 3)
 					alert("余额不足,请先充值");
-				else 
+				else{
 					alert("购买成功!");
+					location.href=baseUrl + "/goods/view/index.jsp";
+				}
+					
 			},
 			error : function(data) {
 				console.log(data);
