@@ -57,7 +57,7 @@
 	
 	<div class="content">
 		<div class="content-left">
-			<img src="goods/img/content.png">
+			<img src="">
 
 			<p>二狗</p>
 			<ul>

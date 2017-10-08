@@ -286,7 +286,26 @@ $(function() {
 
 		});
     }
+
+	getUsersInfo();
 	
+	function getUsersInfo(){
+		$.ajax({
+			type : "post",  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : false,  //同步请求  
+		    url : baseUrl+"/user/selectUsersInfo.action?id=",  //需要访问的地址
+			success:function(data){
+				console.log("访问成功!");
+				console.log(data);
+				setClazzsData(data);
+			},
+			error:function(data){
+				console.log("访问失败!");
+				console.log(data);
+			}
+		});
+	}
 	
 	getClazzs();
 	function getClazzs(){
