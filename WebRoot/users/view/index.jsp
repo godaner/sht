@@ -9,13 +9,19 @@
 <script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="${baseUrl}/users/js/login.js"></script>
 <script type="text/javascript" src="${baseUrl}/users/js/register.js"></script>
-<script type="text/javascript" src="${baseUrl}/users/js/jquerySession.js"></script>
 <link rel="stylesheet" href="${baseUrl}/users/css/login_style.css">
 <link rel="stylesheet" href="${baseUrl}/users/css/register_style.css">
 <title>Insert title here</title>
 </head>
 <body>
 <%@include file="../../goods/view/commonTitle.jsp" %>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 	<a href="./users/view/personalInfo.jsp">个人信息页面</a>
 	
 	<a href="${baseUrl}/users/logout.action">注銷</a>

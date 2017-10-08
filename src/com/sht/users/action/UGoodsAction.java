@@ -375,7 +375,7 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 	 }
  
  	/**
- 	 * 通过id取消订单
+ 	 * 根据id和status对购买商品进行相应操作
  	 * 
  	 */
  
