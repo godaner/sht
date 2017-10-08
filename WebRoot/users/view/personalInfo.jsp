@@ -118,10 +118,8 @@
 		   src=baseUrl+"/users/view/personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
 		   src=baseUrl+"/users/view/resetpassword.jsp";
-
-
 	   }else if(a==3){
-		   src="./addressmanage.jsp"
+		   src=baseUrl+"/users/view/addressmanage.jsp"
 	   }else if(a==4){
 		   src=baseUrl+"/users/view/recharge.jsp";
 	   }
