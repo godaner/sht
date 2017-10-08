@@ -71,7 +71,7 @@ function selectcounty(){
 }
 
 //加载省份
-function loadProvince(callfun){
+function loadProvince(){
 	$.ajax({
 	    url : baseUrl+"/users/R_getRegionByPid.action?pid="+countryId,  //需要访问的地址
 	    success:function(data){
@@ -81,7 +81,7 @@ function loadProvince(callfun){
 	    		str += "<option id='s"+index+"' class='"+item.id+"'>"+item.name+"</option>";
 	    	});
 	    	$("#province").html(str);
-	    	callfun();
+//	    	callfun();
 	    },error:function(data){
 	    	
 	    }
@@ -89,7 +89,7 @@ function loadProvince(callfun){
 }
 
 //加载城市
-function loadcity(callfun){
+function loadcity(){
 	var cityid = $("#province :selected").attr("class");
 //	console.info(111);
 //	console.info(cityid);
@@ -102,7 +102,7 @@ function loadcity(callfun){
 				str += "<option id='s"+index+"' class='"+item.id+"'>"+item.name+"</option>"
 			});
 			$("#city").html(str);
-			callfun();
+//			callfun();
 		},error:function(data){
 			
 		}
@@ -200,7 +200,7 @@ $(function(){
 			for(var i=1;i<=data['addrs'].length;i++){
 				var addrs= data['addrs'][i-1];
 				if(addrs["isdefault"]==1){
-					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["region"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><input type='text' value='默认地址' style='width:48px;height:18px;background-color:#f7f7f7;'></th></tr></tbody>";
+					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["region"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><input type='text' value='默认地址' style='width:55px;height:18px;background-color:#f7f7f7;'></th></tr></tbody>";
 					$("#listshow").append(h);
 					h="";
 				}else{
