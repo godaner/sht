@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: none;
+    color: black;
+
+}
+
+body{
+    position: relative;
+    background-color: #f7f7f7;
+}
+
+
+
+/*nav css*/
+
+nav{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 120px;
+    /*border: 1px solid red;*/
+    background-color: #ffcc00;
+}
+
+nav>ul>li{
+    display: inline-block;
+    /*line-height: 20px;*/
+    margin-left: 30px;
+    cursor: pointer;
+    /*border: 1px solid red;*/
+    margin-top: 20px;
+}
+
+nav>ul>li>a{
+	color:black;
+	text-decoration:none;
+	
+}
+
+nav>ul>a{
+	display: inline-block;
+	text-decoration:none;
+	margin-left:20px;
+}
+
+nav>ul>li:first-of-type{
+    font-size: 50px;
+    font-weight: bold;
+    margin-left:50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.idle_down{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    height: 100px;
+    width: 100px;
+}
+.idle_down>ul>li{
+    line-height: 5px;
+    padding: 10px;
+    font-size: 13px;
+}
+.idle_down>ul>li:hover{
+    background-color: lightgrey;
+}
+.idle_down>ul>li span{
+    color: orangered;
+}
+
+.login,.regist{
+    position: absolute;
+    display: inline-block;
+    top: 30px;
+    text-decoration: none;
+    border: 1px solid red;
+}
+
+
+
+nav>ul>li:last-of-type a:hover{
+    color: red;
+    text-decoration: underline;
+}
+nav>ul>li:last-of-type a{
+    text-decoration: none;
+}
+nav>ul>li:last-of-type{
+    position: absolute;
+    display: inline-block;
+    top: 30px;
+
+    /*border: 1px solid red;*/
+    right: 100px;
+}

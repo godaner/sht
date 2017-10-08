@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.goods.mapper.GCustomRegionMapper">
+	<select id="selectAllRegions" parameterType="integer" resultType="com.sht.goods.po.GRegion">
+		select id,name from region 
+		<if test="value == 1">
+			where  pid=0  or pid =#{value} order by id
+		</if>
+		<if test="value != 1">
+			where pid =#{value} order by id
+		</if>
+	</select>
+
+	
+	
+</mapper>

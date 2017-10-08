@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.users.mapper.CustomUsersMapper">
+	<select id="selectUserByUsername" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE USERNAME=#{username} AND STATUS = 1
+		
+	</select>
+	
+	<select id="selectUserByEmail" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE EMAIL=#{email} AND STATUS = 1
+		
+	</select>
+	
+	<select id="selectUserByUsername_reg" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE USERNAME=#{username} 
+		
+	</select>
+	
+	<select id="selectUserByEmail_reg" parameterType="string" resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE EMAIL=#{email} 
+		
+	</select>
+	
+	<insert id="insertUser" parameterType="com.sht.users.po.CustomUsers">
+	
+		INSERT INTO USERS(ID,USERNAME,PASSWORD,EMAIL,SALT,SEX,SCORE,REGISTTIME,STATUS,BIRTHDAY,DESCRIPTION,HEADIMG,MONEY) values(#{id},#{username},#{password},#{email},#{salt},#{sex},#{score},#{registtime},#{status},#{birthday},#{description},#{headimg},#{money}) 
+	
+	</insert>
+	
+	<update id="updateStatusByEmail" parameterType="string">
+	
+		UPDATE USERS SET STATUS = '1' WHERE EMAIL = #{email}
+	
+	</update>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET USERNAME = #{username},SEX=#{sex},DESCRIPTION=#{description} WHERE id = #{id}
+	
+	</update>
+	
+	<select id="getGoodsById" parameterType="string" resultType="com.sht.po.Goods">
+		
+		SELECT * FROM GOODS WHERE OWNER=#{id} 
+		
+	</select>
+	
+	<select id="getMoneyById" parameterType="com.sht.users.po.CustomUsers"  resultType="com.sht.users.po.CustomUsers">
+		
+		SELECT * FROM USERS WHERE ID=#{id} 
+		
+	</select>
+	
+	<update id="personalImgUpload" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET HEADIMG = #{headimg} WHERE ID=#{id}
+		
+	</update>
+	
+	<update id="addMoney" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET MONEY=MONEY+#{money} WHERE ID = #{id}
+	
+	</update>
+	
+	<insert id="addAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		INSERT INTO ADDRS(ID,MASTER,REGION,DETAIL,PHONE,REALNAME,ISDEFAULT,POSTCODE) values(#{id},#{master},#{region},#{detail},#{phone},#{realname},#{isdefault},#{postcode})
+	
+	</insert>
+	
+	<update id="updateDefault" parameterType="com.sht.users.po.CustomAddrs">
+	
+		UPDATE ADDRS SET ISDEFAULT=0 WHERE MASTER=#{master}
+	
+	</update>
+	
+	<update id="updateDefaults" parameterType="com.sht.users.po.CustomAddrs">
+	
+		UPDATE ADDRS SET ISDEFAULT=1 WHERE ID =#{id}
+	
+	</update>
+	
+	<delete id="deleteAddress" parameterType="com.sht.users.po.CustomAddrs">
+	
+		DELETE FROM ADDRS WHERE ID=#{id} AND MASTER=#{master}
+	
+	</delete>
+	
+	<select id="selectAllAddress" parameterType="com.sht.users.po.CustomAddrs" resultType="com.sht.users.po.CustomAddrs">
+	
+		SELECT * FROM ADDRS WHERE MASTER=#{master}
+	
+	</select>
+	
+	<select id="selectAddrsByID" parameterType="com.sht.users.po.CustomAddrs">
+	
+		SELECT * FROM ADDRS WHERE MASTER=#{master} AND ID=#{id}
+	
+	</select>
+	
+	<update id="changePasswordByUsername" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET PASSWORD = #{password} WHERE USERNAME = #{username}
+	
+	</update>
+	
+	<update id="changePasswordByEmail" parameterType="com.sht.users.po.CustomUsers">
+	
+		UPDATE USERS SET PASSWORD = #{password} WHERE EMAIL = #{email}
+	
+	</update>
+
+</mapper>
