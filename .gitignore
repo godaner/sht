@@ -2,6 +2,9 @@
 /bin/
 /target/
 /build/
+
+db.properties
+
 *.class
 
 # Log file
