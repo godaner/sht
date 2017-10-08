@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.goods.mapper.GCustomAddrsMapper">
+	<select id="selectAddrsByUser"  parameterType="string" resultType="com.sht.goods.po.GAddrs" >
+		select addrs.*,GETREGIONBYBASEID(addrs.region) as addr from addrs where master=#{value}
+	</select>
+
+	
+	
+</mapper>

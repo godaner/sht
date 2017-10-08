@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sht.mapper.RegionMapper">
+  <resultMap id="BaseResultMap" type="com.sht.po.Region">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CODE" jdbcType="CHAR" property="code" />
+    <result column="NAME" jdbcType="CHAR" property="name" />
+    <result column="PID" jdbcType="INTEGER" property="pid" />
+    <result column="LEVE" jdbcType="INTEGER" property="leve" />
+    <result column="ORDE" jdbcType="INTEGER" property="orde" />
+    <result column="ENNAME" jdbcType="CHAR" property="enname" />
+    <result column="ENSHORTNAME" jdbcType="CHAR" property="enshortname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CODE, NAME, PID, LEVE, ORDE, ENNAME, ENSHORTNAME
+  </sql>
+  <select id="selectByExample" parameterType="com.sht.po.RegionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHT.REGION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SHT.REGION
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SHT.REGION
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sht.po.RegionExample">
+    delete from SHT.REGION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sht.po.Region">
+    insert into SHT.REGION (ID, CODE, NAME, PID, 
+      LEVE, ORDE, ENNAME, ENSHORTNAME
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{pid,jdbcType=INTEGER}, 
+      #{leve,jdbcType=INTEGER}, #{orde,jdbcType=INTEGER}, #{enname,jdbcType=CHAR}, #{enshortname,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sht.po.Region">
+    insert into SHT.REGION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pid != null">
+        PID,
+      </if>
+      <if test="leve != null">
+        LEVE,
+      </if>
+      <if test="orde != null">
+        ORDE,
+      </if>
+      <if test="enname != null">
+        ENNAME,
+      </if>
+      <if test="enshortname != null">
+        ENSHORTNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="leve != null">
+        #{leve,jdbcType=INTEGER},
+      </if>
+      <if test="orde != null">
+        #{orde,jdbcType=INTEGER},
+      </if>
+      <if test="enname != null">
+        #{enname,jdbcType=CHAR},
+      </if>
+      <if test="enshortname != null">
+        #{enshortname,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sht.po.RegionExample" resultType="java.lang.Long">
+    select count(*) from SHT.REGION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHT.REGION
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.code != null">
+        CODE = #{record.code,jdbcType=CHAR},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=CHAR},
+      </if>
+      <if test="record.pid != null">
+        PID = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.leve != null">
+        LEVE = #{record.leve,jdbcType=INTEGER},
+      </if>
+      <if test="record.orde != null">
+        ORDE = #{record.orde,jdbcType=INTEGER},
+      </if>
+      <if test="record.enname != null">
+        ENNAME = #{record.enname,jdbcType=CHAR},
+      </if>
+      <if test="record.enshortname != null">
+        ENSHORTNAME = #{record.enshortname,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHT.REGION
+    set ID = #{record.id,jdbcType=INTEGER},
+      CODE = #{record.code,jdbcType=CHAR},
+      NAME = #{record.name,jdbcType=CHAR},
+      PID = #{record.pid,jdbcType=INTEGER},
+      LEVE = #{record.leve,jdbcType=INTEGER},
+      ORDE = #{record.orde,jdbcType=INTEGER},
+      ENNAME = #{record.enname,jdbcType=CHAR},
+      ENSHORTNAME = #{record.enshortname,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sht.po.Region">
+    update SHT.REGION
+    <set>
+      <if test="code != null">
+        CODE = #{code,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=CHAR},
+      </if>
+      <if test="pid != null">
+        PID = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="leve != null">
+        LEVE = #{leve,jdbcType=INTEGER},
+      </if>
+      <if test="orde != null">
+        ORDE = #{orde,jdbcType=INTEGER},
+      </if>
+      <if test="enname != null">
+        ENNAME = #{enname,jdbcType=CHAR},
+      </if>
+      <if test="enshortname != null">
+        ENSHORTNAME = #{enshortname,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sht.po.Region">
+    update SHT.REGION
+    set CODE = #{code,jdbcType=CHAR},
+      NAME = #{name,jdbcType=CHAR},
+      PID = #{pid,jdbcType=INTEGER},
+      LEVE = #{leve,jdbcType=INTEGER},
+      ORDE = #{orde,jdbcType=INTEGER},
+      ENNAME = #{enname,jdbcType=CHAR},
+      ENSHORTNAME = #{enshortname,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
