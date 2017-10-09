@@ -191,6 +191,18 @@ article{
     line-height: 50px;
 }
 
+.content-right-description{
+	position:relative;
+	display:block;
+	width:300px;
+	height:50px;
+	line-height:50px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	cursor:pointer;
+}
+
 .new-price{
     font-size: 17px;
     margin-top: 10px;

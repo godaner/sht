@@ -553,5 +553,13 @@ section>footer>div{
 
 
 .description{
+	
+	position:relative;
+	display:block;
+	width:150px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
 	cursor:pointer;
+	font-size:13px;
 }
