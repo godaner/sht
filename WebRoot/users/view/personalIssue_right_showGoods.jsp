@@ -25,24 +25,43 @@
 			<a href="javascript:void(0)" onclick="showList('-7')"style="width:80px;height:35px;margin-top:35px;"><i style="position:absolute;top:20px;left:815px;">未通过审核</i></a> 
       </div></div>
 			<hr/>
+			
 			<!-- 搜索框 -->
-		<div class="search">
+		<div class="search iteam-warp">
 			<input type="text" placeholder="请输入商品标题" onchange="searchUGoods();" id="search_input"/> <button onclick="searchUGoods();">搜索</button>
 			</div> 
+			
+		<div class="cont" style="margin-left:15px;">
+		
 		<!-- 上下翻页按钮 -->
 		<div class="turnPage"></div>
 		<!-- 已发布列表 -->
 		<div class="list">
 		</div>
 		<!-- 详情修改 -->
-		<div class="detail">
+		<div>
+		<center>
+		<div class="detail" style="margin-top:15px">
 		
 		</div>
 		<div class="UpdateUGoods"></div>
+		</center>
+		</div>
+		</div>	
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 		<input type="hidden" value="${onlineUser.id}" id="userid"/>
 </body>
+<style type="text/css">
+	button{width:80px;height:38px}
+	.cont{font-size:15px;border:1px dotted #a1a1a1;border-radius:10px;}
 
+	table td{padding:8px};
+	
+	.iteam-warp{width:220px;height:26px;}
+	
+	input{width:200px;height:32px;}
+
+</style>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
@@ -131,12 +150,13 @@ function showGoodsdetail(id){
 	    	$(".turnPage").empty();
 	    	var h = "";
 	    	status = showStatus(data['status']);
-	    	h+="标题<input type='text' value='"+data['title']+"' id='title'/>介绍<input type='text' value='"+data['description']+"' id='description'/><br/>现价<input type='text' value='"+data['sprice']+"' id='sprice'/>原价<input type='text' value='"+data['price']+"' id='price'/><br/>成色<input type='text' value='"+data['condition']+"' id='condition'/>";
-	    	h+="地区<input type='text' value='"+data['region']+"' id='region' /><p>状态:"+status+"</p><p>创建时间:"+data['createtime']+"</p><p>浏览次数:"+data['browsenumber']+"</p><p>最后更新时间:"+data['lastupdatetime']+"</p>";
+	    	h += "<table name='t1'><tr><td><div class='iteam-warp' style='dispaly:inline-block;'>标题:&nbsp;&nbsp;<input type='text' value='"+data['title']+"' id='title'/></div></td><td><div class='iteam-warp' style='float:right' >介绍:&nbsp;&nbsp;<input type='text' value='"+data['description']+"' id='description'/></div></td></tr><tr><td><div class='iteam-warp' style='dispaly:inline-block;'>现价:&nbsp;&nbsp;<input type='text' value='"+data['sprice']+"' id='sprice'/></div></td><td><div class='iteam-warp' style='float:right'>原价:&nbsp;&nbsp;<input type='text' value='"+data['price']+"' id='price'/></div></td></tr><tr><td><div class='iteam-warp' style='dispaly:inline-block;'>成色:&nbsp;&nbsp;<input type='text' value='"+data['condition']+"' id='condition'/></div></td><td><div class='iteam-warp' style='float:right'>地区:&nbsp;&nbsp;<input type='text' value='"+data['region']+"' id='region' /></div></td></tr></table>";
+	    	
+	    	h+="<table name='t2'><tr><td><p>状态:&nbsp;&nbsp;"+status+"</p></td><td><p>浏览次数:&nbsp;&nbsp;"+data['browsenumber']+"</p></td></tr><tr><td><p>创建时间:&nbsp;&nbsp;"+data['createtime']+"</p></td><td><p>最后更新时间:&nbsp;&nbsp;"+data['lastupdatetime']+"</p></td></tr></table>";
 	    	$(".detail").html(h);
 	    	h="";
-	    	h+="<button type='button' onclick=UpdateUGoodsById('"+id+"')>修改</button>";
-			h+="<button type='button' onclick='window.history.go(0)'>返回</button>";
+	    	h+="<div style='display:inline-block;margin-left:180px;'><button type='button' onclick=UpdateUGoodsById('"+id+"')>修改</button></div>";
+			h+="<div style='float:right;margin-right:300px'><button type='button' onclick='window.history.go(0)'>返回</button></div>";
 			$(".UpdateUGoods").html(h);
     		h="";
 	    },error:function(){
