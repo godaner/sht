@@ -1,0 +1,5 @@
+    .mask {       
+            position: absolute; top: 0px; filter: alpha(opacity=60); background-color: #777;     
+            z-index: 500; left: 0px;     
+            opacity:0.5; -moz-opacity:0.5;     
+        } 

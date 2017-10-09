@@ -392,4 +392,14 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		
 	}
  }
+ 
+	 /**
+	  * 退货申请凭证上传
+	  * 
+	  */
+ 
+ public void goodsCheckImgUpload(){
+	 
+	 service.goodsCheckImgUpload(po);
+ }
 }

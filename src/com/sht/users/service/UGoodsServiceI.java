@@ -133,5 +133,8 @@ public interface UGoodsServiceI {
 	public void udateBuyGoodsByidAndStatus(UGoods po);
 
 
+	public void goodsCheckImgUpload(UGoods po);
+
+
 	
 }

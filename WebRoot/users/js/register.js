@@ -30,10 +30,12 @@ $(function(){
 /*显示注册框*/
 function showregister(){
 	$(".register_box").show();
+	showCover();//遮罩层
 }
 /*关闭注册框*/
 function closeregister(){
 	$(".register_box").hide();
+	hideCover();//遮罩层
 }
 /* 打印错误信息 */
 function RegisterErrorMsg(msg){

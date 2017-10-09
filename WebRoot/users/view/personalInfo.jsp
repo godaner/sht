@@ -8,7 +8,7 @@
     <title>个人信息</title>
     <link rel="stylesheet" href="${baseUrl}/users/css/personalInfo.css"/>
 </head>
-<body>
+<body style="background-color:white;">
 <jsp:include page="../../goods/view/commonTitle.jsp" flush="false" />
 <!-- <div id="header">
     <h1>SHT二手交易</h1>

@@ -72,4 +72,8 @@
 	<update id="buyerAddScore" parameterType="com.sht.users.po.UGoods">
 		UPDATE USERS SET SCORE=SCORE+#{sprice} WHERE ID=#{buyer}	
 	</update>
+	<update id="goodsCheckImgUpload" parameterType="com.sht.users.po.UGoods">
+		UPDATE GOODS SET REFUSERETURNMONEYBILL=#{refusereturnmoneybill} WHERE ID=#{id}	
+	</update>
+	
 </mapper>
