@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/14.
  */
 
@@ -209,6 +209,7 @@ $(function () {
 	
 	//填充商品类别数据
 	function setCategory(data){
+
 		var table = $('#option table').empty();
 		var tr =  $('<tr></tr>');
 		
@@ -217,6 +218,7 @@ $(function () {
 		var line =Math.ceil( data.length/5 );
 
 		var sum = 0,i=1,temp=3;
+
 
 		$.each(data,function(index,item){
 
@@ -241,16 +243,19 @@ $(function () {
 			td.on('click',getDataByCategory);
 			tr.append(td);
 			
+
 			if(temp == index){
 
 				tr = $('<tr></tr>');
 				i++;
 
 				temp +=5;
+
 			}
 			
 			
 		});
+
 		
 		if( i < line)
 			table.append(tr);
@@ -258,6 +263,7 @@ $(function () {
 		tdAll.find('span').text("("+sum+")");
 
 		
+
 	}
 	
 	function getDataByCategory(){
@@ -266,7 +272,14 @@ $(function () {
 	    minPrice = 0;
 	    maxPrice = 0;
 	    globalClazz = $(this).attr('name');
-	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    
+	
+	    $('.city>div>ul>li:eq(0)').html("全国");
+	    	
+	  
+	    	
+//	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    getTotalNum(0,minPrice,maxPrice,globalClazz);
 	}
 	
 	getTotalNum(0.0,0,0,0);
@@ -499,3 +512,6 @@ $(function () {
 	}
 	
 })
+
+
+

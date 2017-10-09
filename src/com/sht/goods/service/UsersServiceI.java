@@ -1,6 +1,7 @@
 package com.sht.goods.service;
 
 import com.sht.goods.po.GUser;
+import com.sht.po.Users;
 
 public interface UsersServiceI {
 
@@ -18,5 +19,5 @@ public interface UsersServiceI {
 	 * @return
 	 * @throws Exception
 	 */
-	public GUser selectUsersInfo(String id)throws Exception;
+	public Users selectUsersInfo(String id)throws Exception;
 }
