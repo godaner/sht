@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/16.
  */
 
@@ -86,7 +86,7 @@ $(function() {
 	function splitData(imgSrc){
 		for(var i = 0 ; i < imgSrc.length ; i++){
 			
-			
+
 			var li = $("<li><img src=''/></li>");
 			
 			
@@ -453,8 +453,9 @@ $(function() {
 			
 			var headImg = item['headImg'];
 			
-			headImg = baseUrl + '/common/users_getUsersHeadImg.action?size=30&imgName='+headImg;
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg="+headImg;
 			
+			console.log(headImg);
 			var li = $("<li></li>");
 			var img = $("<img src='"+headImg+"'/>");
 			var reply = "";
