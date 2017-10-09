@@ -91,7 +91,7 @@ h1 {
     margin-left: 10px;
 }
 
-.content-left > img {
+.content-left >div> img {
     height : 100px ;
     width :100px;
     border: 1px solid lightgrey;
@@ -99,7 +99,7 @@ h1 {
 }
 
 
-.content-left>p{
+.content-left>div>p{
     text-align: center;
     margin-top: 10px;
 }

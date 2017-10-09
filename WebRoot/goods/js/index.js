@@ -272,7 +272,14 @@ $(function () {
 	    minPrice = 0;
 	    maxPrice = 0;
 	    globalClazz = $(this).attr('name');
-	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    
+	
+	    $('.city>div>ul>li:eq(0)').html("全国");
+	    	
+	  
+	    	
+//	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    getTotalNum(0,minPrice,maxPrice,globalClazz);
 	}
 	
 	getTotalNum(0.0,0,0,0);
@@ -505,3 +512,6 @@ $(function () {
 	}
 	
 })
+
+
+
