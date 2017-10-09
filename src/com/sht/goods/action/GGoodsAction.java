@@ -94,6 +94,7 @@ public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 			
 			eject(onlineUser == null, "您已离线");
 				po.setOwner(onlineUser.getId());
+				
 			 String region = getRequest().getParameter("county");
 			 String condition = getRequest().getParameter("condition");
 			 po.setRegion(Double.valueOf(region));
