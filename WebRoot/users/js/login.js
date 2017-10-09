@@ -15,10 +15,13 @@ baseUrl = $("#baseUrl").val();
 function showlogin(){
 	
 	$(".login_box").fadeIn("slow");
+	showCover();//遮罩层
+	
 }
 /* 关闭登陆窗口 */
 function closelogin(){
 	$(".login_box").hide();
+	hideCover();//遮罩层
 }
 /* 打印错误信息 */
 function showErrorMsg(msg){

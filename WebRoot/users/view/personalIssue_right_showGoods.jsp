@@ -9,8 +9,9 @@
 <link href="${baseUrl}/users/css/showGoods_style.css" rel="stylesheet" type="text/css" />
 <title>发布商品展示</title>
 </head>
-<body>
+<body style="background-color:white;">
 <!-- 导航选择栏 -->
+<div class="allList_show">
    <div class="Order_form_style">
       <div class="Order_form_filter" style="height:60px;">
        		<a href="javascript:void(0)" class="on" onclick="showList()" style="width:80px;height:35px;margin-top:35px;"><i style="position:absolute;top:20px;left:10px;">所有订单</i></a>
@@ -33,6 +34,9 @@
 		<div class="turnPage"></div>
 		<!-- 已发布列表 -->
 		<div class="list">
+		</div>
+		
+		
 		</div>
 		<!-- 详情修改 -->
 		<div class="detail">
@@ -127,8 +131,8 @@ function showGoodsdetail(id){
 	    data :'id='+id,  //传递到后台的参数
 	    success:function(data){
 	    	console.info(data);
-	    	$(".list").empty();
-	    	$(".turnPage").empty();
+	    	$(".allList_show").empty();
+	    	//$(".turnPage").empty();
 	    	var h = "";
 	    	status = showStatus(data['status']);
 	    	h+="标题<input type='text' value='"+data['title']+"' id='title'/>介绍<input type='text' value='"+data['description']+"' id='description'/><br/>现价<input type='text' value='"+data['sprice']+"' id='sprice'/>原价<input type='text' value='"+data['price']+"' id='price'/><br/>成色<input type='text' value='"+data['condition']+"' id='condition'/>";
@@ -227,7 +231,11 @@ function showList(status){
 	    		}else if(status=="待发货"){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','2');>发货</a></td></tr></tbody></table></div>";
 	    		}else if(status=="申请退款"){
+	    			if(goods['fiile']!=""||goods['fiile']!=null){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";
+	    			}else{
+	    				h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";	
+	    			}
 	    		}else if(status=="退款成功"){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>重新上架</a></td></tr></tbody></table></div>";
 	    		}else if(status=="已发货"){
