@@ -93,13 +93,13 @@
 	
 	<select id="selectAllAddress" parameterType="com.sht.users.po.CustomAddrs" resultType="com.sht.users.po.CustomAddrs">
 	
-		SELECT addrs.*,getregionbybaseid(addrs.REGION) as addr FROM ADDRS WHERE MASTER=#{master}
+		SELECT * FROM ADDRS WHERE MASTER=#{master}
 	
 	</select>
 	
 	<select id="selectAddrsByID" parameterType="com.sht.users.po.CustomAddrs">
 	
-		SELECT addrs.*,getregionbybaseid(addrs.REGION) as addr FROM ADDRS WHERE MASTER=#{master} AND ID=#{id}
+		SELECT * FROM ADDRS WHERE MASTER=#{master} AND ID=#{id}
 	
 	</select>
 	

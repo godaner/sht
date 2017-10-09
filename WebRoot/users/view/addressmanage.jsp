@@ -10,7 +10,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="${baseUrl}/users/css/addressmanage.css" rel="stylesheet">
-<%-- <link href="${baseUrl}/users/css/bootstrap.css" rel="stylesheet"> --%>
+<link href="${baseUrl}/users/css/bootstrap.css" rel="stylesheet">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <link rel="stylesheet" href="${baseUrl}/users/css/personalInfo.css" /> --%>
 
@@ -64,7 +64,7 @@
 					<span class="left4">邮政编码</span>
 					<div class="iteam-warp">
 						<input type="text" name="postcode" id="postcode" class="i-text"
-							placeholder="长度为6个字符" maxlength="6" onblur="check_postcode();" />
+							placeholder="长度不超过10个字符" data-pattern="^.{0,10}$" />
 					</div>
 				</div>
 
@@ -74,7 +74,7 @@
 					</span>
 					<div class="iteam-warp">
 						<input type="text" name="realname" id="realname" class="i-text"
-							placeholder="长度至少两位且不超过20个字符" maxlength="20" onblur="check_realname();" />
+							placeholder="长度不超过20个字符" data-pattern="^.{2,20}$" />
 					</div>
 				</div>
 
@@ -89,7 +89,7 @@
 					</select>
 					<div class="iteam-warp">
 						<input type="text" name="phone" id="phone" class="i-text"
-							placeholder="请输入11位手机号" onblur="check_phone();" maxlength="11" />
+							data-pattern="^\d{6,20}$" />
 					</div>
 				</div>
 
