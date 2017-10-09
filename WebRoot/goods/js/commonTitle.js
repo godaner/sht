@@ -19,8 +19,6 @@ $(function(){
 })
 
 function judgmentLogin(url){
-	
-		
     	var onlineUser = $('#onlineUser').attr('value');
     	if(onlineUser == " "){
     		alert("请登录!");
