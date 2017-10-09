@@ -147,6 +147,15 @@ function updatePersonalInfo(){
 	    async : true,  //同步请求  
 	    url : baseUrl+"/users/updatePersonalInfo.action",  //需要访问的地址
 	    data :'username='+username+'&sex='+sex+'&description='+description,  //传递到后台的参数
+	    success:function(data){
+	    	if(data['msg']){
+	    	alert(data['msg']);
+	    	}else{
+	    	alert("修改成功");
+	    	}
+	    },error:function(data){
+	    	alert("修改失败");
+	    }
 	});
 }
 </script>

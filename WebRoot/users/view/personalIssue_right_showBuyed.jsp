@@ -117,7 +117,7 @@ function prom(id,statu)
     	    url : baseUrl+"/users/checkPassword.action",//需要访问的地址
     	    data :'password='+pas,  //传递到后台的参数
     	    success:function(data){
-    	    	console.info(data);
+    	    	//console.info(data);
     	    	if(data['msg']){
     	    		alert(data['msg']);
     	    	}else{
@@ -126,10 +126,6 @@ function prom(id,statu)
     	    	}
         });    
     }
-    
-    
-    
-
 }
 
 
@@ -186,7 +182,7 @@ function showList(status){
 		    		}else if(status=="已完成订单"){
 		    			h+="<td class='operating'><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-8');>申请退款</a></td></tr></tbody></table></div>";
 		    		}else if(status=="申请退款"){
-		    			h+="<td class='operating'><form action='"+baseUrl+"/users/U_goodsCheckImgUpload.action?id="+id+"' method='post' enctype='multipart/form-data'><i style='position:absolute;left:35%;'>选择凭证</i><input type='file' name='fiile' style='opacity:0;width:130px;'><input id='save_btn' type='submit' value='上传凭证'></form></a></td></tr></tbody></table></div>";
+		    			h+="<td class='operating'><form action='"+baseUrl+"/users/U_goodsCheckImgUpload.action?id="+id+"' method='post' enctype='multipart/form-data' onsubmit='return file_is_null();'><i style='position:absolute;left:35%;'>选择凭证</i><input class='check_file_is_null' type='file' name='fiile' style='opacity:0;width:130px;'><input id='save_btn' type='submit' value='上传凭证'></form></a></td></tr></tbody></table></div>";
 		    		}else{
 		    			h+="<td class='operating'><a href='#'>前往评价</a></td></tr></tbody></table></div>";
 		    		}
@@ -258,6 +254,16 @@ function searchUGoods(){
  
 
 	}
+
+
+
+//凭证上传非空验证
+function file_is_null(){
+	if(!$(".check_file_is_null").val()){
+		alert("请选择文件");
+		return false;
+	}
+}
 
 
 
