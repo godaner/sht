@@ -343,7 +343,7 @@ $(function () {
 
 					+"	href='javascript:void(0)'>"+item['username']+"</a>");
 			
-		
+			console.log(item['username']);
 			
 			
 			
@@ -360,8 +360,8 @@ $(function () {
 			
 			priceContent.append(price);
 			
-			if(description.length >20)
-				description = description.substring(0,20) + "...";
+			if(description.length >15)
+				description = description.substring(0,15) + "...";
 			
 				
 			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description' style='font-size:13px;' title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
