@@ -24,12 +24,12 @@
         <ul>
             <li>
             	<c:if test="${empty sessionScope.goodsDetailInfo.headImg  }">
-            		
-            		<img  src="${baseUrl }/common/users_getUsersHeadImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
+            
+            		<img  src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
             	</c:if>
             	
                 <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
-            		<img src="${baseUrl }/common/users_getUsersHeadImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
+            		<img src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
             	</c:if>
                 <a href="#">${sessionScope.goodsDetailInfo.title }</a>
             </li>
