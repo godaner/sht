@@ -350,10 +350,11 @@ function editDefault(addrId){
 	    	
 	    	var userInfoIframe = parent.document.getElementsByName("iframe0")[0];
 	    	userInfoIframe.src = baseUrl+"/users/view/addressmanage.jsp";
+//	    	window.location.onload(true);
 //	    	userInfoIframe.attr("src",);  
 	    	
 //    		alert("设置成功");
-//    		window.location.href='/sht/users/view/addressmanage.jsp';
+    		window.location.href='/sht/users/view/addressmanage.jsp';
 	    }
 	})
 }
