@@ -1,5 +1,6 @@
 package com.sht.users.po;
 
+import java.io.File;
 import java.io.Serializable;
 
 import org.springframework.stereotype.Component;
@@ -36,5 +37,16 @@ public class UGoods extends Goods implements Serializable{
 	public void setMainImgPath(String mainImgPath) {
 		this.mainImgPath = mainImgPath;
 	}
+	//退货凭证 ，如a.jpg
+	private File fiile;
+
+	public File getFiile() {
+		return fiile;
+	}
+
+	public void setFiile(File fiile) {
+		this.fiile = fiile;
+	}
+
 	
 }

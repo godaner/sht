@@ -47,4 +47,6 @@ public interface UGoodsMapper {
 
 	void buyerAddScore(UGoods dbGoods);
 
+	void goodsCheckImgUpload(UGoods po);
+
 }
