@@ -316,7 +316,7 @@ $(function() {
 	
 	function setUserInfo(data){
 		var container = $('.content-left>div');
-		var url = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName=";
+		var url = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg=";
 		
 		var img = $("<img src='"+url+data['headimg']+"'>");
 		
