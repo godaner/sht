@@ -37,8 +37,25 @@
 		<input type="hidden" value="${onlineUser.id}" id="userid"/>
 		<input type="hidden" value="${onlineUser.password}" id="userpassword"/>
 </body>
-
+<style>
+	.search input{
+		margin-top:5px;
+		border-style:none;
+		width:400px;
+		height:20px;
+		border:1px solid grey;
+		border-radius:5px;
+	}
+	button{
+		width:80px;
+		height:25px;
+	}
+.search{
+	float:right;
+}
+</style>
 <script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/jquery-form.js"></script>
 <script type="text/javascript">
 var PageTo = 0;
 var searchTo = 1;
@@ -182,7 +199,11 @@ function showList(status){
 		    		}else if(status=="已完成订单"){
 		    			h+="<td class='operating'><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-8');>申请退款</a></td></tr></tbody></table></div>";
 		    		}else if(status=="申请退款"){
-		    			h+="<td class='operating'><form action='"+baseUrl+"/users/U_goodsCheckImgUpload.action?id="+id+"' method='post' enctype='multipart/form-data' onsubmit='return file_is_null();'><i style='position:absolute;left:35%;'>选择凭证</i><input class='check_file_is_null' type='file' name='fiile' style='opacity:0;width:130px;'><input id='save_btn' type='submit' value='上传凭证'></form></a></td></tr></tbody></table></div>";
+		    			if(!goods['refusereturnmoneybill']){
+		    			h+="<td class='operating'><form action='#' method='post' enctype='multipart/form-data' id='yyform'><i style='position:absolute;left:35%;'>选择凭证</i><input class='check_file_is_null' type='file' name='fiile' style='opacity:0;width:130px;' id='yyfile"+id+"'><input id='save_btn'  class='save_btn_99'  myid='"+id+"' type='button' value='上传凭证'></form></a></td></tr></tbody></table></div>";
+		    			}else{
+		    				h+="<td class='operating'>已上传凭证</td></tr></tbody></table></div>";
+		    			}
 		    		}else{
 		    			h+="<td class='operating'><a href='#'>前往评价</a></td></tr></tbody></table></div>";
 		    		}
@@ -200,7 +221,26 @@ function showList(status){
 	    }
 	});
 }
-	
+$(document).on("click",".save_btn_99",function(){
+		var id = $(this).attr("myid");
+	    var options = {
+	      url: baseUrl+"/users/U_goodsCheckImgUpload.action?id="+id,
+	      beforeSubmit:function(){
+	    	  if(!$("#yyfile"+id).val()){
+	    		  alert("请先选择要上传的凭证");
+	    		  return false;
+	    	  }
+	    	  
+	      },
+	      success: function () {
+	        alert("凭证上传成功");
+	        window.location.reload();
+	      }
+	    };
+	    console.info(options);
+	    $("#yyform").ajaxSubmit(options);
+	  
+});
 //搜索商品
 function searchUGoods(){
 	
@@ -254,17 +294,6 @@ function searchUGoods(){
  
 
 	}
-
-
-
-//凭证上传非空验证
-function file_is_null(){
-	if(!$(".check_file_is_null").val()){
-		alert("请选择文件");
-		return false;
-	}
-}
-
 
 
 </script>

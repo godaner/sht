@@ -251,8 +251,10 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			po.setMsg(e.getMessage());
 			
 		}
+		 writeJSON(po);
 	 }
 	 
 	 /**

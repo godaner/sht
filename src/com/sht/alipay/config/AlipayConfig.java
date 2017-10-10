@@ -16,7 +16,7 @@ import java.io.IOException;
 public class AlipayConfig {
 	
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-	private static String url = "http://ei7zij.natappfree.cc";
+	private static String url = "http://bp59ph.natappfree.cc";
 	// 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
 	public static String app_id = "2016081500253717";
 	
