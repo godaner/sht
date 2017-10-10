@@ -4,8 +4,4 @@
 <b>详情:</b><br/>
 <p>
 *.程序前台主页:<br/>
-	http://localhost/sht/users/view/index.jsp<br/>
-<p>
-*.程序前台登陆页面:<br/>
-	http://localhost/sht/users/view/login.jsp<br/>
-<p>
+	http://localhost/sht/goods/view/index.jsp<br/>

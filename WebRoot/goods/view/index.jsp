@@ -42,13 +42,19 @@
 				</li>
 			</ul>
 			&nbsp;&nbsp; <span class="line"></span> &nbsp;&nbsp;
+			
 			<ul class="select_1">
-				<li><input type="text" id="minPrice"/>&nbsp;&nbsp;-&nbsp;&nbsp; <input
-					type="text" id="maxPrice"/> <input type="button" value="确定" id="sure" /></li>
+				<li>
+					<input type="text" id="minPrice"/>&nbsp;&nbsp;-&nbsp;&nbsp;
+					 <input type="text" id="maxPrice"/> 
+					 <input type="button" value="确定" id="sure" />
+				</li>
 				&nbsp;&nbsp;
+				
 				<span class="line"></span> &nbsp;&nbsp;
 
 			</ul>
+			
 		</div>
 	</div>
 
@@ -73,7 +79,7 @@
 		</div>
 
 		<div class="release_resale">
-			<a href="goods/view/createGoods.jsp">
+			<a href="javascript:judgmentLogin('${baseUrl}/goods/view/createGoods.jsp');">
 				<div class="release">
 					<span>发布闲置</span> <img src="goods/img/release_right.png"> <span>闲置换钱&nbsp;快速出手</span>
 				</div>

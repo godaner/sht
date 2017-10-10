@@ -231,11 +231,11 @@ $(function(){
 			for(var i=1;i<=data['addrs'].length;i++){
 				var addrs= data['addrs'][i-1];
 				if(addrs["isdefault"]==1){
-					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["addr"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><span style='width:55px;height:18px;background-color:#f7f7f7;'>默认地址</span></th></tr></tbody>";
+					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["addr"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a style='text-decoration: none;' href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a style='text-decoration:none;' href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><span style='width:55px;height:18px;background-color:#f7f7f7;'>默认地址</span></th></tr></tbody>";
 					$("#listshow").append(h);
 					h="";
 				}else{
-					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["addr"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><a href=javascript:editDefault('"+addrs['id']+"')>设为默认</a></th></tr></tbody>";
+					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["addr"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a style='text-decoration:none;' href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a style='text-decoration:none;' href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><a style='text-decoration:none;' href=javascript:editDefault('"+addrs['id']+"')>设为默认</a></th></tr></tbody>";
 					$("#listshow").append(h);
 					h="";
 				}
@@ -296,7 +296,7 @@ function editAddrs(){
 	var master=$("#master").val().trim();
 //	alert(id);
 //	alert(master);
-//	var region=$("#county :selected").attr("class");
+	var region=$("#county :selected").attr("class");
 	var detail=$("#detail").val().trim();
 	var postcode=$("#postcode").val().trim();
 	var realname=$("#realname").val().trim();
@@ -321,7 +321,7 @@ function editAddrs(){
 		    dataType:dataType,//response返回数据的格式
 		    async : async,  //同步请求  
 		    url : baseUrl+"/users/D_updateAddress.action",  //需要访问的地址
-		    data : "id="+id+"&master="+master+"&detail="+detail+"&postcode="+postcode+"&realname="+realname+"&phone="+phone+"&isdefault="+setdefalut,  //传递到后台的参数
+		    data : "id="+id+"&master="+master+"&detail="+detail+"&postcode="+postcode+"&realname="+realname+"&phone="+phone+"&isdefault="+setdefalut+"&region="+region,  //传递到后台的参数
 		    success:function(data){
 		    	if(data['msg']){
 		    		msg = data['msg'];
@@ -350,10 +350,11 @@ function editDefault(addrId){
 	    	
 	    	var userInfoIframe = parent.document.getElementsByName("iframe0")[0];
 	    	userInfoIframe.src = baseUrl+"/users/view/addressmanage.jsp";
+//	    	window.location.onload(true);
 //	    	userInfoIframe.attr("src",);  
 	    	
 //    		alert("设置成功");
-//    		window.location.href='/sht/users/view/addressmanage.jsp';
+    		window.location.href='/sht/users/view/addressmanage.jsp';
 	    }
 	})
 }

@@ -272,7 +272,14 @@ $(function () {
 	    minPrice = 0;
 	    maxPrice = 0;
 	    globalClazz = $(this).attr('name');
-	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    
+	
+	    $('.city>div>ul>li:eq(0)').html("全国");
+	    	
+	  
+	    	
+//	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
+	    getTotalNum(0,minPrice,maxPrice,globalClazz);
 	}
 	
 	getTotalNum(0.0,0,0,0);
@@ -321,18 +328,22 @@ $(function () {
 
 			var description = item['description'];
 			
-			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
+			console.log("headimg"+headImg);
 			
-			var li =$("<li ></li>");
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg="+headImg;
+			
+			var li =$("<li></li>");
 
 			li.attr("margint-left","30px");
 			//添加标题
-			var infoTitle = $("<div >"+"</div>");
+			var infoTitle = $("<div>"+"</div>");
 			infoTitle.addClass("trading_info_title");
 
-			infoTitle.append("<img style='width:30px' src='"+headImg+"'/> <a"
+			infoTitle.append("<img style='width:30px;height:30px;border-radius:50%;' src='"+headImg+"'/> <a"
 
-					+"	href='#'>"+item['title']+"</a>");
+					+"	href='javascript:void(0)'>"+item['username']+"</a>");
+			
+		
 			
 			
 			
@@ -349,11 +360,11 @@ $(function () {
 			
 			priceContent.append(price);
 			
-			if(description.length >10)
-				description = description.substring(10,description.length-1) + "...";
+//			if(description.length >15)
+//				description = description.substring(0,14) + "...";
 			
 				
-			var footer = $("<p class='description' title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
+			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description'  title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);
@@ -505,3 +516,6 @@ $(function () {
 	}
 	
 })
+
+
+

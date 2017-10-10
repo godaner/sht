@@ -8,7 +8,7 @@
 		SELECT A.*,ROWNUM RN
 		FROM (
 		SELECT U0.ID AS USERID,U0.HEADIMG AS
-		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
+		HEADIMG,U0.USERNAME AS USERNAME,G0.*,GETREGIONBYBASEID(g0.region) AS
 		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
 		MSGNUM,getclazzsbygoodsid(g0.id) as clazz
 		FROM USERS U0,GOODS G0
@@ -76,7 +76,7 @@
 	<select id="selectGoodsDetailInfo" resultType="com.sht.goods.po.GGoods"
 		parameterType="string">
 		SELECT U0.ID AS USERID,U0.HEADIMG AS
-		HEADIMG,G0.*,GETREGIONBYBASEID(g0.region) AS
+		HEADIMG,U0.USERNAME AS USERNAME,G0.*,GETREGIONBYBASEID(g0.region) AS
 		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
 		MSGNUM,rownum
 		FROM USERS U0,GOODS G0

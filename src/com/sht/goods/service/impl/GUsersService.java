@@ -85,10 +85,10 @@ public class GUsersService extends GBaseService implements UsersServiceI {
 	}
 
 	@Override
-	public GUser selectUsersInfo(String id) throws Exception {
+	public Users selectUsersInfo(String id) throws Exception {
 		
 		Users users = usersMapper.selectByPrimaryKey(id);
 		
-		return (GUser)users;
+		return users;
 	}
 }
