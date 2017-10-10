@@ -1,8 +1,10 @@
+/* a{
+	text-decoration:none !important;
+} */
 #bodyright {
 	float: left;
 	position: relative;
 	display: block;
-	
 }
 
 .sc {

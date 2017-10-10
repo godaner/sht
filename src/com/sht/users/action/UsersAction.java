@@ -192,7 +192,9 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			po.setMsg(e.getMessage());
 		}
+		 writeJSON(po);
 	 }
 	 
 	 /**

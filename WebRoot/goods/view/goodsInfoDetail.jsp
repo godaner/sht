@@ -29,9 +29,9 @@
             	</c:if>
             	
                 <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
-            		<img src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
+            		<img style="border-radius:50%;" src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
             	</c:if>
-                <a href="#">${sessionScope.goodsDetailInfo.title }</a>
+                <a href="#">${sessionScope.goodsDetailInfo.username }</a>
             </li>
 
             <li>
@@ -72,7 +72,8 @@
         </div>
 
         <div class="content-right">
-            <p class="content-right-title">${sessionScope.goodsDetailInfo.description}</p>
+        	<p class="content-right-title">${sessionScope.goodsDetailInfo.title}</p>
+            <p class="content-right-description" title="${sessionScope.goodsDetailInfo.description}">${sessionScope.goodsDetailInfo.description}</p>
 
             <p class="new-price">
                 转卖价&nbsp;:&nbsp;￥<span id="price" name="${sessionScope.goodsDetailInfo.sprice }">${sessionScope.goodsDetailInfo.sprice }</span>

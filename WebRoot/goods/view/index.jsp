@@ -42,13 +42,19 @@
 				</li>
 			</ul>
 			&nbsp;&nbsp; <span class="line"></span> &nbsp;&nbsp;
+			
 			<ul class="select_1">
-				<li><input type="text" id="minPrice"/>&nbsp;&nbsp;-&nbsp;&nbsp; <input
-					type="text" id="maxPrice"/> <input type="button" value="确定" id="sure" /></li>
+				<li>
+					<input type="text" id="minPrice"/>&nbsp;&nbsp;-&nbsp;&nbsp;
+					 <input type="text" id="maxPrice"/> 
+					 <input type="button" value="确定" id="sure" />
+				</li>
 				&nbsp;&nbsp;
+				
 				<span class="line"></span> &nbsp;&nbsp;
 
 			</ul>
+			
 		</div>
 	</div>
 

@@ -359,12 +359,12 @@ $(function () {
 			var price = $("<span>￥<span>"+item['sprice']+"</span></span> <span>"+item['addr']+"</span>");
 			
 			priceContent.append(price);
-			
+
 			if(description.length >15)
 				description = description.substring(0,15) + "...";
-			
+
 				
-			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description' style='font-size:13px;' title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
+			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description'  title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);
