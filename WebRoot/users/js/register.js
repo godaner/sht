@@ -31,11 +31,13 @@ $(function(){
 function showregister(){
 	$(".register_box").show();
 	showCover();//遮罩层
+
 }
 /*关闭注册框*/
 function closeregister(){
 	$(".register_box").hide();
 	hideCover();//遮罩层
+	refreshVC();
 }
 /* 打印错误信息 */
 function RegisterErrorMsg(msg){
@@ -53,6 +55,7 @@ function showStar(id){
 function hidenStar(id){
 $("#"+id).css("border","solid 1px rgb(243,243,243)");
 }
+
 
 
 /*邮箱验证*/

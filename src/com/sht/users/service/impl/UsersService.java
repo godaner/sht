@@ -1,21 +1,16 @@
 ﻿package com.sht.users.service.impl;
 
-import java.awt.image.RenderedImage;
-import java.io.File;
-import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sht.mapper.UsersMapper;
+import com.sht.po.Users;
 import com.sht.users.mapper.CustomUsersMapper;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
-import com.sht.util.Static.CONFIG;
 /**
  * Title:UsersService
  * <p>
@@ -164,6 +159,12 @@ public class UsersService extends UBaseService implements UsersServiceI {
 			
 		}
 		
+	}
+
+	@Override
+	public Users selectUserById(String id) throws Exception {
+		
+		return usersMapper.selectByPrimaryKey(id);
 	}
 
 }

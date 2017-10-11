@@ -504,19 +504,60 @@ article{
     margin-top: 10px;
 }
 
+
+
+.comment-content>ul>li>div{
+    display: inline-block;
+    position: relative;
+    /* margin-top: 5px; */
+    text-align:left;
+
+}
+.comment-content>ul>li>div>span,.reply-content>span{
+    display: inline-block;
+    color:grey;
+    position: relative;
+    width:100%;
+    text-align:left;
+}
+
+.comment-content>ul>li>div:nth-of-type(2)>span:nth-of-type(1){
+
+	font-size:17px;
+	color:black;
+	margin-bottom:5px;
+}
+.comment-content>ul>li>div:nth-of-type(2)>span:nth-of-type(2){
+   font-size:13px;
+   color:grey;
+}
+
 .comment-content>ul>li{
     display: block;
     position: relative;
-    height: 50px;
-    /*border: 1px solid red;*/
     border-top: 1px dotted grey;
+    background-color:white;
 }
-.comment-content>ul>li>div:first-of-type{
-	display:block;
-	position: absolute;
-	right:30px;
-    top:10px;
+.comment-content>ul>li>div:first-of-type,.second-replay{
+	display:inline-block;
+	border-right:1px solid grey;
+	padding-right:20px;
+	position: relative;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top: 5px;
+	
 }
+
+
+.comment-content>ul>li>div:first-of-type>img,.second-replay>img{
+    display: inline-block;
+    position: relative;
+   	border:1px solid black;
+    height: 30px;
+    width: 30px; 
+
+
 .comment-content>ul>li>div:first-of-type>img{
     display: inline-block;
     position: relative;
@@ -527,16 +568,35 @@ article{
     
 }
 
-.comment-content>ul>li>div:first-of-type>span{
-	display: inline-block;
-    position: relative;
-    border:1px solid red;
+
+
 }
 
-.comment-content>ul>li>div{
-    display: inline-block;
+.comment-content>ul>li>div:first-of-type>span,.second-replay>span{
+	display: block;
     position: relative;
-    /* border: 1px solid red; */
+
+    line-height:30px;
+    text-align:left;
+	padding-left:5px;
+
+}
+
+.comment-container>li>a,.reply-content>a{
+	margin-left:30px;
+
+}
+.comment-content>p,.reply{
+	display:inline-block;
+}
+
+.reply-second{
+	margin-top:30px;
+	margin-left:100px;
+	border:1px solid #c8c8ff;
+	display:block;
+	position:relative;
+
     margin-top: 5px;
     text-align:left;
     /* width:60%; */
@@ -565,9 +625,17 @@ article{
 .comment-container>li>a{
 	margin-left:30px;
 
+
 }
-.comment-content>p,.reply{
+
+
+
+/* .reply-content{
 	display:inline-block;
+	
+} */
+.reply-content>span{
+	display:block;
 }
 .reply{
 	color:grey;
@@ -577,7 +645,7 @@ article{
 .comment-content>textarea{
 	margin-top:10px;
 }
-#submit{
+#submit,.reply-submit{
 	width:100px;
 	height:30px;
 	cursor:pointer;
@@ -585,6 +653,8 @@ article{
 	background-color: gold;
 	border-radius:5px;
 }
+
+
 
 
 /*footer css*/

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/16.
  */
 
@@ -84,8 +84,9 @@ $(function() {
 
 	var rotationEvent;
 	function splitData(imgSrc){
-		for(var i = 0 ; i < imgSrc.length ; i ++){
+		for(var i = 0 ; i < imgSrc.length ; i++){
 			
+
 			var li = $("<li><img src=''/></li>");
 			
 			
@@ -458,30 +459,73 @@ $(function() {
 			
 			console.log(headImg);
 			var li = $("<li></li>");
-			var userDiv = $("<div><span>"+item['username']+"</span></div>");
-			var img = $("<img style='border-radius:50%' src='"+headImg+"'/>");
+
+			
+			var userDiv = $("<div></div>");
+			var username = $("<span>"+item['username']+"</span>");
+			var img = $("<img style='border-radius:50%;' src='"+headImg+"'/>");
+			
 			userDiv.append(img);
+			userDiv.append(username);
+
 			var reply = "";
 
-			if(item['message'] != "" && item['message'] != null)
-				reply = "回复"+item['recivername']+":";
-			else
-				reply = "评论内容:";
+			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'-'+item['recivername']+'">回复</a>');
+
+			//var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
 			
-			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
-			
-			div = $("<div><span>"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
-			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
+			//div = $("<div><span>"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+			//var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
+
 
 			a.on('click',addComments);
+
+
+			if(item['message'] != "" && item['message'] != null	|| item['message'] != undefined){
+
+				reply = "回复&nbsp;&nbsp;"+item['recivername']+":&nbsp;&nbsp;";
+				
+				var div = $("<div class='reply-content'></div>");
+				
+				var span = $("<span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span>");
+				
+				var uDiv = $("<div class='second-replay'></div>").append(img).append(username);
+
+				
+				div.css("margin-left","100px");
+				div.css("margin-top","30px");
+				div.css("border","1px solid red");
+				
+				div.append(uDiv);
+				userDiv.attr('class','second-reply');
+				
+				div.find("img").css("width","30px");
+				div.find("img").css("height","30px");
+				
+				div.append(span);
+				div.append(a);
+				
+				container.children().find("[name='"+item['message']+"']").append(userDiv);
+				container.children().find("[name='"+item['message']+"']").append(div);
+				
+			}else{
+				reply = "";
+				div = $("<div><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+				li.append(userDiv);
+				
+				li.append(div);
+				
+				li.append(a);
+				
+				container.append(li);
+			}
 			
-			li.append(userDiv);
 			
-			li.append(div);
+			//li.append(userDiv);
+
 			
-			li.append(a);
 			
-			container.append(li);
+			
 			
 		})
 	}
@@ -490,41 +534,75 @@ $(function() {
 		//留言id
 		var messageId = $(this).attr('name');
 		//用户名
-		var username = $(this).attr('value');
+		var username = $(this).attr('value').split('-')[0];
+		//接收评论的用户名
+		var recivername =$(this).attr('value').split('-')[1];
 		//评论的用户id
 		var users = $(this).attr('title');
 		//此时登录的用户id
 		var usersId = $('#onlineUser').val();
 		
+		var currentUserName = $('#onlineUserName').val();
 		if(users.trim() == usersId.trim()){
 			alert("不能回复自己的评论！");
 			return false;
 		}
 			
-		$('.reply').html("回复:"+username);
+		var li = $(this).parent();
+		var textarea;
+		if(recivername != undefined && currentUserName != " ")
+			textarea = $("<textarea class='reply-second' rows='2' cols='100'></textarea>");
+		else if(currentUserName == " "){
+			alert("登录后才能回复！")
+			return false;
+		}
+			
+		var button = $("<input type='button' class='reply-submit' value='提交回复' name='"+messageId+"'/>");
 		
-		$('.reply').attr('name',messageId);
-		$('.comment-content>textarea').focus();
+		textarea.val(currentUserName+"回复"+username+":");
+		
+		button.on("click",submitReplyInfo);
+		
+		li.append(textarea);
+		
+		li.append(button);
+		
 		
 	}
-	
+	function submitReplyInfo(){
+		var info = $(this).prev().val();
+		
+		var infos = info.split(':');
+		
+		if(infos[1] == "" || infos[1] == null){
+			alert("请填写回复内容");
+			return false;
+		}
+		var usersId = $('#onlineUser').val();
+		var message = $(this).attr('name');
+		insertMsgData(info,usersId,message,id);
+		
+		$('.reply-second').remove();
+		$('.reply-submit').remove();
+	}
 	$('.submit').click(function(){
 		var text = $('#comment-content').val();
 		var users = $('#onlineUser').val();
-		var message = $('.reply').attr('name');
+//		var message = $('.reply').attr('name');
 
-		if(message == null)
-			message = "";
+//		if(message == null)
+//			message = "";
 		
-		if(users == null || users == " "){
-			alert("请先登陆，登陆后才可评论!");
-			return false;
-		}else if(text == "" || text == null){
+//		if(users == null || users == " "){
+//			alert("请先登陆，登陆后才可评论!");
+//			return false;
+//		}else 
+			if(text == "" || text == null){
 			alert("请输入评论内容");
 			return false;
 		}
 			
-		insertMsgData(text,users,message,id);
+		insertMsgData(text,users,null,id);
 	});
 	function insertMsgData(text,users,message,id){
 		url = "text="+text+

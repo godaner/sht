@@ -1,9 +1,6 @@
 package com.sht.users.service;
 
-import java.awt.image.RenderedImage;
-import java.io.File;
-import java.util.List;
-
+import com.sht.po.Users;
 import com.sht.users.po.CustomUsers;
 
 /**
@@ -91,5 +88,19 @@ public interface UsersServiceI {
 	 * @throws Exception 
 	 */
 	public void changePasswordByObj(CustomUsers po) throws Exception;
+
+	/**
+	  * Title:
+	  * <p>
+	  * Description:selectUserById
+	  * <p>
+	  * @author Kor_Zhang
+	  * @date 2017年10月11日 下午2:21:22
+	  * @version 1.0
+	  * @param id
+	  * @return
+	  * @throws Exception
+	  */
+	public Users selectUserById(String id) throws Exception;
 
 }

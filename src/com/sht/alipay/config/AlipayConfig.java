@@ -3,6 +3,9 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.sht.util.Static.CONFIG;
+import com.sht.util.Util;
+
 /* *
  *类名：AlipayConfig
  *功能：基础配置类
@@ -16,7 +19,7 @@ import java.io.IOException;
 public class AlipayConfig {
 	
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-	private static String url = "http://bp59ph.natappfree.cc";
+	private static String url = Util.getValue(CONFIG.FIELD_ALIPAY_CONFIG_URL).toString();
 	// 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
 	public static String app_id = "2016081500253717";
 	
