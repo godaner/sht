@@ -118,16 +118,16 @@ public class GGoodsService extends GBaseService implements GoodsServiceI {
 		goodsMapper.insert(goods);
 
 		//向商品类型表写入数据
-//		GGoodsClazzs goodsClazzs = new GGoodsClazzs();
-//		
-//		goodsClazzs.setId(uuid());
-//		
-//		goodsClazzs.setGoods(goodsId);
-//		
-//		goodsClazzs.setClazz(goods.getClazz());
-//		
-//		
-//		goodsClazzsMapper.insert(goodsClazzs);
+		GGoodsClazzs goodsClazzs = new GGoodsClazzs();
+		
+		goodsClazzs.setId(uuid());
+		
+		goodsClazzs.setGoods(goodsId);
+		
+		goodsClazzs.setClazz(goods.getClazz());
+		
+		
+		goodsClazzsMapper.insert(goodsClazzs);
 		
 		//修改总类别数量
 		
