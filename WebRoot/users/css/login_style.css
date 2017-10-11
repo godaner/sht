@@ -1,4 +1,4 @@
-/* 登陆框 */
+/* 鐧婚檰妗� */
 .login_box{
 	
 	width: 350px;
@@ -8,8 +8,9 @@
 	background-color:white;
 	position: absolute;
   	z-index:999;
-  	left:35%;
-  	top:25%;
+  	left:37%;
+  	top:10%;
+  	
 }
 
 .login_close{
@@ -43,7 +44,7 @@
 
 
 
-/*登陆的标题*/
+/*鐧婚檰鐨勬爣棰�*/
 .login_title{
 	width: 100%;
 	height: 8%;
@@ -53,7 +54,7 @@
 	font-size: 19px;
 	letter-spacing:3px;
 }
-/* 登陆错误信息 */
+/* 鐧婚檰閿欒淇℃伅 */
 .login_msg{
 	width:80%;
 	height:5%;
@@ -65,7 +66,7 @@
 	font-size:15px;
 	border-radius:5px;
 }
-/*登陆的输入框*/
+/*鐧婚檰鐨勮緭鍏ユ*/
 .login_input input{
 	width: 70%;
 	margin-left: 10%;
@@ -88,7 +89,7 @@
 	
 }
 
-/*登陆按钮*/
+/*鐧婚檰鎸夐挳*/
 .login_button{
 	margin-left:5% ;
 	background-color: rgb(255,219,68);
@@ -116,7 +117,7 @@
 	color: gray;
 }
 
-/*注册按钮*/
+/*娉ㄥ唽鎸夐挳*/
 .register_a{
 	border-radius:5px;
 	margin:6% auto;

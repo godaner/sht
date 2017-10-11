@@ -330,7 +330,7 @@ $(function () {
 			
 			console.log("headimg"+headImg);
 			
-			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg="+headImg;
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?t="+new Date().getTime()+"&size=30&headimg="+headImg;
 			
 			var li =$("<li></li>");
 

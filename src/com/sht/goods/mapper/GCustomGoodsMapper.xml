@@ -78,7 +78,7 @@
 		SELECT U0.ID AS USERID,U0.HEADIMG AS
 		HEADIMG,U0.USERNAME AS USERNAME,G0.*,GETREGIONBYBASEID(g0.region) AS
 		ADDR,getGoodsMainImgPath(G0.ID) AS PATH,getGoodsMessageNum(G0.ID) AS
-		MSGNUM,rownum
+		MSGNUM,getclazzsbygoodsid(g0.id) as clazz
 		FROM USERS U0,GOODS G0
 		WHERE G0.OWNER = U0.ID and g0.id =#{value}
 	</select>

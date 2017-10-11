@@ -82,7 +82,7 @@ $(function() {
 		}
 	});
 
-	
+	var rotationEvent;
 	function splitData(imgSrc){
 		for(var i = 0 ; i < imgSrc.length ; i ++){
 			
@@ -90,7 +90,6 @@ $(function() {
 			
 			
 			li.find('img').attr('src', url_30 + imgSrc[i]);
-			
 			if(imgSrc.length > 1){
 				
 				li.hover(function(){
@@ -98,13 +97,14 @@ $(function() {
 				},function(){
 					mouseLeaved($(this));
 				});
+				rotationEvent = setTimeout(rotation, 2000);
 			}
 			
 			$('#rotation-item').append(li);
 		}
 		
 	}
-	var rotationEvent;
+	
 	var rotationIndex = 0;
 	
 	
@@ -125,9 +125,11 @@ $(function() {
 	}
 
 	$('.content-left>img').hover(function() {
-		clearTimeout(rotationEvent);
+		if(imgSrc > 1)
+			clearTimeout(rotationEvent);
 	}, function() {
-		rotation();
+		if(imgSrc > 1)
+			rotation();
 	});
 
 	function rotation() {
@@ -143,10 +145,10 @@ $(function() {
 
 		rotationEvent = setTimeout(rotation, 2000);
 	}
-	rotationEvent = setTimeout(rotation, 2000);
+	
 	function restoreBorder() {
 		$('#rotation-item li').css({
-			'border' : '1px solid gold'
+			'border' : '2px solid black'
 		});
 	}
 
@@ -456,7 +458,9 @@ $(function() {
 			
 			console.log(headImg);
 			var li = $("<li></li>");
-			var img = $("<img src='"+headImg+"'/>");
+			var userDiv = $("<div><span>"+item['username']+"</span></div>");
+			var img = $("<img style='border-radius:50%' src='"+headImg+"'/>");
+			userDiv.append(img);
 			var reply = "";
 
 			if(item['message'] != "" && item['message'] != null)
@@ -465,11 +469,13 @@ $(function() {
 				reply = "评论内容:";
 			
 			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+			
+			div = $("<div><span>"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
 			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
 
 			a.on('click',addComments);
 			
-			li.append(img);
+			li.append(userDiv);
 			
 			li.append(div);
 			
@@ -591,7 +597,9 @@ $(function() {
 					alert("购买失败");
 				else if(data == 3)
 					alert("余额不足,请先充值");
-				else{
+				else if(data == 4){
+					alert("该商品已被购买，不能重复购买");
+				}else{
 					alert("购买成功!");
 					location.href=baseUrl + "/goods/view/index.jsp";
 				}

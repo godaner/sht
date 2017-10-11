@@ -11,6 +11,7 @@
     <script type="text/javascript" src="${baseUrl}/goods/js/jquery-1.11.3.js"></script>
     <script src="${baseUrl }/goods/js/goodsInfoDetail.js"></script>
     <link href="${baseUrl }/goods/css/goodsInfoDetail.css" rel="stylesheet">
+    <link rel="stylesheet" href="${baseUrl }/goods/plugin/css/swipebox.css">
 </head>
 <body>
 <jsp:include page="commonTitle.jsp" flush="false" />
@@ -61,16 +62,18 @@
         </ul>
 
     </div>
-
+	<script src="${baseUrl }/goods/plugin/js/jquery-2.1.0.min.js"></script>
+	<script src="${baseUrl }/goods/plugin/js/jquery.swipebox.min.js"></script>
     <div class="content">
         <div class="content-left">
-        	
-            <img src="${baseUrl }/common/goods_getGoodsImg.action?size=30&imgName=${sessionScope.goodsDetailInfo.path}"/>
+       
+            	<img src="${baseUrl }/common/goods_getGoodsImg.action?size=30&imgName=${sessionScope.goodsDetailInfo.path}"/>
+
             <ul id="rotation-item">
             
             </ul>
         </div>
-
+		
         <div class="content-right">
         	<p class="content-right-title">${sessionScope.goodsDetailInfo.title}</p>
             <p class="content-right-description" title="${sessionScope.goodsDetailInfo.description}">${sessionScope.goodsDetailInfo.description}</p>
@@ -81,6 +84,9 @@
             </p>
 
             <p class="old-price">原&nbsp;&nbsp;&nbsp;&nbsp;价&nbsp;:&nbsp;&nbsp;￥${sessionScope.goodsDetailInfo.price}</p>
+            
+            <p class="old-price">类&nbsp;&nbsp;&nbsp;&nbsp;型&nbsp;:&nbsp;&nbsp;${sessionScope.goodsDetailInfo.clazz}</p>
+            
             <hr/>
             <p class="state">成色&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.condition}成新</p>
 
@@ -101,8 +107,9 @@
                 </div>
                 <div class="clear"></div>
             </div>
-
-            <input type="button" value="立&nbsp;即&nbsp;购&nbsp;买" id="buy"/>
+			<c:if test="${sessionScope.goodsDetailInfo.status  == '0'}">
+            	<input type="button" value="立&nbsp;即&nbsp;购&nbsp;买" id="buy"/>
+            </c:if>
             <br/>
            
         </div>
