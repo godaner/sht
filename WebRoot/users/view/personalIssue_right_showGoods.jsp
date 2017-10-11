@@ -216,7 +216,7 @@ function showGoodsdetail(id){
 	    	
 	    	h+=" <i>商品详情</i><hr/><div style='float:left;border-right:1px solid grey;'><lable>标题:<input type='text' value='"+data['title']+"' id='title'/></lable><br/>";
 	    	h+="<lable>介绍:<input type='text' value='"+data['description']+"' id='description'/></lable><br/><lable>现价:<input type='text' value='"+data['sprice']+"' id='sprice'/></lable><br/>";
-	    	h+="<lable>原价:<input type='text' value='"+data['price']+"' id='price'/></lable><br/><lable>成色:<input type='text' value='"+data['condition']+"' id='condition'/></lable><br/></div>";
+	    	h+="<lable>原价:<input type='text' value='"+data['price']+"' id='price'/></lable><br/><lable>成色:<select id='condition'><option value ='"+data['condition']+"'>"+data['condition']+"</option><option  value ='1'>1</option><option  value='2'>2</option><option  value='3'>3</option><option  value='4'>4</option><option  value='5'>5</option><option  value='6'>6</option><option  value='7'>7</option><option value='8'>8</option><option  value='9'>9</option></select></lable><br/></div>";
 	    	h+="<div style='float:left;margin-top:10px;'><p>状态:"+status+"</p><p>浏览次数:"+data['browsenumber']+"</p><p>创建时间:"+data['createtime']+"</p><p>最后更新时间:"+data['lastupdatetime']+"</p></div>";
 	    	$(".detail").html(h);
 	    	h="";
@@ -311,9 +311,9 @@ function showList(status){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','2');>发货</a></td></tr></tbody></table></div>";
 	    		}else if(status=="申请退款"){
 	    			if(goods['refusereturnmoneybill']){
-	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a>(已上传凭证)</td></tr></tbody></table></div>";
+	    			h+="<td class='operating'><a href='#'>(已上传凭证)</a></td></tr></tbody></table></div>";
 	    			}else{
-	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";	
+	    			h+="<td class='operating'><a href='#'>(未上传凭证)</a></td></tr></tbody></table></div>";	
 	    			}
 	    		}else if(status=="退款成功"){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>重新上架</a></td></tr></tbody></table></div>";

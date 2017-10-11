@@ -205,7 +205,7 @@ function showList(status){
 		    				h+="<td class='operating'>已上传凭证</td></tr></tbody></table></div>";
 		    			}
 		    		}else{
-		    			h+="<td class='operating'><a href='#'>前往评价</a></td></tr></tbody></table></div>";
+		    			h+="<td class='operating'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"'>前往评价</a></td></tr></tbody></table></div>";
 		    		}
 		    		h+="<br/><br/>";
 	    		}
@@ -275,7 +275,7 @@ function searchUGoods(){
 			    		}else if(status=="申请退款"){
 			    			h+="<td class='operating'><form action='"+baseUrl+"/users/personalImgUpload.action' method='post' enctype='multipart/form-data'><input type='file' name='fiile'><button id='save_btn' type='submit'>上传凭证</button></form></a></td></tr></tbody></table></div>";
 			    		}else{
-			    			h+="<td class='operating'><a href='#'>前往评价</a></td></tr></tbody></table></div>";
+			    			h+="<td class='operating'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"'>前往评价</a></td></tr></tbody></table></div>";
 			    		}
 			    		h+="<br/><br/>";
 		    		}
