@@ -11,6 +11,7 @@ import com.sht.mapper.GoodsMapper;
 import com.sht.users.mapper.UGoodsMapper;
 import com.sht.users.po.UGoods;
 import com.sht.users.service.UGoodsServiceI;
+import com.sht.util.Static.CONFIG;
 @Service
 public class UGoodsService extends UBaseService implements UGoodsServiceI {
 
@@ -161,6 +162,7 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 
 @Override
 public void goodsCheckImgUpload(UGoods po) {
+
 	 
 	 String savePath = getValue(CONFIG.FILED_SRC_RETURN_MONEY_BILL).toString();
 	 

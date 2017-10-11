@@ -31,7 +31,7 @@ $(function(){
 function showregister(){
 	$(".register_box").show();
 	showCover();//遮罩层
-	
+
 }
 /*关闭注册框*/
 function closeregister(){
