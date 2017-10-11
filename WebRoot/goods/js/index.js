@@ -286,7 +286,6 @@ $(function () {
 	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice,clazzs){
 		console.log("minPrice:"+minPrice);
 		console.log("maxPrice:"+maxPrice);
-		
 		$('.trading_item_info>ul').empty();//清除容器中的所有数据
 		var url ="minLine="+min+
 				  "&region="+region +
@@ -343,7 +342,7 @@ $(function () {
 
 					+"	href='javascript:void(0)'>"+item['username']+"</a>");
 			
-		
+			console.log(item['username']);
 			
 			
 			
@@ -359,10 +358,10 @@ $(function () {
 			var price = $("<span>￥<span>"+item['sprice']+"</span></span> <span>"+item['addr']+"</span>");
 			
 			priceContent.append(price);
-			
-//			if(description.length >15)
-//				description = description.substring(0,14) + "...";
-			
+
+			if(description.length >15)
+				description = description.substring(0,15) + "...";
+
 				
 			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description'  title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");

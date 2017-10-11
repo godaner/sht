@@ -8,10 +8,9 @@ import java.util.UUID;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import antlr.StringUtils;
-
 import com.alipay.api.internal.util.AlipaySignature;
 import com.sht.alipay.config.AlipayConfig;
+import com.sht.po.Users;
 import com.sht.users.po.CustomUsers;
 import com.sht.users.service.UsersServiceI;
 
@@ -101,6 +100,8 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			
 			String code2 = po.getCode();
 			
+			eject(code1 == null,"验证码错误");
+			
 			eject(!code2.toLowerCase().equals(code1.toLowerCase()), "验证码错误");
 			
 			service.regist(po);
@@ -110,8 +111,12 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			//http://localhost:80/sht
 			String webaddr = getWebAddr();
 			
+			
+			//储存验证信息
+			setSessionAttr(po.getId(), uuid);
+			
 			//String conetnt = "<a href='"+webaddr+"/users/verifyEmail.action?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
-			String conetnt = "<a href='"+webaddr+"/users/view/backtoindex.jsp?email="+po.getEmail()+"&code="+uuid+"'>请点击这里激活</a>";
+			String conetnt = "<a href='"+webaddr+"/users/activityUser.action?id="+po.getId()+"&code="+uuid+"'>请点击这里激活</a>";
 			
 			email.sendMessage(po.getEmail(), "二手交易市场邮箱验证", conetnt);
 			
@@ -126,6 +131,35 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			//返回一个json的数据
 			writeJSON(po);
 			po.setMsg(null);
+	}
+	
+	
+	
+	/**
+	  * Title:
+	  * <p>
+	  * Description:激活邮箱验证用户
+	  * <p>
+	  * @author Kor_Zhang
+	  * @date 2017年10月11日 下午2:14:13
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	  */
+	public String activityUser() throws Exception{
+		
+		String c = getSessionAttr(po.getId());
+		if(c != null && c.equals(po.getCode())){
+			
+			po.setStatus(USERS_STATUS.ACTIVITY);
+			
+			service.updateByPrimaryKeySelective(po);
+
+			Users u = service.selectUserById(po.getId());
+			
+			setSessionAttr(FILED_ONLINE_USER,u );
+		}
+		return "fIndex";
 	}
 	/**
 	 * Title:logout
@@ -146,7 +180,7 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 		
 		setRequestAttr(FIELD_REQUEST_RETURN_MSG, "注销成功");
 		
-		return "fLogin";
+		return "rLogin";
 	}
 	
 	/**

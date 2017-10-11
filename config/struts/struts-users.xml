@@ -7,8 +7,8 @@
 	<package namespace="/users" name="users-package" extends="base-package">
 		<!-- 全局result配置 -->
 		<global-results>
-			<result name="rIndex" type="redirect">/users/view/index.jsp</result>
-			<result name="fIndex">/users/view/index.jsp</result>
+			<result name="rIndex" type="redirect">/goods/view/index.jsp</result>
+			<result name="fIndex">/goods/view/index.jsp</result>
 			
 			<result name="rLogin" type="redirect">/users/view/login.jsp</result>
 			<result name="fLogin">/goods/view/index.jsp</result>
