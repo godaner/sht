@@ -58,6 +58,7 @@
         <li >
             <a href="javascript:closeregister();showlogin();" >请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:closelogin();showregister();" >注册</a>
         	<input type="hidden" value=" " id="onlineUser"/>
+        	<input type="hidden" value=" " id="onlineUserName"/>
         </li>
 		</c:if>
 		
@@ -68,6 +69,7 @@
 	
 		 	</li>
 		 	<input type="hidden" value="${sessionScope.onlineUser.id} " id="onlineUser"/>
+		 	<input type="hidden" value="${sessionScope.onlineUser.username} " id="onlineUserName"/>
 		 </c:if>
     </ul>
 </nav>
