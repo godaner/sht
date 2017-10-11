@@ -1,12 +1,13 @@
 package com.sht.users.service.impl;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sht.mapper.GoodsMapper;
-import com.sht.po.Goods;
 import com.sht.users.mapper.UGoodsMapper;
 import com.sht.users.po.UGoods;
 import com.sht.users.service.UGoodsServiceI;
@@ -70,6 +71,8 @@ public void updateGoodsByidAndStatus(UGoods po) {
 
 @Override
 public void UpdateUGoodsById(UGoods po) {
+	
+	po.setLastupdatetime(new Timestamp(new Date().getTime()));
 
 	UGoodsMapper.UpdateUGoodsById(po);
 	
@@ -159,16 +162,13 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 
 @Override
 public void goodsCheckImgUpload(UGoods po) {
-	
-	 String versions = getValue(CONFIG.FILED_GOODS_IMGS_SIZES).toString();
+
 	 
 	 String savePath = getValue(CONFIG.FILED_SRC_RETURN_MONEY_BILL).toString();
 	 
-//	 String fileName = po.getId()+ getFileNameExt(po.getFiile().getName());
-	
 	 String fileName = po.getId()+".jpg";
 	 
-	 writeFileWithCompress(po.getFiile(), versions, savePath, fileName);
+	 writeFileToDisk(po.getFiile(), savePath, fileName);
 	 
 	 po.setRefusereturnmoneybill(fileName);
 	 

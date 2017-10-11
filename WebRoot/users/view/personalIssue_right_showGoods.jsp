@@ -26,27 +26,104 @@
 			<a href="javascript:void(0)" onclick="showList('-7')"style="width:80px;height:35px;margin-top:35px;"><i style="position:absolute;top:20px;left:815px;">未通过审核</i></a> 
       </div></div>
 			<hr/>
+			
+
 			<!-- 搜索框 -->
-		<div class="search">
+		<div class="search iteam-warp">
 			<input type="text" placeholder="请输入商品标题" onchange="searchUGoods();" id="search_input"/> <button onclick="searchUGoods();">搜索</button>
 			</div> 
+			
+		
+		
 		<!-- 上下翻页按钮 -->
 		<div class="turnPage"></div>
+		
+		</div>	
+		
 		<!-- 已发布列表 -->
 		<div class="list">
 		</div>
+
 		
-		
+		<!-- 详情修改 -->
 		</div>
 		<!-- 详情修改 -->
 		<div class="detail">
 		
-		</div>
+		<div class="detail_box" style="display:none">
+		<div class="detail"></div>
 		<div class="UpdateUGoods"></div>
+		</div>
+		
+	
+	
 		<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 		<input type="hidden" value="${onlineUser.id}" id="userid"/>
 </body>
 
+<style>
+.detail_box{
+	border:1px dotted  grey;
+	height:400px;
+	border-radius:10px;
+	width:800px;
+}
+.detail lable{
+	margin-left:10px;
+}
+.detail input{
+	width:350px;
+	height:25px;
+	margin:10px;
+	border-style: none ;
+	border:1px solid grey;	
+	border-radius:5px;
+}
+.detail i{
+	text-align: center;
+	color:grey;
+	font-size:20px;
+	margin-left:40%;
+}
+.detail p{
+	padding:15px;	
+}
+.detail{
+	font-size:15px;
+}
+
+.UpdateUGoods{
+	margin-top: 35%;
+	margin-left:35%;
+}
+.UpdateUGoods button{
+	border-style:none;
+	margin:10px;
+	width:20%;
+	height:40px;
+	border-radius:10px;
+	background-color:rgb(255,219,68);
+	cursor: pointer;
+	font-size:15px;
+}
+
+	.search input{
+		margin-top:5px;
+		border-style:none;
+		width:400px;
+		height:20px;
+		border:1px solid grey;
+		border-radius:5px;
+	}
+	button{
+		width:80px;
+		height:25px;
+	}
+.search{
+	float:right;
+}
+
+</style>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
@@ -101,19 +178,22 @@ function getGoodscount(){
 	var  sprice = $("#sprice").val();
 	var  price = $("#price").val();
 	var  condition = $("#condition").val();
-	var  region = $("#region").val();
+	//var  region = $("#region").val();
 	$.ajax({
 		type : 'post',  //请求方式,get,post等
 	    dataType:'json',//response返回数据的格式
 	    async : true,  //同步请求  
 	    url : baseUrl+"/users/U_UpdateUGoodsById.action",  //需要访问的地址
-	    data :'id='+id+'&title='+title+'&description='+description+'&sprice='+sprice+'&price='+price+'&condition='+condition+'&region='+region,  //传递到后台的参数
+	    data :'id='+id+'&title='+title+'&description='+description+'&sprice='+sprice+'&price='+price+'&condition='+condition,  //传递到后台的参数
 	    success:function(data){
-	    	$(".detail").empty;
+	    	if(!data['msg']){
+	    	alert("修改成功");
+	    	$(".detail_box").hide();
 	    	showList();
+	    	}
 	    },error:function(){
-	    	$(".detail").empty;
-	    	showList();
+	    	$(".detail_box").hide();
+	    	
 	    }
 	})
 } 
@@ -131,15 +211,22 @@ function showGoodsdetail(id){
 	    data :'id='+id,  //传递到后台的参数
 	    success:function(data){
 	    	console.info(data);
-	    	$(".allList_show").empty();
-	    	//$(".turnPage").empty();
+        
+	    	//$(".allList_show").empty();
+        
+	    	$(".detail_box").show();
+	    	$(".allList_show").hide();
+	    	$(".list").empty();
 	    	var h = "";
 	    	status = showStatus(data['status']);
-	    	h+="标题<input type='text' value='"+data['title']+"' id='title'/>介绍<input type='text' value='"+data['description']+"' id='description'/><br/>现价<input type='text' value='"+data['sprice']+"' id='sprice'/>原价<input type='text' value='"+data['price']+"' id='price'/><br/>成色<input type='text' value='"+data['condition']+"' id='condition'/>";
-	    	h+="地区<input type='text' value='"+data['region']+"' id='region' /><p>状态:"+status+"</p><p>创建时间:"+data['createtime']+"</p><p>浏览次数:"+data['browsenumber']+"</p><p>最后更新时间:"+data['lastupdatetime']+"</p>";
+	    	
+	    	h+=" <i>商品详情</i><hr/><div style='float:left;border-right:1px solid grey;'><lable>标题:<input type='text' value='"+data['title']+"' id='title'/></lable><br/>";
+	    	h+="<lable>介绍:<input type='text' value='"+data['description']+"' id='description'/></lable><br/><lable>现价:<input type='text' value='"+data['sprice']+"' id='sprice'/></lable><br/>";
+	    	h+="<lable>原价:<input type='text' value='"+data['price']+"' id='price'/></lable><br/><lable>成色:<select id='condition'><option value ='"+data['condition']+"'>"+data['condition']+"</option><option  value ='1'>1</option><option  value='2'>2</option><option  value='3'>3</option><option  value='4'>4</option><option  value='5'>5</option><option  value='6'>6</option><option  value='7'>7</option><option value='8'>8</option><option  value='9'>9</option></select></lable><br/></div>";
+	    	h+="<div style='float:left;margin-top:10px;'><p>状态:"+status+"</p><p>浏览次数:"+data['browsenumber']+"</p><p>创建时间:"+data['createtime']+"</p><p>最后更新时间:"+data['lastupdatetime']+"</p></div>";
 	    	$(".detail").html(h);
 	    	h="";
-	    	h+="<button type='button' onclick=UpdateUGoodsById('"+id+"')>修改</button>";
+	    	h+="<button type='button' onclick=UpdateUGoodsById('"+id+"')>修改</button></div>";
 			h+="<button type='button' onclick='window.history.go(0)'>返回</button>";
 			$(".UpdateUGoods").html(h);
     		h="";
@@ -166,8 +253,6 @@ function updateGoodsByidAndStatus(id,statu){
 		});
 		
 	}
-
-	
 }
 
 
@@ -209,7 +294,7 @@ function showList(status){
 	    url : url,//需要访问的地址
 	    data :'PageTo='+PageTo+'&status='+status,  //传递到后台的参数
 	    success:function(data){
-	    	//console.info(data);
+	    	console.info(data);
 	    		var h = "";
 	    		var id = "";
 	    		for(var i =0;i<data.length;i++){
@@ -219,8 +304,10 @@ function showList(status){
 	    			
 	    		h+="<div class='Order_form_list'><table><thead><tr><td class='list_name_title0'>商品</td><td class='list_name_title1'>原 价(元 )</td><td class='list_name_title2'>现价(元)</td><td class='list_name_title5'>订单状态</td><td class='list_name_title6'>操作</td></tr></thead>";
 	    		h+="<tbody><tr class='Order_info'><td colspan='6' class='Order_form_time'><input name='' type='checkbox' class='checkbox'/>下单时间："+goods['createtime']+" | 订单号：暂无 <em></em></td></tr>";	
-	    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='#' class='product_img'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
-	    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+
+	    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='product_img' target='_parent'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
+	    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td style='text-decoration:line-through;'>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+
 	    		h+="<td class='split_line'><p style='color:#F30'>"+status+"</p></td>";	
 	    		if(status=="已完成订单"){
 	    			h+="<td class='operating'><a href=>查看评价</a></td></tr></tbody></table></div>";
@@ -231,10 +318,12 @@ function showList(status){
 	    		}else if(status=="待发货"){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','2');>发货</a></td></tr></tbody></table></div>";
 	    		}else if(status=="申请退款"){
-	    			if(goods['fiile']!=""||goods['fiile']!=null){
-	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";
+
+	    			if(goods['refusereturnmoneybill']){
+	    			h+="<td class='operating'><a href='#'>(已上传凭证)</a></td></tr></tbody></table></div>";
 	    			}else{
-	    				h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";	
+	    			h+="<td class='operating'><a href='#'>(未上传凭证)</a></td></tr></tbody></table></div>";	
+
 	    			}
 	    		}else if(status=="退款成功"){
 	    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>重新上架</a></td></tr></tbody></table></div>";
@@ -282,8 +371,10 @@ function searchUGoods(){
 	    			status = showStatus(goods['status']);
 	    			h+="<div class='Order_form_list'><table><thead><tr><td class='list_name_title0'>商品</td><td class='list_name_title1'>原 价(元 )</td><td class='list_name_title2'>现价(元)</td><td class='list_name_title5'>订单状态</td><td class='list_name_title6'>操作</td></tr></thead>";
 		    		h+="<tbody><tr class='Order_info'><td colspan='6' class='Order_form_time'><input name='' type='checkbox' class='checkbox'/>下单时间："+goods['createtime']+" | 订单号：暂无 <em></em></td></tr>";	
-		    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='#' class='product_img'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
-		    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+
+		    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='product_img' target='_parent'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
+		    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td style='text-decoration:line-through;'>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+
 		    		h+="<td class='split_line'><p style='color:#F30'>"+status+"</p></td>";	
 		    		if(status=="已完成订单"){
 		    			h+="<td class='operating'><a href=>查看评价</a></td></tr></tbody></table></div>";
@@ -294,7 +385,13 @@ function searchUGoods(){
 		    		}else if(status=="待发货"){
 		    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','2');>发货</a></td></tr></tbody></table></div>";
 		    		}else if(status=="申请退款"){
-		    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";
+
+		    			if(goods['refusereturnmoneybill']){
+		    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a>(已上传凭证)</td></tr></tbody></table></div>";
+		    			}else{
+		    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','-9');>同意退款</a></td></tr></tbody></table></div>";	
+		    			}
+
 		    		}else if(status=="退款成功"){
 		    			h+="<td class='operating'><a href=javascript:updateGoodsByidAndStatus('"+id+"','0');>重新上架</a></td></tr></tbody></table></div>";
 		    		}else if(status=="已发货"){
@@ -312,7 +409,7 @@ function searchUGoods(){
 	    		h="";
 	    		status="";
 		    },error:function(data){
-		    	alert("失败");
+		    	alert("非法输入");
 		    }
 		});
 	}

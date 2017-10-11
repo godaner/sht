@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/16.
  */
 
@@ -84,8 +84,9 @@ $(function() {
 
 	var rotationEvent;
 	function splitData(imgSrc){
-		for(var i = 0 ; i < imgSrc.length ; i ++){
+		for(var i = 0 ; i < imgSrc.length ; i++){
 			
+
 			var li = $("<li><img src=''/></li>");
 			
 			

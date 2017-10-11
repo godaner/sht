@@ -22,11 +22,11 @@
 </div>
 <!-- <button >上传</button> -->
 <div class="load">浏览</div>
-<form action="${baseUrl}/users/personalImgUpload.action" method="post" enctype="multipart/form-data">
-<input type="file" name="fiile" onchange="showPreview(this)" > 
+<form action="#" method="post" id="yyform" enctype="multipart/form-data">
+<input type="file" name="fiile" onchange="showPreview(this)"  id="yyimg"> 
 <button id="save_btn" type="submit">上传</button>
 </form>
-
+<input type="hidden" value="${baseUrl}" id="baseUrl"/>
 </body>
 
 <style type="text/css">
@@ -112,7 +112,37 @@ p{
 </style>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-form.js"></script>
 <script type="text/javascript">
+
+$("#save_btn").click(function () {
+	var baseUrl = $("#baseUrl").val();
+	var f = $("#yyimg")[0].files[0].size;
+    var options = {
+      url: baseUrl+"/users/personalImgUpload.action",
+      beforeSubmit:function(){
+    	  var FileExt=$("#yyimg").val().replace(/.+\./,"");   //正则表达式获取后缀
+    	  if(!$("#yyimg").val()){
+    		  alert("请先选择要上传的头像");
+    		  return false;
+    	  }else if(FileExt!="jpg"&&FileExt!="JPG"&&FileExt!="GIF"&&FileExt!="gif"&&FileExt!="PNG"&&FileExt!="png"){
+    		  alert("仅支持JPG | GIF | PNG图片文件");
+    		  return false;
+    	  }else if((f/1024)/1024>5){
+    		  alert("图片文件大小超过5M");
+    		  return false;
+    	  }
+    	  
+      },
+      success: function () {
+        alert("头像上传成功");
+        window.parent.location.reload();
+      }
+    };
+    $("#yyform").ajaxForm(options);
+  })
+
+
 
 function showPreview(source) {
 	$("#portrait").attr({
