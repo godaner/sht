@@ -39,12 +39,12 @@
 				<div class="control-group">
 					<label class="control-label">您的余额：</label>
 					<div class="input-append">
-						<i id="showMoney" style="font-size:16px;"></i>
+						<i id="showMoney" style="font-size:16px;"></i>&nbsp;元
 					</div>
 				</div>
 				<div class="control-group">
 					<div class="input-append">
-						<i style="color:grey;font-size:12px;">注意：本平台暂时只支持支付宝充值</i>
+						<i style="color:grey;font-size:12px;">支付宝充值存在延迟到账情况，可以刷新页面或重新登入以便查看余额</i>
 					</div>
 				</div>
 				<input class="recharge" type="submit" value="充值" style="position:absolute;top:160px;background-color:rgb(255,219,68);border:solid 1px rgb(255,219,68);border-radius:5px;font-size:16px;cursor: pointer;"/>

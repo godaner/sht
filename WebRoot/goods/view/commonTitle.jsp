@@ -115,6 +115,8 @@
 				<input type="button" onclick="register();"  class="register_button" value="注册二手交易市场"></input>
 			</div>
 		</div>
+		<!-- 注册框结束 -->
+		<!-- 遮罩层 -->
 		<div id="mask" class="mask"></div> 
 </body>
 </html>
