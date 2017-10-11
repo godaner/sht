@@ -83,18 +83,12 @@
     //获取头像
     $(function(){
 	  	 var headimg = $("#headimg").val();
-	  	 if(headimg!=""&&headimg!=null){
+	  	
 	  		 $("#personalImg").attr({
 	  			 "src":"http://localhost/sht/common/users_getUsersHeadImg.action?size=160&headimg="+headimg,
 	  			 "title":""
 	  		 });
-	  	 }else{
-	  		$("#personalImg").attr({
-	  			 "src":baseUrl+"/users/img/default_img.png",
-	  			 "title":"编辑资料"
-	  		 });
-	  	 }
-	  	 
+
 	   });
     
     

@@ -48,7 +48,7 @@
 	</delete>
 	
 	<update id="UpdateUGoodsById" parameterType="com.sht.users.po.UGoods">
-		UPDATE GOODS SET TITLE=#{title},DESCRIPTION=#{description},PRICE=#{price},SPRICE=#{sprice},CONDITION=#{condition},REGION=#{region} WHERE ID=#{id}	
+		UPDATE GOODS SET TITLE=#{title},DESCRIPTION=#{description},PRICE=#{price},SPRICE=#{sprice},CONDITION=#{condition},REGION=#{region},LASTUPDATETIME=#{lastupdatetime} WHERE ID=#{id}	
 	</update>
 	
 	<select id="getGoodsByIdAndStatus" parameterType="string" resultType="com.sht.users.po.UGoods">

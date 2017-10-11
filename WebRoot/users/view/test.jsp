@@ -9,9 +9,7 @@
 </head>
 <body>
 
-<img  src="http://localhost/sht/common/users_getUsersHeadImg.action?size=60&headimg=9"/>
 
-</body>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
