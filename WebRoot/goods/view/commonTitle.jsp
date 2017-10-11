@@ -11,11 +11,13 @@
     <link  href="goods/css/commonTitle.css" rel="stylesheet"/>
    <script type="text/javascript" src="goods/js/jquery-1.11.3.js"></script>
     <script src="goods/js/commonTitle.js" type="text/javascript"></script>
+    <script src="users/js/myCover.js" type="text/javascript"></script>
     
     <script type="text/javascript" src="users/js/login.js"></script>
 	<script type="text/javascript" src="users/js/register.js"></script>
 	<link rel="stylesheet" href="users/css/login_style.css">
 	<link rel="stylesheet" href="users/css/register_style.css">
+	<link rel="stylesheet" href="users/css/myCover.css">
 </head>
 <body>
 <input type="hidden" value="${baseUrl}" id="baseUrl"/>
@@ -113,5 +115,6 @@
 				<input type="button" onclick="register();"  class="register_button" value="注册二手交易市场"></input>
 			</div>
 		</div>
+		<div id="mask" class="mask"></div> 
 </body>
 </html>
