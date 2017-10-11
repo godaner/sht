@@ -62,7 +62,8 @@
         </ul>
 
     </div>
-
+	<script src="${baseUrl }/goods/plugin/js/jquery-2.1.0.min.js"></script>
+	<script src="${baseUrl }/goods/plugin/js/jquery.swipebox.min.js"></script>
     <div class="content">
         <div class="content-left">
        
