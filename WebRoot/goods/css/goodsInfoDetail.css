@@ -566,7 +566,7 @@ article{
 
 }
 
-.comment-container>li>a{
+.comment-container>li>a,.reply-content>a{
 	margin-left:30px;
 
 }
