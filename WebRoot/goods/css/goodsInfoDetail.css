@@ -173,7 +173,7 @@ article{
 }
 
 .content-left>ul>li:first-of-type{
-    border: 1px solid orangered;
+    border: 2px solid black;
 }
 .content-left>ul>li>img{
     width: 50px;
@@ -511,36 +511,60 @@ article{
     /*border: 1px solid red;*/
     border-top: 1px dotted grey;
 }
-
-.comment-content>ul>li>img{
+.comment-content>ul>li>div:first-of-type{
+	display:block;
+	position: absolute;
+	right:30px;
+    top:10px;
+}
+.comment-content>ul>li>div:first-of-type>img{
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    /*border: 1px solid red;*/
-    margin-right: 20px;
-    margin-left: 10px;
-    margin-top: -20px;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px; 
+    border:1px solid red;
+    
+}
+
+.comment-content>ul>li>div:first-of-type>span{
+	display: inline-block;
+    position: relative;
+    border:1px solid red;
 }
 
 .comment-content>ul>li>div{
     display: inline-block;
     position: relative;
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
     margin-top: 5px;
+    text-align:left;
+    /* width:60%; */
 }
 .comment-content>ul>li>div>span{
     display: inline-block;
+    color:grey;
     position: relative;
+   /*  border:1px solid black; */
+    width:100%;
+    text-align:left;
 }
 .comment-content>ul>li>div>span:nth-of-type(2){
-	margin-left:40px;
+	/* margin-left:40px; */
+	font-size:16px;
 }
-.comment-content>ul>li>div>span:last-of-type{
-	display:block;
-    color: grey;
+.comment-content>ul>li>div>span:nth-of-type(3){
+    /* color: grey;
     font-size: 13px;
+    display: block;
+    position: absolute;
+    margin-right:100px;
+    border:1px solid red; */
+    
+}
+.comment-container>li>a{
+	margin-left:30px;
+
 }
 .comment-content>p,.reply{
 	display:inline-block;
@@ -562,9 +586,7 @@ article{
 	border-radius:5px;
 }
 
-.comment-container>li>a{
-	margin-left:10px;
-}
+
 /*footer css*/
 body>footer{
     position: relative;
