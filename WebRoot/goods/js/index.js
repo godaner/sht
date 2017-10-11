@@ -286,7 +286,6 @@ $(function () {
 	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice,clazzs){
 		console.log("minPrice:"+minPrice);
 		console.log("maxPrice:"+maxPrice);
-		
 		$('.trading_item_info>ul').empty();//清除容器中的所有数据
 		var url ="minLine="+min+
 				  "&region="+region +
