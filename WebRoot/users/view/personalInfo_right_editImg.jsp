@@ -117,11 +117,19 @@ p{
 
 $("#save_btn").click(function () {
 	var baseUrl = $("#baseUrl").val();
+	var f = $("#yyimg")[0].files[0].size;
     var options = {
       url: baseUrl+"/users/personalImgUpload.action",
       beforeSubmit:function(){
+    	  var FileExt=$("#yyimg").val().replace(/.+\./,"");   //正则表达式获取后缀
     	  if(!$("#yyimg").val()){
     		  alert("请先选择要上传的头像");
+    		  return false;
+    	  }else if(FileExt!="jpg"&&FileExt!="JPG"&&FileExt!="GIF"&&FileExt!="gif"&&FileExt!="PNG"&&FileExt!="png"){
+    		  alert("仅支持JPG | GIF | PNG图片文件");
+    		  return false;
+    	  }else if((f/1024)/1024>5){
+    		  alert("图片文件大小超过5M");
     		  return false;
     	  }
     	  
