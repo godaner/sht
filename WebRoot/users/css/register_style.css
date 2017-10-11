@@ -7,8 +7,8 @@
 	background-color:white;
 	position: absolute;
   	z-index:998;
-  	left:35%;
-  	top:30%;
+	left:37%;
+  	top:10%;
 }
 
 .register_close{
@@ -44,7 +44,7 @@
 
 
 
-/*注册的标题*/
+/*娉ㄥ唽鐨勬爣棰�*/
 .register_title{
 	width: 100%;
 	height: 8%;
@@ -56,7 +56,7 @@
 }
 
 
-/*注册的输入框*/
+/*娉ㄥ唽鐨勮緭鍏ユ*/
 .register_input label{
 	font-size: 16px;
 	color:rgb(151,151,151);
@@ -73,11 +73,11 @@
 	margin-left: 13%;
 	border-radius:5px;
 }
-/*确认密码框*/
+/*纭瀵嗙爜妗�*/
 #sure_ps{
 	margin-left: 3%;
 }
-/*验证码框*/
+/*楠岃瘉鐮佹*/
 #code{
 	width: 20%;
 	margin-left: 7%;
@@ -92,7 +92,7 @@
 	position: relative;
 	top:10px;
 }
-/*协议书*/
+/*鍗忚涔�*/
 .descript_book{
 	margin: 5% auto;
 }
@@ -120,7 +120,7 @@
 	padding-left: 10%;
 }
 */
-/*注册按钮*/
+/*娉ㄥ唽鎸夐挳*/
 .register_button{
 	margin-left:5% ;
 	background-color: rgb(255,219,68);
@@ -147,7 +147,7 @@
 	font-size: 15px;
 	color: gray;
 }
-/* 注册错误信息 */
+/* 娉ㄥ唽閿欒淇℃伅 */
 .register_msg{
 	width:80%;
 	height:5%;

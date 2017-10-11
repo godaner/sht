@@ -97,6 +97,7 @@ public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 				
 			 String region = getRequest().getParameter("county");
 			 String condition = getRequest().getParameter("condition");
+			 
 			 po.setRegion(Double.valueOf(region));
 			 po.setCondition(Short.valueOf(condition));
 			 po.setClazz(getRequest().getParameter("clazzs"));
