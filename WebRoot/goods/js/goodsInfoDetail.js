@@ -706,7 +706,7 @@ $(function() {
 
 });
 
-function judgmentLogin(){
+function judgmentLogins(){
 	var onlineUser = $('#onlineUser').attr('value');
 	var baseUrl = $("#baseUrl").attr('value');
 
