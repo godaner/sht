@@ -3,12 +3,12 @@
 <mapper namespace="com.sht.users.mapper.UGoodsMapper">
 	<select id="getGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS NOT IN (-2,-5) ORDER BY CREATETIME DESC) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar} 
 	</select>
 	
 	<select id="getBuyGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS IN (1,2,-1,-8,-9) ORDER BY CREATETIME DESC) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar} 
 	</select>
 	
 	<select id="searchUGoodsBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
