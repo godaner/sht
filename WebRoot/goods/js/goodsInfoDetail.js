@@ -90,7 +90,7 @@ $(function() {
 			var li = $("<li><img src=''/></li>");
 			
 			
-			li.find('img').attr('src', url_30 + imgSrc[i]);
+			li.find('img').attr('src', url_200 + imgSrc[i]);
 			if(imgSrc.length > 1){
 				
 				li.hover(function(){
@@ -709,7 +709,6 @@ $(function() {
 function judgmentLogins(){
 	var onlineUser = $('#onlineUser').attr('value');
 	var baseUrl = $("#baseUrl").attr('value');
-
 	if(onlineUser == " "){
 		alert("请登录");
 	}else{
