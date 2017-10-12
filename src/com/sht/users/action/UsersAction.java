@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -156,8 +157,11 @@ public class UsersAction extends UBaseAction<CustomUsers,UsersServiceI> {
 			service.updateByPrimaryKeySelective(po);
 
 			Users u = service.selectUserById(po.getId());
+			CustomUsers cu  = new CustomUsers();
 			
-			setSessionAttr(FILED_ONLINE_USER,u );
+			BeanUtils.copyProperties(u, cu);
+			
+			setSessionAttr(FILED_ONLINE_USER,cu );
 		}
 		return "fIndex";
 	}
