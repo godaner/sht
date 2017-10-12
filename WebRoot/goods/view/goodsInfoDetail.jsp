@@ -67,7 +67,7 @@
     <div class="content">
         <div class="content-left">
        
-            	<img src="${baseUrl }/common/goods_getGoodsImg.action?size=30&imgName=${sessionScope.goodsDetailInfo.path}"/>
+            	<img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.path}"/>
 
             <ul id="rotation-item">
             
