@@ -67,7 +67,7 @@
     <div class="content">
         <div class="content-left">
        
-            	<img src="${baseUrl }/common/goods_getGoodsImg.action?size=30&imgName=${sessionScope.goodsDetailInfo.path}"/>
+            	<img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.path}"/>
 
             <ul id="rotation-item">
             
@@ -103,7 +103,7 @@
                		<select name="addr" id="addr">
                			<option value="0">--请选择--</option>
                		</select>
-               		<a href="javascript:judgmentLogin();">详情&nbsp;/&nbsp;修改</a>
+               		<a href="javascript:judgmentLogins();">详情&nbsp;/&nbsp;修改</a>
                 </div>
                 <div class="clear"></div>
             </div>
