@@ -103,7 +103,7 @@
                		<select name="addr" id="addr">
                			<option value="0">--请选择--</option>
                		</select>
-               		<a href="javascript:judgmentLogin();">详情&nbsp;/&nbsp;修改</a>
+               		<a href="javascript:judgmentLogins();">详情&nbsp;/&nbsp;修改</a>
                 </div>
                 <div class="clear"></div>
             </div>
