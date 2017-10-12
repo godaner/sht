@@ -502,6 +502,7 @@ article{
     position: relative;
     display: block;
     margin-top: 10px;
+    background-color:white;
 }
 
 
@@ -509,8 +510,9 @@ article{
 .comment-content>ul>li>div{
     display: inline-block;
     position: relative;
-    /* margin-top: 5px; */
+   
     text-align:left;
+    
 
 }
 .comment-content>ul>li>div>span,.reply-content>span{
@@ -557,20 +559,19 @@ article{
     height: 30px;
     width: 30px; 
 
-
+}
 .comment-content>ul>li>div:first-of-type>img{
     display: inline-block;
     position: relative;
     vertical-align: middle;
     height: 30px;
     width: 30px; 
-    border:1px solid red;
-    
+ 
 }
 
 
 
-}
+
 
 .comment-content>ul>li>div:first-of-type>span,.second-replay>span{
 	display: block;
@@ -582,8 +583,9 @@ article{
 
 }
 
-.comment-container>li>a,.reply-content>a{
+.comment-container>li>a{
 	margin-left:30px;
+
 
 }
 .comment-content>p,.reply{
@@ -630,10 +632,58 @@ article{
 
 
 
-/* .reply-content{
+.reply-content{
+	position:relative;
+	display:block;
+	margin-bottom:30px;
+	margin-left:100px;
+	margin-top:30px;
+
+}
+
+.reply-content>span{
 	display:inline-block;
+	position:relative;
+}
+
+.reply-content>span:nth-of-type(1){
+
+	width:auto;
+	margin-left:10px;
+}
+
+.reply-content>img{
+	display:inline-block;
+	position:relative;
+	vertical-align:middle;
+	width:30px;
+	height:30px;
 	
-} */
+}
+
+.reply-content>span:nth-of-type(2){
+
+	color:black;
+	margin-left:20px;
+	width:auto;
+}
+
+.reply-content>span:nth-of-type(3){
+
+	color:grey;
+	font-size:13px;
+	margin-left:30px;
+	width:auto;
+}
+
+.reply-content>a{
+	display:inline-block;
+	position:relative;
+	margin-left:30px;
+	width:auto;
+}
+
+
 .reply-content>span{
 	display:block;
 }
@@ -644,6 +694,8 @@ article{
 }
 .comment-content>textarea{
 	margin-top:10px;
+	border:1px solid #c8c8ff;
+	margin-left:10px;
 }
 #submit,.reply-submit{
 	width:100px;

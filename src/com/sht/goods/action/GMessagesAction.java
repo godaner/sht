@@ -32,7 +32,7 @@ public class GMessagesAction extends GBaseAction<GMessages, MessagesServiceI> {
 		int result = -1;
 		try {
 			String msgId = po.getMessage();
-			if (msgId == null || msgId.trim().isEmpty() ) {
+			if (msgId == null || msgId.trim().isEmpty()) {
 				po.setMessage(null);
 			}
 			

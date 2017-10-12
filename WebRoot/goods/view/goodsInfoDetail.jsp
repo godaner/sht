@@ -18,7 +18,7 @@
 <input type="hidden" value="${baseUrl}" id="baseUrl" />
 <input type="hidden" value="${sessionScope.goodsDetailInfo.id}" id="goodsId" />
 <input type="hidden" value="${sessionScope.goodsDetailInfo.msgNum}" id="msgnum" />
-
+<input type="hidden" value="${sessionScope.goodsDetailInfo.userId}" id="userid" />
 
 <article>
     <div class="head">
