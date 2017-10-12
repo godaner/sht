@@ -559,20 +559,19 @@ article{
     height: 30px;
     width: 30px; 
 
-
+}
 .comment-content>ul>li>div:first-of-type>img{
     display: inline-block;
     position: relative;
     vertical-align: middle;
     height: 30px;
     width: 30px; 
-    border:1px solid red;
-    
+ 
 }
 
 
 
-}
+
 
 .comment-content>ul>li>div:first-of-type>span,.second-replay>span{
 	display: block;
@@ -695,6 +694,8 @@ article{
 }
 .comment-content>textarea{
 	margin-top:10px;
+	border:1px solid #c8c8ff;
+	margin-left:10px;
 }
 #submit,.reply-submit{
 	width:100px;

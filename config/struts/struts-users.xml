@@ -10,7 +10,7 @@
 			<result name="rIndex" type="redirect">/goods/view/index.jsp</result>
 			<result name="fIndex">/goods/view/index.jsp</result>
 			
-			<result name="rLogin" type="redirect">/goods/view/login.jsp</result>
+			<result name="rLogin" type="redirect">/goods/view/index.jsp</result>
 			<result name="fLogin" type="redirect">/goods/view/index.jsp</result>
 			
 			<result name="fRegist">/users/view/regist.jsp</result>
