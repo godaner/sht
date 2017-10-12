@@ -46,9 +46,8 @@
 
 		
 		<!-- 详情修改 -->
-		</div>
-		<!-- 详情修改 -->
-		<div class="detail">
+		<!-- <div class="detail">
+		</div> -->
 		
 		<div class="detail_box" style="display:none">
 		<div class="detail"></div>
@@ -202,7 +201,9 @@ function getGoodscount(){
 
 
 //显示商品的详细信息
-function showGoodsdetail(id){
+function showGoodsdetail(id,status){
+	if(status==0||status==-6||status==-7||status==-3){
+	
 	$.ajax({
 		type : 'post',  //请求方式,get,post等
 	    dataType:'json',//response返回数据的格式
@@ -233,7 +234,10 @@ function showGoodsdetail(id){
 	    },error:function(){
 	    	alert("失败");
 	    }
-	})
+	});
+	}else{
+		alert("商品已出售，无法修改");
+	}
 }
 //删除单件商品
 function updateGoodsByidAndStatus(id,statu){
@@ -306,7 +310,7 @@ function showList(status){
 	    		h+="<tbody><tr class='Order_info'><td colspan='6' class='Order_form_time'><input name='' type='checkbox' class='checkbox'/>下单时间："+goods['createtime']+" | 订单号：暂无 <em></em></td></tr>";	
 
 	    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='product_img' target='_parent'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
-	    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td style='text-decoration:line-through;'>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+	    		h+="<a href=javascript:showGoodsdetail('"+id+"','"+goods['status']+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td style='text-decoration:line-through;'>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
 
 	    		h+="<td class='split_line'><p style='color:#F30'>"+status+"</p></td>";	
 	    		if(status=="已完成订单"){
@@ -373,7 +377,7 @@ function searchUGoods(){
 		    		h+="<tbody><tr class='Order_info'><td colspan='6' class='Order_form_time'><input name='' type='checkbox' class='checkbox'/>下单时间："+goods['createtime']+" | 订单号：暂无 <em></em></td></tr>";	
 
 		    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='product_img' target='_parent'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
-		    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td style='text-decoration:line-through;'>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+		    		h+="<a href=javascript:showGoodsdetail('"+id+"','"+goods['status']+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td style='text-decoration:line-through;'>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
 
 		    		h+="<td class='split_line'><p style='color:#F30'>"+status+"</p></td>";	
 		    		if(status=="已完成订单"){

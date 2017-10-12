@@ -136,6 +136,8 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 	//收货时
 	if(po.getStatus()==-1){
 		
+		po.setFinishtime(new Timestamp(new Date().getTime()));
+		
 		UGoods dbGoods = UGoodsMapper.getGoodsDetailById(po.getId());
 		
 		//给卖家打款
@@ -146,8 +148,8 @@ public void udateBuyGoodsByidAndStatus(UGoods po) {
 		UGoodsMapper.buyerAddScore(dbGoods);
 		
 		
-		//申请退款   取消购买
-	}else if(po.getStatus()==-9||po.getStatus()==-3){
+		//  取消购买
+	}else if(po.getStatus()==-3){
 		
 		UGoods dbGoods = UGoodsMapper.getGoodsDetailById(po.getId());
 		

@@ -3,7 +3,7 @@
 <mapper namespace="com.sht.users.mapper.UGoodsMapper">
 	<select id="getGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="getBuyGoodsById" parameterType="string" resultType="com.sht.users.po.UGoods">
@@ -13,12 +13,12 @@
 	
 	<select id="searchUGoodsBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS NOT IN (-2,-5)) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="searchBuyUGoodsBuyBytitle" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE title LIKE  '%${title}%' AND STATUS IN (1,2,-1,-8,-9)) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="getGoodsCountById" parameterType="string" resultType="int">
@@ -53,12 +53,12 @@
 	
 	<select id="getGoodsByIdAndStatus" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE OWNER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<select id="getBuyGoodsByIdAndStatus" parameterType="string" resultType="com.sht.users.po.UGoods">
 		
-		SELECT * FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) WHERE RN &gt;= #{pageStar}
+		SELECT g.*,getGoodsMainImgPath(g.id) as mainImgPath FROM ( SELECT G.*, ROWNUM RN FROM (SELECT * FROM GOODS WHERE BUYER=#{id} AND STATUS=#{status}) G WHERE ROWNUM &lt;= #{pageEnd}) g WHERE RN &gt;= #{pageStar}
 	</select>
 	
 	<update id="solderAddMoney" parameterType="com.sht.users.po.UGoods">
