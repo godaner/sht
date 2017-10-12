@@ -39,7 +39,7 @@
 </body>
 
 
-//<script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
 
 <style>
 	.search input{
@@ -198,7 +198,7 @@ function showList(status){
 		    		//h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='#' class='product_img'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
 		    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='product_img' target='_parent'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
 
-		    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+		    		h+="<a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='p_name' target='_parent'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
 		    		h+="<td class='split_line'><p style='color:#F30'>"+status+"</p></td>";	
 		    		if(status=="待发货"){
 		    			h+="<td class='operating'><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-3');>取消购买</a></td></tr></tbody></table></div>";
@@ -218,7 +218,7 @@ function showList(status){
 		    				h+="<td class='operating'>已上传凭证</td></tr></tbody></table></div>";
 		    			}
 		    		}else{
-		    			h+="<td class='operating'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"'>前往评价</a></td></tr></tbody></table></div>";
+		    			h+="<td class='operating'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' target='_parent'>前往评价</a></td></tr></tbody></table></div>";
 
 		    		}
 		    		h+="<br/><br/>";
@@ -282,7 +282,7 @@ function searchUGoods(){
 
 			    		h+="<tr class='Order_Details'><td colspan='3'><table class='Order_product_style'><tbody><tr><td><div class='product_name clearfix'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='product_img' target='_parent'><img src='http://localhost/sht/common/goods_getGoodsImg.action?size=200&imgName="+goods['mainImgPath']+"' width='80px' height='80px'></a>";	
 
-			    		h+="<a href=javascript:showGoodsdetail('"+id+"'); class='p_name'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
+			    		h+="<a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' class='p_name' target='_parent'>"+goods['title']+"</a><p class='specification'>"+goods['description']+"</p></div></td><td>"+goods['price']+"</td><td>"+goods['sprice']+"</td></tr></tbody></table></td>  ";	
 			    		h+="<td class='split_line'><p style='color:#F30'>"+status+"</p></td>";	
 			    		if(status=="待发货"){
 			    			h+="<td class='operating'><a href=javascript:udateBuyGoodsByidAndStatus('"+id+"','-3');>取消购买</a></td></tr></tbody></table></div>";
@@ -296,7 +296,7 @@ function searchUGoods(){
 
 			    			//h+="<td class='operating'><a href='#'>前往评价</a></td></tr></tbody></table></div>";
 
-			    			h+="<td class='operating'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"'>前往评价</a></td></tr></tbody></table></div>";
+			    			h+="<td class='operating'><a href='"+baseUrl+"/goods/showGoodsDetailInfo.action?id="+goods['id']+"' target='_parent'>前往评价</a></td></tr></tbody></table></div>";
 
 			    		}
 			    		h+="<br/><br/>";

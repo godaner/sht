@@ -459,6 +459,7 @@ $(function() {
 			
 //			console.log(headImg);
 			var li = $("<li></li>");
+
 			
 			var userDiv = $("<div></div>");
 			var username = $("<span>"+item['username']+"</span>");
@@ -466,9 +467,11 @@ $(function() {
 			
 			userDiv.append(img);
 			userDiv.append(username);
+
 			var reply = "";
-			
+
 			var a = $('<a class="aa" href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'-'+item['recivername']+'">回复</a>');
+
 
 			
 			if(item['message'] != "" && item['message'] != null	|| item['message'] != undefined){
@@ -509,6 +512,8 @@ $(function() {
 			}
 			
 			
+			//li.append(userDiv);
+
 			
 			
 			
