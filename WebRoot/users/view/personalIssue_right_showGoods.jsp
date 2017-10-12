@@ -177,24 +177,41 @@ function getGoodscount(){
 	var  sprice = $("#sprice").val();
 	var  price = $("#price").val();
 	var  condition = $("#condition").val();
+	var reg ='^[1-9]\d*$';//匹配正整数
+	var reg1 ='^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$';//匹配正浮点数
 	//var  region = $("#region").val();
-	$.ajax({
-		type : 'post',  //请求方式,get,post等
-	    dataType:'json',//response返回数据的格式
-	    async : true,  //同步请求  
-	    url : baseUrl+"/users/U_UpdateUGoodsById.action",  //需要访问的地址
-	    data :'id='+id+'&title='+title+'&description='+description+'&sprice='+sprice+'&price='+price+'&condition='+condition,  //传递到后台的参数
-	    success:function(data){
-	    	if(!data['msg']){
-	    	alert("修改成功");
-	    	$(".detail_box").hide();
-	    	showList();
-	    	}
-	    },error:function(){
-	    	$(".detail_box").hide();
-	    	
-	    }
-	})
+	if(sprice>price){
+		alert("转卖价不能高于原价");
+	}else if(description==""){
+		alert("介绍不能为空");
+	}else if(sprice==""){
+		alert("现价不能为空");
+	}else if(price==""){
+		alert("原价不能为空");isNaN(s)
+	}else if(isNaN(sprice)||parseFloat(sprice)<0){
+		alert("现价应为正数");
+	}else if(isNaN(price)||parseFloat(price)<0){
+		alert("原价应为正数");
+	}else{
+		$.ajax({
+			type : 'post',  //请求方式,get,post等
+		    dataType:'json',//response返回数据的格式
+		    async : true,  //同步请求  
+		    url : baseUrl+"/users/U_UpdateUGoodsById.action",  //需要访问的地址
+		    data :'id='+id+'&title='+title+'&description='+description+'&sprice='+sprice+'&price='+price+'&condition='+condition,  //传递到后台的参数
+		    success:function(data){
+		    	if(!data['msg']){
+		    	alert("修改成功");
+		    	$(".detail_box").hide();
+		    	showList();
+		    	}
+		    },error:function(){
+		    	$(".detail_box").hide();
+		    	
+		    }
+		})
+	}
+	
 } 
 
 
