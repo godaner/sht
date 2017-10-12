@@ -120,6 +120,12 @@ public interface Static {
 		 */
 		static final String FILED_SRC_RETURN_MONEY_BILL = "config.src.users.returnmoneybill";
 		
+		
+		/**
+		 * 回调的url
+		 */
+		static final String FIELD_ALIPAY_CONFIG_URL = "config.alipay.url";
+		
 	}
 	
 	

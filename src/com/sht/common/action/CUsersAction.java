@@ -20,8 +20,8 @@ import com.sht.common.service.CUsersServiceI;
  * @date 2017年9月26日 上午11:06:13
  * @version 1.0
  */
-@Scope("prototype")
 @Controller
+@Scope("prototype")
 public class CUsersAction extends BaseAction<CUsers, CUsersServiceI> {
 
 	/**
@@ -39,6 +39,8 @@ public class CUsersAction extends BaseAction<CUsers, CUsersServiceI> {
 	public void getUsersHeadImg() throws Exception {
 		String size = po.getSize();
 		String headimg = po.getHeadimg();
+		info("========="+headimg);
+		
 		try {
 
 			eject(size == null || size.trim().isEmpty(), "用户头像的size没有指定");

@@ -173,7 +173,7 @@ article{
 }
 
 .content-left>ul>li:first-of-type{
-    border: 1px solid orangered;
+    border: 2px solid black;
 }
 .content-left>ul>li>img{
     width: 50px;
@@ -189,6 +189,18 @@ article{
    font-size: 30px;
     font-weight: bold;
     line-height: 50px;
+}
+
+.content-right-description{
+	position:relative;
+	display:block;
+	width:300px;
+	height:50px;
+	line-height:50px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	cursor:pointer;
 }
 
 .new-price{
@@ -490,48 +502,190 @@ article{
     position: relative;
     display: block;
     margin-top: 10px;
+    background-color:white;
+}
+
+
+
+.comment-content>ul>li>div{
+    display: inline-block;
+    position: relative;
+   
+    text-align:left;
+    
+
+}
+.comment-content>ul>li>div>span,.reply-content>span{
+    display: inline-block;
+    color:grey;
+    position: relative;
+    width:100%;
+    text-align:left;
+}
+
+.comment-content>ul>li>div:nth-of-type(2)>span:nth-of-type(1){
+
+	font-size:17px;
+	color:black;
+	margin-bottom:5px;
+}
+.comment-content>ul>li>div:nth-of-type(2)>span:nth-of-type(2){
+   font-size:13px;
+   color:grey;
 }
 
 .comment-content>ul>li{
     display: block;
     position: relative;
-    height: 50px;
-    /*border: 1px solid red;*/
     border-top: 1px dotted grey;
+    background-color:white;
+}
+.comment-content>ul>li>div:first-of-type,.second-replay{
+	display:inline-block;
+	border-right:1px solid grey;
+	padding-right:20px;
+	position: relative;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top: 5px;
+	
 }
 
-.comment-content>ul>li>img{
+
+.comment-content>ul>li>div:first-of-type>img,.second-replay>img{
+    display: inline-block;
+    position: relative;
+   	border:1px solid black;
+    height: 30px;
+    width: 30px; 
+
+}
+.comment-content>ul>li>div:first-of-type>img{
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    /*border: 1px solid red;*/
-    margin-right: 20px;
-    margin-left: 10px;
-    margin-top: -20px;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px; 
+ 
 }
 
-.comment-content>ul>li>div{
-    display: inline-block;
+
+
+
+
+.comment-content>ul>li>div:first-of-type>span,.second-replay>span{
+	display: block;
     position: relative;
-    /*border: 1px solid red;*/
-    margin-top: 5px;
+
+    line-height:30px;
+    text-align:left;
+	padding-left:5px;
+
 }
-.comment-content>ul>li>div>span{
-    display: inline-block;
-    position: relative;
-}
-.comment-content>ul>li>div>span:nth-of-type(2){
-	margin-left:40px;
-}
-.comment-content>ul>li>div>span:last-of-type{
-	display:block;
-    color: grey;
-    font-size: 13px;
+
+.comment-container>li>a{
+	margin-left:30px;
+
+
 }
 .comment-content>p,.reply{
 	display:inline-block;
+}
+
+.reply-second{
+	margin-top:30px;
+	margin-left:100px;
+	border:1px solid #c8c8ff;
+	display:block;
+	position:relative;
+
+    margin-top: 5px;
+    text-align:left;
+    /* width:60%; */
+}
+.comment-content>ul>li>div>span{
+    display: inline-block;
+    color:grey;
+    position: relative;
+   /*  border:1px solid black; */
+    width:100%;
+    text-align:left;
+}
+.comment-content>ul>li>div>span:nth-of-type(2){
+	/* margin-left:40px; */
+	font-size:16px;
+}
+.comment-content>ul>li>div>span:nth-of-type(3){
+    /* color: grey;
+    font-size: 13px;
+    display: block;
+    position: absolute;
+    margin-right:100px;
+    border:1px solid red; */
+    
+}
+.comment-container>li>a{
+	margin-left:30px;
+
+
+}
+
+
+
+.reply-content{
+	position:relative;
+	display:block;
+	margin-bottom:30px;
+	margin-left:100px;
+	margin-top:30px;
+
+}
+
+.reply-content>span{
+	display:inline-block;
+	position:relative;
+}
+
+.reply-content>span:nth-of-type(1){
+
+	width:auto;
+	margin-left:10px;
+}
+
+.reply-content>img{
+	display:inline-block;
+	position:relative;
+	vertical-align:middle;
+	width:30px;
+	height:30px;
+	
+}
+
+.reply-content>span:nth-of-type(2){
+
+	color:black;
+	margin-left:20px;
+	width:auto;
+}
+
+.reply-content>span:nth-of-type(3){
+
+	color:grey;
+	font-size:13px;
+	margin-left:30px;
+	width:auto;
+}
+
+.reply-content>a{
+	display:inline-block;
+	position:relative;
+	margin-left:30px;
+	width:auto;
+}
+
+
+.reply-content>span{
+	display:block;
 }
 .reply{
 	color:grey;
@@ -540,8 +694,10 @@ article{
 }
 .comment-content>textarea{
 	margin-top:10px;
+	border:1px solid #c8c8ff;
+	margin-left:10px;
 }
-#submit{
+#submit,.reply-submit{
 	width:100px;
 	height:30px;
 	cursor:pointer;
@@ -550,9 +706,9 @@ article{
 	border-radius:5px;
 }
 
-.comment-container>li>a{
-	margin-left:10px;
-}
+
+
+
 /*footer css*/
 body>footer{
     position: relative;

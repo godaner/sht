@@ -9,8 +9,8 @@
 		select clazz from goods_clazzs where goods=#{value}
 	</select>
 	
-	<update id="updateClazzNum" parameterType="string">
+	<!-- <update id="updateClazzNum" parameterType="string">
 		update clazzs set num=num-1 where id=#{id}
-	</update>
+	</update> -->
 	
 </mapper>

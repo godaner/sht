@@ -11,13 +11,14 @@
     <script type="text/javascript" src="${baseUrl}/goods/js/jquery-1.11.3.js"></script>
     <script src="${baseUrl }/goods/js/goodsInfoDetail.js"></script>
     <link href="${baseUrl }/goods/css/goodsInfoDetail.css" rel="stylesheet">
+
 </head>
 <body>
 <jsp:include page="commonTitle.jsp" flush="false" />
 <input type="hidden" value="${baseUrl}" id="baseUrl" />
 <input type="hidden" value="${sessionScope.goodsDetailInfo.id}" id="goodsId" />
 <input type="hidden" value="${sessionScope.goodsDetailInfo.msgNum}" id="msgnum" />
-
+<input type="hidden" value="${sessionScope.goodsDetailInfo.userId}" id="userid" />
 
 <article>
     <div class="head">
@@ -28,9 +29,11 @@
             	</c:if>
             	
                 <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
-            		<img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.headImg}"/>
+
+            		<img style="border-radius:50%;" src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
+
             	</c:if>
-                <a href="#">${sessionScope.goodsDetailInfo.title }</a>
+                <a href="#">${sessionScope.goodsDetailInfo.username }</a>
             </li>
 
             <li>
@@ -60,18 +63,21 @@
         </ul>
 
     </div>
-
+	<script src="${baseUrl }/goods/plugin/js/jquery-2.1.0.min.js"></script>
+	<script src="${baseUrl }/goods/plugin/js/jquery.swipebox.min.js"></script>
     <div class="content">
         <div class="content-left">
-        	
-            <img src="${baseUrl }/common/goods_getGoodsImg.action?size=200&imgName=${sessionScope.goodsDetailInfo.path}"/>
+       
+            	<img src="${baseUrl }/common/goods_getGoodsImg.action?size=30&imgName=${sessionScope.goodsDetailInfo.path}"/>
+
             <ul id="rotation-item">
             
             </ul>
         </div>
-
+		
         <div class="content-right">
-            <p class="content-right-title">${sessionScope.goodsDetailInfo.description}</p>
+        	<p class="content-right-title">${sessionScope.goodsDetailInfo.title}</p>
+            <p class="content-right-description" title="${sessionScope.goodsDetailInfo.description}">${sessionScope.goodsDetailInfo.description}</p>
 
             <p class="new-price">
                 转卖价&nbsp;:&nbsp;￥<span id="price" name="${sessionScope.goodsDetailInfo.sprice }">${sessionScope.goodsDetailInfo.sprice }</span>
@@ -79,6 +85,9 @@
             </p>
 
             <p class="old-price">原&nbsp;&nbsp;&nbsp;&nbsp;价&nbsp;:&nbsp;&nbsp;￥${sessionScope.goodsDetailInfo.price}</p>
+            
+            <p class="old-price">类&nbsp;&nbsp;&nbsp;&nbsp;型&nbsp;:&nbsp;&nbsp;${sessionScope.goodsDetailInfo.clazz}</p>
+            
             <hr/>
             <p class="state">成色&nbsp;:&nbsp;${sessionScope.goodsDetailInfo.condition}成新</p>
 
@@ -95,12 +104,15 @@
                		<select name="addr" id="addr">
                			<option value="0">--请选择--</option>
                		</select>
-               		<a href="users/view/personalInfo.jsp">详情&nbsp;/&nbsp;修改</a>
+
+               		<a href="javascript:judgmentLogins();">详情&nbsp;/&nbsp;修改</a>
+
                 </div>
                 <div class="clear"></div>
             </div>
-
-            <input type="button" value="立&nbsp;即&nbsp;购&nbsp;买" id="buy"/>
+			<c:if test="${sessionScope.goodsDetailInfo.status  == '0'}">
+            	<input type="button" value="立&nbsp;即&nbsp;购&nbsp;买" id="buy"/>
+            </c:if>
             <br/>
            
         </div>
@@ -127,7 +139,7 @@
                 <br/>
                 <br/>
                 <br/>
-                <p>欢迎填写评价：</p><sapn class="reply"></sapn>
+                <p>欢迎填写评价：</p><!-- <sapn class="reply"></sapn> -->
                 <br/>
                 <textarea rows="3" cols="100" placeholder="请填写..." id="comment-content"></textarea>
                 <br>

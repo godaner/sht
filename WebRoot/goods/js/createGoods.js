@@ -17,6 +17,8 @@ $(function() {
 				var title = $('#title').val();
 				var sprice = $('#sprice').val();
 				var price = $('#price').val();
+				sprice = parseInt(sprice);
+				price = parseInt(price);
 				var condition = $('#condition>option:selected').val();
 				var region = $('#region>option:selected').val();
 				var img = $('#file').val();

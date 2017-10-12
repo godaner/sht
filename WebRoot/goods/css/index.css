@@ -550,3 +550,14 @@ section>footer>div{
 .allPage{
 	margin-left:10px;
 }
+.description{
+	
+	position:relative;
+	display:block;
+	width:150px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	cursor:pointer;
+	font-size:13px;
+}

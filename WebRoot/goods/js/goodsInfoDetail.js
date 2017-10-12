@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/16.
  */
 
@@ -82,18 +82,15 @@ $(function() {
 		}
 	});
 
-	
+	var rotationEvent;
 	function splitData(imgSrc){
-		for(var i = 0 ; i < imgSrc.length ; i ++){
+		for(var i = 0 ; i < imgSrc.length ; i++){
 			
-			if(i != imgSrc.length - 1)
-				imgSrc[i] = imgSrc[i] + ".png";
-			
+
 			var li = $("<li><img src=''/></li>");
 			
 			
 			li.find('img').attr('src', url_30 + imgSrc[i]);
-			
 			if(imgSrc.length > 1){
 				
 				li.hover(function(){
@@ -101,13 +98,14 @@ $(function() {
 				},function(){
 					mouseLeaved($(this));
 				});
+				rotationEvent = setTimeout(rotation, 2000);
 			}
 			
 			$('#rotation-item').append(li);
 		}
 		
 	}
-	var rotationEvent;
+	
 	var rotationIndex = 0;
 	
 	
@@ -128,9 +126,11 @@ $(function() {
 	}
 
 	$('.content-left>img').hover(function() {
-		clearTimeout(rotationEvent);
+		if(imgSrc > 1)
+			clearTimeout(rotationEvent);
 	}, function() {
-		rotation();
+		if(imgSrc > 1)
+			rotation();
 	});
 
 	function rotation() {
@@ -146,10 +146,10 @@ $(function() {
 
 		rotationEvent = setTimeout(rotation, 2000);
 	}
-	rotationEvent = setTimeout(rotation, 2000);
+	
 	function restoreBorder() {
 		$('#rotation-item li').css({
-			'border' : '1px solid gold'
+			'border' : '2px solid black'
 		});
 	}
 
@@ -460,70 +460,159 @@ $(function() {
 			else 
 				headImg = baseUrl + '/common/goods_getGoodsImg.action?size=30&imgName='+headImg;
 			
+//			console.log(headImg);
+
 			var li = $("<li></li>");
-			var img = $("<img src='"+headImg+"'/>");
+
+			
+			var userDiv = $("<div></div>");
+			var username = $("<span>"+item['username']+"</span>");
+			var img = $("<img style='border-radius:50%;' src='"+headImg+"'/>");
+			
+			userDiv.append(img);
+			userDiv.append(username);
+
 			var reply = "";
 
-			if(item['message'] != "" && item['message'] != null)
-				reply = "回复"+item['recivername']+":";
-			else
-				reply = "评论内容:";
-			
-			var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
-			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
+			var a = $('<a class="aa" href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'-'+item['recivername']+'">回复</a>');
 
-			a.on('click',addComments);
+
 			
-			li.append(img);
+			if(item['message'] != "" && item['message'] != null	|| item['message'] != undefined){
+				
+				reply = "回复&nbsp;&nbsp;"+item['recivername']+":&nbsp;&nbsp;";
+				
+				var div = $("<div  class='reply-content'></div>");
+				
+				var span = $("<span style='display:inline-block;'>"+reply+item['text']+"</span><span style='display:inline-block;'>"+item['createtime']+"</span>");
+				
+				
+				div.append(img);
+				
+				div.append(username);
+				
+				img.css("display","inline-block");
+				
+				username.css("display","inline-block");
+				div.append(span);
+				div.append(a);
+				
+				
+				
+				var target = container.children().find("[name='"+item['message']+"']").parent();
+				target.append(userDiv);
+				target.append(div);
+				target.append("<div style='display:block;width:100%;height:1px;'><div>");
+			}else{
+				reply = "";
+				var div = $("<div><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+				li.append(userDiv);
+				
+				li.append(div);
+				
+				li.append(a);
+				li.append("<div style='display:block;width:100%;height:1px;'><div>");
+				container.append(li);
+			}
 			
-			li.append(div);
 			
-			li.append(a);
+			//li.append(userDiv);
+
 			
-			container.append(li);
 			
-		})
+			
+			
+		});
+		$(document).on('click','.aa',function(e){
+//			e.stopPropagation();
+			addComments($(this));
+//			return false;
+		});
 	}
 	
-	function addComments(){
+	function addComments(target){
 		//留言id
-		var messageId = $(this).attr('name');
+		var messageId = target.attr('name');
 		//用户名
-		var username = $(this).attr('value');
+		var username = target.attr('value').split('-')[0];
+		//接收评论的用户名
+		var recivername =target.attr('value').split('-')[1];
 		//评论的用户id
-		var users = $(this).attr('title');
+		var users = target.attr('title');
 		//此时登录的用户id
 		var usersId = $('#onlineUser').val();
 		
+		var currentUserName = $('#onlineUserName').val();
+
 		if(users.trim() == usersId.trim()){
 			alert("不能回复自己的评论！");
-			return false;
+
+		}else{
+		
+			var li =target.parent();
+			li.find('textarea').remove();
+			li.find('input').remove();
+			var textarea;
+			if(recivername != undefined && currentUserName != " ")
+				textarea = $("<textarea class='reply-second' rows='2' cols='100'></textarea>");
+			else if(currentUserName == " "){
+				alert("登录后才能回复！")
+				return false;
+			}
+			
+			
+			var button = $("<input type='button' class='reply-submit' value='提交回复' name='"+messageId+"'/>");
+			
+			textarea.val(currentUserName+"回复"+username+":");
+			textarea.unbind();
+			button.on("click",submitReplyInfo);
+
+			
+			li.append(textarea);
+			
+			li.append(button);
 		}
 			
-		$('.reply').html("回复:"+username);
 		
-		$('.reply').attr('name',messageId);
-		$('.comment-content>textarea').focus();
 		
+		return false;
 	}
-	
+	function submitReplyInfo(){
+		var info = $(this).prev().val();
+		
+		var infos = info.split(':');
+		
+		if(infos[1] == "" || infos[1] == null){
+			alert("请填写回复内容");
+			return false;
+		}
+		
+		
+		var usersId = $('#onlineUser').val();
+		var message = $(this).attr('name');
+		insertMsgData(infos[1],usersId,message,id);
+		
+		$('.reply-second').remove();
+		$('.reply-submit').remove();
+	}
 	$('.submit').click(function(){
 		var text = $('#comment-content').val();
 		var users = $('#onlineUser').val();
-		var message = $('.reply').attr('name');
+//		var message = $('.reply').attr('name');
 
-		if(message == null)
-			message = "";
+//		if(message == null)
+//			message = "";
 		
-		if(users == null || users == " "){
-			alert("请先登陆，登陆后才可评论!");
-			return false;
-		}else if(text == "" || text == null){
+//		if(users == null || users == " "){
+//			alert("请先登陆，登陆后才可评论!");
+//			return false;
+//		}else 
+			if(text == "" || text == null){
 			alert("请输入评论内容");
 			return false;
 		}
 			
-		insertMsgData(text,users,message,id);
+		insertMsgData(text,users,"",id);
 	});
 	function insertMsgData(text,users,message,id){
 		url = "text="+text+
@@ -562,11 +651,19 @@ $(function() {
 		var price = $('#price').attr('name');
 		var addr = $("#location").html();
 		
+		var userid = $("#userid").val();
+		
+		console.log("userid="+userid);
+		console.log("users="+users);
+		alert(users.trim() == userid.trim());
 		if(users == " " || users == null){
 			alert("请先登录!");
 			return false;
-		}else if(addr == null || addr == ""){
+		}else if(addr == null || addr == "" || addr == "暂无收货地址"){
 			alert("请选择收获地址!");
+			return false;
+		}else if(users.trim() == userid.trim()){
+			alert("不可购买自己发布的商品");
 			return false;
 		}
 		
@@ -596,7 +693,9 @@ $(function() {
 					alert("购买失败");
 				else if(data == 3)
 					alert("余额不足,请先充值");
-				else{
+				else if(data == 4){
+					alert("该商品已被购买，不能重复购买");
+				}else{
 					alert("购买成功!");
 					location.href=baseUrl + "/goods/view/index.jsp";
 				}
@@ -609,4 +708,16 @@ $(function() {
 		})
 	})
 
-})
+});
+
+function judgmentLogins(){
+	var onlineUser = $('#onlineUser').attr('value');
+	var baseUrl = $("#baseUrl").attr('value');
+
+	if(onlineUser == " "){
+		alert("请登录");
+	}else{
+		location.href=baseUrl+"/users/view/personalInfo.jsp";
+	}
+	
+}

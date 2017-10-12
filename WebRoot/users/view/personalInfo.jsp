@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>个人信息</title>
-    <link rel="stylesheet" href="../css/personalInfo.css"/>
+    <link rel="stylesheet" href="${baseUrl}/users/css/personalInfo.css"/>
 </head>
-<body>
+<body style="background-color:white;">
 <jsp:include page="../../goods/view/commonTitle.jsp" flush="false" />
 <!-- <div id="header">
     <h1>SHT二手交易</h1>
@@ -31,9 +31,9 @@
 <div id="body">
     <div class="body_left">
     <div class="body_left_img">
-    	<img  onmouseover="showedit();" onmouseout="hidenedit();" src="" title="" id="personalImg" onclick="to_editImg();">
+    	<img   onmouseout="hidenedit();" src="" title="" id="personalImg" onclick="to_editImg();">
     
-    	<p onmouseover="showedit();" onclick="to_editImg();">编辑头像</p>	
+    	<p  onclick="to_editImg();">编辑头像</p>	
     </div>
 
         <p>${onlineUser.username}</p>
@@ -59,7 +59,7 @@
     <iframe name="iframe0"  src="${baseUrl}/users/view/personalInfo_right_editInfo.jsp"  height="395px" class="" width="764px" frameborder=no>
     
     </iframe>
-    </div>
+    </div> 
     
     <div id="show_issueGoods" style="display:none;">
     <iframe name="userinfoiframe"  src="" width="980px" height="1560px" scrolling="no" frameborder=no></iframe>
@@ -74,8 +74,8 @@
 <input type="hidden" value="${baseUrl}" id="baseUrl"/>
 
 </body>
-  	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../js/personalInfo.js"></script>
+  	<script type="text/javascript" src="${baseUrl}/users/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="${baseUrl}/users/js/personalInfo.js"></script>
     <%@include file="../../common/view/visit.jsp"%>
     
     <script type="text/javascript">
@@ -83,18 +83,12 @@
     //获取头像
     $(function(){
 	  	 var headimg = $("#headimg").val();
-	  	 if(headimg!=""&&headimg!=null){
+	  	
 	  		 $("#personalImg").attr({
 	  			 "src":"http://localhost/sht/common/users_getUsersHeadImg.action?size=160&headimg="+headimg,
 	  			 "title":""
 	  		 });
-	  	 }else{
-	  		$("#personalImg").attr({
-	  			 "src":baseUrl+"/users/img/default_img.png",
-	  			 "title":"编辑资料"
-	  		 });
-	  	 }
-	  	 
+
 	   });
     
     
@@ -117,6 +111,7 @@
 	   }else if(a==1){
 		   src=baseUrl+"/users/view/personalIssue_right_showBuyed.jsp";
 	   }else if(a==2){
+
 		   src=baseUrl+"/users/view/resetpassword.jsp";
 
 

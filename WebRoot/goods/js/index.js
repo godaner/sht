@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by tom on 2017/9/14.
  */
 
@@ -209,9 +209,18 @@ $(function () {
 	
 	//填充商品类别数据
 	function setCategory(data){
+
 		var table = $('#option table').empty();
-		var tr = null;
-		var i = 0;
+		var tr =  $('<tr></tr>');
+		
+		var tdAll ;
+
+		var line =Math.ceil( data.length/5 );
+
+		var sum = 0,i=1,temp=3;
+
+
+
 		$.each(data,function(index,item){
 			i = index;
 			if((index % 5) == 0){
@@ -223,19 +232,24 @@ $(function () {
 			td.on('click',getDataByCategory);
 			tr.append(td);
 			
-			if(( index % 5 ) == 0 && index != 0){
-				table.append(tr);
+			if(temp == index){
+
+				tr = $('<tr></tr>');
+				i++;
+
+				temp +=5;
+
 			}
 			
 			
 		});
-		if(i!=0){
-			for(var j = 0;j<5;j++){
-				tr.append("<td></td>");
-			}
+		
+		if( i < line)
+
 			table.append(tr);
 		}
 		
+
 	}
 	
 	function getDataByCategory(){
@@ -251,7 +265,6 @@ $(function () {
 	function getData(min,region,orderByTime,orderByPrice,minPrice,maxPrice,clazzs){
 		console.log("minPrice:"+minPrice);
 		console.log("maxPrice:"+maxPrice);
-		
 		$('.trading_item_info>ul').empty();//清除容器中的所有数据
 		var url ="minLine="+min+
 				  "&region="+region +
@@ -288,17 +301,22 @@ $(function () {
 			var headImg = item['headImg'];
 //			console.log("time="+item['createtime']);
 			var time =item['createtime'].split(" "); 
-//			var hour = time[2].split(" ");
-			//console.log(hour[1]);
-			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=200&imgName="+headImg;
-			var li =	$("<li ></li>");
+			var description = item['description'];
+			
+			console.log("headimg"+headImg);
+			
+			headImg = baseUrl+"/common/users_getUsersHeadImg.action?t="+new Date().getTime()+"&size=30&headimg="+headImg;
+			
+			var li =$("<li></li>");
+
+
 			li.attr("margint-left","30px");
 			//添加标题
 			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
 			
-			infoTitle.append("<img style='width:30px;' src='"+headImg+"'/> <a"
-					+"	href='#'>"+item['title']+"</a>");
+			console.log(item['username']);
+
 			
 			
 			
@@ -314,9 +332,13 @@ $(function () {
 			var price = $("<span>￥<span>"+item['sprice']+"</span></span> <span>"+item['addr']+"</span>");
 			
 			priceContent.append(price);
-			
-		
-			var footer = $("<p>"+item['description']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
+
+			if(description.length >15)
+				description = description.substring(0,15) + "...";
+
+				
+			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description'  title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
+
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);

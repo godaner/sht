@@ -251,8 +251,10 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			po.setMsg(e.getMessage());
 			
 		}
+		 writeJSON(po);
 	 }
 	 
 	 /**
@@ -391,5 +393,15 @@ public class UGoodsAction extends UBaseAction<UGoods,UGoodsServiceI>{
 		e.printStackTrace();
 		
 	}
+ }
+ 
+	 /**
+	  * 退货申请凭证上传
+	  * 
+	  */
+ 
+ public void goodsCheckImgUpload(){
+	 
+	 service.goodsCheckImgUpload(po);
  }
 }
