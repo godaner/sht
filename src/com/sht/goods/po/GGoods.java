@@ -19,6 +19,9 @@ import com.sht.po.Goods;
 @Component
 @Scope("prototype")
 public class GGoods extends Goods {
+	
+	private String userid;
+	
 	private String username;
 	
 	private File[] files;
@@ -55,6 +58,14 @@ public class GGoods extends Goods {
 	
 	
 	
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public String getUsername() {
 		return username;
 	}

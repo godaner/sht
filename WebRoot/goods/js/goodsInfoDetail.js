@@ -457,7 +457,7 @@ $(function() {
 			
 			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg="+headImg;
 			
-			console.log(headImg);
+//			console.log(headImg);
 			var li = $("<li></li>");
 
 			
@@ -470,53 +470,44 @@ $(function() {
 
 			var reply = "";
 
-			var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'-'+item['recivername']+'">回复</a>');
+			var a = $('<a class="aa" href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'-'+item['recivername']+'">回复</a>');
 
-			//var div = $("<div><span>用户："+item['username']+"</span><span>"+reply+"&nbsp;&nbsp;&nbsp;&nbsp;"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+
 			
-			//div = $("<div><span>"+item['text']+"</span><span>"+item['createtime']+"</span></div>");
-			//var a = $('<a href="javascript:void(0)" title="'+item['users']+'" name="'+item['id']+'" value="'+item['username']+'">回复</a>');
-
-
-			a.on('click',addComments);
-
-
 			if(item['message'] != "" && item['message'] != null	|| item['message'] != undefined){
-
+				
 				reply = "回复&nbsp;&nbsp;"+item['recivername']+":&nbsp;&nbsp;";
 				
-				var div = $("<div class='reply-content'></div>");
+				var div = $("<div  class='reply-content'></div>");
 				
-				var span = $("<span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span>");
+				var span = $("<span style='display:inline-block;'>"+reply+item['text']+"</span><span style='display:inline-block;'>"+item['createtime']+"</span>");
 				
-				var uDiv = $("<div class='second-replay'></div>").append(img).append(username);
-
 				
-				div.css("margin-left","100px");
-				div.css("margin-top","30px");
-				div.css("border","1px solid red");
+				div.append(img);
 				
-				div.append(uDiv);
-				userDiv.attr('class','second-reply');
+				div.append(username);
 				
-				div.find("img").css("width","30px");
-				div.find("img").css("height","30px");
+				img.css("display","inline-block");
 				
+				username.css("display","inline-block");
 				div.append(span);
 				div.append(a);
 				
-				container.children().find("[name='"+item['message']+"']").append(userDiv);
-				container.children().find("[name='"+item['message']+"']").append(div);
 				
+				
+				var target = container.children().find("[name='"+item['message']+"']").parent();
+				target.append(userDiv);
+				target.append(div);
+				target.append("<div style='display:block;width:100%;height:1px;'><div>");
 			}else{
 				reply = "";
-				div = $("<div><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
+				var div = $("<div><span>"+reply+item['text']+"</span><span>"+item['createtime']+"</span></div>");
 				li.append(userDiv);
 				
 				li.append(div);
 				
 				li.append(a);
-				
+				li.append("<div style='display:block;width:100%;height:1px;'><div>");
 				container.append(li);
 			}
 			
@@ -527,47 +518,60 @@ $(function() {
 			
 			
 			
-		})
+		});
+		$(document).on('click','.aa',function(e){
+//			e.stopPropagation();
+			addComments($(this));
+//			return false;
+		});
 	}
 	
-	function addComments(){
+	function addComments(target){
 		//留言id
-		var messageId = $(this).attr('name');
+		var messageId = target.attr('name');
 		//用户名
-		var username = $(this).attr('value').split('-')[0];
+		var username = target.attr('value').split('-')[0];
 		//接收评论的用户名
-		var recivername =$(this).attr('value').split('-')[1];
+		var recivername =target.attr('value').split('-')[1];
 		//评论的用户id
-		var users = $(this).attr('title');
+		var users = target.attr('title');
 		//此时登录的用户id
 		var usersId = $('#onlineUser').val();
 		
 		var currentUserName = $('#onlineUserName').val();
+
 		if(users.trim() == usersId.trim()){
 			alert("不能回复自己的评论！");
-			return false;
+
+		}else{
+		
+			var li =target.parent();
+			li.find('textarea').remove();
+			li.find('input').remove();
+			var textarea;
+			if(recivername != undefined && currentUserName != " ")
+				textarea = $("<textarea class='reply-second' rows='2' cols='100'></textarea>");
+			else if(currentUserName == " "){
+				alert("登录后才能回复！")
+				return false;
+			}
+			
+			
+			var button = $("<input type='button' class='reply-submit' value='提交回复' name='"+messageId+"'/>");
+			
+			textarea.val(currentUserName+"回复"+username+":");
+			textarea.unbind();
+			button.on("click",submitReplyInfo);
+
+			
+			li.append(textarea);
+			
+			li.append(button);
 		}
 			
-		var li = $(this).parent();
-		var textarea;
-		if(recivername != undefined && currentUserName != " ")
-			textarea = $("<textarea class='reply-second' rows='2' cols='100'></textarea>");
-		else if(currentUserName == " "){
-			alert("登录后才能回复！")
-			return false;
-		}
-			
-		var button = $("<input type='button' class='reply-submit' value='提交回复' name='"+messageId+"'/>");
-		
-		textarea.val(currentUserName+"回复"+username+":");
-		
-		button.on("click",submitReplyInfo);
-		
-		li.append(textarea);
-		
-		li.append(button);
 		
 		
+		return false;
 	}
 	function submitReplyInfo(){
 		var info = $(this).prev().val();
@@ -578,9 +582,11 @@ $(function() {
 			alert("请填写回复内容");
 			return false;
 		}
+		
+		
 		var usersId = $('#onlineUser').val();
 		var message = $(this).attr('name');
-		insertMsgData(info,usersId,message,id);
+		insertMsgData(infos[1],usersId,message,id);
 		
 		$('.reply-second').remove();
 		$('.reply-submit').remove();
@@ -602,7 +608,7 @@ $(function() {
 			return false;
 		}
 			
-		insertMsgData(text,users,null,id);
+		insertMsgData(text,users,"",id);
 	});
 	function insertMsgData(text,users,message,id){
 		url = "text="+text+
@@ -641,11 +647,19 @@ $(function() {
 		var price = $('#price').attr('name');
 		var addr = $("#location").html();
 		
+		var userid = $("#userid").val();
+		
+		console.log("userid="+userid);
+		console.log("users="+users);
+		alert(users.trim() == userid.trim());
 		if(users == " " || users == null){
 			alert("请先登录!");
 			return false;
-		}else if(addr == null || addr == ""){
+		}else if(addr == null || addr == "" || addr == "暂无收货地址"){
 			alert("请选择收获地址!");
+			return false;
+		}else if(users.trim() == userid.trim()){
+			alert("不可购买自己发布的商品");
 			return false;
 		}
 		
