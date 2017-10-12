@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import com.sht.common.action.CGoodsAction;
 import com.sht.goods.po.GGoods;
 import com.sht.goods.service.GoodsServiceI;
-import com.sht.users.po.CustomUsers;
 import com.sht.util.Static;
 
 
@@ -89,12 +88,7 @@ public class GGoodsAction extends GBaseAction<GGoods,GoodsServiceI> {
 		logger.info("GoodsAction-createGoods");
 		String result = null;
 		try {
-			CustomUsers onlineUser = getOnlineUser();
-
-			
-			eject(onlineUser == null, "您已离线");
-				po.setOwner(onlineUser.getId());
-				
+			 
 			 String region = getRequest().getParameter("county");
 			 String condition = getRequest().getParameter("condition");
 			 

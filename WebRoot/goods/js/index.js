@@ -220,30 +220,18 @@ $(function () {
 		var sum = 0,i=1,temp=3;
 
 
+
 		$.each(data,function(index,item){
-
-			sum = sum + item['num'];
-			if(index  == 0){
-				tdAll = $("<td title='全部' name='0'>全部<span></span></td>");
-				tdAll.on('click',getDataByCategory);
-				tr.append(tdAll);
-				
+			i = index;
+			if((index % 5) == 0){
+				tr = $('<tr></tr>')
 			}
-
-				
-
-			if(temp == index){
-				table.append(tr);
-			}
-			
-			
-			
+			console.log(typeof tr);
 			var td = $('<td title="'+item['text']+'" name="'+item['id']+'">'+item['text']+' <span>('+item['num']+')</span></td>');
 			
 			td.on('click',getDataByCategory);
 			tr.append(td);
 			
-
 			if(temp == index){
 
 				tr = $('<tr></tr>');
@@ -255,13 +243,11 @@ $(function () {
 			
 			
 		});
-
 		
 		if( i < line)
-			table.append(tr);
-		
-		tdAll.find('span').text("("+sum+")");
 
+			table.append(tr);
+		}
 		
 
 	}
@@ -272,14 +258,7 @@ $(function () {
 	    minPrice = 0;
 	    maxPrice = 0;
 	    globalClazz = $(this).attr('name');
-	    
-	
-	    $('.city>div>ul>li:eq(0)').html("全国");
-	    	
-	  
-	    	
-//	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
-	    getTotalNum(0,minPrice,maxPrice,globalClazz);
+	    getTotalNum(globalRegion,minPrice,maxPrice,globalClazz);
 	}
 	
 	getTotalNum(0.0,0,0,0);
@@ -301,8 +280,6 @@ $(function () {
 		    async : false,  //同步请求  
 		    url : baseUrl+"/goods/showInfo.action?"+url,  //需要访问的地址
 			success:function(data){
-				
-				console.log(data);
 				globalData = data;
 				//显示商品数据
 				setData(data);
@@ -322,9 +299,8 @@ $(function () {
 		$.each(data,function(index,item){
 			var title = item['title'];
 			var headImg = item['headImg'];
-
+//			console.log("time="+item['createtime']);
 			var time =item['createtime'].split(" "); 
-
 			var description = item['description'];
 			
 			console.log("headimg"+headImg);
@@ -333,16 +309,14 @@ $(function () {
 			
 			var li =$("<li></li>");
 
+
 			li.attr("margint-left","30px");
 			//添加标题
-			var infoTitle = $("<div>"+"</div>");
+			var infoTitle = $("<div >"+"</div>");
 			infoTitle.addClass("trading_info_title");
-
-			infoTitle.append("<img style='width:30px;height:30px;border-radius:50%;' src='"+headImg+"'/> <a"
-
-					+"	href='javascript:void(0)'>"+item['username']+"</a>");
 			
 			console.log(item['username']);
+
 			
 			
 			
@@ -364,6 +338,7 @@ $(function () {
 
 				
 			var footer = $("<b style='margin-left:10px;'>"+item['title']+"</b><p class='description'  title='"+item['description']+"'>"+description+"</p><p>"+item['clazz']+"</p> <span class='time'>"+time[0]+"</span> <span class='come'>来自"
+
 					+"	SHT</span> <span>留言"+item['msgNum']+"</span>");
 			
 			li.append(infoTitle);
@@ -515,6 +490,3 @@ $(function () {
 	}
 	
 })
-
-
-

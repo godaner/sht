@@ -101,15 +101,15 @@ public class AddressAction extends UBaseAction<CustomAddrs, AddrsServiceI> {
 		eject(cs == null, "未登入");
 		po.setMaster(cs.getId());
 		List<CustomAddrs> addrsList = null;
-		CustomAddrs addrs = new CustomAddrs();
+		CustomAddrs c = new CustomAddrs();
 		try {
 			addrsList = service.displayAddrs(po);
 			
-			addrs.setAddrs(addrsList);
+			c.setAddrs(addrsList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		writeJSON(addrs);
+		writeJSON(c);
 	}
 
 	/**

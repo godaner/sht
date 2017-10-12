@@ -73,7 +73,7 @@ $(function() {
 		url : baseUrl + "/goods/selectGoodsImgs.action?id=" + id, // 需要访问的地址
 		success : function(data) {
 			// 显示商品类别
-			imgSrc = data.split('/');
+			imgSrc = data.split('.png-');
 			splitData(imgSrc);
 		},
 		error : function(data) {
@@ -455,9 +455,13 @@ $(function() {
 			
 			var headImg = item['headImg'];
 			
-			headImg = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg="+headImg;
+			if(headImg == null || headImg == "")
+				headImg = baseUrl + '/goods/img/default_icon.png';
+			else 
+				headImg = baseUrl + '/common/goods_getGoodsImg.action?size=30&imgName='+headImg;
 			
 //			console.log(headImg);
+
 			var li = $("<li></li>");
 
 			

@@ -57,10 +57,9 @@
 	
 	<div class="content">
 		<div class="content-left">
-			<div></div>
-			<!-- <img src="">
+			<img src="goods/img/content.png">
 
-			<p>二狗</p> -->
+			<p>二狗</p>
 			<ul>
 				<li><img src="goods/img/heart.png"></li>
 				<li><img src="goods/img/heart.png"></li>

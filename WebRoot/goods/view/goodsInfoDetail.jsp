@@ -25,12 +25,13 @@
         <ul>
             <li>
             	<c:if test="${empty sessionScope.goodsDetailInfo.headImg  }">
-            
-            		<img  src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
+            		<img src="goods/img/default_icon.png"/>
             	</c:if>
             	
                 <c:if test="${not empty sessionScope.goodsDetailInfo.headImg}">
+
             		<img style="border-radius:50%;" src="${baseUrl }/common/users_getUsersHeadImg.action?size=30&headimg=${sessionScope.goodsDetailInfo.headImg}"/>
+
             	</c:if>
                 <a href="#">${sessionScope.goodsDetailInfo.username }</a>
             </li>
@@ -103,7 +104,9 @@
                		<select name="addr" id="addr">
                			<option value="0">--请选择--</option>
                		</select>
+
                		<a href="javascript:judgmentLogins();">详情&nbsp;/&nbsp;修改</a>
+
                 </div>
                 <div class="clear"></div>
             </div>

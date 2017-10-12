@@ -2,7 +2,6 @@ package com.sht.goods.service.impl;
 
 import java.sql.Timestamp;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

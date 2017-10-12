@@ -109,11 +109,7 @@ $(function() {
 		} else if (null == price || "" == price) {
 			alert("请填写商品原价");
 			return false;
-		}else if(sprice > price){
-			alert("商品转卖价不能高于原价!");
-			return false;
-			
-		}else if (null == condition || "" == condition || 0 == condition) {
+		} else if (null == condition || "" == condition || 0 == condition) {
 			alert("请选择商品成色");
 			return false;
 		} else if ( -1 == region) {
@@ -292,45 +288,9 @@ $(function() {
 
 		});
     }
-
-	getUsersInfo();
+	
+	
 	getClazzs();
-	
-	
-	function getUsersInfo(){
-		var id = $('#onlineUser').attr('value');
-		$.ajax({
-			type : "post",  //请求方式,get,post等
-		    dataType:'json',//response返回数据的格式
-		    async : false,  //同步请求  
-		    url : baseUrl+"/user/selectUsersInfo.action?id="+id,  //需要访问的地址
-			success:function(data){
-				console.log("访问用户成功!");
-				console.log(data);
-				setUserInfo(data);
-			},
-			error:function(data){
-				console.log("访问用户失败!");
-				console.log(data);
-			}
-		});
-	}
-	
-	function setUserInfo(data){
-		var container = $('.content-left>div');
-		var url = baseUrl+"/common/users_getUsersHeadImg.action?size=30&headimg=";
-		
-		var img = $("<img src='"+url+data['headimg']+"'>");
-		
-		var p = $("<p>"+data['username']+"</p>");
-		
-		container.append(img);
-		
-		container.append(p);
-		
-	}
-	
-	
 	function getClazzs(){
 		$.ajax({
 			type : "post",  //请求方式,get,post等

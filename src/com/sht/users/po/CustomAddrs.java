@@ -10,18 +10,6 @@ import com.sht.po.Addrs;
 public class CustomAddrs extends Addrs {
 	private String msg ;		//错误信息
 
-	private String addr;
-	
-	
-	
-	public String getAddr() {
-		return addr;
-	}
-
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-
 	public String getMsg() {
 		return msg;
 	}

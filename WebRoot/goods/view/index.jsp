@@ -79,7 +79,7 @@
 		</div>
 
 		<div class="release_resale">
-			<a href="javascript:judgmentLogin('${baseUrl}/goods/view/createGoods.jsp');">
+			<a href="goods/view/createGoods.jsp">
 				<div class="release">
 					<span>发布闲置</span> <img src="goods/img/release_right.png"> <span>闲置换钱&nbsp;快速出手</span>
 				</div>

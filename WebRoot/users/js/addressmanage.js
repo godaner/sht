@@ -23,7 +23,6 @@ var id = "";
 var CanSub = false;/*标记是否能提交注册信息*/
 var baseUrl="";/*获取项目地址*/
 
-
 /* 打印错误信息 */
 function RegisterErrorMsg(msg){
 	$(".register_msg").css("background-color","rgb(254,242,242)");
@@ -54,36 +53,6 @@ $(function(){
 //    })
 	
 });
-
-//邮编正则要求
-function check_postcode(){
-	var txt=$("#postcode").val().trim();
-	var req=/^\d{6}$/;
-	if(!txt.match(req)){
-		alert("请输入六位邮编数字");
-	}
-}
-
-//用户名正则要求
-function check_realname(){
-	var txt=$("#realname").val().trim();
-	var reg='^.{2,20}$';
-	if(!txt.match(reg)){
-		alert("请输入至少两位字符用户名")
-	}
-}
-
-//手机号正则要求
-//^1代表以1开头，[3|4|5|8] 紧跟上面的1后面，可以是3或4或5或8的一个数字，
-//[0-9]表示0-9中间的任何数字，可以是0或9 
-//\d{4,8} 这个\d跟[0-9]意思一样，都是0-9中间的数字。{4,8}表示匹配前面的最低4位数字最高8位数字。这里为什么不是直接的8呢，因为手机号码归属地查询的时候，根据前7位就可以知道具体的地址了，后面的4位没有影响的。
-function check_phone(){
-	var txt=$("#phone").val().trim();
-	var reqs='^1[3|4|5|7|8][0-9]{9}$';
-	if(!txt.match(reqs)){
-		alert("请输入正确手机号"); 
-	}
-}
 
 function selectcity(){
 	$("#province").change(function(){
@@ -225,7 +194,7 @@ $(function(){
 		dataType:dataType,
 		data:{},
 		success:function(data){
-			console.info(data);
+//			console.info(data);
 			var h="";
 			cAddrs = data['addrs'];
 			for(var i=1;i<=data['addrs'].length;i++){
@@ -236,6 +205,7 @@ $(function(){
 					h="";
 				}else{
 					h+="<tbody><tr><th>"+addrs["realname"]+"</th><th>"+addrs["addr"]+"</th><th>"+addrs["detail"]+"</th><th>"+addrs["postcode"]+"</th><th>"+addrs["phone"]+"</th><th><a style='text-decoration:none;' href=javascript:oneditAddr('"+(i-1)+"')>修改</a>|<a style='text-decoration:none;' href='"+baseUrl+"/users/D_deleteAddress.action?id="+addrs['id']+"'>删除</a></th><th><a style='text-decoration:none;' href=javascript:editDefault('"+addrs['id']+"')>设为默认</a></th></tr></tbody>";
+
 					$("#listshow").append(h);
 					h="";
 				}
@@ -350,11 +320,10 @@ function editDefault(addrId){
 	    	
 	    	var userInfoIframe = parent.document.getElementsByName("iframe0")[0];
 	    	userInfoIframe.src = baseUrl+"/users/view/addressmanage.jsp";
-//	    	window.location.onload(true);
 //	    	userInfoIframe.attr("src",);  
 	    	
 //    		alert("设置成功");
-    		window.location.href='/sht/users/view/addressmanage.jsp';
+//    		window.location.href='/sht/users/view/addressmanage.jsp';
 	    }
 	})
 }

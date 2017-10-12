@@ -19,7 +19,6 @@ import com.sht.po.Goods;
 @Component
 @Scope("prototype")
 public class GGoods extends Goods {
-	
 	private String userid;
 	
 	private String username;
@@ -56,8 +55,7 @@ public class GGoods extends Goods {
 	
 	private String clazz;
 	
-	
-	
+
 	public String getUserid() {
 		return userid;
 	}
