@@ -249,7 +249,7 @@ $(document).on("click",".save_btn_99",function(){
 	      success: function () {
 	        alert("凭证上传成功");
 	        window.location.reload();
-	      }1
+	      }
 	    };
 	    console.info(options);
 	    $("#yyform").ajaxSubmit(options);
