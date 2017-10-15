@@ -119,7 +119,7 @@
 		   src=baseUrl+"/users/view/recharge.jsp";
 	   }
 	   $("#body_right").hide();	
-	   $("#show_issueGoods").show();
+	   $("#show_issueGoods").show();//调用
 	   $("#show_issueGoods iframe").attr({
 		   "src":src,
 			"target":"userinfoiframe"
@@ -127,7 +127,7 @@
 	   
    }
    
-   //显示我的信息子页面 
+   //显示我的信息子页面 ,申明
    function show_body_right(){
 	   $("#body_right").show();	
 	   $("#show_issueGoods").hide();

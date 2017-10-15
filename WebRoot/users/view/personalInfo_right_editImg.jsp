@@ -139,6 +139,7 @@ $("#save_btn").click(function () {
         window.parent.location.reload();
       }
     };
+    //jquery.form
     $("#yyform").ajaxForm(options);
   })
 
